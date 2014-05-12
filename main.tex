@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage[section]{placeins}
+\usepackage{fancyhdr}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 \title{Genomizer}
@@ -17,7 +18,14 @@
 
 \date{\today}
 
+\fancyfoot{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{\rightmark}
+
 \begin{document}
+
+\pagestyle{fancy}
 %\maketitle
 
 \input{cover}
@@ -79,6 +87,19 @@
 \newcommand{\click}[1]{\ding{43} \textbf{\textit{{#1}}}}
 \newcommand{\term}[1]{\textit{#1}}
 
+\newcommand{\userstory}[2]{
+\begin{tabular}{|l|}
+\hline
+\\
+{\large \textbf{#1}} \\ \hline
+\\
+\begin{minipage}{\textwidth}
+#2
+\end{minipage}
+\\ \hline
+\end{tabular}
+}
+
 \setcounter{secnumdepth}{5}
 
 \setlength{\parindent}{0pt}
@@ -114,7 +135,6 @@
 
 \chapter{Implementation and tests}
 \input{implementation/implementation}
-
 
 \input{appendices/appendices}
 \input{bibliographies/bibliography}
