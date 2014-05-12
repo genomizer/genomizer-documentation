@@ -1,0 +1,123 @@
+\documentclass[a4paper]{report}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{pifont}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[section]{placeins}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+\title{Genomizer}
+
+\author{You}
+
+\date{\today}
+
+\begin{document}
+%\maketitle
+
+\input{cover}
+
+%\begin{abstract}
+%Your abstract.
+%\end{abstract}
+
+\makeatletter
+\renewcommand\paragraph{%
+   \@startsection{paragraph}{4}{0mm}%
+      {-\baselineskip}%
+      {.5\baselineskip}%
+      {\normalfont\normalsize\bfseries}}
+      
+\renewcommand\subparagraph{%
+   \@startsection{paragraph}{4}{0mm}%
+      {-\baselineskip}%
+      {.5\baselineskip}%
+      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstdefinestyle{customsh}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\newcommand{\appName}{\textit{Genomizer}}
+\newcommand{\addImage}[1]{\centering\includegraphics[width=\textwidth, keepaspectratio=true]{#1}}
+\newcommand{\addScaledImage}[2]{\centering\includegraphics[scale=#1]{#2}}
+\newcommand{\addImageVertical}[1]{\centering\includegraphics[height=\textwidth, angle=90, keepaspectratio=true]{#1}}
+\newcommand{\addScaledImageVertical}[2]{\centering\includegraphics[scale=#1, angle=90]{#2}}
+\newcommand{\refer}[1]{\autoref{#1}}
+\newcommand{\addCode}[3][c]{\lstinputlisting[caption=#3, escapechar=, style=custom#1]{#2}}
+\newcommand{\filePath}[1]{\texttt{#1}}
+\newcommand{\click}[1]{\ding{43} \textbf{\textit{{#1}}}}
+\newcommand{\term}[1]{\textit{#1}}
+
+\setcounter{secnumdepth}{5}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\graphicspath{ {figures/} }
+
+\tableofcontents
+
+\chapter{Introduction}
+\input{introduction/introduction}
+
+\chapter{Target group and needs}
+\input{target_group/target_group}
+
+\chapter{Service description}
+\input{service_description/service_description}
+
+\chapter{User manual}
+\input{usermanual/user_manual}
+
+\chapter{Deployment and maintenance}
+\input{deployment/deployment.tex}
+
+\chapter{Interaction design}
+\input{interaction_design/interaction_design.tex}
+
+\chapter{Architecture design}
+\input{architecture_design/architecture_design}
+
+\chapter{System design}
+\input{system_design/system_design.tex}
+
+\chapter{Implementation and tests}
+\input{implementation/implementation}
+
+
+\input{appendices/appendices}
+\input{bibliographies/bibliography}
+
+
+\end{document}

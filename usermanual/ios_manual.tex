@@ -1,0 +1,77 @@
+In order to use the program import the project from github into Xcode from the following repository:
+\url{https://github.com/genomizer/genomizer-iOS.git} 
+
+\begin{figure}[ht]
+\addScaledImage{0.2}{ios_login.png}
+\caption{The login screen.}
+\label{fig:ios_login}
+\end{figure}
+\FloatBarrier
+
+To compile and run the program press \click{cmd+R}. A simulator will start and the login screen will be shown as seen in \refer{fig:ios_login}  below. A user gets logged in when accepted credentials are entered in the \term{username} and \term{password} fields and the \click{Sign in} button is pressed. If incorrect credentials is entered, a popup message is shown, informing the user that the username or password is incorrect.
+
+\begin{figure}[ht]
+\addScaledImage{0.2}{ios_search.png}
+\caption{The search screen.}
+\label{fig:ios_search}
+\end{figure}
+\FloatBarrier
+
+
+After logging in, the user is presented with a search view as seen in \refer{fig:ios_search}. The bottom menu bar is used to navigate between the Search-, Selected files- and More-view according to Apples current GUI standards for iOS 7. In the current state, the More-menu only contains a logout button which is used to log out.The Selected files-menu contains a list sorted on file type of files selected by the user. In the search view, the user can search the database for results matching any number of search criteria. To be able to modify the search quickly, a toggle button is available in the rightmost edge of each search field which enables or disables each search field. For example, if the user wants to search for files matching a certain Experiment ID, the user clicks on \click{Experiment ID}, enters the ID and clicks on the toggle button. 
+
+
+\begin{figure}[ht]
+\addScaledImage{0.2}{ios_advSearch.png}
+\caption{The advanced search screen.}
+\label{fig:ios_advSearch}
+\end{figure}
+\FloatBarrier
+
+In top rightmost corner there is a button for opening a advanced search view as seen in \refer{fig:ios_advSearch}. Here the user is supposed to enter a search query in ’pubmed-style-format’. If a user fills in fields in the regular search view and then opens the advanced search view, the fields in filled at the regular search view will apper as a query in the advanced search view.
+
+\begin{figure}[ht]
+\addScaledImage{0.2}{ios_searchResults.png}
+\caption{The search result screen.}
+\label{fig:ios_searchResult}
+\end{figure}
+\FloatBarrier
+
+When the search button has been pressed, the user is presented with all matching experiments in the Search Results view shown in \refer{fig:ios_searchResult}. To manage which annotations that shoud be shown for every experiment the user can press the edit button in the top rightmost corner.
+
+\begin{figure}[htb]
+\addScaledImage{0.2}{ios_selectAnnotations.png}
+\caption{The select annotations screen.}
+\label{fig:ios_selectAnnotations}
+\end{figure}
+\FloatBarrier
+
+When the edit button is pressed the select annotations screen as seen in \refer{fig:ios_selectAnnotations} is shown. Here the user can choose which annotations should be shown in the search results screen. 
+
+\begin{figure}[htb]
+\addScaledImage{0.2}{ios_files.png}
+\caption{The files screen.}
+\label{fig:ios_files}
+\end{figure}
+\FloatBarrier
+
+To see which files are associated with each experiment, the user can click on the experiment. Then the files view is shown as seen in \refer{fig:ios_files}. Here the user can see all files conneted to the chosen experiment, sorted by type, and select files that the user want to move to the selected files view. If the user selects files and presses the \click{convert files} button a convert request is sent to the server. 
+
+\begin{figure}[htb]
+\addScaledImage{0.2}{ios_selectedFiles.png}
+\caption{The selected files screen.}
+\label{fig:ios_selectedFiles}
+\end{figure}
+\FloatBarrier
+
+If the user had added files to the selected files and then presses the \click{Selected Files} button in the menu the selected files screen is presented as seen in \refer{fig:ios_selectedFiles}. Here the user can either select files and then press the trashcan icon in the top rightmost corner to delete the currently selected files or select a task to perform on the currently selected files by pressing the \click{Select task to perform} button. 
+
+\begin{figure}[htb]
+\addScaledImage{0.2}{ios_selectTask.png}
+\caption{The select task screen.}
+\label{fig:ios_selectTask}
+\end{figure}
+\FloatBarrier
+
+If the \click{Select task to perform} button is pressed the user is presented with the Select task screen is shown as seen in \refer{fig:ios_selectTask}. Here the user can see the different tasks that has the possibility to perform on the selected files by first chosing task and then pressing the ‘Execute’-button.  
+

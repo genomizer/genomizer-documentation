@@ -1,0 +1,8 @@
+\bibitem[Apache - Authentication]{exp_apache2user} Authentication and Authorization \\
+\url{http://httpd.apache.org/docs/2.2/howto/auth.html}
+\bibitem[git - simple guide]{exp_gitguide} git - the simple guide \\
+\url{http://rogerdudler.github.io/git-guide/}
+\bibitem[git - for beginners]{exp_gitguide2} Git for beginners: The definitive practical guide \\
+\url{http://stackoverflow.com/questions/315911/git-for-beginners-the-definitive-practical-guide}
+\bibitem[gitHub - SSH keys]{exp_sshguide} Generating SSH Keys \\
+\url{https://help.github.com/articles/generating-ssh-keys}

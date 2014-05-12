@@ -1,0 +1,55 @@
+\label{chap:servercmd}
+program: apache2\\
+port: 8000\\
+login: null\\
+password: null\\
+info: webserver http://scratchy.cs.umu.se:8000/\\
+\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+program: ssh passphrase\\
+port: 0\\
+login: null\\
+password: *****\\
+info: ssh key for server in mc333, (used for git)\\
+\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+program: JBDC\\
+port: 0\\
+login: null\\
+password: null\\
+info: include own jars: /usr/local/lib/psql\_jbdc4.jar\\
+\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+program: postgresql database\\
+port: 6000\\
+login: postgres\\
+password: *****\\
+info: psql -h hostname -p 6000 dbname username\\
+\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+program: phppgadmin\\
+port: 8000\\
+login: postgres\\
+password: *****\\
+info: http://scratchy.cs.umu.se:8000/phppgadmin use for remote psql management\\
+\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+program: SSH tunnel port\\
+port: 0\\
+login: null\\
+password: null\\
+info: \%> ssh -g -R (wanted port on scratchy):(host of server):(server port) -N -f (cs-user)@scratchy.umu.se\\
+\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+program: SSH to server\\
+port: 2222\\
+login: null\\
+password: *****\\
+info: ssh pvt@scratchy.cs.umu.se -p 2222\\
+\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+program: host/download.php\\
+port: 8000\\
+login: database user\\
+password: database pass\\
+info: parameters: "path" - path to the file on the server. Example:\\ /var/www/data/Exp1/raw/humanarm.fastq\\
+Example URL:\\ http://scratchy.cs.umu.se:8000/download.php?\\ path=/var/www/data/Exp1/raw/humanarm.fastq\\
+\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+program: host/upload.php\\
+port: 8000\\
+login: database user\\
+password: *****\\
+info: parameters: "path" - path to the file on the server Example:\\ /var/www/data/Exp1/raw/humanarm.fastq\\

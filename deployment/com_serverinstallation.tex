@@ -1,0 +1,52 @@
+\section{Server installation guide}
+To start the server, java needs to be installed on the computer and a runnable JAR file needs to be created.
+There are many ways to create such a file, for example, the terminal or
+an IDE like eclipse could be used. \\The server also needs a database to work properly. This guide assumes that a database is present, otherwise a new database needs to be created and currently hardcoded into the server.\\
+\\
+The creation of the runnable JAR file in the IDE eclipse will be explained in \ref{sec:com_UsingEclipse} below.
+\subsection{Using eclipse to create a runnable JAR file}
+\label{sec:com_UsingEclipse}
+This guide was written 2014-05-09 which means that the process of creating the runnable JAR file with eclipse might have changed slightly, but the main idea should still be valid.\\
+\\
+To create the runnable JAR file with eclipse, follow these steps:
+\begin{enumerate}
+\item Open eclipse and import all the code into a project.
+\item Rightclick on the project and choose export.
+\item Expand the folder "java" and then choose "runnable JAR file".
+\item Make or choose an already existing launch configuration where ServeMain is the class containing the main-method.
+\item Choose an export location for the runnable JAR file.
+\end{enumerate}
+
+\subsection{Starting the server}
+Here the actual startup of the server will be explained in a step by step manner.
+In order for this to work, the runnable JAR file must have been created.
+\begin{enumerate}
+\item Choose a computer that should host the server.
+\item Make a runnable JAR file of all the code and place it inside a folder on the computer.
+\item Start the terminal and navigate to the folder containing the runnable JAR file.
+\item In the terminal, type: "java -jar "jarfilename".jar "dbsetting" "portnumber"" (exclude all "). All arguments are explained in more detail in \ref{sec:com_ArgExpl}.\\ 
+The image \refer{fig:com_runserverterminal} below is an example of what it could look like when running the command. 
+\end{enumerate}
+\begin{figure}[h]
+\addImage{com_RunServer.png}
+\caption{Example of execution of the server}
+\label{fig:com_runserverterminal}
+\end{figure}
+
+\subsubsection{Argument explenation}
+\label{sec:com_ArgExpl}
+To start the server, the system administrator needs to take some arguments into consideration before the starting command in the terminal is executed.\\
+There are two different arguments that are passed to the server when it is started.
+The server uses default settigs if less then two arguments are passed, which currently is the database give from support and port 7001.
+
+\paragraph{dbsetting}
+This is the argument that tells the server what kind of database to use.
+The argument currenlty has tre choices: global, test and nothing. 
+
+\begin{itemize}
+\item If "global" is selected, the server currently uses a database that is located at Umeå universitet in lecture hall MC333.
+\item If "test" is the choice, the server used a database that has been given by support at Umeå universitet. 
+\end{itemize}
+
+\paragraph{port}
+This is the server portnumber

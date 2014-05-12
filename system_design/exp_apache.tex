@@ -1,0 +1,21 @@
+The Apache HTTP Server or commonly referred to as Apache, is the web server application that was decided to be used to upload and download files to and from the server. Apache is open source, that makes it free to use. Apache is a good choice because it is developed and maintained by an open community, that way all new versions and updates will become available for free. And since it is open source, the source code is open for everyone to read. Apache can be used on both Unix/Windows systems, but in this case it is currently running on a Unix machine but can still communicate with all platforms. 
+
+\subsubsection{Server user manual}
+The Apache server is controlled from the terminal, this can be done either directly from the server or remotely from another computer using ssh. To use ssh from another computer, write
+
+\texttt{ssh pvt@scratchy.cs.umu.se -p 2222}
+
+in the terminal, when asked for password enter the password for the server. Then write the commands directly in the terminal.
+
+These are some of the most common commands for apache: \\
+\begin{tabular} {| l | l |}
+\hline
+\textbf{Action} & \textbf{Command} \\
+\hline
+Start Apache & \texttt{sudo service apache2 start} \\
+\hline
+Stop Apache & \texttt{sudo service apache2 graceful-stop} \\
+\hline
+Restart Apache & \texttt{sudo service apache2 graceful} \\
+\hline
+\end{tabular}

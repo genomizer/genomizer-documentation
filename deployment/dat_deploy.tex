@@ -1,0 +1,145 @@
+\section{Database administration}
+The following guide assumes access to a server with postgresql installed. If you do not yet have a database, username and password for \appName\ to use proceed to \emph{Set up postgresql account}.
+
+    This guide was written using Ubuntu 14.04 LTS (GNU/Linux 3.13.0-24-generic i686) and postgres-9.3.4.
+
+    \subsubsection{Set up postgresql account}
+      This step is only required if you do not already have a \texttt{psql} username and password. If you have been assigned this from a sysadmin proceed to \emph{Upload SQL Script to server}.
+
+    \begin{enumerate}
+      \item Log in to the server:
+      \begin{verbatim}
+> ssh <username>@<host>
+      \end{verbatim}
+
+      \item Become sudo-user “postgres”:
+      \begin{verbatim}
+> sudo su postgres
+      \end{verbatim}
+
+      \item Add yourself as a postgresql user:
+      \begin{verbatim}
+> createuser <username>
+      \end{verbatim}
+
+      \item Log into postgresql as root:
+      \begin{verbatim}
+> psql
+      \end{verbatim}
+
+      \item Set your password:
+      \begin{verbatim}
+> \password <username>
+      \end{verbatim}
+
+      \item Create database:
+      \begin{verbatim}
+> create database genomizer;
+      \end{verbatim}
+
+      \item Grant yourself all permissions on the genomizer database: \begin{verbatim}
+> grant all on database genomizer to <username>;
+> \q
+      \end{verbatim}
+
+      \item Navigate to postgresql configuration folder:
+      \begin{verbatim}
+> cd /
+> cd etc/postgresql/9.3/main
+      \end{verbatim}
+
+      \item Navigate to postgresql configuration folder:
+      \begin{verbatim}
+> sudo nano postgresql.conf
+      \end{verbatim}
+
+      \item Change connection settings:\\Locate line: 
+      \begin{verbatim}
+#listen_adresses = ‘<settings>’    # what IP address(es) to listen on;
+      \end{verbatim}
+      Change to:
+      \begin{verbatim}
+listen_addresses = '*'    # what IP address(es) to listen on;
+      \end{verbatim}
+
+      \item Write changes and exit:\\
+      Hold down ctrl and press o\\
+      Hold down ctrl and press x
+
+      \item Open configuration file:
+      \begin{verbatim}
+> sudo nano pg_hba.conf
+      \end{verbatim}
+
+      \item Change Client Authentication Configuration:\\Locate the heading: 
+      \begin{verbatim}
+# IPv4 local connections:
+      \end{verbatim}
+      Under the heading, add the line:
+      \begin{verbatim}
+host    all    all    127.0.0.1/32    md5
+      \end{verbatim}
+
+      \item Write changes and exit:\\
+      Hold down ctrl and press o\\
+      Hold down ctrl and press x
+
+      \item Restart postgresql:
+      \begin{verbatim}
+> cd /
+> sudo /etc/init.d/postgresql restart
+      \end{verbatim}
+
+    \end{enumerate}
+
+    \subsubsection{Upload SQL Script to server}
+
+    \begin{enumerate}
+
+      \item In a termainal window navigate to the folder where the \verb+genomizer_database_tables.sql+ script resides.
+
+      \item Establish secure ftp connection to the server:
+      \begin{verbatim}
+> sftp <username>@<host>
+      \end{verbatim}
+
+      \item Create a new folder on the server:
+      \begin{verbatim}
+> mkdir SqlScripts
+      \end{verbatim}
+
+      \item Upload \verb+genomizer_database_tables.sql+:
+      \begin{verbatim}
+> put genomizer_database_tables.sql SqlScripts/
+      \end{verbatim}
+
+      \item Exit \texttt{sftp}:
+      \begin{verbatim}
+> exit
+      \end{verbatim}
+
+    \end{enumerate}
+
+    \subsubsection{Create the \appName\ Tables}
+
+    \begin{enumerate}
+
+      \item Log in to the server:
+      \begin{verbatim}
+> ssh <username>@<host>
+      \end{verbatim}
+
+      \item Log in to the database:
+      \begin{verbatim}
+> psql genomizer
+      \end{verbatim}
+
+      \item Run \verb+genomizer_database_tables.sql+
+      \begin{verbatim}
+> \i SqlScripts/genomizer_database_tables.sql
+      \end{verbatim}
+
+
+    \end{enumerate}
+
+The \appName\ database is now ready to use.

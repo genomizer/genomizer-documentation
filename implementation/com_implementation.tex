@@ -1,0 +1,23 @@
+This section explains implementation details of certain bits of the communication/control part of the system.
+\subsubsection{Doorman}
+The doorman is a class which handles all incoming connections and requests. The doorman reads the header and checks what kind of HTTP method it is (GET, PUT, PUSH, PULL or DELETE). A switch statement switch on these different methods.\\
+\\
+After switching on the different methods another switch statement is used to switch on the different types of commands, for example /experiment, /file, /search or /process. From that point a specific command object is created corresponding to the correct command, for example \textbf{GET /experiment} will create a \term{getExperimentCommand}.
+\subsubsection{Command object}
+The command object represent a specific command. It is created from the RESTful header and/or the JSON body sent from the client. The JSON API provides methods for automatic parsing of the JSON body into an object. The fields in the command object created must match the attributes in the JSON body. This match is case sensitive
+
+\paragraph{Execute}
+Every command object must implement a execute method. This method is the part of the command which uses the system interface to perform the task that corresponds to the command.\\
+\\
+The execute method returns a response object which is sent up to the doorman which then sends the response to the client. 
+\paragraph{Validation}
+Every command must implement a validate method. This method is run after the command is created but before the command is executed.\\
+\\
+The validate method returns a boolean. If the command is correctly parsed with correct data the method returns true, otherwise false. This validate is used to prevent unneccesary communication.
+\subsubsection{Response object}
+There are different response objects for different kind of responses since the form of the response to the client depends on the command the client initially sent.\\
+\\
+The response object contains all the data necessary to create a RESTful header and a JSON body for the response.
+\subsubsection{Database settings}
+When starting the server the database settings are set depending on the first argument of the server arguments. The argument could either be \textbf{test} or \textbf{global}.\\\\
+The \textbf{test} argument will set the database settings to match a local test database, and the \textbf{global} argument will set the settings to match a global database.

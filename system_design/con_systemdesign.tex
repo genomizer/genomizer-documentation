@@ -1,0 +1,97 @@
+The Genomizer service needs to be able to convert, process and visualize data. This chapter explains how this is done in the system.
+
+\begin{figure}[h]
+\addImage{con_UMLsprint2.jpeg}
+\caption{Classdiagram for Process}
+\label{con_UML}
+\end{figure}
+	
+As can be seen in \refer{con_UML} the RawToProfileConverter extends the Executor class. When a call comes to the ProcessHandler it then starts the correct convertion which right now only can be a raw to profile convertion.
+
+
+\subsubsection{Executor}
+The executor class, as seen in figure 5.2.1, is an abstract superclass that is an entity that is able to execute various commands. The executor class is able to run programs as well as scripts. In order to run scripts and programs the executor has a parse-function that parses a string into separate arguments. \newline
+
+\begin{itemize} 
+\item executeCommand
+\begin{itemize}
+\item ExecuteCommand is a private method that is being used by the executeScript, executeProgram and executeShellCommand methods. Firstly a processBuilder is used to ensure a safe way to execute commands, after that the working directory is set and the error output stream is merged with the standard output.
+After a command has been started the output stream is then recorded with the help of a scanner object and a stringBuilder object. When the command has been executed the recorded string is sent back to the caller.
+\end{itemize}
+\item executeScript/executeProgram
+\begin{itemize}
+\item Both methods are very similar. The difference is that executeScript has a static filepath added to the second argument. This is because the first argument when calling a script is the script language instead of the actual script file. E.g. shell resources/script.sh.
+\end{itemize}
+
+\item parse
+\begin{itemize}
+\item In order to receive a command string and to be able to run it a parse method had to be implemented. This is because the processbuilder takes a String array as argument. With the help of a tool called stringTokenizer the string is parsed into a String array separated on spaces.
+\end{itemize}
+ 
+\item cleanUp
+\begin{itemize}
+\item Deletes a folder and all its contents, it takes a File object and recursively removes everything in that folder and its subfolders. Used to clean up files created when doing a procedure that creates temporary files thats not used after the procedure is done.
+\end{itemize}
+
+\end{itemize}
+
+\subsubsection{RawToProfileConverter}
+\emph{The purpose of the RawToProfileConverter class is that it will be used by processHandler and do all the different steps needed to make a raw file. These steps are done by using the program Bowtie and by running four different scripts which are executed with methods that is extended from Executor class. When ratio calculation is supposed to be done, there are two more steps that will be done.}
+
+\begin{itemize} 
+\item procedure
+\begin{itemize}
+\item This method executes all the methods for all the steps to make a profile .sgr file from a raw file, it checks so that the directory it gets that should contain the raw files has not more then two files and atleast one file to process. Does the procedure to create a profile data and move it to the folder thats specified as a parameter.
+\end{itemize}
+
+\item runBowtie
+\begin{itemize}
+\item Constructs a long string with the full execution line for bowtie. It then uses this string as a parameter when calling the method parse. 
+The resulting array is then using when calling executeProgram and the result of the execution is returned.
+\end{itemize}
+\item sortSamFile
+\begin{itemize}
+\item Constructs a string with the full execution line to sort a sam file. It then calls parse to create a string array from the full string and sends it as parameter to executeShellCommand which runs a shell command to sort the file and creates a new .sam file that is sorted with the specified parameters.
+\item makeConversionDirectories
+\begin{itemize}
+\item Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
+\end{itemize}
+\item initiateConversionStrings
+\begin{itemize}
+\item Defines all strings needed for the directories created when procedure is doing its work. Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\paragraph{Bowtie}
+Bowtie takes two raw .fastq files and converts them to .sam which is the first step to make the desired .sgr files. After a .sam file is converted the linux command sort is run  on both files which creates two sorted .sam files, it is sorted by chromosome and position as needed to use the scripts.
+
+\paragraph{Used scripts}
+The different functions of the perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
+
+
+\subparagraph*{samtoreadgffv1} Makes a .gff file from a sorted .sam that have reads at each nucleotide positions. No input parameters except the directory of the sorted sam files are needed. The resulting files are put in the new folder \term{reads\_gff}.
+
+\subparagraph*{readsgfftoallnucsgrv1}  Counts the reads from the previous script result. For each chromosome reads are read and each nucleotide position is incrementally counted with one when a read cover it. No parameters are needed for this script except the file path of the gff files. The resulting files are put in the new folder \term{allnucs\_sgr}.
+
+\subparagraph*{smoothv4} Smoothing is done by using a script with the same name and it can smooth the single nucleotide reads with different options like short window sizes, what kind of smoothing is desired, minimum step position and the choice to choose if the result file should contain median values and/or 0’s. An example of input parameters to this script is: "10 1 5 0 0". The resulting files are put in the new folder \term{smoothed}.
+
+\subparagraph*{AllSeqRegSGRtoPositionSGRv1}  converts the previous result in .sgr format to an .sgr format with fixed interval size. The script takes two parameters, if steps should be created and the stepsize. An example of parameters to the script would be: "y 10". The resulting files are put in the new folder \term{Step10}.
+
+
+
+\subsubsection{ProcessHandler}
+The processhandler is a controller that handles process-calls. Depending on the name of the process it handles it differently. It acts as an interface between the process-module and the rest of the program. 
+
+
+\subsubsection{Logic \& interface}
+The main logic in the processHandler is a switch-case that switches on the name of the process being called. For example if the name of the process is “RawToProfile” is sets up a RawToProfile-converter and calls it. 
+
+\subparagraph*{processName} A string that tells the handler which kind of process should be executed.
+\subparagraph*{procedureParams} A list of string with the parameters to the different external  programs/scripts that will be called during the execution. The first element will be a string with parameters/flags for the first external program that will be called, and so on.
+\subparagraph*{inFile} A string with a path to the directory containing the files that should be operated on.
+\subparagraph*{outFile} A string with a path to the directory where the result .sgr files should be put.
+
+
+
+

@@ -1,0 +1,31 @@
+%The interaction design of the clients, what principles has been used. Directed towards developers. Start with subsection here. Android and iOS need to start with subsubsection.
+
+This chapter goes into detail on how the graphical and interactive parts of the clients are designed. It starts with a general view of the interaction design and then divideds into chapters based on the different clients.
+
+\section{Desktop clients}
+Screen clients use a tab based navigation between views, these tabs are shown at the top of the user interface. The common views in the current system are search, upload and process.
+
+Search results are displayed in a table, experiments can be expanded to reveal the files contained in the experiment. The files in an experiment are grouped by types where each type consists of a row in the table that may be expanded to reveal the files of that type.
+
+The upload view consists of experiment groups. Each experiment group contains a set of input fields for annotation and a list of files added to this experiment. The user may create new experiments in this view or add files to an existing experiment, multiple files may be added to multiple experiments simultaneously.
+
+The base for the process view contains a set of input fields for the parameters that are to be used when processing a file.
+
+\FloatBarrier
+\subsection{Swing application}
+\input{interaction_design/des_id}
+
+\FloatBarrier
+\subsection{Web application}
+\input{interaction_design/web_id.tex}
+\input{interaction_design/adm_web_id.tex}
+\FloatBarrier
+\section{Mobile clients}
+
+\FloatBarrier
+\subsection{Android}
+\input{interaction_design/and_interaction}
+\FloatBarrier
+\subsection{iOS}
+
+\input{interaction_design/ios_id}

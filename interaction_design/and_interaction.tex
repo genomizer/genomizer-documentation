@@ -1,0 +1,63 @@
+The design of the android application is based on the design proposal suggested by the design team and our aim has been to recreate that look and feel. We did, however, find it necessary to take into consideration some of the android specific design paradigms which distinguish android applications from other smart phone platforms. For instance, the design put forth by the design group did not include a so called action bar   to the upper part of the user interface which are used for navigation. However, since these are fundamental to the structure of any android application, we were inclined to include this feature as a substitute for the slide-in menu described in the original design.
+
+In the following sub-sections, we will compare the current design of our Android application (figures on the left) with the design proposal suggested by the design team (figures on the right), as well as attempt to explain our design desisions.
+
+
+\subsection{Login View}
+The two designs illustrated in figure \ref{fig:and_login} below are very similar except for the colour settings. There are textfields available for the user to type user name and password and a button to click when user is ready to log in. This is a popular layout for many login screens and thus a design many users are familiar with.
+
+
+\begin{figure}[h]
+\begin{center}
+
+
+\begin{tabular}{c | c}
+\addScaledImage{0.1}{andLogin.png} & \addScaledImage{0.47}{iosLogin.jpg} 
+\end{tabular}
+\caption{Android Login View vs iOS Design Proposal}
+\end{center}
+\label{fig:and_login}
+\end{figure}
+
+
+\subsection{Search View}
+The two designs illustrated in figure \ref{fig:and_search} below are very similar. What is not depicted in the android view is the search button. It is, however, further down the item list and can be scrolled to.
+
+\begin{figure}[h]
+\begin{center}
+\label{fig:and_search}
+
+\begin{tabular}{c | c}
+\addScaledImage{0.1}{andSearch.png} & \addScaledImage{0.47}{iosSearch.jpg} 
+\end{tabular}
+\caption{Android search view vs iOS design proposal}
+\end{center}
+\end{figure}
+
+
+\subsection{Search Results View}
+The two designs illustrated in figure \ref{fig:and_result} below are very similar except for the colour settings. The colour settings has changed since previous design since we adapted it to be more similar to the IOs design, which currently is designed using white background and black text. The list displaying search results is larger to facilitate usage for user and to take advantage of the screen space. It's easy to learn how to navigate the list. Scrolling is available if the list is long and if the user click on an experiment they are redirected to the experiment view displaying more information about that experiment.
+
+\begin{figure}[h]
+\label{fig:and_result}
+\begin{center}
+\begin{tabular}{c | c}
+\addScaledImage{0.1}{andResult.png} & \addScaledImage{0.47}{iosResult.jpg} 
+\end{tabular}
+\caption{Android search result vs iOS design proposal}
+\end{center}
+\end{figure}
+
+\subsection{Experiment View}
+The two designs illustrated in figure \ref{fig:and_experiment} are similar except for colours and selection markers. The "slide bar" used for selection is not available in android and checkboxes has been used instead. All files for the experiment selected in the search result view is displayed here organised by data type. Checkboxes are commonly used and most users are familiar with how to handle them when making choices and selecting items. The button "Send to conversion" will be used to send selected files to the conversion view.
+
+\begin{figure}[h]
+\begin{center}
+\label{fig:and_experiment}
+
+\begin{tabular}{c | c}
+\addScaledImage{0.1}{andExperiment.png} & \addScaledImage{0.47}{iosExperiment.jpg} 
+\end{tabular}
+\caption{Android experiment view vs iOS design proposal}
+\end{center}
+\end{figure}

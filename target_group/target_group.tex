@@ -1,0 +1,35 @@
+To understand who this system is built for and what it needs to do, the following chapter will explain the target group and its needs.
+
+\section{Target group}
+
+The main group that wants to utilize the \appName\ system is the researchers at \term{Epigenetic Cooperation Norrland (EpiCoN)}. They are conducting experiments on \term{DNA} and proteins to see where proteins bind to the \term{DNA} strings. This information combined with knowledge about the location of genes within a given genome, will give the researchers a hint of which proteins are active in enabling and disabling genes. These results are important in the study of how cells remember which genes should be enabled after cell division.
+
+The data files retrieved from experiments are manually handled by the researchers and they have written scripts to process \term{raw data} to \term{profile data}. In this process they are using the program \term{Bowtie} to unscramble the \term{DNA} data. An other program that is used to manipulate experiment data is the program \term{LiftOver}, used to adjusting results to a different genome release.
+
+The researchers at \term{EpiCoN} have varying computer skills. While they all have basic computer knowledge not all are familiar with more advanced computer tasks, such as running scripts at command line level. The researchers that have less computer knowledge becomes dependent on the ones who do. The researcher that has the knowledge to use all the scripts and software can perform the tasks they and other researchers need, but these tasks are very time consuming.
+
+Students at \term{Umeå University} sometimes have the need to look at research done by \term{EpiCoN}. These students doesn't have the same trust to handle the research as the main staff at \term{EpiCoN}.
+
+Their main field of knowledge lies within epigenetics. It is an international group with many different native languages, which means that they mainly use english to communicate.
+
+%Since biologists have varying experience with software and software development, the system will be designed to be as user friendly as possible. The international language of science is english, therefore the entire product shall be in english (both the product and its documentation). Since target audience has different knowledge in biology, the product and its functions shall be simple, self explanatory and have an interface. The biology students are not as trusted as the standard users and therefore their data access will be restricted in some way. The system might also have some administrators. An administrator primarily handles new users and user rights. If the system expands the administrator may also have to maintain the system. For starters some of the biologists with more computer knowledge will be given authority to handle users and user rights.
+
+\section{Client needs}
+This target group of researchers from \term{EpiCoN} needs a system to structure the big amount of genetic data that they use daily. The data is used for research of cell memory, how cells remembers which sequences in the \term{DNA} that should be active after cell division. 
+
+There are mainly three data types used for this research and that the system should handle: \term{raw data}, \term{profile data} and \term{region} data. \term{Raw data} is the raw output from an experiment and isn't used much for actual studies. Rather it's processed to \term{profile data}. \term{Profile data} describes the amount of reads found for every base pair in an organism's genome. \term{Region data} is further processed \term{profile data} consisting of regions where every basepairs read strength is above a given threshold and fault tolerance. The region gets a value based on the average of the base pair reads for the given region.
+
+\subsection{Storage}
+Most importantly the researchers want a central secure location to store their genome data in a structured  way so that it is easy to find the data the researchers are looking for when doing research. By having a central location for genome data the researchers can more easily collaborate than they do today. The researchers want the database to be locked down from outside access and that the data is stored in a secure way to avoid loss of data. Data integrity is of great importance, data must not change or become corrupt in the database.
+
+\subsection{File formats}
+As different software uses different file formats for genome data, and the tools for converting files between these file formats are not very user friendly, converting between file formats is a time consuming process for the researchers.  The researchers want this work to be carried out by the system.
+
+\subsection{Genome release}
+From time to time a new genome release is released for genome data for a specific species. The researchers needs a way to convert between these releases. Errors in a release can be discovered after publication. It is therefore important to keep data files that are compatible with an older release for some time after a new release is published.  
+
+\subsection{Analysis}
+The researchers want to do some analysis on the server. Some analysis is to combine regions using logical arithmetic and in such a way construct new regions. It should also be possible to create new regions from a reference point. Another interesting analysis is overlap analysis which shows how much a number of genome experiments overlap.
+
+\subsection{Visualization}
+To be able to review the results from doing analysis on data,  the researchers want a graphical presentation of the results.
