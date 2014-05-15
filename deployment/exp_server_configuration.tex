@@ -1,15 +1,15 @@
-\section{Introduction}
+\subsection{Introduction}
 This document will guide a user through the process to configure the server machine needed for the \appName\ server software. This guide is created while configuring a newly installed machine running Ubuntu 14.04. Other Linux or UNIX operating systems could have other commands to install different softwares. Some experience with a terminal and the UNIX environment is presumed.
 
 Be sure to have a fully functioning Internet connection to the server machine with the possibility to direct ports to it before continuing.
 
 Server configuration, installation and setup written by: Emil Palm (c11epm) and Eric Sjögren (c08esn)
 
-\section{Installation and Configuration}
+\subsection{Installation and Configuration}
 The server machine must run a Linux or UNIX operating system. In order to follow this guide in the easiest manner 
 possible, use any Ubuntu distribution. 
 
-\subsection{Java}
+\subsubsection{Java}
 Firstly Java must be installed on the system to be able to run some of the server software. The software requires Java 1.7 or later. 
 
 To install Java JDK open a terminal and enter following command:
@@ -17,7 +17,7 @@ To install Java JDK open a terminal and enter following command:
 sudo apt-get install openjdk-7-jdk
 \end{verbatim}
 
-\subsection{OpenSSH}
+\subsubsection{OpenSSH}
 To be able to access the server machine remotley OpenSSH must be installed.
 
 Enter the following command to install OpenSSH properly.
@@ -25,7 +25,7 @@ Enter the following command to install OpenSSH properly.
 sudo apt-get install openssh-server openssh-client openssh-sftp-server
 \end{verbatim}
 
-\subsection{Apache2}\label{sec:exp_apache2}
+\subsubsection{Apache2}\label{sec:exp_apache2}
 In order to handle web requests and file transfering the server will use Apache2. 
 
 To install Apache2 with necessary software, use this command:
