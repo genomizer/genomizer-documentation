@@ -81,14 +81,20 @@ After a conversion from \term{raw} to \term{profile} the resulting \term{profile
 
 % Most importantly the researchers want a central secure location to store their genome data in a structured  way so that it is easy to find the data the researchers are looking for when doing research. By having a central location for genome data the researchers can more easily collaborate than they do today. The researchers want the database to be locked down from outside access and that the data is stored in a secure way to avoid loss of data (''Password protected'', ''Backup''). Data integrity is of great importance, data must not change or become corrupt in the database.
 
-\subsection{File formats}
-As different software uses different file formats for genome data (''Convert common file formats''), and the tools for converting files between these file formats are not very user friendly. To do analyses on the data it must be processed from raw its raw form, this conversion is a very time consuming process. The researchers want this work to be carried out by the system (''\term{Raw} to \term{Profile}'', ''\term{Profile} to \term{Region}'').
+%\subsection{File formats}
+%As different software uses different file formats for genome data (''Convert common file formats''), and the tools for converting files between these file formats are not very user friendly. To do analyses on the data it must be processed from raw its raw form, this conversion is a very time consuming process. The researchers want this work to be carried out by the system (''\term{Raw} to \term{Profile}'', ''\term{Profile} to \term{Region}'').
 
 \subsection{Genome release}
-From time to time a new genome release is released for genome data for a specific species. The researchers needs a way to convert between these releases (''Convert genome release''). Errors in a release can be discovered after publication. It is therefore important to keep data files that are compatible with an older release for some time after a new release is published.  
+From time to time a new genome release is released for genome data for a specific species. This effects the order of the base pairs in the \term{DNA} string, and therefore the format of the \term{profile} data files. The researchers needs a way to convert \term{profile} data files between these releases (see \refer{fig:target_genome}). Errors in a release can be discovered after publication. It is therefore important to keep data files that are compatible with an older release for some time after a new release is published.  
+
+\begin{figure}[h]
+\userstory{Convert genome release}{To easier handle files \\ the researchers \\ want to convert files between genome releases (\term{LiftOver}).}
+\caption{To convert between different genome releases}
+\label{fig:target_genome}
+\end{figure}
 
 \subsection{Analysis}
 The researchers want to do some analyses on the server. Some analyses is to combine regions using logical arithmetic and in such a way construct new regions (''Combine regions''). It should also be possible to create new regions from a reference point (''Create region subset''). Another interesting analysis is overlap analysis which shows how much a number of genome experiments overlap(''Overlap analysis'').
 
 \subsection{Visualization}
-To be able to review the results from doing analysis on data,  the researchers want a graphical presentation of the results(''Plot overlap analysis'', ''Plot average regions''). They also want to be able to use the \term{Integrated Genome Browser} (IGB) software to view results(''IGB Session''). They therefore want to be able to download a session-file to immediately start the browser. 
+To be able to review the results from doing analysis on data,  the researchers want a graphical presentation of the results(''Plot overlap analysis'', ''Plot average regions''). They also want to be able to use the \term{Integrated Genome Browser} (IGB) software to view results (''IGB Session''). They therefore want to be able to download a session-file to immediately start the browser. 
