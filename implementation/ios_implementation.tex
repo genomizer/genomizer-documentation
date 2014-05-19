@@ -1,3 +1,4 @@
+\subsection{Implementation}
 In the following section, details regarding the implementation of the iOS application is described using sequence diagrams and.
 
 \subsubsection{Login}
@@ -5,7 +6,7 @@ In the following section, details regarding the implementation of the iOS applic
 When the user tries to log in to the system, they enter username and password and clicks on the login button. The username and password is sent to the server which validates that they are valid. If they are valid, the user is presented with the main view of the application, otherwise an error message is displayed. This sequence is shown in  \refer{fig:ios_sequence_login}.
 
 \begin{figure}[ht]
-\addImageVertical{ios_login_sequence_diagram.png}
+\addImageVertical{ios_sequence_login.png}
 \caption{Login sequence diagram.}
 \label{fig:ios_sequence_login}
 \end{figure}
@@ -16,7 +17,7 @@ Once the user is logged in to the system and they have reached the main view, th
 
 \begin{figure}[ht]
 \addImageVertical{ios_search_sequence_diagram.png}
-\caption{Login sequence diagram.}
+\caption{Search sequence diagram.}
 \label{fig:ios_sequence_search}
 \end{figure}
 
@@ -40,8 +41,18 @@ From the \term{FileView}, the user can select any number of files to add to a li
 \label{fig:ios_sequence_file_selection}
 \end{figure}
 
+\subsubsection{Convert Request}
+
+As seen in \refer{fig:ios_sequence_convert_request}, convert requests are sent with very few steps. 
+
+\begin{figure}[ht]
+\addScaledImageVertical{0.5}{ios_send_convert_sequence_diagram.png}
+\caption{Send convert request.}
+\label{fig:ios_sequence_convert_request}
+\end{figure}
+
 \FloatBarrier
 
-\subsubsection{Testing}
+\subsection{Testing}
 
 Unit-tests have been written for nearly all underlying classes. This includes JSONBuilder, ExperimentDescriber, Experiment, ExperimentFile, and ExperimentParser. These tests check all required functionality, including but not limited to proper object creation. Exactly what all the tests do is explained in the test names and comments. ServerConnection has not been tested, this is work for the next sprint. User interface functionality and integration testing has been done using exploratory methods. These tests have not been recorded or documented.

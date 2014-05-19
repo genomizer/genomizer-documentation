@@ -1,4 +1,5 @@
-Focus has been on making a nice looking application with an intuitive workflow. The design is based on the design selected in the design phase. However, some changes has been made in order to follow the iOS design principles. New insights of the demands of the customer and our increasing experience has also resulted in improvements of the original design. Some of the design decisions are motivated in the text below.
+\subsection{Interaction Design}
+Focus has been on making a nice looking application with an intuitive workflow. Some changes has been made to the original design in order to follow the iOS design principles. New insights of the demands of the customer and our increasing experience has also resulted in improvements of the original design. Some of the design decisions are motivated in the text below.
 
 
 \subsubsection{Navigation bar}
@@ -57,4 +58,24 @@ The selected files view can be seen in \refer{fig:ios_selectedFiles2}. The files
 \FloatBarrier
 
 \paragraph{Select task}
-The select task menu can easily be expanded when new functionality is added to the application. The Execute-button is disabled as long as no task is selected. A checkmark is displayed next to the task to perform. When an other task is selected the checkmark is moved. The reason for not using switch buttons is that they would give the impression that several tasks could be executed at once, which is not possible at the moment.
+The select task menu can easily be expanded when new functionality is added to the application. The tasks displayed to the user are dependant on which type of files have been selected for processing. 
+
+\begin{figure}[ht]
+\addScaledImage{0.2}{ios_convert_parameters.png}
+\caption{The parameter view.}
+\label{fig:ios_convertParameters}
+\end{figure}
+\FloatBarrier
+
+As seen in \refer{fig:ios_convertParameters}, the convert parameter view, shows a number of parameters too be filled. Only the first field has to be filled before a  convert request can be sent. Our thought was that a user should be able to opt-out of all non-optional settings, and let the server decide the standard parameter values. 
+
+\begin{figure}[ht]
+\addScaledImage{0.2}{processing_status_view.png}
+\caption{The process status view.}
+\label{fig:ios_processingStatus}
+\end{figure}
+\FloatBarrier
+
+As visible in \refer{fig:ios_processingStatus}, we chose to build the processing status view with a simple tableview, to make it dynamic and easy. We also think this gives the user the best possible overview of current processes.
+
+\paragraph{}
