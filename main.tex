@@ -1,4 +1,4 @@
-\documentclass[a4paper]{report}
+\documentclass[a4paper,twoside]{report}
 
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
@@ -84,7 +84,8 @@
 \newcommand{\refer}[1]{\autoref{#1}}
 \newcommand{\addCode}[3][c]{\lstinputlisting[caption=#3, escapechar=, style=custom#1]{#2}}
 \newcommand{\filePath}[1]{\texttt{#1}}
-\newcommand{\click}[1]{\ding{43} \textbf{\textit{{#1}}}}
+%\newcommand{\click}[1]{\ding{43} \textbf{\textit{{#1}}}}
+\newcommand{\click}[1]{\textbf{\textit{{#1}}}}
 \newcommand{\term}[1]{\textit{#1}}
 \newcommand{\serverPort}{\texttt{7000}}
 \newcommand{\userstory}[2]{
@@ -93,7 +94,7 @@
 \\
 {\large \textbf{#1}} \\ \hline
 \\
-\begin{minipage}{\textwidth}
+\begin{minipage}{0.958\textwidth}
 #2
 \end{minipage}
 \\
@@ -137,8 +138,8 @@
 \chapter{Implementation and tests}
 \input{implementation/implementation}
 
+\input{bibliography/bibliography}
 \input{appendices/appendices}
-\input{bibliographies/bibliography}
 
 
 \end{document}

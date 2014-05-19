@@ -1,35 +1,100 @@
-To understand who this system is built for and what it needs to do, the following chapter will explain the target group and its needs.
+%To understand who this system is built for and what it needs to do, the following chapter will explain the target group and its needs.
+
+The \appName\ system was designed with a specific target group in mind: Epigenitic researchers. This chapter will explain the needs of these users, the problems they faced before this system was provided and the requirements that were collected and taken into account during the construction.
 
 \section{Target group}
 
 The main group that wants to utilize the \appName\ system is the researchers at \term{Epigenetic Cooperation Norrland (EpiCoN)}. They are conducting experiments on \term{DNA} and proteins to see where proteins bind to the \term{DNA} strings. This information combined with knowledge about the location of genes within a given genome, will give the researchers a hint of which proteins are active in enabling and disabling genes. These results are important in the study of how cells remember which genes should be enabled after cell division.
 
-The data files retrieved from experiments are manually handled by the researchers and they have written scripts to process \term{raw data} to \term{profile data}. In this process they are using the program \term{Bowtie} to unscramble the \term{DNA} data. An other program that is used to manipulate experiment data is the program \term{LiftOver}, used to adjusting results to a different genome release.
+Before \appName\, the data files retrieved from experiments were manually handled by the researchers. They had a couple of \term{Perl} scripts to process \term{raw data} to \term{profile data}. These scripts were inefficient and used a lot of ram. In this process they were also using the program \term{Bowtie} to unscramble the \term{DNA} data. An other program that was used to manipulate experiment data was the program \term{LiftOver}, used to adjusting results to a different genome release.
 
-The researchers at \term{EpiCoN} have varying computer skills. While they all have basic computer knowledge not all are familiar with more advanced computer tasks, such as running scripts at command line level. The researchers that have less computer knowledge becomes dependent on the ones who do. The researcher that has the knowledge to use all the scripts and software can perform the tasks they and other researchers need, but these tasks are very time consuming.
+The researchers at \term{EpiCoN} have varying computer skills. While they all have basic computer knowledge not all are familiar with more advanced computer tasks, such as running scripts at command line level. The researchers that have less computer knowledge became dependent on the ones who do. The researcher that had the knowledge to use all the scripts and software could perform the tasks they and other researchers needed, but these tasks were very time consuming.
 
-Students at \term{Umeå University} sometimes have the need to look at research done by \term{EpiCoN}. These students doesn't have the same trust to handle the research as the main staff at \term{EpiCoN}.
+From time to time students are interested in working with the data. They are not as trusted as the regular researchers and are not allowed to manipulate the data, only look at it and do analyzes. The researchers at \term{EpiCoN} are a diverse group of many nationalities. They are therefore communicating in English.
 
-Their main field of knowledge lies within epigenetics. It is an international group with many different native languages, which means that they mainly use english to communicate.
+%Students at \term{Umeå University} sometimes have the need to look at research done by \term{EpiCoN}. These students doesn't have the same trust to handle the research as the main staff at \term{EpiCoN}. The researchers at \term{EpiCoN} are a diverse group of many nationalities. They are therefore communicating in english.
+
+%Their main field of knowledge lies within epigenetics. It is an international group with many different native languages, which means that they mainly use english to communicate.
 
 %Since biologists have varying experience with software and software development, the system will be designed to be as user friendly as possible. The international language of science is english, therefore the entire product shall be in english (both the product and its documentation). Since target audience has different knowledge in biology, the product and its functions shall be simple, self explanatory and have an interface. The biology students are not as trusted as the standard users and therefore their data access will be restricted in some way. The system might also have some administrators. An administrator primarily handles new users and user rights. If the system expands the administrator may also have to maintain the system. For starters some of the biologists with more computer knowledge will be given authority to handle users and user rights.
 
 \section{Client needs}
-This target group of researchers from \term{EpiCoN} needs a system to structure the big amount of genetic data that they use daily. The data is used for research of cell memory, how cells remembers which sequences in the \term{DNA} that should be active after cell division. The requirements of the system is described below and were collected in a number of \term{user stories}. All \term{user stories} are presented in \refer{chap:userstories}, when discussed below the title of the \term{user stories} will be stated.
+The target group of researchers from \term{EpiCoN} needs a system to structure the big amount of genetic data that they use daily. The data is used for research of cell memory, how cells remember which sequences in the \term{DNA} that should be active after cell division. The requirements of the system is described below and were collected in a number of \term{user stories}. All \term{user stories} are presented in \refer{chap:userstories}, when discussed below the title of the \term{user stories} will be stated.
 
 There are mainly three data types used for this research and that the system should handle: \term{raw data}, \term{profile data} and \term{region} data. \term{Raw data} is the raw output from an experiment and isn't used much for actual studies. Rather it's processed to \term{profile data}. \term{Profile data} describes the amount of reads found for every base pair in an organism's genome. \term{Region data} is further processed \term{profile data} consisting of regions where every basepairs read strength is above a given threshold and fault tolerance. The region gets a value based on the average of the base pair reads for the given region.
 
 \subsection{Storage}
-Most importantly the researchers want a central secure location to store their genome data in a structured  way so that it is easy to find the data the researchers are looking for when doing research. By having a central location for genome data the researchers can more easily collaborate than they do today. The researchers want the database to be locked down from outside access and that the data is stored in a secure way to avoid loss of data (''Password protected'', ''Backup''). Data integrity is of great importance, data must not change or become corrupt in the database.
 
-\subsection{File formats}
-As different software uses different file formats for genome data (''Convert common file formats''), and the tools for converting files between these file formats are not very user friendly. To do analyses on the data it must be processed from raw its raw form, this conversion is a very time consuming process. The researchers want this work to be carried out by the system (''\term{Raw} to \term{Profile}'', ''\term{Profile} to \term{Region}'').
+When conducting experiments the researchers treat DNA with a certain protein that bind to certain positions. The DNA-strings are then broken into pieces and interesting parts are collected with a magnet. In this step \term{raw}-data is collected on what these pieces look like on a base pair level. This data is the foundation on which the research is done, so it must be securely stored in a structured manner. This is something that the system needs to take care of: to automate the manual labour of archiving the data. They would also like to have a central location for the data to be able to share the \term{raw} data between the researchers. These requirements was collected in the \term{user stories} ''Single Upload'' (see \refer{fig:target_upload}) and ''Single Download'' (see \refer{fig:target_download}). 
+
+\begin{figure}[h]
+\userstory{Single upload}{To store a single data file \\ the researchers \\ want to be able to upload a specific file.}
+\caption{User story for uploading a file to the central database}
+\label{fig:target_upload}
+\end{figure}
+
+\begin{figure}[h]
+\userstory{Single download}{To scrutinize a single data file \\ the researchers \\ want to be able to download a specific file.}
+\caption{User story for downloading a file from the central database}
+\label{fig:target_download}
+\end{figure}
+
+The \term{raw} data can be attained by the researchers own experiments, but when results are published in scientific articles the raw data from the experiments are often also provided. One location where these \term{raw} data files can be published is the \term{GEO} (\term{Gene Expression Omnibus}). It would be convenient if the system, upon request, would directly download data to the database from this source. This wish was captured in the \term{User Story} {\textcolor{red} Download from GEO Database}. 
+
+The \term{raw}-data is not readable for humans so to find the data they are looking for, the researchers want to save information about the files describing the experiment from which it originated. These facts are called annotations. There are several \term{user stories} that have to do with the manipulation of these annotations, for instance to add an annotation (see \refer{fig:target_annotation}).
+
+\begin{figure}[h]
+\userstory{Annotation}{To structure the data files \\ the researchers \\ want to be able to annotate the data files.}
+\caption{User story for uploading a file to the central database}
+\label{fig:target_annotation}
+\end{figure}
+
+As they fill the database with their data, the researchers want to make sure that it is kept safe. They therefore want to have an authorization system to protect the data from unauthorized access. An other risk that has to be mitigated is the risk of hardware failure. These concerns are expressed through the \term{User Stories} ''Password Protected'' and ''Backup'' respectively (see \refer{fig:target_password} and \refer{fig:target_backup}).
+
+\begin{figure}[h]
+\userstory{Backup}{To prevent loss of data \\ the researchers \\ want the data to be backed up.}
+\caption{User Story about the protection from hardware failures}
+\label{fig:target_backup}
+\end{figure}
+
+\begin{figure}[h]
+\userstory{Password protected}{To protect the database from unauthorized use \\ the researchers \\ want the application to be password protected.}
+\caption{User story for uploading a file to the central database}
+\label{fig:target_password}
+\end{figure}
+
+The \term{raw} data is unordered and needs to be processed to be useful for further analysis. The researchers have written a few script and are also using the program \term{BowTie} to process the \term{raw} data to \term{profile} data. In this format the \term{DNA} pieces are ordered and puzzled together to the real \term{DNA} string and displays the concentration of protein that have bound to certain parts of the string. The system should provide a way to automatically carry out the actions required to convert \term{raw} data to \term{profile} data (see \refer{fig:target_r2p}). 
+
+\begin{figure}[h]
+\userstory{Raw to profile}{To be able to analyze \\ the researchers \\ want to process raw data to profile data.}
+\caption{Convert from raw data to profile data format}
+\label{fig:target_r2p}
+\end{figure}
+
+After a conversion from \term{raw} to \term{profile} the resulting \term{profile} data file should be saved and annotated in the database along with the raw data. Because numerous \term{profile} data files can be generated as a result of a conversion and parameters are provided to adjust the output, generated \term{profile} data must be linked to a particular \term{raw} data file. Furthermore, information about the parameters used in the conversion must be saved in order to be able to repeat the conversion later (see \refer{fig:target_trace}).
+
+\begin{figure}[h]
+\userstory{File traceabillity}{To be able to access the underlying raw data or profile data \\ the researchers \\ want the raw data files to be traceable from profile files and the profile files to be traceable from the region data (if available) when the files have been generated on the server.}
+\caption{Traceability is important to connect profile data to a experiment}
+\label{fig:target_trace}
+\end{figure}
+
+% Most importantly the researchers want a central secure location to store their genome data in a structured  way so that it is easy to find the data the researchers are looking for when doing research. By having a central location for genome data the researchers can more easily collaborate than they do today. The researchers want the database to be locked down from outside access and that the data is stored in a secure way to avoid loss of data (''Password protected'', ''Backup''). Data integrity is of great importance, data must not change or become corrupt in the database.
+
+%\subsection{File formats}
+%As different software uses different file formats for genome data (''Convert common file formats''), and the tools for converting files between these file formats are not very user friendly. To do analyses on the data it must be processed from raw its raw form, this conversion is a very time consuming process. The researchers want this work to be carried out by the system (''\term{Raw} to \term{Profile}'', ''\term{Profile} to \term{Region}'').
 
 \subsection{Genome release}
-From time to time a new genome release is released for genome data for a specific species. The researchers needs a way to convert between these releases (''Convert genome release''). Errors in a release can be discovered after publication. It is therefore important to keep data files that are compatible with an older release for some time after a new release is published.  
+From time to time a new genome release is released for genome data for a specific species. This effects the order of the base pairs in the \term{DNA} string, and therefore the format of the \term{profile} data files. The researchers needs a way to convert \term{profile} data files between these releases (see \refer{fig:target_genome}). Errors in a release can be discovered after publication. It is therefore important to keep data files that are compatible with an older release for some time after a new release is published.  
+
+\begin{figure}[h]
+\userstory{Convert genome release}{To easier handle files \\ the researchers \\ want to convert files between genome releases (\term{LiftOver}).}
+\caption{To convert between different genome releases}
+\label{fig:target_genome}
+\end{figure}
 
 \subsection{Analysis}
 The researchers want to do some analyses on the server. Some analyses is to combine regions using logical arithmetic and in such a way construct new regions (''Combine regions''). It should also be possible to create new regions from a reference point (''Create region subset''). Another interesting analysis is overlap analysis which shows how much a number of genome experiments overlap(''Overlap analysis'').
 
 \subsection{Visualization}
-To be able to review the results from doing analysis on data,  the researchers want a graphical presentation of the results(''Plot overlap analysis'', ''Plot average regions''). They also want to be able to use the \term{Integrated Genome Browser} (IGB) software to view results(''IGB Session''). They therefore want to be able to download a session-file to immediately start the browser. 
+To be able to review the results from doing analysis on data,  the researchers want a graphical presentation of the results(''Plot overlap analysis'', ''Plot average regions''). They also want to be able to use the \term{Integrated Genome Browser} (IGB) software to view results (''IGB Session''). They therefore want to be able to download a session-file to immediately start the browser. 
