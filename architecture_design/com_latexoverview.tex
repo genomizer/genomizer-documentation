@@ -1,29 +1,39 @@
-% Here you can find a basic overview of the system in general.
+\section{System overview}
 
-\section{A system overview}
-
-The \appName\ is a server-client system, which involves four different clients, a Java server and one postgresql database. The different kinds of clients are:
+The \appName\ is a server-client system, which involves four different clients, a Java server and one \term{postgresql} database. The different kinds of clients are:
 
 \begin{itemize}
-\item iOS-client
-\item Android-client
-\item Web-client
-\item Desktop-client
+\item iOS
+\item Android
+\item Web
+\item Desktop
 \end{itemize}
 
+All of these clients use the \term{RESTful} protocol together with \term{Json} to communicate with the server, sent over a non persistent \term{HTTP-socket}. How the different requests sent over this socket is specified in the API which can be found in the appendix or at $docs.genomizer.apiary.io$.
 
-All of these clients use RESTful and Json to communicate with the server, sent over a non persistent HTTP-socket. How the different requests sent over this socket is specified in the API which can be found at : www........... 
+The server is also divided in different parts, each with a specific responsibility. These are:
 
-Every request the client does creates a non persistent connection to the server. When the server receives a request it checks which kind of request it is and creates the corresponding internal command for it.
+\begin{itemize}
+\item Communication - Handles requests and responses
+\item Data storage - Handles the database
+\item Data transfer - Handles URL and file paths aswell as routing
+\item Process - Handles processing of files
+\end{itemize}
 
-This command is an object which consists of information from the RESTful-header and Json body sent from the client. The command is sent to the database which returns information gotten by a SQL query. Depending on the requests this information can later be used to, for example processes a file or be sent back to the clients. The clients always going to receive a response code after each requests, but in some cases the respond also contains a Json body with information which can be shown to the user. This is the case for requests like getAnnotations.
+\refer{fig:com_systemoverview} shows a simple flow diagram which describes how the client and server communicates. The particular example shows the data flow when the client process a file. 
 
-After a client received the response the connections with the server disappears until the next request. 
+\begin{figure}[htb]
+\addImage{com_systemoverview.jpg}
+\caption{A simple flow diagram for the system}
+\label{fig:com_systemoverview}
+\end{figure}
+
+Every request the client does creates a non persistent connection to the server. When the server receives a request it checks which kind of request it is and routes it to either the communication part of the server or handles it directly. This is done by the data transfer.
+
+If the request is routed to communication a specific command is created. The command is an object which consists of information from the \term{RESTful}-header and \term{Json} body sent from the client. The command is then parsed and sent to different parts of the server, usually the database first, which returns information from a \term{SQL query}. Depending on the requests this information can later be used to, for example processe a file or be sent back to the clients directly. 
+
+The clients are always going to receive a response code after each request, but in some cases the respond also contains a \term{Json} body with information which can be shown to the user. This is the case for requests like $getAnnotations$. The response can also contain error messages, describing what went wrong when executing the command. 
+
+After a client receives the response the connection with the server is lost until the next request. 
 
 There is a special kind of user called system admin. A user with these priveleges has the rights to add and delete annotations.
-
-\begin{figure}[t]
-\addImage{com_overviewImage.jpg}
-\caption{A simple flow of data for the system}
-\label{fig:com_systemOverview}
-\end{figure}

@@ -1,8 +1,9 @@
-The server system is based around HTTP, where clients send requests on a non-persistent connection and the server responds to these requests. All communication is initiated by the client and the server has no way of contacting clients except when responding to a request. 
+\subsection{Communication}
+The server is based around HTTP, where clients send requests on a non-persistent connection and the server responds to these requests. All communication is initiated by the client and the server has no way of contacting clients except when responding to a request. 
 
-Clients send requests to the communication part of the server first. When a request is picked up by the server, the request is parsed and a command is created depending on the request. The command then communicates with the other parts of the server in order to get or input relevant data. 
+Clients send requests to the communication part of the server first. When a request is recognized by the server, the request is parsed and a command is created depending on the request. The command then communicates with the other parts of the server in order to extract or input relevant data. 
 
-To identify clients a unique token is used, which is generated when a user logs in. The token is sent back to the client, and the client must include this token with all following requests. Since there is no persistent connection between the client and the server this token is the only way for the server to identify the sender of any given request. The token is also used to prevent unauthorized requests from being executed on the server.
+To identify clients a unique token is used, which is generated when a user logs in. The token is sent back to the client, and the client must include this token with all following requests. Since there is no persistent connection between the client and the server this token is the only way for the server to identify the sender for any given request. The token is also used to prevent unauthorized requests from being executed on the server.
 
 Most commands are executed immediately when the server gets a request, and the result is sent back to the client when the command is finished. This happens when for example searching the database. 
 
@@ -15,11 +16,12 @@ The commands implemented for the server are:
 	\item $experiment$
 	\item $file$
 	\item $process$
+	\item $genomeRelease$
 \end{itemize}
 
 The $login$ command can take either a $'POST'$ method or $'DELETE'$ method, depending on if the user wants to log in or log out. 
 
-$Search$ is used for searching for experiments in the database. Results will display all experiments which match the search query, and the user can chose o expand these experiments in order to view the containing files. 
+$search$ is used for searching for experiments in the database. Results will display all experiments which match the search query, and the user can chose o expand these experiments in order to view the containing files. 
 
 The $annotation$ command can be used to modify and view annotations associated with experiments. The server can respond to a $'GET'$ request with an array of all possible annotations currently in use in the database. There is also possible to add new annotations, update the values for an annotation or delete a complete annotation field. 
 
@@ -27,4 +29,8 @@ Clients can get information about a specific $experiment$ by using a $'GET'$ tog
 
 An experiment contains $file$s which can be uploaded with this command. A $'POST'$ will let the client upload a file to a specific experiment. Clients can also download, modify and delete files. When a client downloads a file, the communication part of the server is never contacted. This is because a download URL is already present in the file on the client side. Therefore no contact is needed with the communication part of the server, but instead the file system server takes care of the request. 
 
-In order to convert files, the client can send the command $process$. This will convert specific raw files into profile files.
+In order to convert files, the client can send the command $process$ together with a $'PUT'$. This will convert specific raw files into profile files. If the client instead sends a $'GET'$ it will recieve a list of all processes started, and their remaining time until completion. 
+
+$genomeRelease$ can be used to edit genome releases, these files are then used when converting files. The client can specify to convert a file from one genome release to another, if it exists in the database. 
+
+A more detailed specification of the API can be found in the appendix. 
