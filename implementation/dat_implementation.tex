@@ -1,22 +1,111 @@
-The following text describes the different classes the server uses to cummunicate with the database.
+%
+% Testdokument för rapport PVT 14
+%
+% Detta dokument har skapats för att ge en möjlighet att testa rapportfiler. Den header som definieras här är 
+% lik den som kommer vara i det riktiga dokumentet, vilket ger en uppfattning om hur gruppernas olika delar 
+% kommer % att se ut. För att testa era .tex-filer kan de inkluderas de detta dokument genom \input{filnamn} 
+% (ange ej .tex).  
+%
+% Oskar Mårtensson 
+% 2014-05-09 12:07
+%
+% Version 9.0
+%
 
-\subsubsection{Annotation}
+\documentclass[a4paper]{report}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{pifont}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[section]{placeins}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+\makeatletter
+\renewcommand\paragraph{%
+   \@startsection{paragraph}{4}{0mm}%
+      {-\baselineskip}%
+      {.5\baselineskip}%
+      {\normalfont\normalsize\bfseries}}
+      
+\renewcommand\subparagraph{%
+   \@startsection{paragraph}{4}{0mm}%
+      {-\baselineskip}%
+      {.5\baselineskip}%
+      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstdefinestyle{customsh}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\newcommand{\appName}{\textit{Genomizer}}
+\newcommand{\addImage}[1]{\centering\includegraphics[width=\textwidth, keepaspectratio=true]{#1}}
+\newcommand{\addScaledImage}[2]{\centering\includegraphics[scale=#1]{#2}}
+\newcommand{\addImageVertical}[1]{\centering\includegraphics[height=\textwidth, angle=90, keepaspectratio=true]{#1}}
+\newcommand{\addScaledImageVertical}[2]{\centering\includegraphics[scale=#1, angle=90]{#2}}
+\newcommand{\refer}[1]{\autoref{#1}}
+\newcommand{\addCode}[3][c]{\lstinputlisting[caption=#3, escapechar=, style=custom#1]{#2}}
+\newcommand{\filePath}[1]{\texttt{#1}}
+\newcommand{\click}[1]{\ding{43} \textbf{\textit{{#1}}}}
+\newcommand{\term}[1]{\textit{#1}}
+
+\setcounter{secnumdepth}{5}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\begin{document}
+
+\section{Implementation}
+The following text describes the different classes the server uses to cummunicate with the database.
+\subsection{Annotation}
 When a user wants the properties of an \term{annotation} they will retrieve this object. It holds information about the data type, label, forced annotation, default value and annotation choices for drop down menus. With this object the graphical interfaces can set up a search view dynamically.
 
-\subsubsection{Experiment}
+\subsection{Experiment}
 A container of an experiments annotations and their values. The annotation labels and values are contained in a \term{hashmap} with label as key. All files corresponding to the actual experiment lies in a list of \term{FileTuple} objects.
 
-\subsubsection{FileTuple}
+\subsection{FileTuple}
 A simple class that holds all information of a file in variables found in the database. Holds links for download and upload of the specific file.
 
-\subsubsection{FilePathGenerator}
-When a user wants to write or download a file, the \term{FilePathGenerator} class will take care of giving the server a file path. When a new experiment is added to the database, FPG is called and it will create a folder for the experiment and sub folders for the different file types. When a new \term{genome version} is to be added to the database, FPG will create file paths to a folder folder outside of the experiment folders. They are divided into folders corresponding to species.  This is done to give access to genome files independent of experiment id's. Chain files are given paths to sub folders within the species folders in the genome root folder.
+\subsection{FilePathGenerator}
+When a user wants to write or download a file, the \term{FilePathGenerator} class will take care of giving the server a file path. When a new experiment is added to the database, FPG is called and it will create a folder for the experiment and sub folders for the different file types. When a new \term{genome version} is to be added to the database, FPG will create file paths to a folder outside of the experiment folders. They are divided into folders corresponding to species.  This is done to give access to genome files independent of experiment id's. Chain files are given paths to sub folders within the species folders in the genome root folder.
 
-\subsubsection{PubMedToSQLConverter}
+\subsection{PubMedToSQLConverter}
 Converts a string with \term{pubMed} notations and returns an \term{SQL query}. PubMed searches can take this shape: \texttt{raw1[FileType] AND Per[Author]} which means \term{search for all raw files that Per created}. The user enters the values with variables in a logical sequence and can add parentheses for further filtering. \term{AND}, \term{OR} and \term{NOT} are commands that can be used in the sequence. The converter can both be used for file- and experiment searches. All the variables in the pubMed string are converted to the \texttt{WHERE} section of an SQL query. When a method is called in the database API (DatabaseAccessor), the first half of the query will be combined with the one generated by the converter to form a full query. Depending on which method is called in the \term{API} (what the user wants to do), the first half of the query will vary.
 
-\subsubsection{DatabaseAccessor}
-A class that serves as API for the server for database access. It handles all connections and queries to the database. The methods simplifies queries to the database by taking as few parameters as possible to accomplish a sufficient database search. The returns of the different methods are made as simple as possible depending on the amount of data generated. If only one column is to be returned after a search, a list is sufficient. When a user wants information on several files, lists of objects will be returned with all data. \term{Prepared Statements} are created from a combination of queries and variables to avoid SQL injections. Methods that have some resemblance are grouped together for easier navigation in the API.
+\subsection{DatabaseAccessor}
+A class that serves as API for the server for database access. It handles all connections and queries to the database. The methods simplifies queries to the database by taking as few parameters as possible to accomplish a sufficient database search. The returns of the different methods are made as simple as possible depending on the amount of data generated. If only one column is to be returned after a search, a list is sufficient. When a user wants information on several files, lists of objects will be returned with all data. \term{Prepared Statements} are created from a combination of queries and variables to avoid SQL injections. Methods that have some resemblance are grouped together for easier navigation in the API. The class itself generates no database queries. This is done in other smaller classes divided into different types of tasks. The class is large and can't be shortened since it's the API front to the database.
 
-\subsubsection{Testing}
-All methods are created with \term{Test Driven Development} (TDD). Testing is done before implementation. The better part of the testing is creating queries that gives the right results. All queries have at at least one test to verify it's functionality. The tests are run in a test suite so every method in the whole program can be tested in one run. Database methods have setup and teardown methods for setting up and resetting the database between the different tests. This is done to prevent a test to influence the result of another test.
+\section{Testing}
+All methods are created with \term{Test Driven Development} (TDD). Testing is done before implementation. The better part of the testing is creating queries that gives the right results. All queries have at at least one test to verify it's functionality. The tests are run in a test suite so every method in the whole program can be tested in one run. Database methods have setup and teardown methods for setting up and resetting the database between the different tests. This is done to prevent a test to influence the result of another test. Stress tests are also implemented with the goal to determine functionality by simulating multiple users working in parallel.
+
+\end{document}
