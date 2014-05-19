@@ -1,72 +1,3 @@
-%
-% Contains the systemdesign part, where we bring up the communication that might be hard to learn just by looking at the class methods name, where for example methods mut be called in a specific way.
-% Mattias Hinnerson
-% 2014-05-09 16:00
-%
-% Version 1.0
-%
-
-\documentclass[a4paper]{report}
-
-\usepackage[english]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{pifont}
-\usepackage{hyperref}
-\usepackage{listings}
-\usepackage[section]{placeins}
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-%DETTA PAKETET NEDAN MÅSTE FINNAS MED FÖR ATT BILDPOSITION SKA BLI RÄTT, OSKAR, SE DETTAAAA!!!!!!!!!!!!! :D:D:D :P :P :(
-\usepackage{float}
-
-\lstdefinestyle{customc}{
-  belowcaptionskip=1\baselineskip,
-  breaklines=true,
-  frame=L,
-  xleftmargin=\parindent,
-  language=C,
-  showstringspaces=false,
-  basicstyle=\footnotesize\ttfamily,
-  keywordstyle=\bfseries\color{green!40!black},
-  commentstyle=\itshape\color{purple!40!black},
-  identifierstyle=\color{blue},
-  stringstyle=\color{orange},
-}
-
-\lstdefinestyle{customsh}{
-  belowcaptionskip=1\baselineskip,
-  breaklines=true,
-  frame=L,
-  xleftmargin=\parindent,
-  language=C,
-  showstringspaces=false,
-  basicstyle=\footnotesize\ttfamily,
-  keywordstyle=\bfseries\color{green!40!black},
-  commentstyle=\itshape\color{purple!40!black},
-  identifierstyle=\color{blue},
-  stringstyle=\color{orange},
-}
-
-\newcommand{\appName}{\textit{Genomizer}}
-\newcommand{\addImage}[1]{\centering\includegraphics[width=\textwidth, keepaspectratio=true]{#1}}
-\newcommand{\addScaledImage}[2]{\centering\includegraphics[scale=#1]{#2}}
-\newcommand{\addImageVertical}[1]{\centering\includegraphics[height=\textwidth, angle=90, keepaspectratio=true]{#1}}
-\newcommand{\addScaledImageVertical}[2]{\centering\includegraphics[scale=#1, angle=90]{#2}}
-\newcommand{\refer}[1]{\autoref{#1}}
-\newcommand{\addCode}[3][c]{\lstinputlisting[caption=#3, escapechar=, style=custom#1]{#2}}
-\newcommand{\filepath}[1]{\texttt{#1}}
-\newcommand{\click}[1]{\ding{43} \textbf{\textit{{#1}}}}
-\newcommand{\term}[1]{\textit{#1}}
-
-\setcounter{secnumdepth}{5}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{10pt}
-
-\begin{document}
-
 \section{System Design}
 
 Our system for the file storage is basically built up with a database and a file system, where the header information of a file is stored in the database and the real file is stored in the filesystem. A filepath string is stored in the database as “path”, so the user can find where the actual file is stored in the filesystem. You can see the database design in the schema below (\refer{fig:dat_databaseSchema} ). \\
@@ -78,6 +9,8 @@ Note that this section only describes the advanced system design that needs furt
 \caption{Schema for the database.}
 \label{fig:dat_databaseSchema}
 \end{figure}
+
+\FloatBarrier
 
 \underline{Comments about the database design:}\\
 \\
@@ -118,6 +51,8 @@ NOTE: The tables "Working On", "Workspace", "Used In", and "Publihed in" has not
 
 \subsection{System overview:}
 The datastorage part of the system is built up of many classes that work together, but there is only one class that connects all subclasses and should be used by other parts of the genomizer program. This "front door" class is called "DatabaseAccessor.java". On the next page there are two uml diagrammes visible (\refer{fig:dat_umlPart1} and \refer{fig:dat_umlPart2} ) that describes all the classes in the datastorage system and how they are connected to each other.
+
+\FloatBarrier
 \newpage
 \begin{figure}[H]
 \addImage{dat_Uml3_part1.jpg}
@@ -125,12 +60,17 @@ The datastorage part of the system is built up of many classes that work togethe
 \label{fig:dat_umlPart1}
 \end{figure}
 
+\FloatBarrier
+
 \newpage
 \begin{figure}[H]
 \addImage{dat_Uml3_part2.jpg}
 \caption{The second part of the UML diagramme for the datastorage part of the genomizer program.}
 \label{fig:dat_umlPart2}
 \end{figure}
+
+\FloatBarrier
+
 \newpage
 \subsection{Method description:}
 Below is some interaction processes described and what happens in the databaseAccessor class that needs further description than just viewing the class or the javaDoc.\\
@@ -195,5 +135,3 @@ To add a file you will need to have an experiment added before you call the "add
 \underline{Removing files:} Also here, if you delete one file that comes as an file pair, you must also delete the other file thorugh this method.\\
 
 \underline{Other:} There exist other methods as well, but these does not need any further description then what is written in the java class DataBaseAccessor.\\
-
-\end{document}
