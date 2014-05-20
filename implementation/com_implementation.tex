@@ -14,6 +14,10 @@ The execute method returns a response object which is sent up to the doorman whi
 Every command must implement a validate method. This method is run after the command is created but before the command is executed.\\
 \\
 The validate method returns a boolean. If the command is correctly parsed with correct data the method returns true, otherwise false. This validate is used to prevent unneccesary communication.
+\subsubsection{Heavy work thread}
+For heavy work a queue, namely work handler is used. The command which is put in this queue is ProcessCommand. All the command objects which is in the queue, are executed one at a time  in the order first in first out. This execution is done by another thread with the only responsibility to do this kind of heavy work. The thread constantly checks whether the queue is empty or not and if there is a command object in the queue the thread polls the command object and executes it.\\
+\\
+Which command that is put in the queue or not is determined in the method processNewCommand  in the class CommandHandler. 
 \subsubsection{Response object}
 There are different response objects for different kind of responses since the form of the response to the client depends on the command the client initially sent.\\
 \\
@@ -21,3 +25,4 @@ The response object contains all the data necessary to create a RESTful header a
 \subsubsection{Database settings}
 When starting the server the database settings are set depending on the first argument of the server arguments. The argument could either be \textbf{test} or \textbf{global}.\\\\
 The \textbf{test} argument will set the database settings to match a local test database, and the \textbf{global} argument will set the settings to match a global database.
+

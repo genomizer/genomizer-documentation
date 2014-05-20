@@ -14,6 +14,7 @@ Here is an explanation of the  different client system designes.
 \input{system_design/and_system}
 \FloatBarrier
 \subsection{iOS}
+\input{system_design/ios_systemdesign}
 \FloatBarrier
 \section{Server}
 The system design of the different parts of the server.
@@ -22,8 +23,6 @@ The system design of the different parts of the server.
 \FloatBarrier
 \subsection{Conversion}
 \input{system_design/con_systemdesign}
-\FloatBarrier
-\subsection{System administration}
 \FloatBarrier
 \subsection{Filetransfer}
 \input{system_design/exp_systemdesign}

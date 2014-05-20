@@ -1,4 +1,4 @@
-To access the web application, navigate to a domain and directory that publicly serves the web page. An example of this is the “official” test enviroment: www8.cs.umu.se/~oi11lsm/app/.
+To access the web application, navigate to a domain and directory that publicly serves the web page. An example of this is the “official” test enviroment: scratchy.cs.umu.se:8000/app/.
 All functionality of the web application is (or rather should be) fairly self-explanatory and intuitive. A short description and explanation will be given for each component that have been implemented so far.
 \subsection{Using the interface}
 This section will describe how to use the interface and how to interact with it.
@@ -21,8 +21,7 @@ The navigation bar at the top has three buttons with the following functionality
 \end{itemize}
 This navigation bar is persistent through all subpages and can easily be accessed.
 
-Below the navigation bar a “search-and-functionality” bar is visible, there is a search field and there are three buttons, Search, Download and process. However, when first entering the page the buttons will be disabled. When you enter something in the search field the search button will become enabled and clickable. 
-When the user wants to search for something he can simply write a search query in pubmed style(ex; Exp1[ExpID]) in the search field and either press enter or click the Search button. 
+Below the navigation bar a “search-and-functionality” bar is visible, there is a search field and there are three buttons, Search, Download and process. However, when first entering the page the buttons will be disabled. When you enter something in the search field the search button will become enabled and clickable. To search the user can either write a pubmed style query (for example: Exp1[ExpID]) or use the query builder, by clicking the flash icon.
 
 %figure BILD
 \begin{figure}[h]
@@ -43,7 +42,7 @@ The view shown in \refer{fig:web_search_searchTab} contains two major elements; 
 \begin{itemize}
 	\item “Search” searches for the query in the search bar. 
 	\item “Download” downloads the selected files. 
-	\item “Process” brings up a new window in front of the search view with options for file processing. This feature is demonstrated further in Figure \refer{fig:web_process_modal}.
+	\item “Process” brings up a new window in front of the search view with options for file processing. This feature is demonstrated further in Figure \refer{fig:web_process_modalView}.
 \end{itemize}
 
 Below the search bar in \refer{fig:web_search_searchTab} is the “search results” list. This list contains all experiments returned from a search. Every experiment can be expanded to show the file types it contains,. Each file type can be expanded to show all files of that type in the experiment. Each file has a check box next to it that is used to select files to be processed or downloaded, currently the user is only able to select one file at a time. 
@@ -66,13 +65,31 @@ If the search is unsuccessful, the Search Results table will be empty stating �
 
 \subsubsection{The processing modal}
 %figure X6
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
-\includegraphics[width=1\textwidth]{web_process_modal.png}
-\caption{\label{fig:web_process_modal}The process file modal.}
+\includegraphics[width=1\textwidth]{web_process_modalView.png}
+\caption{\label{fig:web_process_modalView}The process file modal.}
 \end{figure}
-
-The user will be presented with the view in \refer{fig:web_process_modal} when he wants to process one raw file to profile data. The user will already have selected one file he wishes to process and he will enter the parameters for the processing.
+When the user has selected some files that are going to be processed the user will be presented with the view from \refer{fig:web_process_modalView}. The user can here choose which level of processing should be done on the raw files. By clicking the radio buttons on the left side that much processing will be done on the raw files. All the steps above the selected will also be executed since they are needed to reach that level of processing.
+At the top of the modal the experiments currently going to processing are presented.
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{web_process_modalValues.png}
+\caption{\label{fig:web_process_modalValues}The process modal with selected parameters.}
+\end{figure}
+When the user has decided the parameters as shown in \refer{fig:web_process_modalValues} and wants to start the processing the process button in the bottom right should be pressed. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{web_process_success.png}
+\caption{\label{fig:web_process_success}Success message.}
+\end{figure}
+When results are recived from the server and they were all successfull the processing modal will dissapear and a success message indicating that the processing is starting will be displayed to the user like in \refer{fig:web_process_success}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{web_process_notSuccess.png}
+\caption{\label{fig:web_process_notSuccess}All did not success message.}
+\end{figure}
+If some of the files that was going to be processed did for some reason fail the user will learn this by a warning message that tells the user which experiment did not start processing and which did as shown in \refer{fig:web_process_notSuccess}. The ones which started to process will be removed from the modal and the ones that did not start to process will remain. The user can now choose other parameters or do something else to make it work and try to submit a processing request again.
 \subsubsection{The upload view}
 %figure X7
 \begin{figure}[h]
@@ -89,7 +106,15 @@ When the user presses the upload tab in the navigation bar the view in \refer{fi
 \caption{\label{fig:web_upload_newExperiment}Creating a new experiment.}
 \end{figure}
 
-After clicking the “Create new experiment” button the view in \refer{fig:web_upload_newExperiment} will appear. Here the user can input the annotations for the experiment through either freetext fields or drop-down lists. If a freetext field has a red border around it, that annotation is required and no files can be uploaded before it has been filled in. The user can also browse for local files to upload by clicking the “Select files to upload” button. 
+After clicking the “Create new experiment” button the view in \refer{fig:web_upload_newExperiment} will appear. Here the user can input the annotations for the experiment through either freetext fields or drop-down lists. If a freetext field has a red border around it, that annotation is required and no files can be uploaded before it has been filled in.
+
+The user can choose to create more empty experiments by clicking "Create new experiments" button and new empty experiment will be placed below the first experiment.
+
+The user also have a way of filling in annotations that will be the same for several experiments and then click the "Clone experiment" button. A copy of the experiment will be created and the user can just change the annotations that will be different from the cloned experiment.
+
+Up in the corner of the experiment is a button that can remove the unwanted experiment. 
+
+To add files to one of the experiments the user can browse for local files to upload by clicking the “Select files to upload” button. The user will only see file types that have to do with experiments but have the ability to search for all file types. There is also a way of adding files to the experiment by dragging them from a file browser and dropping it onto the experiment "drag and drop".
 %figure X9
 \begin{figure}[h]
 \centering
@@ -97,33 +122,34 @@ After clicking the “Create new experiment” button the view in \refer{fig:web
 \caption{\label{fig:web_upload_fileUpload}File selected for upload.}
 \end{figure}
  
-When the user has selected files, they will appear below the annotations as in Figure \refer{fig:web_upload_fileUpload}. The file’s name is displayed in the top left corner. On the right side there is an option to select what type of file is being uploaded and an option to remove the file from the experiment.
+When the user have selected files, they will appear below the annotations as in Figure \refer{fig:web_upload_fileUpload}. The file name is displayed in a text field on the left side of the file view. Next to the file name is a box that shows the size of the selected file in a human friendly format (B, KiB, MiB, GiB, TiB). On the right side there is an option to select what type of file is being uploaded and an option to remove the file from the experiment. The file type option will automatically be filled in with a guessed value depending on the file ending as follows: raw = fastq, profile = sgr or wig and region = gff.
 
-When the user is done selecting files and annotations it can click the “Upload files to experiment” button. The files will then be sent to the server with the specified annotations (this functionality might not be fully working by the time this was written).
+When the user is done selecting files, filling in annotations and clicks the “Upload files to experiment” button the experiment view will be minimized showing the name of the experiment and the progressbar of the files beeing uploaded. Now the experiment with all the files will be uploaded to the server. The user also have a way of uploading several experiments at the same time by clicking "Upload all experiments". 
 
 \subsubsection{Systemadministration view}
 
-This part of the web application is only accessible if the user have administrator-rights. It is integrated with the rest of the web UI and accessible through an admin-tab. The administrator can through this site see all existing annotations, add new annotations and delete existing ones.
-The startpage of this section has a Create new annotations button, a list of existing annotations in the database and an edit button per existing annotation. 
-The view currently looks like in figure \refer{adm__web_annotationView}. 
+This part of the web application is only accessible if the user have administrator-rights. It is integrated with the rest of the web UI and accessible through an admin-tab. The administrator can through this site see all existing annotations, add new annotations and edit existing ones.
+The startpage of this section has a Create New Annotations button, a list of existing annotations in the database and an edit button per existing annotation. 
+The view currently looks like in \refer{adm__web_annotationView}. 
 
 \begin{figure}[h]
- \addImage{web_sysadminAnnotationView.jpg}
+ \addImage{web_SysadminAnnotationView.jpg}
  \caption{The startpage for the administrator in the web client}
  \label{adm__web_annotationView}
 \end{figure}
 
 For each annotation in the annotations list, an Edit button is available. 
-When pressed, it will take you to a page in which you can edit the selected annotation to change its name, 
-type and whether it is forced (See \refer{adm_web_editView}). 
+When pressed, it will take you to a page in which you can edit the selected annotation to change its name and what values the drop-down list will have if it's not a freetext field (See \refer{adm_web_editView}). 
 
 \begin{figure}[h]
- \addImage{web_sysadminEditView.jpg}
+ \addImage{web_SysadminEditView.jpg}
  \caption{The edit annotation view}
  \label{adm_web_editView}
 \end{figure}
-\newpage
-In the edit page the admin can see the attributes of the chosen annotation and is able to delete the chosen annotation.
+In the edit page the admin can see the attributes of the chosen annotation and is able to delete the chosen annotation or change it's information.
+The delete Annotation button will delete the whole annotation and for that reason two popup windows will appear to make sure that the administrator is sure of the action.\\
+The administrator can change the list of annotation values and the site will automatically check whether 
+something is added, removed or both and sends a request to change the annotation values to the server when the Update Annotation button is clicked.
 
 If the admin clicks on Create new annotation from the admin startpage, another view will open with the following structure:
 \begin{itemize}
@@ -139,12 +165,21 @@ If the admin clicks on Create new annotation from the admin startpage, another v
  \subitem Admin can choose if the new annotation should be forced for users to enter. 
 \end{itemize}
 
-A Create Annotation will, if all necessary information has been entered, result in the annotation to be added to the database. Otherwise the admin will be alerted of the mistake and nothing will be created.
-\newpage
-A back button which takes the user back to the annotations start page is also available in this view. In figure \refer{adm_web_createView} the create annotation view can be seen.
+A Create Annotation will, if all necessary information has been entered, result in a popup (see \refer{adm_web_createPopup}) showing the resulting annotation and if confirmed, the annotation is added to the database. 
+If canceled the administrator can keep making changes or go back to exit this view. If not all values is entered the admin will be alerted of the mistake and nothing will be created.
+
+\begin{figure}[h]
+ \addImage{web_SysadminCreateAnnotationConfirm.jpg}
+ \caption{The confirm annotation popup}
+ \label{adm_web_createPopup}
+\end{figure}
+
+The example in \refer{adm_web_createPopup} will result in a drop-down annotation with the name ProgrammingLanguages and possible values: Java, Javascript, C++, C\# and Objective-C  with Java as default and is not forced.
+
+A back button which takes the user back to the annotations start page is also available in this view. In \refer{adm_web_createView} the create annotation view can be seen.
 
 \begin{figure}[t]
- \addImage{web_sysadminCreateAnnotation.jpg}
+ \addImage{web_SysadminCreateAnnotation.jpg}
  \caption{The view for administrators where new annotations can be created}
  \label{adm_web_createView}
 \end{figure}
@@ -154,8 +189,10 @@ To setup the application, move the content of the folder called app in genomizer
 Ex. given that the genomizer-web folder is placed in my home folder and i want to put the webpage in a folder called public\_html which is also in my home folder. In linux i do the following steps.
 \begin{enumerate}
 	\item Navigate to the app folder: \texttt{“cd ~/genomizer-web/app/”}
-	\item Move the contents of app to the folder called public\_html:\\ \texttt{“mv * ~/public\_html/”}
-	\item Given that the url to the pubilc\_html folder is: \\ \filePath{“www8.cs.umu.se/~c11abc/”}
-	\item To run the application start a web browser and type \\ \filePath{“www8.cs.umu.se/~c11abc/”}
+	\item Move the contents of app to the folder called public\_html: \texttt{“mv * ~/public\_html/”}
+	\item Given that the url to the pubilc\_html folder is: \filePath{“www8.cs.umu.se/~c11abc/”}
+	\item To run the application start a web browser and type \filePath{“www8.cs.umu.se/~c11abc/”}
 \end{enumerate}
 This will open the webpage in the browser.
+
+

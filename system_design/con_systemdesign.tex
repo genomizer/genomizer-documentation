@@ -1,16 +1,16 @@
 The Genomizer service needs to be able to convert, process and visualize data. This chapter explains how this is done in the system.
 
 \begin{figure}[h]
-\addImage{con_UMLsprint2.jpeg}
+\addImage{UMLsprint2.jpeg}
 \caption{Classdiagram for Process}
 \label{con_UML}
 \end{figure}
 	
-As can be seen in \refer{con_UML} the RawToProfileConverter extends the Executor class. When a call comes to the ProcessHandler it then starts the correct convertion which right now only can be a raw to profile convertion.
+As can be seen in \refer{con_UML} the RawToProfileConverter extends the Executor class. When a call comes to the ProcessHandler it then starts the correct convertion which right now only can be a raw to profile conversion.
 
 
 \subsubsection{Executor}
-The executor class, as seen in figure 5.2.1, is an abstract superclass that is an entity that is able to execute various commands. The executor class is able to run programs as well as scripts. In order to run scripts and programs the executor has a parse-function that parses a string into separate arguments. \newline
+The executor class, as seen in figure 5.2.1, is a abstract superclass that is an entity that is able to execute various commands. The executor class is able to run programs as well as scripts and shell commands. In order to run scripts and programs the executor has a parse-function that parses a string into separate arguments. \newline
 
 \begin{itemize} 
 \item executeCommand
@@ -30,24 +30,38 @@ After a command has been started the output stream is then recorded with the hel
  
 \item cleanUp
 \begin{itemize}
-\item Deletes a folder and all its contents, it takes a File object and recursively removes everything in that folder and its subfolders. Used to clean up files created when doing a procedure that creates temporary files thats not used after the procedure is done.
+\item Recieves a stack with folder names as strings and removes the folders files and then the folder itself. Used to clean up after a process have been executed and generated files during the procedure. 
 \end{itemize}
 
 \end{itemize}
 
 \subsubsection{RawToProfileConverter}
-\emph{The purpose of the RawToProfileConverter class is that it will be used by processHandler and do all the different steps needed to make a raw file. These steps are done by using the program Bowtie and by running four different scripts which are executed with methods that is extended from Executor class. When ratio calculation is supposed to be done, there are two more steps that will be done.}
+\emph{The purpose of the RawToProfileConverter class is that it will be used by processHandler and do all the different steps needed to make a raw file. These steps are done by using the program Bowtie and by running two different scripts which are executed with methods that is extended from Executor class. When ratio calculation is supposed to be done, there are 2 more steps that will be done.}
+
+\subsubsection{Description of Procedure}
+
+\begin{enumerate}
+\item Bowtie: Creates unsorted .sam files. Puts the files in a created temp folder with the name result\_X, where X is the number of the current thread. All other folders created is placed inside the folder from where the files used where placed.
+\item sortSam: Sorts the .sam files and creates new .sam files. Puts the files in a folder called sorted.
+\item Run Gff: Processes the sorted sam file and creates a gff3 file. Puts the files in a folder called reads\_gff.
+\item Allnucsgr: Processes the gff3 file and creates a sgr file. Puts the files in a folder called allnucs\_sgr.
+\item Smooth: smooths the file and creates a large .sgr file, converted the customers perl script by following the algorithm they  sent us. This makes it more efficient. Puts the files in a folder called smoothing.
+\item Step: Takes the smoothed .sgr file and takes samples from it with a specified intervall and creates a smaller .sgr file. If stepping is done the files will be placed in the same folder as the previus step.
+\item Ratio Calculation: Creates four .sgr files with the perl script provided by the customer. Puts the files in a folder called ratios.
+\item Smooth: After the ratio calculation, smoothing needs to be done again with different parameters. Puts the files in a folder called smoothing
+\end{enumerate}
+
 
 \begin{itemize} 
 \item procedure
 \begin{itemize}
-\item This method executes all the methods for all the steps to make a profile .sgr file from a raw file, it checks so that the directory it gets that should contain the raw files has not more then two files and atleast one file to process. Does the procedure to create a profile data and move it to the folder thats specified as a parameter.
+\item Executes all the steps to make a profile .sgr file from a raw file, it checks the directory it gets as filepath so that it contains the raw files and that there arent more then two files, but atleast one file to process. Does the procedure to create a profile data and move it to the folder thats specified as a parameter.
 \end{itemize}
 
 \item runBowtie
 \begin{itemize}
 \item Constructs a long string with the full execution line for bowtie. It then uses this string as a parameter when calling the method parse. 
-The resulting array is then using when calling executeProgram and the result of the execution is returned.
+The resulting array is then used when calling executeProgram and the result of the execution is returned.
 \end{itemize}
 \item sortSamFile
 \begin{itemize}
@@ -65,19 +79,33 @@ The resulting array is then using when calling executeProgram and the result of 
 
 \paragraph{Bowtie}
 Bowtie takes two raw .fastq files and converts them to .sam which is the first step to make the desired .sgr files. After a .sam file is converted the linux command sort is run  on both files which creates two sorted .sam files, it is sorted by chromosome and position as needed to use the scripts.
-
 \paragraph{Used scripts}
 The different functions of the perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
 
+\begin{itemize}
+\item[samtoreadgffv1] Makes a .gff file from a sorted .sam that have reads at each nucleotide positions. No input parameters except the directory of the sorted sam files are needed. The resulting files are put in the new folder \textit{reads\_gff}.
 
-\subparagraph*{samtoreadgffv1} Makes a .gff file from a sorted .sam that have reads at each nucleotide positions. No input parameters except the directory of the sorted sam files are needed. The resulting files are put in the new folder \term{reads\_gff}.
+\item[readsgfftoallnucsgrv1]  Counts the reads from the previous script result. For each chromosome reads are read and each nucleotide position is incrementally counted with one when a read cover it. No parameters are needed for this script except the file path of the gff files. The resulting files are put in the new folder \textit{allnucs\_sgr}.
 
-\subparagraph*{readsgfftoallnucsgrv1}  Counts the reads from the previous script result. For each chromosome reads are read and each nucleotide position is incrementally counted with one when a read cover it. No parameters are needed for this script except the file path of the gff files. The resulting files are put in the new folder \term{allnucs\_sgr}.
+\item[ratio\_calculation\_v2] Does ratio calculation on the processed files. For each position in the IP sample with at least one mapped read, a ratio of IP-input(on a log2 scale) is calculated. If the read count in the input is below the read -count mean (in the input sample) is calculated it is set to the mean( or double mean (2 x mean) as user specifief). If the input mean is below four the minimum input value is set to four (to avoid division by nearzero values; calculated as -(read lenght x approximate total number of reads in input samples(9 millin))/ genome size (for Drosophila melanogaster 120381546)). A random number between -0.5 and 0,5 is added to the read counts before log2 conversion to make them discrete for statistical analysis. All ratio values are then adjusted by reducing each value by median of the ratios. This linear adjustment is carried out in order to compensate for differences in IP and input sequencing depth. Also, to visualize ratios distribution, ratios are plotted by binning ratios with user specified numbers of bins and minimum and maximum ratio values(200bins,minimum ratio value: -10, maximum ratio value:10). Ratio values are printed in sgr format.
+ 
 
-\subparagraph*{smoothv4} Smoothing is done by using a script with the same name and it can smooth the single nucleotide reads with different options like short window sizes, what kind of smoothing is desired, minimum step position and the choice to choose if the result file should contain median values and/or 0’s. An example of input parameters to this script is: "10 1 5 0 0". The resulting files are put in the new folder \term{smoothed}.
+\end{itemize}
 
-\subparagraph*{AllSeqRegSGRtoPositionSGRv1}  converts the previous result in .sgr format to an .sgr format with fixed interval size. The script takes two parameters, if steps should be created and the stepsize. An example of parameters to the script would be: "y 10". The resulting files are put in the new folder \term{Step10}.
+\subsubsection{Smoothing and stepping}
+\emph{The scripts that was provided was inefective and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.}
 
+\paragraph{SmoothingAndStep}
+Smoothing means that we either calculate the trimmed mean value or median value for a position and a number of proceeding positions. The number of positions we should smooth on is called the Window Size. We also need to have a cutoff number, which tells us that if we have fewer rows to calculate on than the cutoff number we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
+
+The class SmoothingAndStep have one public method and many private ones. The public one called smoothing starts by setting up file readers/writers. It then reads as many rows from the file as the window size. It then smooths one row. From then on the program removes the first row from the array and add one new row to the array and then smooth the first one in the array. This continues until either we start closing in on the end of the file or when we come close to a chromosome shift. These special cases are handled a bit different.
+
+
+
+
+\paragraph{Tuple}
+The tuple class is a data carrier that represents one row of data in an sgr file. It consists of the fields chromosome, position, signal and newSignal. Where signal is the signal-value read from the infile and newSignal is the updated value after smoothing have been done.
+The methods in this class are all standard getters/setters except for the method toString which formats a row for the outfile and rounds of decimal numbers. The constructor is also of interest since it parse a row on tabs. Thus the fields in an infile needs to be seperated by tabs and not spaces.
 
 
 \subsubsection{ProcessHandler}
@@ -87,10 +115,13 @@ The processhandler is a controller that handles process-calls. Depending on the 
 \subsubsection{Logic \& interface}
 The main logic in the processHandler is a switch-case that switches on the name of the process being called. For example if the name of the process is “RawToProfile” is sets up a RawToProfile-converter and calls it. 
 
-\subparagraph*{processName} A string that tells the handler which kind of process should be executed.
-\subparagraph*{procedureParams} A list of string with the parameters to the different external  programs/scripts that will be called during the execution. The first element will be a string with parameters/flags for the first external program that will be called, and so on.
-\subparagraph*{inFile} A string with a path to the directory containing the files that should be operated on.
-\subparagraph*{outFile} A string with a path to the directory where the result .sgr files should be put.
+\begin{itemize}
+\item[processName] A string that tells the handler which kind of process should be executed.
+\item[procedureParams] A list of string with the parameters to the different external  programs/scripts that will be called during the execution. The first element will be a string with parameters/flags for the first external program that will be called, and so on.
+\item[inFile] A string with a path to the directory containing the files that should be operated on.
+\item[outFile] A string with a path to the directory where the result .sgr files should be put.
+
+\end{itemize}
 
 
 

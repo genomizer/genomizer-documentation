@@ -1,7 +1,5 @@
-\section{System Design}
+Our system for the file storage is basically built up with a database and a file system, where the header information of a file is stored in the database and the real file is stored in the filesystem. A filepath string is stored in the database as “path”, so the user can find where the actual file is stored in the filesystem. You can see the database design in the schema below (\refer{fig:dat_databaseSchema} ). 
 
-Our system for the file storage is basically built up with a database and a file system, where the header information of a file is stored in the database and the real file is stored in the filesystem. A filepath string is stored in the database as “path”, so the user can find where the actual file is stored in the filesystem. You can see the database design in the schema below (\refer{fig:dat_databaseSchema} ). \\
-\\
 Note that this section only describes the advanced system design that needs further explanation than just reading the code. Also note that it exists some javadocumentation that explains all methods in each class further deeper and more specific than this documentation that might be useful for those that will continue developing this system. Those can be found in the same file directory as the program, in the sub dir "/doc".
 
 \begin{figure}[htb]
@@ -49,7 +47,7 @@ Since many files are stored in pairs, the InputFilePath is the path to where the
 * The "Chain File" table keep information about stored chain files, and the "chain file files" table stores information about all the current queued chain convertions.\\
 NOTE: The tables "Working On", "Workspace", "Used In", and "Publihed in" has not been implemented yet but is planned to exist in the final version of the program. Those tables are used to connect files to a workspace of a user or users. But the connection is only a reference to where the file is actually stored. 
 
-\subsection{System overview:}
+\subsubsection{System overview}
 The datastorage part of the system is built up of many classes that work together, but there is only one class that connects all subclasses and should be used by other parts of the genomizer program. This "front door" class is called "DatabaseAccessor.java". On the next page there are two uml diagrammes visible (\refer{fig:dat_umlPart1} and \refer{fig:dat_umlPart2} ) that describes all the classes in the datastorage system and how they are connected to each other.
 
 \FloatBarrier
@@ -72,7 +70,7 @@ The datastorage part of the system is built up of many classes that work togethe
 \FloatBarrier
 
 \newpage
-\subsection{Method description:}
+\subsubsection{Method description:}
 Below is some interaction processes described and what happens in the databaseAccessor class that needs further description than just viewing the class or the javaDoc.\\
 \\
 \underline{GetExperiment:} Will find a specific experiment from one experimentID, from the database and will return an experiment object for that experiment. The object will contain information about the experiment id, experiment annotations connected to that experiment, and all files connected to that experiment with their headers. The object contains both setter and getter methods. \\

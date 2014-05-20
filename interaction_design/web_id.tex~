@@ -26,11 +26,11 @@ Below is a table where search results are shown. The table consists of different
 \includegraphics[width=1\textwidth]{web_id_uploadFields.png}
 \caption{\label{fig:web_id_uploadFields}Fields for experiment selection/creation.}
 \end{figure}
-The upload view has two states, first the user have to choose if it wants to create a new experiment to upload files or use an existing file. This step looks like \refer{fig:web_id_uploadFelds}.
+The upload view has two states, first the user have to choose if it wants to create a new experiment to upload files or use an existing file. This step looks like \refer{fig:web_id_uploadFields}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\textwidth]{web_images/id_fileUpload.png}
+\includegraphics[width=1\textwidth]{web_id_fileUpload.png}
 \caption{\label{fig:web_id_fileUpload}File upload and experiment annotation view.}
 \end{figure}
 
@@ -38,3 +38,5 @@ Once the user has an experiment to upload files to it may start to upload files 
 
 \subsection{Process view}
 The process view has a set of input and select fields for the user to input parameters to be used in the file processing. At the bottom of the view there’s a button used to start the processing.
+
+\input{adm_web_id}
