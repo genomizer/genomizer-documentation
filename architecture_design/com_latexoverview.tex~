@@ -1,4 +1,3 @@
-\label{chap:com_latexoverview}
 \section{System overview}
 
 The \appName\ is a server-client system, which involves four different clients, a Java server and one \term{postgresql} database. The different kinds of clients are:
