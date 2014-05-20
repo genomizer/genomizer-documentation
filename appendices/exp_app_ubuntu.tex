@@ -1,6 +1,6 @@
 \label{chap:exp_app_ubuntu}
 \section{Introduction}
-This document will guide a user through the process to configure the server machine needed for the \appName\ server software. This guide is created while configuring a newly installed machine running Ubuntu 14.04. Other Linux or UNIX operating systems could have other commands to install different softwares. Some experience with a terminal and the UNIX environment is presumed.
+This document will guide a user through the process to configure the server machine needed for the \appName\ server software. This guide is created while configuring a newly installed machine running Ubuntu 14.04. Other Linux or UNIX operating systems could have other commands to install different software. Some experience with a terminal and the UNIX environment is presumed.
 
 Be sure to have a fully functioning Internet connection to the server machine with the possibility to direct ports to it before continuing.
 
@@ -17,7 +17,7 @@ sudo apt-get install openjdk-7-jdk
 \end{verbatim}
 
 \subsection{OpenSSH}
-To be able to access the server machine remotley OpenSSH must be installed.
+To be able to access the server machine remotely OpenSSH must be installed.
 
 Enter the following command to install OpenSSH properly.
 \begin{verbatim}
@@ -26,7 +26,7 @@ openssh-sftp-server
 \end{verbatim}
 
 \subsection{Apache2}\label{sec:exp_apache2}
-In order to handle web requests and file transfering the server will use Apache2. 
+In order to handle web requests and file transferring the server will use Apache2. 
 
 To install Apache2 with necessary software, use this command:
 \begin{verbatim}
@@ -37,7 +37,7 @@ After installation of Apache2 some configuration is needed. Follow the steps bel
 The default port for listening is set to 80. If this seeks to be changed follow the steps below.
 \begin{enumerate}
 	\item Open file with following command: \begin{verbatim}sudo nano /etc/apache2/ports.conf\end{verbatim}
-    \item Edit the value in the file after ``Listen'' to the prefered port to use for listening. 
+    \item Edit the value in the file after ``Listen'' to the preferred port to use for listening. 
     For example: \begin{verbatim}Listen 80\end{verbatim}
     \item Save and close the file.
     \item Restart the Apache server with: \begin{verbatim}sudo service apache2 graceful\end{verbatim}
@@ -50,7 +50,7 @@ The \appName\ server uses \textit{/var/www/} as the document root. As default fo
 the document root is set to \textit{/var/www/html/}.
 To change the root folder for the Apache server, do the following steps:
 \begin{enumerate}
-	\item Open the configuraton file for the document root: \begin{verbatim}sudo nano /etc/apache2/sites-enabled/000-default.conf\end{verbatim}
+	\item Open the configuration file for the document root: \begin{verbatim}sudo nano /etc/apache2/sites-enabled/000-default.conf\end{verbatim}
     \item Edit the second string in the line starting with the string ``DocumentRoot'' to the root directory to be used.
     \begin{verbatim}DocumentRoot /var/www/\end{verbatim}
     \item Save and close the configuration file.
@@ -61,7 +61,7 @@ After these steps the document root is changed. Please note that in step two the
 to something else. If these steps are followed precisely the document root will be set to \textit{/var/www/}.
 
 \subsubsection{Add system user}\label{sec:exp_passw}
-To add a system user, you first have to create a new file containing the usernames and their corresponding passwords
+To add a system user, you first have to create a new file containing the user names and their corresponding passwords
 by using a terminal and writing:
 \begin{verbatim}htpasswd -c /ect/apache2/passwords username\end{verbatim}
 Change \texttt{username} to the username wanted for the new user.
@@ -138,7 +138,7 @@ In this server setup this line looks like this:
 \begin{verbatim}
 ProxyPass /api/ http://scratchy.cs.umu.se:7000/
 \end{verbatim}
-This means that all requests sent to \emph{http://scratchy.cs.umu.se:8000/api/Login} will be proxyed (tunneled) to
+This means that all requests sent to \emph{http://scratchy.cs.umu.se:8000/api/Login} will be proxied (tunneled) to
 \emph{http://scratchy.cs.umu.se:7000/Login} for example. \textbf{Do not forget to restart the Apache server}:
 \begin{verbatim}
 sudo service apache2 restart
@@ -383,7 +383,7 @@ sudo nano /etc/phppgadmin/config.inc.php
 Then change the following post to what corresponds to your server setup:
 \begin{verbatim}
 // Database port on server (5432 is the PostgreSQL default)
-    $conf['servers'][0]['port'] = 6000; //postgreSQL port here 
+    $conf['servers'][0]['port'] = 6000; //PostgreSQL port here 
     .
     .
     .
