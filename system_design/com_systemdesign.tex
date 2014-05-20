@@ -6,7 +6,7 @@ Clients send requests to the communication part of the server first. When a requ
 
 To identify clients a unique token is used, which is generated when a user logs in. The token is sent back to the client, and the client must include this token with all following requests. Since there is no persistent connection between the client and the server this token is the only way for the server to identify the sender for any given request. The token is also used to prevent unauthorized requests from being executed on the server.
 
-Most commands are executed immediately when the server gets a request, and the result is sent back to the client when the command is finished. This happens when for example searching the database. 
+Most commands are executed immediately when the server gets a request, and the result is sent back to the client when the command is finished. This happens when for example searching the database. To take away some effort from the rest of the system, a queue with all the heavy ProcessCommands runs on another thread. These commands are executed one at a time in the order first in first out. 
 
 The commands implemented for the server are:
 
