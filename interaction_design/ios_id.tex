@@ -1,14 +1,14 @@
 Focus has been on making a nice looking application with an intuitive workflow. The design is based on the design selected in the design phase. However, some changes has been made in order to follow the iOS design principles. New insights of the demands of the customer and our increasing experience has also resulted in improvements of the original design. Some of the design decisions are motivated in the text below.
 
 
-\subsubsection{Navigation bar}
+\subsection{Navigation bar}
 A navigation bar is used to make access to different main functionalities available at all times. The chosen design (at the end of the design phase) suggested to have an invisible menu which was slided in. However, an invisble menu is difficult to detect and does not follow the iOS design guidelines.
 
 
-\subsubsection{Login Screen}
+\subsection{Login Screen}
 The login screen has two responsibilities; to make a nice first impression and to make it easy for the user to login. The design is kept simple and clean to avoid distractions.
 
-\subsubsection{Search View}
+\subsection{Search View}
 The search view is designed to be usable for both advanced and new users. A list with available annotations is displayed to make it easy to do basic searches fast. Some annotations can only be selected with a picker view, while others are edited by typing free text. The reason for the occurance of the picker views is to simplify searches and help the user to make correct search requests. For example, the sex of an individual can only be male, female or unknown. Other values for the sex annotation would be nonsence!
 
 \begin{figure}[ht]
@@ -22,7 +22,7 @@ Each annotation has a corresponding switch button as seen in \refer{fig:ios_sear
 
 The advanced user can customize the search query sent to the server. This gives the user the opportunity make more complex search queries and possibly make use of already accuried PubMed-search skills.
 
-\subsubsection{Search Result View}
+\subsection{Search Result View}
 The main purpose of the search result view is to give an overview of the search results. The challenge with this view was to summarize large amount of information in a small area. The small screen of the iPhone made it impossible to have columns for each annotation. Instead a decision was made to group the files by experiment as seen in \refer{fig:ios_searchResult2}. The table with the experiments will only expand vertically, both when the number of shown annotations and the number of experiments grows. Thus, the user never has to scroll sideways which would be awkward.
 
 \begin{figure}[ht]
@@ -46,7 +46,7 @@ The file view (see \refer{fig:ios_files2}), which is shown when the user selects
 The functionality of the Convert files button can be reached from other views, but was added to this view as well to improve the workflow. Instead of first selecting the files, then going to the Selected files view and initiate the convertion from there, the user can now quickly convert files directly from the search results.
 
 
-\paragraph{Selected Files}
+\subsubsection{Selected Files}
 The selected files view can be seen in \refer{fig:ios_selectedFiles2}. The files are grouped into four categories: raw, profile, region and other. This is done by showing each type of files in its own tab. The reason for this is to avoid the possibility to select files of different types since the tasks to perform are file type specific. It also gives a better overview of the files when only one type is shown instead of showing all files at the same time. Additionally, the top tab bar menu is following the iOS design guidelines.
 
 \begin{figure}[ht]
@@ -56,5 +56,5 @@ The selected files view can be seen in \refer{fig:ios_selectedFiles2}. The files
 \end{figure}
 \FloatBarrier
 
-\paragraph{Select task}
+\subsubsection{Select task}
 The select task menu can easily be expanded when new functionality is added to the application. The Execute-button is disabled as long as no task is selected. A checkmark is displayed next to the task to perform. When an other task is selected the checkmark is moved. The reason for not using switch buttons is that they would give the impression that several tasks could be executed at once, which is not possible at the moment.
