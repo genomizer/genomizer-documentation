@@ -1,6 +1,4 @@
-\emph{The Genomizer service needs to be able to convert, process and visualize data. This chapter explains how this is done in the system.}
-
-\section{Systemdesign}
+The Genomizer service needs to be able to convert, process and visualize data. This chapter explains how this is done in the system.
 
 \begin{figure}[h]
 \addImage{UMLsprint2.jpeg}
@@ -11,7 +9,7 @@
 As can be seen in \refer{con_UML} the RawToProfileConverter extends the Executor class. When a call comes to the ProcessHandler it then starts the correct convertion which right now only can be a raw to profile conversion.
 
 
-\subsection{Executor}
+\subsubsection{Executor}
 The executor class, as seen in figure 5.2.1, is a abstract superclass that is an entity that is able to execute various commands. The executor class is able to run programs as well as scripts and shell commands. In order to run scripts and programs the executor has a parse-function that parses a string into separate arguments. \newline
 
 \begin{itemize} 
@@ -37,10 +35,10 @@ After a command has been started the output stream is then recorded with the hel
 
 \end{itemize}
 
-\subsection{RawToProfileConverter}
+\subsubsection{RawToProfileConverter}
 \emph{The purpose of the RawToProfileConverter class is that it will be used by processHandler and do all the different steps needed to make a raw file. These steps are done by using the program Bowtie and by running two different scripts which are executed with methods that is extended from Executor class. When ratio calculation is supposed to be done, there are 2 more steps that will be done.}
 
-\subsection{Description of Procedure}
+\subsubsection{Description of Procedure}
 
 \begin{enumerate}
 \item Bowtie: Creates unsorted .sam files. Puts the files in a created temp folder with the name result\_X, where X is the number of the current thread. All other folders created is placed inside the folder from where the files used where placed.
@@ -79,10 +77,10 @@ The resulting array is then used when calling executeProgram and the result of t
 \end{itemize}
 \end{itemize}
 
-\subsubsection{Bowtie}
+\paragraph{Bowtie}
 Bowtie takes two raw .fastq files and converts them to .sam which is the first step to make the desired .sgr files. After a .sam file is converted the linux command sort is run  on both files which creates two sorted .sam files, it is sorted by chromosome and position as needed to use the scripts.
-\subsubsection{Used scripts}
-\emph{The different functions of the perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.}
+\paragraph{Used scripts}
+The different functions of the perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
 
 \begin{itemize}
 \item[samtoreadgffv1] Makes a .gff file from a sorted .sam that have reads at each nucleotide positions. No input parameters except the directory of the sorted sam files are needed. The resulting files are put in the new folder \textit{reads\_gff}.
@@ -94,10 +92,10 @@ Bowtie takes two raw .fastq files and converts them to .sam which is the first s
 
 \end{itemize}
 
-\subsection{Smoothing and stepping}
+\subsubsection{Smoothing and stepping}
 \emph{The scripts that was provided was inefective and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.}
 
-\subsubsection{SmoothingAndStep}
+\paragraph{SmoothingAndStep}
 Smoothing means that we either calculate the trimmed mean value or median value for a position and a number of proceeding positions. The number of positions we should smooth on is called the Window Size. We also need to have a cutoff number, which tells us that if we have fewer rows to calculate on than the cutoff number we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
 
 The class SmoothingAndStep have one public method and many private ones. The public one called smoothing starts by setting up file readers/writers. It then reads as many rows from the file as the window size. It then smooths one row. From then on the program removes the first row from the array and add one new row to the array and then smooth the first one in the array. This continues until either we start closing in on the end of the file or when we come close to a chromosome shift. These special cases are handled a bit different.
@@ -105,16 +103,16 @@ The class SmoothingAndStep have one public method and many private ones. The pub
 
 
 
-\subsubsection{Tuple}
+\paragraph{Tuple}
 The tuple class is a data carrier that represents one row of data in an sgr file. It consists of the fields chromosome, position, signal and newSignal. Where signal is the signal-value read from the infile and newSignal is the updated value after smoothing have been done.
 The methods in this class are all standard getters/setters except for the method toString which formats a row for the outfile and rounds of decimal numbers. The constructor is also of interest since it parse a row on tabs. Thus the fields in an infile needs to be seperated by tabs and not spaces.
 
 
-\subsection{ProcessHandler}
+\subsubsection{ProcessHandler}
 The processhandler is a controller that handles process-calls. Depending on the name of the process it handles it differently. It acts as an interface between the process-module and the rest of the program. 
 
 
-\subsection{Logic \& interface}
+\subsubsection{Logic \& interface}
 The main logic in the processHandler is a switch-case that switches on the name of the process being called. For example if the name of the process is “RawToProfile” is sets up a RawToProfile-converter and calls it. 
 
 \begin{itemize}
