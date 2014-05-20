@@ -218,17 +218,17 @@ sudo nano /etc/postgresql/9.3/main/postgresql.conf
 Find the segment \emph{CONNECTIONS AND AUTHENTICATION} in the top part of the file and change the lines ''listen\_addresses'' and ''port'':
 
 \begin{verbatim}
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------
 # CONNECTIONS AND AUTHENTICATION
-#------------------------------------------------------------------------------
+#-------------------------------------------------------------
 
 # - Connection Settings -
 
-listen_addresses = '*'          	    # what IP address(es) to listen on;
-                                        # comma-separated list of addresses;
-                                        # defaults to 'localhost'; use '*' for all
-                                        # (change requires restart)
-port = 6000                             # (change requires restart)
+listen_addresses = '*'  # what IP address(es) to listen on;
+                        # comma-separated list of addresses;
+                        # defaults to 'localhost'; use '*' for all
+                        # (change requires restart)
+port = 6000             # (change requires restart)
 
 \end{verbatim}
 
@@ -299,7 +299,7 @@ interface or wish to only configure the database on the local server machine usi
 
 \begin{figure}[htb]
 \centering
-\addImage{phppgadmin.jpg}
+\addImage{exp_phppgadmin.jpg}
 \caption{PhpPgAdmin web interface}
 \label{fig:exp_phppgadminpic}
 \end{figure}
