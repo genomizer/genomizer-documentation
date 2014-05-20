@@ -1,79 +1,109 @@
-This is a user manual for the desktop client. It will provide guides on how to use the client and the different functionalities it holds. The screenshots shown in this document are made from a Linux machine, but the Desktop application also runs on Windows or Mac, and will follow the design priciples thereafter. Because of this, the look of the client may vary, but the functionality is the same, and hopefully this manual will be of service anyways. 
+
+This is a user manual for the desktop client. It will provide guides on how to use the client and the different functionalities it holds. The screen shots shown in this document are made from a Linux machine, but the Desktop application also runs on Windows or Mac, and will follow the design principles thereafter. Because of this, the look of the client may vary, but the functionality is the same, and hopefully this manual will be of service anyways.
 
 \subsection{Login and startup}
-When you start this application the first thing that's displayed is a login screen, as illustrated in \refer{fig:des_login-pic}. In this screen you enter your username, password and the IP-Address for the server and then press login to enter the Genomizer Desktop.
+When you start this application the first thing that's displayed is a login screen, as illustrated in \refer{fig:des_login-pic}. In this screen you enter your username, password and the IP-Address for the server and then press login to enter the \appName Desktop.
 
 \begin{figure}[htb]
-	\addScaledImage{0.5}{des_loginpicture.png}
+	\addScaledImage{0.5}{login_picture.png}
 	\caption{Screenshot of the login screen.}
 	\label{fig:des_login-pic}
 \end{figure}
-The application is built with tabs, as illustrated below in the upper part of \refer{fig:des_desktop-view}. Each tab contains separate features of the application. There are six tabs: Search, Upload, Process, Workspace, Analyze and Administration.
+The application is built with tabs, as illustrated below in the upper part of \refer{fig:des_tabs-view}. Each tab contains separate features of the application. There are six tabs: Search, Upload, Process, Workspace and Administration. One tab that is designed and planned, but not implemented is Analyze.
 \begin{figure}[htb]
-	\addImage{des_searchtab.png}
-	\caption{Illustration of the different tabs of Genomizer Desktop and displaying the Search tab.}
-	\label{fig:des_desktop-view}
+	\addImage{tabs.png}
+	\caption{Illustration of the different tabs of \appName Desktop and displaying the Search tab.}
+	\label{fig:des_tabs-view}
 \end{figure}
 \FloatBarrier
 
 \subsection{Search}
-The first tab that meets the user after logging in is the Search tab, illustrated in \refer{fig:des_desktop-view}. The Search tab uses the same query building technique as the “Pubmed Advanced Search Builder”. It has one text field where you either can type in the query yourself or you can use the query builder below it. Each row in the query builder has at most five components. These are a logical expression, an annotation name field, a free text field or a drop down menu to insert search words, a minus button and a plus button. The minus button removes a row and the plus button adds a row. These buttons are however not available in each row. The plus button is only available in the last row. The minus button is available in every row except if there is only one row in the query builder. The logical expressions combines the annotations, so they are available in every row but the first.
+The first tab that meets the user after logging in is the Search tab, illustrated in \refer{fig:des_search-query}. The Search tab uses the same query building technique as the “Pubmed Advanced Search Builder”\cite{des_pubmed_query}. It has one text field where you either can type in the query yourself or you can use the query builder below it. Each row in the query builder has at most five components. These are a logical expression, an annotation name field, a free text field or a drop down menu to insert search words, a minus button and a plus button. The minus button removes a row and the plus button adds a row. These buttons are however not available in each row. The plus button is only available in the last row. The minus button is available in every row except if there is only one row in the query builder. The logical expressions combines the annotations, so they are available in every row but the first.
 By writing in the annotation text field or selecting a value in the drop down menu you can specify the query the row will produce. Together each row builds a full query. As illustrated in \refer{fig:des_search-query} below.
 \begin{figure}[htb]
-	\addImage{des_searchtab.png}
+	\addImage{search_tab.png}
 	\caption{Illustration of a query, made by the query builder.}
 	\label{fig:des_search-query}
 \end{figure}
 \FloatBarrier
+\subsubsection{Search results}
+When the search button is clicked the search tab will change it's view to display the search results as illustrated in \refer{fig:des_search-results}. The results are displayed as experiments in a tree table. The experiment nodes in the table can be expanded to view the files associated with the experiment. The tree table can be sorted both vertically by clicking the headings and horizontally by dragging and dropping the columns. The user can choose which columns to display by using the menu in the upper right corner of the table.
+
+\begin{figure}[htb]
+	\addImage{search_res.png}
+	\caption{Illustration of search results.}
+	\label{fig:des_search-results}
+\end{figure}
+
 
 \subsection{Upload}
 If the user needs to upload a file to the database it can be done through the upload tab.
-When the tab is pressed the user gets presented with a text field and a button where they can search for an existing experiment to upload to and another button for adding a new experiment. When the user presses the new experiment button, the user is presented with annotations they can choose between. If they pressed the existing experiment button, they are instead presented with annotations they can't choose between. They are also presented with buttons named Select files and Upload selected files, with which the user can choose a file via a file browser and upload them. The upload tab is illustrated in \refer{fig:des_upload-view} and the file browser is illustrated in \refer{fig:des_upload}.
+When the tab is pressed the user gets presented with a text field and a button where they can search for an existing experiment to upload to and another button for adding a new experiment. When the user presses the new experiment button, the user is presented with annotations they can choose between. Bolded annotations are {\em forced} and need to be filled in for the user to be able to upload. If they put in an experiment named and pressed the existing experiment button, they are instead presented with the annotations already belonging to that experiment, which they can't change. The user is also presented with buttons named Select files and Upload selected files, with which the user can choose a file in a file browser and then upload them. Dragging and dropping files from the file system also works. The upload tab is illustrated in \refer{fig:des_upload-view} and the file browser is illustrated in \refer{fig:des_upload}.
 \begin{figure}[htb]
-	\addImage{des_uploadexisting.png}
+	\addImage{upload_existing.png}
 	\caption{Illustration of the upload tab where the browse and upload functions are shown.}
 	\label{fig:des_upload-view}
 \end{figure}
 
 \begin{figure}[htb]
-	\addScaledImage{0.4}{des_uploadselect.png}
+	\addScaledImage{0.4}{upload_select.png}
 	\caption{Choosing a file for uploading}
 	\label{fig:des_upload}
 \end{figure}
 \FloatBarrier
 
 \subsection{Process}
-In the process tab there is a list called Files that on the left side of the tab. From this list the user can mark RAW-files and choose to create profile data. By left clicking on the files they will be marked. If the user left clicks once again on the same file it will be unmarked. If the user then presses the Create profile data button which is visable in the middle of the tab see \refer{fig:des_process-view}, all the files that are marked will now be processed to profile data. This list of files will be empty unless the user has chosen to process selected RAW-files from the workspace tab. If that is the case then those selected RAW-files will then be visable in the list of files in the process tab. When the user has selected some RAW files the user has the option to change conversion parameters that is above the create profile data button as illustrated in \refer{fig:des_process-view}. These parameters has pre-set values. The conversion parameters are Flags, Genome release files, Window size,Smooth type,Step position,Step size,Print mean and Print zeros. If the user has selected some RAW-files and pressed the Create profile button, then if all went well and the server could convert the files a message "The server has converted: filename" will print in Convert Files for each file that was converted to profile data. If for some reason the server couldn't create profile data for any RAW-file another message "WARNING - The server couldn't convert: filename" will print in Convert Files that is visible in the middle bottom of the process tab see \refer{fig:des_process-view}.
+In the process tab there is a list called Files that on the left side of the tab. These files are chosen from the Workspace for process, see \ref{sec:des_workspace}. From this list the user can mark RAW-files and choose to create profile data. By left clicking on the files they will be marked. If the user left clicks once again on the same file it will be unmarked. For each file there exists only one specie, the list shows the user which specie a file has. When a file is marked the \emph{Genome release files} dropdown list will be filled with all genome versions that exists for that specie. If the user then enters the create profile data tab and presses the Create profile data button which is visible in the middle of the tab see \refer{fig:des_process-view}, all the files that are marked will now be processed to profile data. This list of files will be empty unless the user has chosen to process selected RAW-files from the workspace tab. If that is the case then those selected RAW-files will then be visible in the list of files in the process tab. When the user has selected some RAW files the user has the option to change conversion parameters that is above the create profile data button as illustrated in \refer{fig:des_process-view}. These parameters has pre-set values and allowed intervals. The conversion parameters are Flags, Genome release files, Window size,Smooth type,Step position,Step size,Print mean and Print zeros. If the user has selected some RAW-files and pressed the Create profile button, then if all went well and the server could convert the files a message "The server has converted: filename" will print in Convert Files for each file that was converted to profile data. If for some reason the server couldn't create profile data for any RAW-file another message "WARNING - The server couldn't convert: filename" will print in Convert Files that is visible in the middle bottom of the process tab see \refer{fig:des_process-view}. If the user wants to perform a ratio calculation while processing a file the user has the option to press the \emph{Use ratio calculation} button. When pressed a popup window appears and the user gets the option to write in several ratio calculation parameters. These parameters consists of eight parameters \emph{Ratio calculation, Input reads cut-off, Chromosomes, Window size ,Smooth type, Step position, print mean} and  \emph{print zeros}.
 
 
 \begin{figure}[htb]
-	\addImage{des_processtab.png}
+	\addImage{process_tab.png}
 	\caption{Screenshot of the process tab in the program.}
 	\label{fig:des_process-view}
 \end{figure}
+
+\begin{figure}[htb]
+	\addScaledImage{0.4}{ratio_calc_popup.png}
+	\caption{The popup window for ratio calculation parameters.}
+	\label{fig:des_process-view-ratio}
+\end{figure}
+
 \FloatBarrier
 
-\subsection{Workspace}
-The Workspace View is the heart of the application for the user. Chosen files from the search is collected in this view, and the user can choose different options to process and analyze the data. 
-For now, the only function here that is implemented is Download, but more will come.
+\subsection{Workspace} \label{sec:des_workspace}
+The workspace Tab is a tab where a user can save experiments and their files, and choose different options for action. Results from various searches can be saved here, and the contents of the workspace is saved as long as the program is running. Files and/or experiments is chosen by clicking them, multiple files by using either Shift-click or Ctrl-click. By choosing an experiment, all of the containing files are selected. Items can be deleted from the Workspace by pressing \emph{Remove}.
 \subsubsection{Download}
-The user can make the choice to download. If the user presses the DOWNLOAD SELECTED button seen in \refer{fig:des_workspace-view}, then a pop up menu will present it self to the user as illustrated in \refer{fig:des_download-view}. In the pop up menu, the files that were selected in the workspace will be shown, then the user can choose a file format for each of the files (this functionality is not yet implemented). If the download button is pressed, the user gets to choose a directory where the files will be saved. When a directory has been chosen, the files get downloaded and saved in folders named after the experiments in which they belong. 
+The user can make the choice to download files to their local computer. If the user presses the \emph{Download} button seen in \refer{fig:des_workspace-view}, then a pop up menu will present it self to the user as illustrated in \refer{fig:des_download-view}. In the pop up menu, the files that were selected in the workspace will be shown, then the user can choose a file format for each of the files (this functionality is not yet implemented). If the download button is pressed, the user gets to choose a directory where the files will be saved. When a directory has been chosen, the files get downloaded and progress bars are shown to view the progress.
 \begin{figure}[htb]
-	\addImage{des_workspaceselect.png}
+	\addImage{workspace_select.png}
 	\caption{Screenshot of the workspace tab in the program.}
 	\label{fig:des_workspace-view}
 \end{figure}
 \begin{figure}[htb]
-	\addImage{des_download.png}
+	\addScaledImage{0.6}{download.png}
 	\caption{The download files pop up menu}
 	\label{fig:des_download-view}
 \end{figure}
 \FloatBarrier
 
 \subsection{Administration}
-The system administration tools for the desktop client is available under the Administration tab. When a user selects the add button in the sidepanel a new popup windows appears. It is possible to write the name of the new annotation and name of new categories in this popup, as well as check a forced annotation box. See \refer{fig:adm_desktopgui}.
+The system administration tools for the desktop client is available under the Administration tab. There is two different tools, Annotation and Genome files. In the annotations tab, when a user selects the add button in the sidepanel a new popup windows appears. It is possible to write the name of the new annotation and name of new categories in this popup, as well as check a forced annotation box. If the user want to have free text as a value, the user clicks on the free text tab on the popup. See \refer{fig:adm_desktopgui}.
 \begin{figure}[h!]
-\addImage{des_addAnnotation.png}
+\addImage{addAnnotation.png}
 \caption{The add new annotation popup.}
 \label{fig:adm_desktopgui}
+\end{figure}
+To remove an annotation, the user selects an annotation from the table in the center of the view, and clicks on the remove button on the right side. The user then has to confirm this deletion. After that the annotation is completly removed and cannot be brought back to life \refer{fig:adm_desktopRemoveAnnotation}. If an annotation cannot be removed, a error message will be displayed.
+\begin{figure}[h!]
+\addImage{removeAnnotation.png}
+\caption{The remove annotation popup.}
+\label{fig:adm_desktopRemoveAnnotation}
+\end{figure}
+
+The genome files tab show in \refer{fig:adm_desktopGenomeTab} contains information about which genome release files are stored at the server. The list can be filtered by clicking the header of the table and a single row can be selected (NYI) clicking "Delete selected file" will open a popup menu. (NYI) The side panel contains a few text fields that needs to be filled when uploading a new genome release.
+
+\begin{figure}[h!]
+\addImage{genomizerAdminGenomes.png}
+\caption{The genome files view.}
+\label{fig:adm_desktopGenomeTab}
 \end{figure}
