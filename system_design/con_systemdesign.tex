@@ -12,88 +12,129 @@ As can be seen in \refer{con_UML} the RawToProfileConverter extends the Executor
 \subsubsection{Executor}
 The executor class, as seen in figure 5.2.1, is a abstract superclass that is an entity that is able to execute various commands. The executor class is able to run programs as well as scripts and shell commands. In order to run scripts and programs the executor has a parse-function that parses a string into separate arguments. \newline
 
-\begin{itemize} 
-\item executeCommand
-\begin{itemize}
-\item ExecuteCommand is a private method that is being used by the executeScript, executeProgram and executeShellCommand methods. Firstly a processBuilder is used to ensure a safe way to execute commands, after that the working directory is set and the error output stream is merged with the standard output.
-After a command has been started the output stream is then recorded with the help of a scanner object and a stringBuilder object. When the command has been executed the recorded string is sent back to the caller.
-\end{itemize}
-\item executeScript/executeProgram
-\begin{itemize}
-\item Both methods are very similar. The difference is that executeScript has a static filepath added to the second argument. This is because the first argument when calling a script is the script language instead of the actual script file. E.g. shell resources/script.sh.
-\end{itemize}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\term{executeCommand} &
+\term{ExecuteCommand} is a private method that is being used by the
+\term{executeScript}, \term{executeProgram} and \term{executeShellCommand}
+methods. Firstly a \term{processBuilder} is used to ensure a safe way to execute commands, after that the working directory is set and the error output stream is merged with the standard output.
+After a command has been started the output stream is then recorded with the
+help of a scanner object and a \term{stringBuilder} object. When the command has been executed the recorded string is sent back to the caller.
+\\ \hline
+\term{executeScript/executeProgram} &
+Both methods are very similar. The difference is that \term{executeScript} has a
+static filepath added to the second argument. This is because the first argument
+when calling a script is the script language instead of the actual script file.
+E.g. \texttt{shell resources/script.sh}.
+\\ \hline
+\term{parse} &
+In order to receive a command string and to be able to run it a parse method had
+to be implemented. This is because the \term{processbuilder} takes a
+\term{String array} as argument. With the help of a tool called
+\term{stringTokenizer} the string is parsed into a \term{String array} separated on spaces.
+\\ \hline
 
-\item parse
-\begin{itemize}
-\item In order to receive a command string and to be able to run it a parse method had to be implemented. This is because the processbuilder takes a String array as argument. With the help of a tool called stringTokenizer the string is parsed into a String array separated on spaces.
-\end{itemize}
- 
-\item cleanUp
-\begin{itemize}
-\item Recieves a stack with folder names as strings and removes the folders files and then the folder itself. Used to clean up after a process have been executed and generated files during the procedure. 
-\end{itemize}
-
-\end{itemize}
+\term{cleanUp} &
+Recieves a \term{stack} with folder names as strings and removes the folders files and then the folder itself. Used to clean up after a process have been executed and generated files during the procedure. 
+\\ \hline
+\end{tabularx}
 
 \subsubsection{RawToProfileConverter}
-\emph{The purpose of the RawToProfileConverter class is that it will be used by processHandler and do all the different steps needed to make a raw file. These steps are done by using the program Bowtie and by running two different scripts which are executed with methods that is extended from Executor class. When ratio calculation is supposed to be done, there are 2 more steps that will be done.}
+The purpose of the \term{RawToProfileConverter} class is that it will be used by
+\term{processHandler} and do all the different steps needed to make a \term{raw
+file}. These steps are done by using the program \term{Bowtie} and by running
+two different scripts which are executed with methods that is extended from
+\term{Executor} class. When ratio calculation is supposed to be done, there are 2 more steps that will be done.
 
 \subsubsection{Description of Procedure}
 
 \begin{enumerate}
-\item Bowtie: Creates unsorted .sam files. Puts the files in a created temp folder with the name result\_X, where X is the number of the current thread. All other folders created is placed inside the folder from where the files used where placed.
-\item sortSam: Sorts the .sam files and creates new .sam files. Puts the files in a folder called sorted.
-\item Run Gff: Processes the sorted sam file and creates a gff3 file. Puts the files in a folder called reads\_gff.
-\item Allnucsgr: Processes the gff3 file and creates a sgr file. Puts the files in a folder called allnucs\_sgr.
-\item Smooth: smooths the file and creates a large .sgr file, converted the customers perl script by following the algorithm they  sent us. This makes it more efficient. Puts the files in a folder called smoothing.
-\item Step: Takes the smoothed .sgr file and takes samples from it with a specified intervall and creates a smaller .sgr file. If stepping is done the files will be placed in the same folder as the previus step.
-\item Ratio Calculation: Creates four .sgr files with the perl script provided by the customer. Puts the files in a folder called ratios.
-\item Smooth: After the ratio calculation, smoothing needs to be done again with different parameters. Puts the files in a folder called smoothing
+\item \term{Bowtie}: Creates unsorted \term{.sam} files. Puts the files in a
+created temp folder with the name \filePath{result\_X}, where X is the number of the current thread. All other folders created is placed inside the folder from where the files used where placed.
+
+\item \term{sortSam}: Sorts the \term{.sam} files and creates new \term{.sam}
+files. Puts the files in a folder called \filePath{sorted}.
+
+\item \term{Run Gff}: Processes the sorted \term{sam} file and creates a
+\term{gff3} file. Puts the files in a folder called \filePath{reads\_gff}.
+
+\item \term{Allnucsgr}: Processes the \term{gff3} file and creates a \term{sgr}
+file. Puts the files in a folder called \filePath{allnucs\_sgr}.
+
+\item \term{Smooth}: smooths the file and creates a large \term{.sgr} file,
+converted the customers \term{perl script} by following the algorithm they  sent
+us. This makes it more efficient. Puts the files in a folder called
+\filePath{smoothing}.
+
+\item \term{Step}: Takes the smoothed \term{.sgr} file and takes samples from it
+with a specified intervall and creates a smaller \term{.sgr} file. If stepping is done the files will be placed in the same folder as the previus step.
+
+\item \term{Ratio Calculation}: Creates four \term{.sgr} files with the
+\term{perl script}
+provided by the customer. Puts the files in a folder called \filePath{ratios}.
+
+\item \term{Smooth}: After the ratio calculation, smoothing needs to be done
+again with different parameters. Puts the files in a folder called
+\filePath{smoothing}
 \end{enumerate}
 
 
-\begin{itemize} 
-\item procedure
-\begin{itemize}
-\item Executes all the steps to make a profile .sgr file from a raw file, it checks the directory it gets as filepath so that it contains the raw files and that there arent more then two files, but atleast one file to process. Does the procedure to create a profile data and move it to the folder thats specified as a parameter.
-\end{itemize}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\term{procedure} &
+Executes all the steps to make a profile .sgr file from a raw file, it checks the directory it gets as filepath so that it contains the raw files and that there arent more then two files, but atleast one file to process. Does the procedure to create a profile data and move it to the folder thats specified as a parameter.
+\\ \hline
 
-\item runBowtie
-\begin{itemize}
-\item Constructs a long string with the full execution line for bowtie. It then uses this string as a parameter when calling the method parse. 
+\term{runBowtie} &
+Constructs a long string with the full execution line for bowtie. It then uses this string as a parameter when calling the method parse. 
 The resulting array is then used when calling executeProgram and the result of the execution is returned.
-\end{itemize}
-\item sortSamFile
+\\ \hline
+
+\term{sortSamFile} &
+
+Constructs a string with the full execution line to sort a sam file. It then calls parse to create a string array from the full string and sends it as parameter to executeShellCommand which runs a shell command to sort the file and creates a new .sam file that is sorted with the specified parameters.
+
 \begin{itemize}
-\item Constructs a string with the full execution line to sort a sam file. It then calls parse to create a string array from the full string and sends it as parameter to executeShellCommand which runs a shell command to sort the file and creates a new .sam file that is sorted with the specified parameters.
-\item makeConversionDirectories
-\begin{itemize}
-\item Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
+\item \term{makeConversionDirectories}
+    \begin{itemize}
+        \item Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
+    \end{itemize}
+\item \term{initiateConversionStrings}
+    \begin{itemize}
+        \item Defines all strings needed for the directories created when procedure is doing its work. 
+        Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
+    \end{itemize}
 \end{itemize}
-\item initiateConversionStrings
-\begin{itemize}
-\item Defines all strings needed for the directories created when procedure is doing its work. Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
-\end{itemize}
-\end{itemize}
-\end{itemize}
+\\ \hline
+\end{tabularx}
 
 \paragraph{Bowtie}
 Bowtie takes two raw .fastq files and converts them to .sam which is the first step to make the desired .sgr files. After a .sam file is converted the linux command sort is run  on both files which creates two sorted .sam files, it is sorted by chromosome and position as needed to use the scripts.
 \paragraph{Used scripts}
 The different functions of the perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
 
-\begin{itemize}
-\item[samtoreadgffv1] Makes a .gff file from a sorted .sam that have reads at each nucleotide positions. No input parameters except the directory of the sorted sam files are needed. The resulting files are put in the new folder \textit{reads\_gff}.
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
 
-\item[readsgfftoallnucsgrv1]  Counts the reads from the previous script result. For each chromosome reads are read and each nucleotide position is incrementally counted with one when a read cover it. No parameters are needed for this script except the file path of the gff files. The resulting files are put in the new folder \textit{allnucs\_sgr}.
+\term{samtoreadgffv1}  & 
+Makes a .gff file from a sorted .sam that have reads at each nucleotide positions. No input parameters except the directory of the sorted sam files are needed. The resulting files are put in the new folder \textit{reads\_gff}.
+\\ \hline
 
-\item[ratio\_calculation\_v2] Does ratio calculation on the processed files. For each position in the IP sample with at least one mapped read, a ratio of IP-input(on a log2 scale) is calculated. If the read count in the input is below the read -count mean (in the input sample) is calculated it is set to the mean( or double mean (2 x mean) as user specifief). If the input mean is below four the minimum input value is set to four (to avoid division by nearzero values; calculated as -(read lenght x approximate total number of reads in input samples(9 millin))/ genome size (for Drosophila melanogaster 120381546)). A random number between -0.5 and 0,5 is added to the read counts before log2 conversion to make them discrete for statistical analysis. All ratio values are then adjusted by reducing each value by median of the ratios. This linear adjustment is carried out in order to compensate for differences in IP and input sequencing depth. Also, to visualize ratios distribution, ratios are plotted by binning ratios with user specified numbers of bins and minimum and maximum ratio values(200bins,minimum ratio value: -10, maximum ratio value:10). Ratio values are printed in sgr format.
- 
+\term{readsgfftoallnucsgrv1} &  
+Counts the reads from the previous script result.
+For each chromosome reads are read and each nucleotide position is incrementally
+counted with one when a read cover it. No parameters are needed for this script
+except the file path of the gff files. The resulting files are put in the new
+folder \filePath{allnucs\_sgr}.
+\\ \hline
 
-\end{itemize}
+\term{ratio\_calculation\_v2} & 
+Does ratio calculation on the processed files. For each position in the IP sample with at least one mapped read, a ratio of IP-input(on a log2 scale) is calculated. If the read count in the input is below the read -count mean (in the input sample) is calculated it is set to the mean( or double mean (2 x mean) as user specifief). If the input mean is below four the minimum input value is set to four (to avoid division by nearzero values; calculated as -(read lenght x approximate total number of reads in input samples(9 millin))/ genome size (for Drosophila melanogaster 120381546)). A random number between -0.5 and 0,5 is added to the read counts before log2 conversion to make them discrete for statistical analysis. All ratio values are then adjusted by reducing each value by median of the ratios. This linear adjustment is carried out in order to compensate for differences in IP and input sequencing depth. Also, to visualize ratios distribution, ratios are plotted by binning ratios with user specified numbers of bins and minimum and maximum ratio values(200bins,minimum ratio value: -10, maximum ratio value:10). Ratio values are printed in sgr format.
+\\ \hline
+\end{tabularx}
 
 \subsubsection{Smoothing and stepping}
-\emph{The scripts that was provided was inefective and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.}
+The scripts that was provided was inefective and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.
 
 \paragraph{SmoothingAndStep}
 Smoothing means that we either calculate the trimmed mean value or median value for a position and a number of proceeding positions. The number of positions we should smooth on is called the Window Size. We also need to have a cutoff number, which tells us that if we have fewer rows to calculate on than the cutoff number we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
