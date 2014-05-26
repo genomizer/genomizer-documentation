@@ -1,14 +1,15 @@
 In order to use the program import the project from github into Xcode from the following repository:
 \url{https://github.com/genomizer/genomizer-iOS.git} 
 
+To compile and run the program press \click{cmd+R}. A simulator will start and the login screen will be shown as seen in \refer{fig:ios_login}  below. A user gets logged in when accepted credentials are entered in the ‘username’ and ‘password’ fields and the ‘Sign in’ button is pressed. If incorrect credentials is entered, a popup message is shown, informing the user that the username or password is incorrect.
+
 \begin{figure}[ht]
 \addScaledImage{0.2}{ios_login.png}
 \caption{The login screen.}
 \label{fig:ios_login}
 \end{figure}
 \FloatBarrier
-
-To compile and run the program press \click{cmd+R}. A simulator will start and the login screen will be shown as seen in \refer{fig:ios_login}  below. A user gets logged in when accepted credentials are entered in the \term{username} and \term{password} fields and the \click{Sign in} button is pressed. If incorrect credentials is entered, a popup message is shown, informing the user that the username or password is incorrect.
+After logging in, the user is presented with a search view as seen in \refer{fig:ios_search}. The bottom menu bar is used to navigate between the Search-, Selected files- and More-view according to Apples current GUI standards for iOS 7. In the current state, the More-menu only contains a logout button which is used to log out.The Selected files-menu contains a list sorted on file type of files selected by the user. In the search view, the user can search the database for results matching any number of search criteria. To be able to modify the search quickly, a toggle button is available in the rightmost edge of each search field which enables or disables each search field. For example, if the user wants to search for files matching a certain Experiment ID, the user clicks on ‘Experiment ID’, enters the ID and clicks on the toggle button. 
 
 \begin{figure}[ht]
 \addScaledImage{0.2}{ios_search.png}
@@ -16,10 +17,7 @@ To compile and run the program press \click{cmd+R}. A simulator will start and t
 \label{fig:ios_search}
 \end{figure}
 \FloatBarrier
-
-
-After logging in, the user is presented with a search view as seen in \refer{fig:ios_search}. The bottom menu bar is used to navigate between the Search-, Selected files- and More-view according to Apples current GUI standards for iOS 7. In the current state, the More-menu only contains a logout button which is used to log out.The Selected files-menu contains a list sorted on file type of files selected by the user. In the search view, the user can search the database for results matching any number of search criteria. To be able to modify the search quickly, a toggle button is available in the rightmost edge of each search field which enables or disables each search field. For example, if the user wants to search for files matching a certain Experiment ID, the user clicks on \click{Experiment ID}, enters the ID and clicks on the toggle button. 
-
+In top rightmost corner there is a button for opening a advanced search view as seen in \refer{fig:ios_advSearch}. Here the user is supposed to enter a search query in ’pubmed-style-format’. If a user fills in fields in the regular search view and then opens the advanced search view, the fields in filled at the regular search view will apper as a query in the advanced search view.
 
 \begin{figure}[ht]
 \addScaledImage{0.2}{ios_advSearch.png}
@@ -27,8 +25,7 @@ After logging in, the user is presented with a search view as seen in \refer{fig
 \label{fig:ios_advSearch}
 \end{figure}
 \FloatBarrier
-
-In top rightmost corner there is a button for opening a advanced search view as seen in \refer{fig:ios_advSearch}. Here the user is supposed to enter a search query in ’pubmed-style-format’. If a user fills in fields in the regular search view and then opens the advanced search view, the fields in filled at the regular search view will apper as a query in the advanced search view.
+When the search button has been pressed, the user is presented with all matching experiments in the Search Results view shown in \refer{fig:ios_searchResult}. To manage which annotations that shoud be shown for every experiment the user can press the edit button in the top rightmost corner.
 
 \begin{figure}[ht]
 \addScaledImage{0.2}{ios_searchResults.png}
@@ -36,8 +33,7 @@ In top rightmost corner there is a button for opening a advanced search view as 
 \label{fig:ios_searchResult}
 \end{figure}
 \FloatBarrier
-
-When the search button has been pressed, the user is presented with all matching experiments in the Search Results view shown in \refer{fig:ios_searchResult}. To manage which annotations that shoud be shown for every experiment the user can press the edit button in the top rightmost corner.
+When the edit button is pressed the select annotations screen as seen in \refer{fig:ios_selectAnnotations} is shown. Here the user can choose which annotations should be shown in the search results screen. 
 
 \begin{figure}[htb]
 \addScaledImage{0.2}{ios_selectAnnotations.png}
@@ -45,26 +41,30 @@ When the search button has been pressed, the user is presented with all matching
 \label{fig:ios_selectAnnotations}
 \end{figure}
 \FloatBarrier
-
-When the edit button is pressed the select annotations screen as seen in \refer{fig:ios_selectAnnotations} is shown. Here the user can choose which annotations should be shown in the search results screen. 
+To see which files are associated with each experiment, the user can click on the experiment. Then the files view is shown as seen in \refer{fig:ios_files1}. Here the user can see all files conneted to the chosen experiment, sorted by type, and select files that the user want to move to the selected files view. If the user selects files and presses the ‘convert files’-button a the user is shown the Select task view shown in \refer{fig:ios_selectTask}. More about that screen later. The user can also get information about a file by simply clicking the blue information sign close to the filename. The file information is shown in a popup window as shown in \refer{fig:ios_fileInfo}.
 
 \begin{figure}[htb]
-\addScaledImage{0.2}{ios_files.png}
+\addScaledImage{0.2}{ios_files1.png}
 \caption{The files screen.}
-\label{fig:ios_files}
+\label{fig:ios_files1}
 \end{figure}
-\FloatBarrier
-
-To see which files are associated with each experiment, the user can click on the experiment. Then the files view is shown as seen in \refer{fig:ios_files}. Here the user can see all files conneted to the chosen experiment, sorted by type, and select files that the user want to move to the selected files view. If the user selects files and presses the \click{convert files} button a convert request is sent to the server. 
 
 \begin{figure}[htb]
-\addScaledImage{0.2}{ios_selectedFiles.png}
-\caption{The selected files screen.}
-\label{fig:ios_selectedFiles}
+\addScaledImage{0.2}{ios_fileInfo.png}
+\caption{Screen showing popup information about a file.}
+\label{fig:ios_fileInfo}
 \end{figure}
 \FloatBarrier
+If the user had added files to the selected files and then presses the ‘Selected Files’-button in the menu the selected files screen is presented as seen in \refer{fig:ios_selectedFiles1}. If the user wishes to se more information about a file it is possible to simple click the blue information sign close to the filename and then file information is shown in a similar way as in the files view seen in \refer{fig:ios_fileInfo}. In the selected files screen the user can either select files and then press the trashcan icon in the top rightmost corner to delete the currently selected files or select a task to perform on the currently selected files by pressing the ‘Select task to perform’-button. 
 
-If the user had added files to the selected files and then presses the \click{Selected Files} button in the menu the selected files screen is presented as seen in \refer{fig:ios_selectedFiles}. Here the user can either select files and then press the trashcan icon in the top rightmost corner to delete the currently selected files or select a task to perform on the currently selected files by pressing the \click{Select task to perform} button. 
+\begin{figure}[htb]
+\addScaledImage{0.2}{ios_selectedFiles1.png}
+\caption{The selected files screen.}
+\label{fig:ios_selectedFiles1}
+\end{figure}
+
+\FloatBarrier
+If the ‘Select task to perform’-button is pressed the user is presented with the Select task screen is shown as seen in \refer{fig:ios_selectTask}. Here the user can see the different tasks that the user has the possibility to perform on the selected files by clicking the task that the user wants to go forward with. 
 
 \begin{figure}[htb]
 \addScaledImage{0.2}{ios_selectTask.png}
@@ -72,6 +72,44 @@ If the user had added files to the selected files and then presses the \click{Se
 \label{fig:ios_selectTask}
 \end{figure}
 \FloatBarrier
+If the user chooses ‘Convert to profile’ the Convert Raw to Profile screen is shown as seen in \refer{fig:ios_convertRawToProfile}. In this view the user can enter parameters used in the converting process. Every step of converting (i.e. SAM to GFF or GFF to SGR) requires that all previous fields are filled in since every convert step uses the previous steps in the process. When the user has entered the desired parameters a convert request is sent by clicking the ‘Convert’-button. 
 
-If the \click{Select task to perform} button is pressed the user is presented with the Select task screen is shown as seen in \refer{fig:ios_selectTask}. Here the user can see the different tasks that has the possibility to perform on the selected files by first chosing task and then pressing the ‘Execute’-button.  
+\begin{figure}[htb]
+\addScaledImage{0.2}{ios_convertRawToProfile.png}
+\caption{The Convert Raw to Profile screen.}
+\label{fig:ios_convertRawToProfile}
+\end{figure}
+\FloatBarrier
+
+If the user has chosen to use ‘Convert to profile with ratio calculations’ the Convert Raw to Profile with Ratio calcutations screen is shown as seen in \refer{fig:ios_convertRawToProfileWithRatio}. This screen has all fields that the standard Convert Raw to Profile screen and two additional fields that takes parameters for ratio calculations. 
+
+\begin{figure}[htb]
+\addScaledImage{0.2}{ios_convertRawToProfileWithRatio.png}
+\caption{The Convert Raw to Profile screen.}
+\label{fig:ios_convertRawToProfileWithRatio}
+\end{figure}
+\FloatBarrier
+
+If the ‘More’-button in the menu is clicked the More screen is shown as in \refer{fig:ios_more}. Here the user has the possibilities to simply log out from the server or choose the see the current processes running on the server. If the ‘Processing Status’-button is pressed the user is presented with the Processes screen as shown in \refer{fig:ios_processes}. 
+
+\begin{figure}[htb]
+\addScaledImage{0.2}{ios_more.png}
+\caption{The more screen.}
+\label{fig:ios_more}
+\end{figure}
+
+\begin{figure}[htb]
+\addScaledImage{0.2}{ios_processes.png}
+\caption{The processes screen.}
+\label{fig:ios_processes}
+\end{figure}
+\FloatBarrier
+
+
+
+
+
+
+
+
 
