@@ -1,5 +1,4 @@
 \label{chap:com_systemdesign}
-\subsection{Communication}
 The server is based around HTTP, where clients send requests on a non-persistent connection and the server responds to these requests. All communication is initiated by the client and the server has no way of contacting clients except when responding to a request.
 
 Clients send requests to the communication part of the server first. When a request is recognized by the server, the request is parsed and a command is created depending on the request. The command then communicates with the other parts of the server in order to extract or input relevant data.
