@@ -2,17 +2,10 @@ This section describes the architectural design of the Android application. All 
 \subsubsection{Class descriptions}\label{sec:and_classdescription}
 This section focuses on the functionality of each class.
 
-The connection between the classes labeled model can be seen in \refer{fig:and_umlmodel} while the other classes can be seen in \refer{fig:and_uml}
-	\begin{figure}[h]
-		\addImage{and_UML_model_sprint2.jpg}
-		\caption{Android UML of model}
-		\label{fig:and_umlmodel}
-	\end{figure}  
-\begin{figure}[h]	\addImageVertical{and_UML_android_sprint2.jpg}
-		\caption{Android UML without model}
-		\label{fig:and_uml}
-	\end{figure}  
-    \FloatBarrier
+The connection between the classes labeled model can be seen in
+\refer{fig:and_umlmodel} while the other classes can be seen in
+\refer{fig:and_uml}. Both are located in \refer{chap:and_appendix}.
+
 \subsubsection{Android activities} 
 Activities are used as frames to display various fragments. For anything to be displayed it must be a part of a fragment that is a part of an activity. Each activity used in this application extends the class SingleFragmentActivity which has the purpose of creating a new fragment of an arbitrary type that displays a single fragment. This means that in its current state the application contains one fragment per activity and each fragment described in this section is coupled with an activity
 \subsubsection{Fragment Class: LoginFragment}
