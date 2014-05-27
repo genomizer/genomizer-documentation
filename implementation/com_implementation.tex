@@ -12,7 +12,9 @@ The communication between a client and the server is authorized by a user-unique
 \end{figure}
 The token created when a user sends a login is stored in the server memory until the user sends a logout request.
 \subsubsection{Removing inactive tokens}
-The server has a function which removes inactive tokens after a set limit of time. This is done because a client sometimes skips sending a logout request when shutting down the client program. The InactiveUuidsRemover class is used to achieve this goal. In a thread it sleeps for one hour before checking all clients. If any client hasn't sent a request for 24 hours, the client token is removed from the server memory.
+The server has a function which removes inactive tokens after a set limit of time. This is done because a client sometimes skips sending a logout request when shutting down the client program. The InactiveUuidsRemover class is used to achieve this goal. In a thread it sleeps for one hour before checking all clients. If any client hasn't sent a request for 24 hours, the client token is removed from the server memory. 
+\\
+This feature may be turned of with the flag "-nri".
 \subsubsection{Command object}
 The command object represent a specific command. It is created from the RESTful header and/or the JSON body sent from the client. The JSON API provides methods for automatic parsing of the JSON body into an object. The fields in the command object created must match the attributes in the JSON body. This match is case sensitive
 \paragraph{Execute}

@@ -42,9 +42,20 @@ The server uses default settigs if less then two arguments are passed, which cur
 This is the argument that tells the server what kind of database to use.
 The argument currenlty has tre choices: global, test and nothing. 
 
+
 \begin{itemize}
 \item If "global" is selected, the server currently uses a database that is located at Umeå universitet in lecture hall MC333.
 \item If "test" is the choice, the server used a database that has been given by support at Umeå universitet. 
+\end{itemize}
+
+\paragraph{Flags}
+A set of flags may be set when starting the server from terminal. These are:
+\begin{itemize}
+\item -p [port] \\This flag sets the listening port. 
+\item -d [database] \\Here you may chose which database to be used. Can be either "global" or "test".
+\item -debug \\If this flag is set the server will print output to terminal for every request and response. Also other outputs are written aswell.
+\item -f [file] \\This flag may be used instead of -d [database]. If this flag is set the database settings will be read from file. This flag is ignored if -d is used.
+\item -nri \\If this flag is set the server will not remove inactive users which are logged in on the server.
 \end{itemize}
 
 \paragraph{port}
