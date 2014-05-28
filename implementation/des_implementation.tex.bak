@@ -1,0 +1,7 @@
+Since a lot of the code which has been implemented so far is related to GUI and connection, it has been hard to write tests for everything.
+The GUI and it's functionality is tested throughout the developing process by the developing team, but the customer is also an important key in this.
+The client will be involved from an early point since the Scrum developing methodology relies in delivering functionality as early as possible. Because of this, it is given that the system will have bugs, and the client will be of assistance in finding these bugs and reporting them. Before each release of implemented functionality however, they are tested with the Test Cases enclosed to each User Story.
+
+A small number of JUnit tests has been done concerning communication with server api.
+
+\FloatBarrier
