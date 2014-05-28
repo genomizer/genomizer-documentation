@@ -113,7 +113,26 @@
     \end{minipage}
 & 
     \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+    \end{minipage}
+\\ 
+\end{tabular}
+}
+
+
+\newcommand{\addThreeImages}[3]{
+\begin{tabular}{l l}
+    \begin{minipage}{0.3\textwidth}
         \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+    \end{minipage}
+& 
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+    \end{minipage}
+&
+    
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
     \end{minipage}
 \\ 
 \end{tabular}
@@ -126,7 +145,7 @@
     \end{minipage}
 & 
     \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
     \end{minipage}
 \\ 
     \begin{minipage}{0.4\textwidth}
