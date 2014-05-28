@@ -1,5 +1,6 @@
 The desktop client is constructed around the model-view-controller pattern. It relies heavily on action events being performed in the graphical interface which is then handled by the controller. The model is the part handling the communication and the storing of important information such as ongoing downloads and the user token (used for communication authorization).
 
+\subsubsection{Overview of the desktop client}
 The UML diagram in \refer{fig:des_uml-overview} describes the whole desktop client.
 \begin{figure}[htb!]
 	\addImage{des_UMLdesktop.jpg}
@@ -55,11 +56,14 @@ The system administration is developed separately from the rest of the GUI, and 
 All communication between the server and the system administration tab follows a line of steps. See \refer{fig:adm_com_view} below.
 
 \begin{enumerate}
+
   \item An event is triggered by the user clicking something.
   \item The listener for the active tab receives the event and sorts out which type it is, and calls the appropriate method in the \textit{SysadminController} class.
   \item The \textit{SysadminController} has the connection to the \textit{Model}, and calls the associated method there.
   \item The \textit{Model} creates the corresponding request for the server, and then creates a new connection.
   \item The \textit{Connection} receives the request from the \textit{Model} and sends the request to the server.
+
+
 \end{enumerate}
 
 If the event triggers a request for data, the \textit{Model} will use a parser to parse the data before sending it back to the GUI to present it to the user.

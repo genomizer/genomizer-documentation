@@ -98,6 +98,17 @@ The resulting array is then used when calling executeProgram and the result of t
 
 Constructs a string with the full execution line to sort a sam file. It then calls parse to create a string array from the full string and sends it as parameter to executeShellCommand which runs a shell command to sort the file and creates a new .sam file that is sorted with the specified parameters.
 
+\begin{itemize}
+\item \term{makeConversionDirectories}
+    \begin{itemize}
+        \item Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
+    \end{itemize}
+\item \term{initiateConversionStrings}
+    \begin{itemize}
+        \item Defines all strings needed for the directories created when procedure is doing its work. 
+        Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
+    \end{itemize}
+\end{itemize}
 \\ \hline
 \term{getRawFiles} &
 
@@ -155,7 +166,7 @@ Makes a initial check so that all the incoming parameters to the procedure metho
 \end{tabularx}
 
 \paragraph{BowTie}
-BowTie takes two raw \term{.fastq} files and converts them to \term{.sam} which is the first step to make the desired \term{.sgr} files. After a .sam file is converted the Linux command sort is run  on both files which creates two sorted \term{.sam} files, it is sorted by chromosome and position as needed to use the scripts.
+BowTie takes two raw \term{.fastq} files and converts them to \term{.sam} which is the first step to make the desired \term{.sgr} files. After a \term{.sam} file is converted the Linux command sort is run  on both files which creates two sorted \term{.sam} files, it is sorted by chromosome and position as needed to use the scripts.
 \paragraph{Used scripts}
 The different functions of the Perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
 
@@ -180,10 +191,10 @@ Does ratio calculation on the processed files, for each position in the IP sampl
 \end{tabularx}
 
 \subsubsection{Smoothing and stepping}
-The scripts that was provided was ineffective and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.
+The scripts that was provided was inefficient and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.
 
 \paragraph{SmoothingAndStep}
-Smoothing means that we either calculate the trimmed mean value or median value for a position and it's surrounding positions. The number of positions we should smooth on is called the Window Size. For example: if we have a window size of 10 we will calculate the smoothed value on position X by calculating on the interval (X-4, X+5). We also need to have a "minimum positions to smooth" number, which tells us that if we have fewer rows to calculate on than the "minimum positions to smooth" we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
+Smoothing means that we either calculate the trimmed mean value or median value for a position and its surrounding positions. The number of positions we should smooth on is called the Window Size. For example: if we have a window size of 10 we will calculate the smoothed value on position X by calculating on the interval (X-4, X+5). We also need to have a "minimum positions to smooth" number, which tells us that if we have fewer rows to calculate on than the "minimum positions to smooth" we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
 
 The class SmoothingAndStep have one public method and many private ones. The public one called smoothing starts by validating the inparameters and setting up file readers/writers. It then reads as many rows from the file as the window size into an array. It then checks which values that have been read that should be smoothed, after this is done the initiation of the program is complete. From then on the program removes the first row from the array and add one new row to the array and then smooth the middle one in the array. This continues until the end of chromosome or end of file both of which are handled in a similar way. When the program approaches end of chromosome it smoothes as many values as it can until there's less values to smooth than "minimum positions to smooth". It then empties the array and refills it in the same way as it did in the beginning of the file.
 
@@ -303,6 +314,7 @@ The main logic in the ProcessHandler is a switch-case that switches on the name 
 \item[outFile] A string with a path to the directory where the result .sgr files should be put.
 
 \end{itemize}
+
 
 
 
