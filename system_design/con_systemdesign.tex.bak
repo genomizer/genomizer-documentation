@@ -2,11 +2,11 @@ The \appName\ service needs to be able to convert, process and visualize data. T
 
 \begin{figure}[h]
 \addImage{UMLsprint2.jpeg}
-\caption{Class-diagram for Process}
+\caption{Classdiagram for Process}
 \label{con_UML}
 \end{figure}
 	
-As can be seen in \refer{con_UML} the RawToProfileConverter extends the Executor class. When a call comes to the ProcessHandler it then starts the correct conversion which right now only can be a raw to profile conversion.
+As can be seen in \refer{con_UML} the RawToProfileConverter extends the Executor class. When a call comes to the ProcessHandler it then starts the correct convertion which right now only can be a raw to profile conversion.
 
 
 \subsubsection{Executor}
@@ -23,7 +23,7 @@ help of a scanner object and a \term{stringBuilder} object. When the command has
 \\ \hline
 \term{executeScript/executeProgram} &
 Both methods are very similar. The difference is that \term{executeScript} has a
-static file-path added to the second argument. This is because the first argument
+static filepath added to the second argument. This is because the first argument
 when calling a script is the script language instead of the actual script file.
 E.g. \texttt{shell resources/script.sh}.
 \\ \hline
@@ -35,21 +35,21 @@ to be implemented. This is because the \term{processbuilder} takes a
 \\ \hline
 
 \term{cleanUp} &
-Receives a \term{stack} with folder names as strings and removes the folders files and then the folder itself. Used to clean up after a process have been executed and generated files during the procedure. 
+Recieves a \term{stack} with folder names as strings and removes the folders files and then the folder itself. Used to clean up after a process have been executed and generated files during the procedure. 
 \\ \hline
 \end{tabularx}
 
 \subsubsection{RawToProfileConverter}
 The purpose of the \term{RawToProfileConverter} class is that it will be used by
-\term{ProcessHandler} and do all the different steps needed to make a \term{raw
-file}. These steps are done by using the program \term{BowTie} and by running
+\term{processHandler} and do all the different steps needed to make a \term{raw
+file}. These steps are done by using the program \term{Bowtie} and by running
 two different scripts which are executed with methods that is extended from
 \term{Executor} class. When ratio calculation is supposed to be done, there are 2 more steps that will be done.
 
 \subsubsection{Description of Procedure}
 
 \begin{enumerate}
-\item \term{BowTie}: Creates unsorted \term{.sam} files. Puts the files in a
+\item \term{Bowtie}: Creates unsorted \term{.sam} files. Puts the files in a
 created temp folder with the name \filePath{result\_X}, where X is the number of the current thread. All other folders created is placed inside the folder from where the files used where placed.
 
 \item \term{sortSam}: Sorts the \term{.sam} files and creates new \term{.sam}
@@ -62,15 +62,15 @@ files. Puts the files in a folder called \filePath{sorted}.
 file. Puts the files in a folder called \filePath{allnucs\_sgr}.
 
 \item \term{Smooth}: smooths the file and creates a large \term{.sgr} file,
-converted the customers \term{Perl script} by following the algorithm they  sent
+converted the customers \term{perl script} by following the algorithm they  sent
 us. This makes it more efficient. Puts the files in a folder called
 \filePath{smoothing}.
 
 \item \term{Step}: Takes the smoothed \term{.sgr} file and takes samples from it
-with a specified interval and creates a smaller \term{.sgr} file. If stepping is done the files will be placed in the same folder as the previous step.
+with a specified intervall and creates a smaller \term{.sgr} file. If stepping is done the files will be placed in the same folder as the previus step.
 
 \item \term{Ratio Calculation}: Creates four \term{.sgr} files with the
-\term{Perl script}
+\term{perl script}
 provided by the customer. Puts the files in a folder called \filePath{ratios}.
 
 \item \term{Smooth}: After the ratio calculation, smoothing needs to be done
@@ -82,11 +82,11 @@ again with different parameters. Puts the files in a folder called
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 \term{procedure} &
-Executes all the steps to make a profile .sgr file from a raw file, it checks the directory it gets as file-path so that it contains the raw files and that there are not more then two files, but at least one file to process. Does the procedure to create a profile data and move it to the folder thats specified as a parameter.
+Executes all the steps to make a profile .sgr file from a raw file, it checks the directory it gets as filepath so that it contains the raw files and that there arent more then two files, but atleast one file to process. Does the procedure to create a profile data and move it to the folder thats specified as a parameter.
 \\ \hline
 
 \term{runBowtie} &
-Constructs a long string with the full execution line for BowTie. It then uses this string as a parameter when calling the method parse. 
+Constructs a long string with the full execution line for bowtie. It then uses this string as a parameter when calling the method parse. 
 The resulting array is then used when calling executeProgram and the result of the execution is returned.
 \\ \hline
 
@@ -108,10 +108,10 @@ Constructs a string with the full execution line to sort a sam file. It then cal
 \\ \hline
 \end{tabularx}
 
-\paragraph{BowTie}
-BowTie takes two raw .fastq files and converts them to .sam which is the first step to make the desired .sgr files. After a .sam file is converted the Linux command sort is run  on both files which creates two sorted .sam files, it is sorted by chromosome and position as needed to use the scripts.
+\paragraph{Bowtie}
+Bowtie takes two raw .fastq files and converts them to .sam which is the first step to make the desired .sgr files. After a .sam file is converted the linux command sort is run  on both files which creates two sorted .sam files, it is sorted by chromosome and position as needed to use the scripts.
 \paragraph{Used scripts}
-The different functions of the Perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
+The different functions of the perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
 
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
@@ -129,12 +129,12 @@ folder \filePath{allnucs\_sgr}.
 \\ \hline
 
 \term{ratio\_calculation\_v2} & 
-Does ratio calculation on the processed files. For each position in the IP sample with at least one mapped read, a ratio of IP-input(on a log2 scale) is calculated. If the read count in the input is below the read -count mean (in the input sample) is calculated it is set to the mean( or double mean (2 x mean) as user specified). If the input mean is below four the minimum input value is set to four (to avoid division by near zero values; calculated as -(read length x approximate total number of reads in input samples(9 millin))/ genome size (for Drosophila melanogaster 120381546)). A random number between -0.5 and 0,5 is added to the read counts before log2 conversion to make them discrete for statistical analysis. All ratio values are then adjusted by reducing each value by median of the ratios. This linear adjustment is carried out in order to compensate for differences in IP and input sequencing depth. Also, to visualize ratios distribution, ratios are plotted by binning ratios with user specified numbers of bins and minimum and maximum ratio values(200bins,minimum ratio value: -10, maximum ratio value:10). Ratio values are printed in sgr format.
+Does ratio calculation on the processed files. For each position in the IP sample with at least one mapped read, a ratio of IP-input(on a log2 scale) is calculated. If the read count in the input is below the read -count mean (in the input sample) is calculated it is set to the mean( or double mean (2 x mean) as user specifief). If the input mean is below four the minimum input value is set to four (to avoid division by nearzero values; calculated as -(read lenght x approximate total number of reads in input samples(9 millin))/ genome size (for Drosophila melanogaster 120381546)). A random number between -0.5 and 0,5 is added to the read counts before log2 conversion to make them discrete for statistical analysis. All ratio values are then adjusted by reducing each value by median of the ratios. This linear adjustment is carried out in order to compensate for differences in IP and input sequencing depth. Also, to visualize ratios distribution, ratios are plotted by binning ratios with user specified numbers of bins and minimum and maximum ratio values(200bins,minimum ratio value: -10, maximum ratio value:10). Ratio values are printed in sgr format.
 \\ \hline
 \end{tabularx}
 
 \subsubsection{Smoothing and stepping}
-The scripts that was provided was ineffective and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the Java server.
+The scripts that was provided was inefective and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.
 
 \paragraph{SmoothingAndStep}
 Smoothing means that we either calculate the trimmed mean value or median value for a position and a number of proceeding positions. The number of positions we should smooth on is called the Window Size. We also need to have a cutoff number, which tells us that if we have fewer rows to calculate on than the cutoff number we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
@@ -145,16 +145,16 @@ The class SmoothingAndStep have one public method and many private ones. The pub
 
 
 \paragraph{Tuple}
-The tuple class is a data carrier that represents one row of data in an sgr file. It consists of the fields chromosome, position, signal and newSignal. Where signal is the signal-value read from the in-file and newSignal is the updated value after smoothing have been done.
-The methods in this class are all standard getters/setters except for the method toString which formats a row for the out-file and rounds of decimal numbers. The constructor is also of interest since it parse a row on tabs. Thus the fields in an in-file needs to be separated by tabs and not spaces.
+The tuple class is a data carrier that represents one row of data in an sgr file. It consists of the fields chromosome, position, signal and newSignal. Where signal is the signal-value read from the infile and newSignal is the updated value after smoothing have been done.
+The methods in this class are all standard getters/setters except for the method toString which formats a row for the outfile and rounds of decimal numbers. The constructor is also of interest since it parse a row on tabs. Thus the fields in an infile needs to be seperated by tabs and not spaces.
 
 
 \subsubsection{ProcessHandler}
-The ProcessHandler is a controller that handles process-calls. Depending on the name of the process it handles it differently. It acts as an interface between the process-module and the rest of the program. 
+The processhandler is a controller that handles process-calls. Depending on the name of the process it handles it differently. It acts as an interface between the process-module and the rest of the program. 
 
 
 \subsubsection{Logic \& interface}
-The main logic in the ProcessHandler is a switch-case that switches on the name of the process being called. For example if the name of the process is “RawToProfile” is sets up a RawToProfile-converter and calls it. 
+The main logic in the processHandler is a switch-case that switches on the name of the process being called. For example if the name of the process is “RawToProfile” is sets up a RawToProfile-converter and calls it. 
 
 \begin{itemize}
 \item[processName] A string that tells the handler which kind of process should be executed.

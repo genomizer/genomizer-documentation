@@ -1,4 +1,4 @@
-This section describes the architectural design of the Android application. All coded functionality is described in this section, including the functionality that is not fully integrated. 
+This section describes the architectural design of the Android application. All coded functionality is described in this section, inluding the functionality that is not fully integrated. 
 \subsubsection{Class descriptions}\label{sec:and_classdescription}
 This section focuses on the functionality of each class.
 
@@ -33,7 +33,7 @@ This fragment handles the displaying of search results to the user. The fragment
 \\ \hline
 
 \term{FileListFragment}\label{sec:and_class_filelist} &
-This fragment displays all files associated with a chosen experiment. The fragment is using three ListViews, one for each data type. The data types that are available are: raw, region and profile. Each list element will show the name of the data file and have a check-box connected to it. A custom ArrayAdapter is used to handle check-box interaction and displaying information to the user. There is option to select multiple files in the view by checking several check-boxes. The file names displayed are the ones currently available from the server for each available experiment.
+This fragment displays all files associated with a chosen experiment. The fragment is using three ListViews, one for each data type. The data types that are available are: raw, region and profile. Each list element will show the name of the data file and have a checkbox connected to it. A custom ArrayAdapter is used to handle checkbox interaction and displaying information to the user. There is option to select multiple files in the view by checking several checkboxes. The file names displayed are the ones currently available from the server for each available experiment.
 \\ \hline
 
 \term{SearchSettingsFragment} &
@@ -44,11 +44,11 @@ This fragment handles settings for which annotations are displayed in the search
 \begin{tabularx}{\textwidth}{|l|X|}
 \multicolumn{2}{l}{\strongTerm{Model Classes}} \\ \hline
 \term{ComHandler}\label{sec:and_class_comhandler} &
-Is a static object that is called by the fragments in the view to gain access to the models different functions. At this stage the ComHandler can be used to login, search for files and to request raw to profile conversions, although the latter is not yet integrated. The URL that ComHandler tries to communicate with can be changed with a public method which makes it possible to implement a way for the user to change server.
+Is a static object that is called by the fragments in the view to gain access to the models different functions. At this stage the ComHandler can be used to login, search for files and to request raw to profile conversions, although the latter is not yet integrated. The url that ComHandler tries to communicate with can be changed with a public method which makes it possible to implement a way for the user to change server.
 \\ \hline
 
 \term{Communicator} &
-Intended to manage the sending and receiving of messages between the server and the application using a HTTP connection.
+Intended to manage the sending and receiving of messages between the server and the application using a http connection.
 \\ \hline
 
 \term{MsgFactory} &
@@ -60,7 +60,7 @@ Interprets JSON messages and returns appropriate information.
 \\ \hline
 
 \term{GenomizerHttpPackage} &
-Used to store the body and status code of an HTTP-response.
+Used to store the body and status code of an http-response.
 \\ \hline
 
 \term{GeneFile} &

@@ -1,7 +1,7 @@
 The Apache HTTP Server or commonly referred to as Apache, is the web server application that was decided to be used to upload and download files to and from the server. Apache is open source, that makes it free to use. Apache is a good choice because it is developed and maintained by an open community, that way all new versions and updates will become available for free. And since it is open source, the source code is open for everyone to read. Apache can be used on both Unix/Windows systems, but in this case it is currently running on a Unix machine but can still communicate with all platforms. 
 
 \subsubsection{Server user manual}
-The Apache server is controlled from the terminal, this can be done either directly from the server or remotely from another computer using SSH. To use SSH from another computer, write
+The Apache server is controlled from the terminal, this can be done either directly from the server or remotely from another computer using ssh. To use ssh from another computer, write
 
 \texttt{ssh username@address.to.server}
 

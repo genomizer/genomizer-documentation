@@ -83,7 +83,7 @@ This class then retrieves the \textit{GenomeReleaseTableModel} to be able to use
 \paragraph{Building the Tabs}
 \label{Building the Tabs}
 
-Each tab or tool-set in the administration view is build in Sysadmin-Tab, as a panel and then added to the JTabbedPane. Every tab is in a own package, like annotation view and genomereleaseview. Each tab is build in smaller methods in each View and listeners to buttons and such are added in the SysController class.
+Each tab or toolset in the administration view is build in SysadminTab, as a panel and then added to the JTabbedPane. Every tab is in a own package, like annotation view and genomereleaseview. Each tab is build in smaller methods in each View and listeners to buttons and such are added in the SysController class.
 
 
 \subsubsection{Flow of the system}

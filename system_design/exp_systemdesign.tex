@@ -1,14 +1,14 @@
 In the current version of the program the desktop clients and the web clients connect to different software on the server for communication. The desktop clients connect directly to the server communication software whilst the web clients connect via the apache server and all non web requests that is to be calculated using the server software is automatically redirected by apache.
-The redirect is setup in a way that all GET requests that have a /api/ tag in the url will be redirected.
+The redirect is setup in a way that all GET requests that have a /api/ tag in the URL will be redirected.
 The exception for the desktop clients are file up- and downloads which are done through the apache server.
 
 The download and upload will work for all platforms although this will not be implemented for Android and iOS clients due to hardware limitations.
 
 If the client wishes to upload a file to the server they first send a request to the server-system which authenticates the client and stores the annotations for the file. The download and upload path is validated by the script so no invalid paths are sent to the scripts.
 
-For uploading and downloading files via Apache, two php-scripts will be used. If the user wants to upload a file, the php-script will try to store the file in a location on the server provided by the client. A script for downloading files from the GEO database and saving them on the server is currently being  implemented, although not yet fully tested nor implemented by the clients. See \refer{chap:servercmd} for examples when using the php-scripts.
+For uploading and downloading files via Apache, two PHP-scripts will be used. If the user wants to upload a file, the PHP-script will try to store the file in a location on the server provided by the client. A script for downloading files from the GEO database and saving them on the server is currently being  implemented, although not yet fully tested nor implemented by the clients. See \refer{chap:servercmd} for examples when using the PHP-scripts.
 
-In \refer{fig:exp_flow} below it is shown how the systems handles the different types of messages the client-systems can send. The big square represents the Apache server with different parts of the Apache server within. The iOS and Android clients can only send some requests to some computation to the server-system. Meanwhile the desktop client can send requests to the server-system and upload and download to/from the web server. The web client sends all its messages to the Apache server and if it is a request to do some sort of computation it will be redirected to the server-system and if it is a download, upload or webpage message it will be sent to the web server.
+In \refer{fig:exp_flow} below it is shown how the systems handles the different types of messages the client-systems can send. The big square represents the Apache server with different parts of the Apache server within. The iOS and Android clients can only send some requests to some computation to the server-system. Meanwhile the desktop client can send requests to the server-system and upload and download to/from the web server. The web client sends all its messages to the Apache server and if it is a request to do some sort of computation it will be redirected to the server-system and if it is a download, upload or web-page message it will be sent to the web server.
 
 \begin{figure}[hbt]
 \addImage{exp_flow}
@@ -16,7 +16,7 @@ In \refer{fig:exp_flow} below it is shown how the systems handles the different 
 \label{fig:exp_flow}
 \end{figure}
 
-The current version of the system utilizes a file structure to organize html- and file requests on the server, the structure is illustrated in \refer{fig:exp_filestructure}. The Web-root folder houses the php-script for uploading and downloading files. The app folder contains the \appName\ web page. In the data folder are all the expirements folders, which contains folders for the different data-types.
+The current version of the system utilizes a file structure to organize HTML- and file requests on the server, the structure is illustrated in \refer{fig:exp_filestructure}. The Web-root folder houses the PHP-script for uploading and downloading files. The app folder contains the \appName\ web page. In the data folder are all the experiments folders, which contains folders for the different data-types.
 
 \begin{figure}[hbt]
 \addImage{exp_filestructure}
