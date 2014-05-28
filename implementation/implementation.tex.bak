@@ -22,7 +22,7 @@ Here follows the implementation and test for the different clients.
 \FloatBarrier
 
 \section{Server}
-This section contains information about implementation and tests for the different parts of the server.
+This section cointains information about implementation and tests for the different parts of the server.
 
 \subsection{Communication}
 \input{implementation/com_implementation}
@@ -35,7 +35,7 @@ This section contains information about implementation and tests for the differe
 %\subsection{System administration}
 %\FloatBarrier
 
-%\subsection{File transfer}
+%\subsection{Filetransfer}
 %\FloatBarrier
 
 \subsection{Database}

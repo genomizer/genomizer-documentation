@@ -24,7 +24,7 @@ The execute method returns a response object which is sent up to the doorman whi
 \paragraph{Validation}
 Every command must implement a validate method. This method is run after the command is created but before the command is executed.\\
 \\
-The validate method returns a boolean. If the command is correctly parsed with correct data the method returns true, otherwise false. This validate is used to prevent unnecessary communication.
+The validate method returns a boolean. If the command is correctly parsed with correct data the method returns true, otherwise false. This validate is used to prevent unneccesary communication.
 \subsubsection{Heavy work thread}
 For heavy work a queue, namely work handler is used. The command which is put in this queue is ProcessCommand. All the command objects which is in the queue, are executed one at a time  in the order first in first out. This execution is done by another thread with the only responsibility to do this kind of heavy work. The thread constantly checks whether the queue is empty or not and if there is a command object in the queue the thread polls the command object and executes it.\\
 \\
