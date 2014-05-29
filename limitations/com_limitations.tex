@@ -14,7 +14,7 @@ The server can only run one process at a time. This is because only one thread i
 \\
 A solution to this would be to create some kind of thread pool with a user defined amount of threads. Either the size of the threadpool could be decided when starting the server, or in some way be decided by an administrator during runtime to give ability to increase or decrease the number of possible simultaneously running processes.
 \subsubsection{No way to stop a running process}
-When a process is started there is no way to end the processing without restarting the server. So if the user would start a process with wrong parameters or on the wrong files, there is no way to just stop that and start a new process.\\
+When a process is started there is no way to end the processing without shutting down the server. So if the user would start a process with wrong parameters or on the wrong files, there is no way to just stop that and start a new process.\\
 \\
 A solution to this would be to keep track of all working threads and give a user the possibility to terminate these through the user interface. When a thread is terminated a cleanup should be executed to remove created folders and files.
 \subsubsection{No way to see if a process is stuck}
