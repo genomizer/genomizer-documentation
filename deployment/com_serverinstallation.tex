@@ -1,6 +1,6 @@
 To start the server, java needs to be installed on the computer and a runnable JAR file needs to be created.
 This requires the following things to be installed on the computer: Git, Ant and Java JDK. 
-Refer to Appendix \ref{chap:exp_app_ubuntu} and \ref{chap:exp_app_debian} on how to install these.
+Refer to Appendix \ref{chap:exp_app_debian} on how to install these.
 If these are already installed refer to \ref{sec:com_download} on how to download the source files.
 \subsection{Downloading the source code}
 \label{sec:com_download}
@@ -38,46 +38,5 @@ In order for this to work, the runnable JAR file must have been created.
 \item Choose a computer that should host the server.
 \item Make a runnable JAR file of all the code and place it inside a folder on the computer.
 \item Start the terminal and navigate to the folder containing the runnable JAR file.
-\item In the terminal, type: \emph{java -jar filename.jar}. Server configuration is explained in more detail in \ref{sec:com_ArgExpl}.\\ 
+\item In the terminal, type: \emph{java -jar filename.jar}. Server configuration is explained in more detail in Appendix \ref{sec:com_ArgExpl}.\\ 
 \end{enumerate}
-
-\subsection{Configuration}
-\label{sec:com_ArgExpl}
-The server requires some parameters to be set before it can be used. They should be stored in a file called
-``settings.cfg'' in the same directory as the server JAR. It can look like this:
-\begin{verbatim}
-databaseuser     = admin
-databasepassword = password
-databasehost     = localhost:6000
-databasename     = genomizer
-publicaddress    = http://www.genomizer.se
-apacheport       = 8000
-downloadurl      = /download.php?path=
-uploadurl        = /upload.php?path=
-genomizerport    = 7000
-passwordsalt     = genomizer
-passwordhash     = 2fd26e9aea528153a865257a723f6d4859e9f6c4a6775c003ae91297f619c6e8
-\end{verbatim}
-Each setting should be on a separate line, and be separated by a '=' sign. The number of spaces does not matter,
-neither does case on the setting names. Case does matter on the setting values however, password and PassWord are
-different things.
-
-\subsubsection{Database settings}
-The settings databaseuser, databasepassword, databasehost and databasename are all connected to the SQL database,
-and should be the same as the ones used when setting up the database. 
-\subsubsection{Addresses and ports}
-The settings publicaddress, apacheport, downloadurl, uploadurl and genomizerport decide how the clients
-connect to the genomizer system. Downloadurl, uploadurl and genomizerport should generally stay the same as the example file,
-but publicaddress and apacheport depends on how the server is set up.
-\subsubsection{Password handling}
-Passwordsalt is used to increase the security of passwords. It is combined with the password and hashed so that the password does not need to be
-saved in plaintext. Passwordhash is the result of this operation, and this parameter should not be set manually. There is a script called
-changepwd.sh, which when called with the password as parameter will update settings.cfg with the result.
-\subsubsection{Flags}
-In addition to the settings file, a set of flags may be set when starting the server from terminal. These are:
-\begin{itemize}
-\item -p [port] \\This flag sets the listening port. 
-\item -debug \\If this flag is set the server will print output to terminal for every request and response. Also other outputs are written aswell.
-\item -f [file] \\Uses file to read settings instead of the default file settings.cfg.
-\item -nri \\If this flag is set the server will not remove inactive users which are logged in on the server.
-\end{itemize}
