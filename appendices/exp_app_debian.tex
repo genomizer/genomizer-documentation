@@ -8,8 +8,9 @@ Be sure to have a fully functioning Internet connection to the server machine wi
 The server machine must run a Linux or UNIX operating system. In order to follow this guide in the easiest manner 
 possible, use any Debian distribution. 
 
+
 \subsection{Installation of Debian}
-Since Debian is more stable for running server applications than other Linux distributions such as Ubuntu and Linux Mint, it is recommended to use any Debian release other those.
+Since Debian is more stable for running server applications than other Linux distributions such as Ubuntu and Linux Mint, it is recommended to use any Debian release.
 When partitioning the hard drives make sure to assign at least 2 times the amount of ram as swap section, in our case we used 250GB. This is done to prevent the server from crashing in case the ram RAM is filled out.
 
 The swap is a hardware RAM section that the system can dump to if the RAM is filled.
@@ -80,7 +81,7 @@ export LC_ALL=en_GB.UTF-8
 sudo /usr/sbin/locale-gen 
 sudo dpkg-reconfigure locales
 \end{verbatim}
-Reboot the server.
+Then reboot the server.
 
 \subsection{Java}
 Firstly Java must be installed on the system to be able to run some of the server software. The software requires Java 1.7 or later. 
@@ -318,7 +319,7 @@ sudo service postgresql restart
 \end{verbatim}
 
 
-\subsubsection{Clone database}\label{sec:exp_app_clone}
+\subsubsection{Clone database}
 If there exists an old database that is wished to be migrated to the new database the following command can be executed on the machine where the database is presently:
 
 \begin{verbatim}
@@ -331,9 +332,8 @@ dbPort > backupfile.sql
 \item Change \verb+dbPort+ to the PostgreSQL port which it is setup to listen to
 \item Change \verb+backupfile.sql+ to whatever filename is wished
 \end{enumerate}
-This creates a backup SQL file. 
 
-\subsubsection{Inject a databse clone}\label{sec:exp_app_inject}
+This creates a backup SQL file. Now transfer the file to the server where the database is migrated to and type in the following command to inject it into the database:
 
 \begin{verbatim}
 psql -U dbUserName -h localhost -d dbName -p dbPort < backupfile.sql
@@ -383,7 +383,7 @@ Then install the required software by typing in the following command in the ter
 sudo apt-get install phppgadmin
 \end{verbatim}
 
-Then this needs to be included by the Apache2 software, which is done by editing the file:
+This needs to be included by the Apache2 software, which is done by editing the file:
 
 \begin{verbatim}
 sudo nano /etc/apache2/apache2.conf
@@ -396,7 +396,7 @@ and adding this line to the end of the file after the other includes:
 Include /etc/apache2/conf.d/phppgadmin
 \end{verbatim}
 
-Then we need to change the access settings to the phppgadmin via the Apache software, this is done by changing the file:
+When that is done, we need to change the access settings to the phppgadmin via the Apache software, this is done by changing the file:
 
 \begin{verbatim}
 sudo nano /etc/apache2/conf.d/phppgadmin
@@ -432,7 +432,7 @@ Now the Apache server needs to be told where to look for the users. This is done
 \begin{verbatim}
 sudo nano /etc/apache2/sites-enabled/000-default.conf
 \end{verbatim}
-Then add this to the end of the file:
+Add this to the end of the file:
 
 \begin{verbatim}
 <Directory "/usr/share/phppgadmin">
@@ -469,12 +469,4 @@ Restart Apache and phppgadmin by typing:
 \begin{verbatim}
 sudo service apache2 restart
 sudo service phppgadmin restart
-\end{verbatim}
-
-\subsection{\appName\ password}\label{sec:exp_ubuntu_genompw}
-When the server is up and running, the password to the server must be changed. This is done by using the \emph{changepwd.sh} script found at root level. The changepwd takes one argument, the new password. 
-
-Example usage: 
-\begin{verbatim}
-./changepwd myNewPassword
 \end{verbatim}

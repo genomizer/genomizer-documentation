@@ -11,7 +11,7 @@ possible, use any Ubuntu distribution.
 \subsection{Java}
 Firstly Java must be installed on the system to be able to run some of the server software. The software requires Java 1.7 or later. 
 
-To install Java JDK open a terminal and enter following command:
+To install Java JDK open a terminal and enter the following command:
 \begin{verbatim}
 sudo apt-get install openjdk-7-jdk
 \end{verbatim}
@@ -34,7 +34,7 @@ sudo apt-get install apache2 apache2-utils
 \end{verbatim}
 After installation of Apache2 some configuration is needed. Follow the steps below.
 \subsubsection{Configure listening port}\label{ports}
-The default port for listening is set to 80. If this seeks to be changed follow the steps below.
+The default port for listening is set to 80. To change port follow the steps below.
 \begin{enumerate}
 	\item Open file with following command: \begin{verbatim}sudo nano /etc/apache2/ports.conf\end{verbatim}
     \item Edit the value in the file after ``Listen'' to the preferred port to use for listening. 
@@ -400,12 +400,4 @@ Restart Apache and phppgadmin by typing:
 \begin{verbatim}
 sudo service apache2 restart
 sudo service phppgadmin restart
-\end{verbatim}
-
-\subsection{\appName\ password}\label{sec:exp_genompw}
-When the server is up and running, the password to the server must be changed. This is done by using the \emph{changepwd.sh} script found at root level. The changepwd takes one argument, the new password. 
-
-Example usage: 
-\begin{verbatim}
-./changepwd myNewPassword
 \end{verbatim}
