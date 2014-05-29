@@ -1,5 +1,5 @@
-\subsection{Implementation}
-In the following section, details regarding the implementation of the iOS application is described using sequence diagrams and.
+The iOS application has been implemented using Objective C. The decision to use Objective C was made largely because it is the standard language used for writing iOS applications. 
+In the following sections, details regarding the implementation of the iOS application are described using sequence diagrams. The section ends with a description of testing strategies.
 
 \subsubsection{Login}
 
@@ -43,16 +43,18 @@ From the \term{FileView}, the user can select any number of files to add to a li
 
 \subsubsection{Convert Request}
 
-As seen in \refer{fig:ios_sequence_convert_request}, convert requests are sent with very few steps. 
+As seen in \refer{fig:ios_sequence_convert_request2}, convert requests are sent with very few steps. 
 
 \begin{figure}[ht]
 \addScaledImageVertical{0.5}{ios_send_convert_sequence_diagram.png}
 \caption{Send convert request.}
-\label{fig:ios_sequence_convert_request}
+\label{fig:ios_sequence_convert_request2}
 \end{figure}
-
 \FloatBarrier
 
-\subsection{Testing}
+\subsubsection{Segue Control}
+A segue control package has been implemented to avoid multiple segues being executed at the same time. When a segue is started, a static \term{BOOL} is set to \term{YES} in XYZSegueController. When the segue is finished, the \term{BOOL} in XYZSegueController is set to \term{NO}. This means that the \term{BOOL} is \term{YES} when a segue is being executed, and \term{NO} otherwise. Every time a segue is going to be executed, it first checks the value of the \term{BOOL}. If a segue is already being executed, i.e. the \term{BOOL} is \term{YES}, the new segue is aborted.
 
-Unit-tests have been written for nearly all underlying classes. This includes JSONBuilder, ExperimentDescriber, Experiment, ExperimentFile, and ExperimentParser. These tests check all required functionality, including but not limited to proper object creation. Exactly what all the tests do is explained in the test names and comments. ServerConnection has not been tested, this is work for the next sprint. User interface functionality and integration testing has been done using exploratory methods. These tests have not been recorded or documented.
+\subsubsection{Testing}
+
+Unit-tests have been written for nearly all underlying classes. This includes JSONBuilder, XYZExperimentDescriber, XYZExperiment, XYZExperimentFile, and XYZExperimentParser. These tests check all required functionality, including but not limited to proper object creation. Exactly what all the tests do is explained in the test names and comments. ServerConnection has not been unit tested, largely because all communication with the server is done asynchronously which adds a layer of complexity to the tests. User interface functionality and integration testing has been performed using exploratory methods. These tests have not been recorded or documented.

@@ -1,3 +1,6 @@
+The following sections describes the system design of the iOS application. The overall system design is discussed followed by a more detailed description of how the segues are controlled.
+
+\subsection{Overall system design}
 The  system is designed using the model-view-controller principle. Each view is controlled by its own controller class which reacts to user input and triggers changes in the model and updates the view accordingly.
 \begin{figure}[ht]
 \addScaledImage{0.3}{ios_UML2.png}
@@ -6,34 +9,80 @@ The  system is designed using the model-view-controller principle. Each view is 
 \end{figure}
 \FloatBarrier
 
-\refer{fig:ios_UML} gives an overall image of the system design. Some classes are excluded from the figure to make it easier to get an overall idea of the system. The controller classes of the table cells and some other controller classes are not illustrated in the diagram. The non-excluded classes are:
+\refer{fig:ios_UML} gives an overall image of the system design. Some classes are excluded from the figure to make it easier to get an overall idea of the system. The controller classes of the table cells and some other controller classes are not illustrated in the diagram. The non-excluded classes are described in \refer{table:ios_class_table}.
 
-\begin{itemize}
+\begin{table}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{Class} & \textbf{Description} 
+\\ \hline
+\term{Annotation} &
+Contains information about an annotation and can format the annotation name to an aesthetically more pleasing representation.
+\\ \hline
 
-\item \term{Annotation} - contains information about an annotation and can format the annotation name to an aesthetically more pleasing representation.
+\term{DataFileViewController} &
+Controls the File view presented in \refer{fig:ios_files1}. It contains a reference to an experiment and lists all its files in a table.
+\\ \hline
 
-\item \term{DataFileViewController} - controlls the File view presented in \refer{fig:ios_files1}. It contains a reference to an experiment and lists all its files in a table.
+\term{Experiment} &
+A class that contains information related to an experiment, as well as its files.
+\\ \hline
 
-\item \term{Experiment} - is a class that contains information related to an experiment, as well as its files.
+\term{ExperimentDescriber} &
+Generates a description of an experiment using annotations chosen by the user.
+\\ \hline
 
-\item \term{ExperimentDescriber} - generates a description of an experiment using annotations chosen by the user.
+\term{ExperimentFile} &
+Contains information about a file from an experiment.
+\\ \hline
 
-\item \term{ExperimentFile} - contains information about a file from an experiment.
+\term{ExperimentParser} &
+Parses experiment information from a NSDictionary to an Experiment object.
+\\ \hline
 
-\item \term{ExperimentParser} - parses experiment information from a NSDictionary to an Experiment object.
+\term{FileContainer} &
+Contains files and sorts them by file type.
+\\ \hline
 
-\item \term{FileContainer} - contains files and sorts them by file type.
+\term{JSONBuilder} &
+Creates different JSON requests.
+\\ \hline
 
-\item \term{JSONBuilder} - creates diffrent JSON requests.
+\term{PubMedBuilder} &
+Creates a pubmed search query.
+\\ \hline
 
-\item \term{PubMedBuilder} - creates a pubmed search query.
+\term{SearchResultController} &
+A controller class for the Search Results view presented in  \refer{fig:ios_searchResult}. It configures the table which holds the information about the experiments a search resulted in. An ExperimentDescriber is used to generate a description of the experiments.
+\\ \hline
 
-\item \term{SearchResultController} - is a controller class for the Search Results view presented in  \refer{fig:ios_searchResult}. It configures the table which holds the information about the experiments a search resulted in. An ExperimentDescriber is used to generate a description of the experiments.
+\term{SearchViewController} &
+A controller class for the Search view, see \refer{fig:ios_search}. It checks which annotation-fields are used and tells the JSONBuilder to generate a corresponding search query when the user presses the search button. The class also contains a advanced search to allow the user to manually enter search queries. 
+\\ \hline
 
-\item \term{SearchViewController} - is a controller class for the Search view, see \refer{fig:ios_search}. It checks which annotation-fields are used and tells the JSONBuilder to generate a corresponding search query when the user presses the search button. The class also contains a advanced search to allow the user to manually enter search queries. 
+\term{SelectedFilesController} &
+A controller class for the The selected files view shown in \refer{fig:ios_selectedFiles1}. The selected files controller contains information about files saved by the user.
+\\ \hline
 
-\item \term{SelectedFilesController} - is a controller class for the The selected files view shown in \refer{fig:ios_selectedFiles1}. The selected files controller contains information about files saved by the user.
+\term{ServerConnection} &
+Sends and receives JSON objects to and from the server.
+\\ \hline
+\end{tabularx}
 
-\item \term{ServerConnection} - sends and receives JSON objects to and from the server.
+\caption{Description of some classes of the system.}
+\label{table:ios_class_table}
+\end{table}
+\FloatBarrier
 
-\end{itemize}
+A more detailed description of these classes, and the ones not mentioned here, can be found in comments in the source code.
+
+\subsection{Segue controll}
+To avoid several segues to be executed at the same time, a segue controll package has been implemented. Instead of extending UIViewController, UITableViewController, UITabBarController and UINavigationBar the corresponding XYZ class should be used instead. An overview of this design can be seen in \refer{fig:ios_UML_segue}. This figure also includes the classes XYZDataFileController and XYZSearchResultController as two examples of such implementations.
+
+\begin{figure}[ht]
+\addScaledImage{0.35}{ios_uml_segue2.png}
+\caption{UML diagram describing the segue controll.}
+\label{fig:ios_UML_segue}
+\end{figure}
+\FloatBarrier
+
