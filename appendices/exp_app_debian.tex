@@ -10,7 +10,7 @@ possible, use any Debian distribution.
 
 
 \subsection{Installation of Debian}
-Since Debian is more stable for running server applications than other Linux distributions such as Ubuntu and Linux Mint, it is recommended to use any Debian release other those.
+Since Debian is more stable for running server applications than other Linux distributions such as Ubuntu and Linux Mint, it is recommended to use any Debian release.
 When partitioning the hard drives make sure to assign at least 2 times the amount of ram as swap section, in our case we used 250GB. This is done to prevent the server from crashing in case the ram RAM is filled out.
 
 The swap is a hardware RAM section that the system can dump to if the RAM is filled.
@@ -383,7 +383,7 @@ Then install the required software by typing in the following command in the ter
 sudo apt-get install phppgadmin
 \end{verbatim}
 
-Then this needs to be included by the Apache2 software, which is done by editing the file:
+This needs to be included by the Apache2 software, which is done by editing the file:
 
 \begin{verbatim}
 sudo nano /etc/apache2/apache2.conf
@@ -396,7 +396,7 @@ and adding this line to the end of the file after the other includes:
 Include /etc/apache2/conf.d/phppgadmin
 \end{verbatim}
 
-Then we need to change the access settings to the phppgadmin via the Apache software, this is done by changing the file:
+When that is done, we need to change the access settings to the phppgadmin via the Apache software, this is done by changing the file:
 
 \begin{verbatim}
 sudo nano /etc/apache2/conf.d/phppgadmin
@@ -432,7 +432,7 @@ Now the Apache server needs to be told where to look for the users. This is done
 \begin{verbatim}
 sudo nano /etc/apache2/sites-enabled/000-default.conf
 \end{verbatim}
-Then add this to the end of the file:
+Add this to the end of the file:
 
 \begin{verbatim}
 <Directory "/usr/share/phppgadmin">
