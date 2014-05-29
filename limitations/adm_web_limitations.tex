@@ -1,0 +1,24 @@
+\subsection{Systemadministration - Web}
+\subsubsection{Uploading - does not update list automatically}
+After adding a genome release the list does not update automatically. \\
+\\
+Build functionality to render when upload is done. 
+\subsubsection{The annotation list can't be sorted}
+The annotation list should be re-ordered by clicking on table headers. \\
+\\
+Rebuild list to match design of GenomeReleaseView. We had some problems as we are using a separate list for the search-bar.
+\subsubsection{Sidebar dosen't stay vertical}
+The sidebar items goes horizontally when page width is 2480px. \\
+\\
+CSS the sidebar better. 
+\subsubsection{Code duplication in SearchResults and Experiments}
+It is possible to add one space as annotation value (and name) \\
+\\
+The server should check for such faults, otherwise some regex code should go around line 70 in NewAnnotationView
+\subsubsection{No warning when closing tab during upload.}
+If a upload is in progress, there is no warning when closing the tab and the upload is canceled directly. \\
+\\
+There are some code for this in view/Upload.js, but it's currently broken.
+\subsubsection{Moving backwards in the browser does not hide modal windows}
+When navigating to a modal window the URL is updated, and added to the browser history. When using the browser back-button the modal is not closed, but the URL is still updated. \\
+\\
