@@ -1,8 +1,8 @@
 The \appName\ service needs to be able to convert, process and visualize data. This chapter explains how this is done in the system.
 
 \begin{figure}[h]
-\addImage{UMLsprint2.jpeg}
-\caption{Class-diagram for Process}
+\addImage{UMLFinal.png}
+\caption{Class-diagram  for Process}
 \label{con_UML}
 \end{figure}
 	
@@ -15,18 +15,20 @@ The executor class, as seen in figure 5.2.1, is a abstract superclass that is an
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 \term{executeCommand} &
-\term{ExecuteCommand} is a private method that is being used by the
+
+\term{executeCommand} is a private method that is being used by the
 \term{executeScript}, \term{executeProgram} and \term{executeShellCommand}
-methods. Firstly a \term{processBuilder} is used to ensure a safe way to execute commands, after that the working directory is set and the error output stream is merged with the standard output.
-After a command has been started the output stream is then recorded with the
+methods. Firstly a \term{processBuilder} is used to ensure a safe way to execute commands, after that the working directory is set and the error output stream is merged with the standard output. After a command has been started the output stream is then recorded with the
 help of a scanner object and a \term{stringBuilder} object. When the command has been executed the recorded string is sent back to the caller.
 \\ \hline
+
 \term{executeScript/executeProgram} &
 Both methods are very similar. The difference is that \term{executeScript} has a
 static file-path added to the second argument. This is because the first argument
 when calling a script is the script language instead of the actual script file.
 E.g. \texttt{shell resources/script.sh}.
 \\ \hline
+
 \term{parse} &
 In order to receive a command string and to be able to run it a parse method had
 to be implemented. This is because the \term{processbuilder} takes a
@@ -37,6 +39,7 @@ to be implemented. This is because the \term{processbuilder} takes a
 \term{cleanUp} &
 Receives a \term{stack} with folder names as strings and removes the folders files and then the folder itself. Used to clean up after a process have been executed and generated files during the procedure. 
 \\ \hline
+
 \end{tabularx}
 
 \subsubsection{RawToProfileConverter}
@@ -47,6 +50,7 @@ two different scripts which are executed with methods that is extended from
 \term{Executor} class. When ratio calculation is supposed to be done, there are 2 more steps that will be done.
 
 \subsubsection{Description of Procedure}
+A description of the steps the procedure method does to create profile data from raw data, all steps are run in order and the user can choose at which step to stop the procedure and get a file from the last executed step.
 
 \begin{enumerate}
 \item \term{BowTie}: Creates unsorted \term{.sam} files. Puts the files in a
@@ -94,33 +98,75 @@ The resulting array is then used when calling executeProgram and the result of t
 
 Constructs a string with the full execution line to sort a sam file. It then calls parse to create a string array from the full string and sends it as parameter to executeShellCommand which runs a shell command to sort the file and creates a new .sam file that is sorted with the specified parameters.
 
-\begin{itemize}
-\item \term{makeConversionDirectories}
-    \begin{itemize}
-        \item Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
-    \end{itemize}
-\item \term{initiateConversionStrings}
-    \begin{itemize}
-        \item Defines all strings needed for the directories created when procedure is doing its work. 
-        Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
-    \end{itemize}
-\end{itemize}
 \\ \hline
+\term{getRawFiles} &
+
+Constructs a File object with the parameter inFolder that should be a directory where the .fastq files that the procedure should run on are. 
+returns an array of File objects with all the files procedure will be using.
+
+\\ \hline
+
+\term{makeConversionDirectories} &
+   
+Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
+
+\\ \hline
+
+\term{initiateConversionStrings} &
+Defines all strings needed for the directories created when procedure is doing its work. Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
+\\ \hline
+
+\term{validateParameters} &
+Validates all parameters for the steps procedure should run on. Checks whether a step should be run. If so, validates that steps parameters, returns true if everything is correct.
+\\ \hline
+
+\term{checkBowTieFile} &
+Checks that bowtie succedded to run and that the result is ok. Checks that bowtie created the file it should and that the size of the file is not zero. If everything was correct it returns true.
+\\ \hline
+
+\term{validateInFolder} &
+Perform a check on the parameter inFolder that should be a string with a path to where the files to be processed should be. If the string ends with a "/" it gets removed from the string.
+\\ \hline
+
+\term{runSmoothing} &
+When implementing the scripts to create profile from raw we realized that the smoothing script used alot of memory to run, so we decided to convert it and try to optimise it. The result was a improvement and in this method we uses the smoothing a version of the smoothing that got approved from the customers. The method sets up all parameters the way the smoothing class wants them in and fixes all the paths then we run the smoothing, The method checks whether ratio calculation have been run before smoothing or not and sets the paths and parameters accordingly.
+\\ \hline
+
+\term{isSgr} &
+Gets a string that should be a filename with the file extension and checks if the file extension is ".sgr", if so it returns true.
+\\ \hline
+
+\term{correctInFiles} &
+Takes an array of File objects and checks that it contains a correct amount of raw files to process.
+\\ \hline
+
+\term{doRatioCalculation} &
+Initiates a string using the incoming parameters and executes the the script to do Ratio calculation, uses the method executeScript to execute.
+\\ \hline
+
+\term{checkBowTieProcessors} &
+Bowtie has a parameter where the number of processors used can be specified, we want to restrict the user from being able to run bowtie on all the cores on the server cause that would slow it down. Instead we make it so that bowtie runs on all but 2 of the available cores on the system.
+\\ \hline
+
+\term{verifyInData} &
+Makes a initial check so that all the incoming parameters to the procedure method not is null. Also checks that the array string with parameters is correct size, not zero and not bigger then eight.
+\\ \hline
+
 \end{tabularx}
 
 \paragraph{BowTie}
-BowTie takes two raw .fastq files and converts them to .sam which is the first step to make the desired .sgr files. After a .sam file is converted the Linux command sort is run  on both files which creates two sorted .sam files, it is sorted by chromosome and position as needed to use the scripts.
+BowTie takes two raw \term{.fastq} files and converts them to \term{.sam} which is the first step to make the desired \term{.sgr} files. After a .sam file is converted the Linux command sort is run  on both files which creates two sorted \term{.sam} files, it is sorted by chromosome and position as needed to use the scripts.
 \paragraph{Used scripts}
 The different functions of the Perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
 
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 
-\term{samtoreadgffv1}  & 
+\term{sam\_to\_readgff\_v1}  & 
 Makes a .gff file from a sorted .sam that have reads at each nucleotide positions. No input parameters except the directory of the sorted sam files are needed. The resulting files are put in the new folder \textit{reads\_gff}.
 \\ \hline
 
-\term{readsgfftoallnucsgrv1} &  
+\term{readsgff\_to\_allnucsgr\_v1} &  
 Counts the reads from the previous script result.
 For each chromosome reads are read and each nucleotide position is incrementally
 counted with one when a read cover it. No parameters are needed for this script
@@ -129,25 +175,119 @@ folder \filePath{allnucs\_sgr}.
 \\ \hline
 
 \term{ratio\_calculation\_v2} & 
-Does ratio calculation on the processed files. For each position in the IP sample with at least one mapped read, a ratio of IP-input(on a log2 scale) is calculated. If the read count in the input is below the read -count mean (in the input sample) is calculated it is set to the mean( or double mean (2 x mean) as user specified). If the input mean is below four the minimum input value is set to four (to avoid division by near zero values; calculated as -(read length x approximate total number of reads in input samples(9 millin))/ genome size (for Drosophila melanogaster 120381546)). A random number between -0.5 and 0,5 is added to the read counts before log2 conversion to make them discrete for statistical analysis. All ratio values are then adjusted by reducing each value by median of the ratios. This linear adjustment is carried out in order to compensate for differences in IP and input sequencing depth. Also, to visualize ratios distribution, ratios are plotted by binning ratios with user specified numbers of bins and minimum and maximum ratio values(200bins,minimum ratio value: -10, maximum ratio value:10). Ratio values are printed in sgr format.
+Does ratio calculation on the processed files, for each position in the IP sample with at least one mapped read, a ratio of IP - input (on a log2 scale) is calculated. If the read count in the input is below the read count mean (in the input sample) is calculated it is set to the mean ( or double mean (2 x mean) as user specified). If the input mean is below four the minimum input value is set to four (to avoid division by near zero values. Calculated as (read length x approximate total number of reads in input samples(9 millin))/ genome size (for Drosophila melanogaster 120381546)). A random number between -0.5 and 0,5 is added to the read counts before log2 conversion to make them discrete for statistical analysis. All ratio values are then adjusted by reducing each value by median of the ratios. This linear adjustment is carried out in order to compensate for differences in IP and input sequencing depth. Also, to visualize ratios distribution, ratios are plotted by binning ratios with user specified numbers of bins and minimum and maximum ratio values (200bins,minimum ratio value: -10, maximum ratio value:10). Ratio values are printed in sgr format.
 \\ \hline
 \end{tabularx}
 
 \subsubsection{Smoothing and stepping}
-The scripts that was provided was ineffective and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the Java server.
+The scripts that was provided was ineffective and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.
 
 \paragraph{SmoothingAndStep}
-Smoothing means that we either calculate the trimmed mean value or median value for a position and a number of proceeding positions. The number of positions we should smooth on is called the Window Size. We also need to have a cutoff number, which tells us that if we have fewer rows to calculate on than the cutoff number we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
+Smoothing means that we either calculate the trimmed mean value or median value for a position and it's surrounding positions. The number of positions we should smooth on is called the Window Size. For example: if we have a window size of 10 we will calculate the smoothed value on position X by calculating on the interval (X-4, X+5). We also need to have a "minimum positions to smooth" number, which tells us that if we have fewer rows to calculate on than the "minimum positions to smooth" we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
 
-The class SmoothingAndStep have one public method and many private ones. The public one called smoothing starts by setting up file readers/writers. It then reads as many rows from the file as the window size. It then smooths one row. From then on the program removes the first row from the array and add one new row to the array and then smooth the first one in the array. This continues until either we start closing in on the end of the file or when we come close to a chromosome shift. These special cases are handled a bit different.
+The class SmoothingAndStep have one public method and many private ones. The public one called smoothing starts by validating the inparameters and setting up file readers/writers. It then reads as many rows from the file as the window size into an array. It then checks which values that have been read that should be smoothed, after this is done the initiation of the program is complete. From then on the program removes the first row from the array and add one new row to the array and then smooth the middle one in the array. This continues until the end of chromosome or end of file both of which are handled in a similar way. When the program approaches end of chromosome it smoothes as many values as it can until there's less values to smooth than "minimum positions to smooth". It then empties the array and refills it in the same way as it did in the beginning of the file.
 
+The program can handle file corruption to some extent. If the file contains empty or wrongly formatted rows the program will not crash, it will simply ignore the corrupt rows.
+
+The program can also calculate the total mean value of the whole file.
 
 
 
 \paragraph{Tuple}
-The tuple class is a data carrier that represents one row of data in an sgr file. It consists of the fields chromosome, position, signal and newSignal. Where signal is the signal-value read from the in-file and newSignal is the updated value after smoothing have been done.
-The methods in this class are all standard getters/setters except for the method toString which formats a row for the out-file and rounds of decimal numbers. The constructor is also of interest since it parse a row on tabs. Thus the fields in an in-file needs to be separated by tabs and not spaces.
+The tuple class is a data carrier that represents one row of data in an sgr file. It consists of the fields chromosome, position, signal and newSignal. Where signal is the signal-value read from the infile and newSignal is the updated value after smoothing have been done.
+The methods in this class are all standard getters/setters except for the method toString which formats a row for the outfile and rounds of decimal numbers. The constructor is also of interest since it parse a row on tabs. Thus the fields in an infile needs to be seperated by tabs and not spaces. The constructor will throw an exception if the line it tries to parse is either null or if it does not consist of three columns separated by tabs where the first is a string and the second and third is a double.
 
+
+\subsubsection{ParameterValidator}
+
+Used by RawToProfileConverter to validate the parameters used by the steps in RawToProfileConverters procedure.
+
+\paragraph{validateSmoothing} 
+Validates all the parameters that will be used in RawToProfiles procedure to smooth files. All parameters needs to be integer numbers and be a positive number, smoothing takes five parameters. 
+
+
+\paragraph{validateStep}
+Validates parameters used in the implementation of the smoothing script for the stepping part, takes a string and parses it to become an array of string with each parameter in a index. Checks that there are two parameters in and that the second parameter is a number above zero.
+
+\paragraph{validateRatioCalculation}
+Vaildates all parameters used in RawToProfiles procedure when it runs ratio calculation and 
+smoothing on the files. Ratio calculation takes three parameters.
+\begin{enumerate}
+\item Needs to be "double" or "single".
+\item Needs to be a positive integer.
+\item Needs to be a positive integer.
+\end{enumerate}
+
+\subsubsection{RawToProfileChecker}
+
+A class used to calculate which steps in the raw-to-profile conversion to be run.
+
+\begin{itemize}
+\item calculateWhichProcessesToRun
+\begin{itemize}
+\item Takes the parameter string array as input and calculates which process steps to be run
+\end{itemize}
+\item shouldRunBowTie
+\begin{itemize}
+\item returns a boolean which represents if bowTie should be run or not.
+\end{itemize}
+\item shouldRunSamToGff
+\begin{itemize}
+\item returns a boolean which represents if samToGff should be run or not.
+\end{itemize}
+\item shouldGffToAllnusgr
+\begin{itemize}
+\item returns a boolean which represents if gffToAllnusgr should be run or not.
+\end{itemize}
+\item shouldRunSmoothing
+\begin{itemize}
+\item returns a boolean which represents if smoothing should be run or not.
+\end{itemize}
+\item shouldRunStep
+\begin{itemize}
+\item returns a boolean which represents if Stepping should be run or not.
+\end{itemize}
+\item shouldRunRatioCalc
+\begin{itemize}
+\item returns a boolean which represents if ratio calculation should be run or not.
+\end{itemize}
+
+\end{itemize}
+
+
+\subsection{SmoothingParameterChecker}
+
+A class used to validate and convert the smoothing and stepping parameters into a string representation. Is used by the program to give the files the correct name which is needed by the ratio calculation script. 
+
+\begin{itemize}
+\item getWindowSize
+\begin{itemize}
+\item Returns the string representation of window size which is used when naming the file.
+\end{itemize}
+\item getMinProbe
+\begin{itemize}
+\item Returns the string representation of minimum probe which is used when naming the file.
+\end{itemize}
+\item getSmoothType
+\begin{itemize}
+\item Returns the string representation of smooth type which is used when naming the file.
+\end{itemize}
+\item checkSmoothParams
+\begin{itemize}
+\item returns a boolean which represents if the parameters are in the correct format.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{StartUpCleaner}
+
+A class used at the initialisation phase of the server program. If the program crashed during a raw to profile processing this class removes the temporary files and directories that had been created.
+
+\begin{itemize}
+\item removeOldTempDirectories
+\begin{itemize}
+\item Removes temporary process directories and it's contents. Takes a string representation of the directory of which the temporary directories can be found as parameter.
+\end{itemize}
+\end{itemize}
 
 \subsubsection{ProcessHandler}
 The ProcessHandler is a controller that handles process-calls. Depending on the name of the process it handles it differently. It acts as an interface between the process-module and the rest of the program. 
@@ -163,7 +303,6 @@ The main logic in the ProcessHandler is a switch-case that switches on the name 
 \item[outFile] A string with a path to the directory where the result .sgr files should be put.
 
 \end{itemize}
-
 
 
 
