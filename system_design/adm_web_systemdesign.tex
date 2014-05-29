@@ -2,14 +2,18 @@
 The system administration part of the web client is developed using the same tools and frameworks as the rest of the web client.
 This admin part of the system is made up of view classes, model classes and collection classes. The classes are described below:
 
-Annotation - this is a backbone model that represents an annotation. An annotation consists of three fields. A name, a list of values and a forced field. The name simply specifies the name of the annotation. The list determines whether this annotation is a drop-down list, or a free-text field. If the list contains one element called free-text, the annotation is a free-text field. Otherwise it is a drop-down list with the values in the list. The forced field determines if
-the annotation has to be filled in by the user when a file is uploaded.
-
-Annotations - this is a backbone collections that consists of several Annotation models. It also has a URL that it uses to fetch annotations from the server, the URL is retrieved from the Gateway class. 
+\texttt{Classes used by all subviews}
 
 Gateway - this is a model class used solely for communication with the server. It is a static class in the sense that it doesn't have to be created. It only needs to be included and then its functions can be called immediately without having to be instantiated. The gateway class retrieves the URL from the main JavaScript file this way the URL only needs to be declared once. The URL can then be fetched by any class that includes the Gateway class.
 
 SysadminMainView - the main view for the admin tab, this view is used together with every other admin view. It contains a sidebar menu used to navigate between different admin views.
+
+\texttt{Classes used to handle annotations}
+
+Annotation - this is a backbone model that represents an annotation. An annotation consists of three fields. A name, a list of values and a forced field. The name simply specifies the name of the annotation. The list determines whether this annotation is a drop-down list, or a free-text field. If the list contains one element called free-text, the annotation is a free-text field. Otherwise it is a drop-down list with the values in the list. The forced field determines if
+the annotation has to be filled in by the user when a file is uploaded.
+
+Annotations - this is a backbone collections that consists of several Annotation models. It also has a URL that it uses to fetch annotations from the server, the URL is retrieved from the Gateway class. 
 
 AnnotationsView - this view is the basic view for displaying annotations. It has a search field and a button for creating new annotations. Pressing the button renders the newAnnotationView. 
 
@@ -24,3 +28,13 @@ EditAnnotationView - this view uses the name parameter received from the Annotat
 NewAnnotationView - this view is used to create a new annotation. It consists of a couple of fields and a create button. Pressing the create button renders a ConfirmAnnotationModal which displays the values for the annotation.
 
 ConfirmAnnotationModal - this class extends the ModalAC class. It is simply used to display information that the user has to confirm. Pressing confirm creates a message using the Gateway class and sends it to the server.
+
+\texttt{Classes used to handle genome releases}
+
+GenomeReleaseView - this view is used for viewing, adding and deleting genome releases. It contains a button ''Select files to upload'' which opens up file explorer and lets the user select one or multiple files for uploading. When the user then presses upload the UploadGenomeReleaseModal will open. Below the button the view has a table showing the current genome releases available on the server. The user can hold the mouse over files too see all files included in that genome release. A ''Delete'' button is shown next to every genome release and if pushed sends a delete request to the server through the Gateway class. 
+
+UploadGenomeReleaseModal - this modal shows the user which files has been selected for upload and asks for information about which species and genome version they are for. Then at the press of ''Upload'' the files starts to upload and the user will see a progress bar over the complete upload progress. 
+
+GenomeReleaseFiles - this is a collection with GenomeReleaseFile as models. It handles the ordering and filtering of its models. 
+
+GenomeReleaseFile - this model represent a genome release and can contain multiple files in itself since one genome release is almost never just one file. This class takes case of uploading itself to the server and thereby also updates the progress bar through events that propagate up to the GenomeReleaseFiles collection. 
