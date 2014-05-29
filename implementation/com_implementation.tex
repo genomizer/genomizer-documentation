@@ -33,3 +33,11 @@ Which command that is put in the queue or not is determined in the method proces
 There are different response objects for different kind of responses since the form of the response to the client depends on the command the client initially sent.\\
 \\
 The response object contains all the data necessary to create a RESTful header and a JSON body for the response.
+\subsubsection{Testing}
+Testing has been done in multiple steps. The first step is unit testing, where individual methods are tested. This is often difficult
+due to the fact that the responsibility of handling client requests is shared by multiple classes. To catch these test cases a client
+dummy has been frequently used, which is the next step. 
+It simulates a client by sending HTTP requests and examines the response from the server. It is used
+manually to test a particular use case, and to see that the server behaves as intended for that request.
+After a feature has passed the client dummy it is pushed to a test server, where it is open for other clients to test and debug.
+If no bugs are found the feature is declared complete and can be released.
