@@ -1,8 +1,16 @@
-To access the web application, navigate to a domain and directory that publicly serves the web page. An example of this is the “official” test enviroment: scratchy.cs.umu.se:8000/app/.
+To access the web application, navigate to a domain and directory that publicly serves the web page. An example of this could be: scratchy.cs.umu.se:8000/app/.
 All functionality of the web application is (or rather should be) fairly self-explanatory and intuitive. A short description and explanation will be given for each component that have been implemented so far.
 \subsection{Using the interface}
 This section will describe how to use the interface and how to interact with it.
 \subsubsection{Start view}
+%figure 1
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{web_search_login.png}
+\caption{\label{fig:web_search_login} The login modal.}
+\end{figure}
+When first enetering the webpage the login modal in \refer{fig:web_search_login} is shown and the user will have to enter his username and password to gain access to the application.
+
 %figure 2
 \begin{figure}[h]
 \centering
@@ -10,18 +18,22 @@ This section will describe how to use the interface and how to interact with it.
 \caption{\label{fig:web_search_welcome} The welcome screen of the webpage.}
 \end{figure}
 
-When the website has loaded, the user is taken to the search page as shown in \refer{fig:web_search_welcome}.
+When the user has logged in, the user is taken to the search page as shown in \refer{fig:web_search_welcome}.
 
-The navigation bar at the top has three buttons with the following functionality:
+The navigation bar at the top has four buttons to the left and two buttons to the right with the following functionality:
 \begin{itemize}
 	\item Clicking the “Genomizer” logo should take the user right back to the start view.
 	\item The “Search” button will bring up the search view where the user can enter search strings to be sent to the server, and view search results.
 	\item The “Upload” button will bring up the upload view where the user can select files to be uploaded and input annotation to a new experiment.
 	\item The “Admin” button will be shown for administrators, that is where the administrator can handle users and annotations.
+    \item The inbox icon on the left side opens a process status dropdown.
+    \item The "Log out" button will log out the user.
 \end{itemize}
 This navigation bar is persistent through all subpages and can easily be accessed.
 
-Below the navigation bar a “search-and-functionality” bar is visible, there is a search field and there are three buttons, Search, Download and process. However, when first entering the page the buttons will be disabled. When you enter something in the search field the search button will become enabled and clickable. To search the user can either write a pubmed style query (for example: Exp1[ExpID]) or use the query builder, by clicking the flash icon.
+\subsubsection{Search view}
+
+Below the navigation bar a “search-and-functionality” bar is visible, there is a search field and there are six buttons, Query-builder, Search, Download, Upload to and process. However, when first entering the page some buttons will be disabled. When you enter something in the search field the search button will become enabled and clickable. To search the user can either write a pubmed style query (for example: Exp1[ExpID]) or use the query builder, by clicking the paperclip icon.
 
 %figure BILD
 \begin{figure}[h]
@@ -35,24 +47,33 @@ After having typed a query and pressed search, the search results will load disp
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{web_search_searchTab.png}
-\caption{\label{fig:web_search_searchTab}the search tab after a search for ‘Exp1[ExpID]’.}
+\caption{\label{fig:web_search_searchTab}the search tab after a search for ‘Fly[Species]’.}
 \end{figure}
 
-The view shown in \refer{fig:web_search_searchTab} contains two major elements; a “search-and-functionality” bar and a list of search results retrieved after searching for ‘Exp1[ExpID]’. The buttons next to the search bar are supposed to do what they say: 
+The view shown in \refer{fig:web_search_searchTab} contains two major elements; a “search-and-functionality” bar and a list of search results retrieved after searching for ‘Exp1[ExpID]’. The buttons next to the search bar do the following: 
 \begin{itemize}
+	\item The paperclip brings up a Query builder.
 	\item “Search” searches for the query in the search bar. 
-	\item “Download” downloads the selected files. 
-	\item “Process” brings up a new window in front of the search view with options for file processing. This feature is demonstrated further in Figure \refer{fig:web_process_modalView}.
+	\item “Process” brings up a new window in front of the search view with options for file processing. This feature is demonstrated further in \refer{fig:web_process_modalView}.
+    \item “Download” downloads the selected files. 
+    \item "Upload to" opens the upload view with the selected experiments selected where the user can upload new files to a already existing experiment.
+    \item "Remove" opens a new view where the files which are going to be deleted are represented and a confrimation dialog that the user really wants to delete those files and experiments.
 \end{itemize}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{web_search_queryBuilder.png}
+\caption{\label{fig:web_search_queryBuilder}The query builder.}
+\end{figure}
+The search query builder as shown in \refer{fig:web_search_queryBuilder} can be used to easily build pubmed-styled search queries. Just select a value in the three fields and press add. The correct pubmed-styled query will be shown in the search field and the three query fields will be reset so the user can add more things to search for in their query.
 
-Below the search bar in \refer{fig:web_search_searchTab} is the “search results” list. This list contains all experiments returned from a search. Every experiment can be expanded to show the file types it contains,. Each file type can be expanded to show all files of that type in the experiment. Each file has a check box next to it that is used to select files to be processed or downloaded, currently the user is only able to select one file at a time. 
+Below the search bar in \refer{fig:web_search_searchTab} is the “search results” list. This list contains all experiments returned from a search. Every experiment can be expanded to show the file types it contains. Each file type can be expanded to show all files of that type in the experiment. All files and experiments has a check box next to it that is used to select what to process, download, remove or upload to.
 %figure x4
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{web_search_searchResult.png}
 \caption{\label{fig:web_search_searchResult}the search results table zoomed in, displaying a raw file’s information after having expanded an experiment.}
 \end{figure}
-
+\FloatBarrier
 If a search is successful, you will be met with a table of results. This table has a header displaying the annotation types. Below that, all the experiments returned from a search and their corresponding annotation values, as can be seen in \refer{fig:web_search_searchResult}.
 %figure BILD PÅ NO SEARCH RESULTS
 \begin{figure}[h]
@@ -60,6 +81,7 @@ If a search is successful, you will be met with a table of results. This table h
 \includegraphics[width=1\textwidth]{web_search_noResult.png}
 \caption{\label{fig:web_search_noResult}tells the user that no data was found given the search query entered by the user.}
 \end{figure}
+\FloatBarrier
 
 If the search is unsuccessful, the Search Results table will be empty stating “No search results found” as can be seen in \refer{fig:web_search_noResult}.
 
@@ -70,6 +92,7 @@ If the search is unsuccessful, the Search Results table will be empty stating �
 \includegraphics[width=1\textwidth]{web_process_modalView.png}
 \caption{\label{fig:web_process_modalView}The process file modal.}
 \end{figure}
+\FloatBarrier
 When the user has selected some files that are going to be processed the user will be presented with the view from \refer{fig:web_process_modalView}. The user can here choose which level of processing should be done on the raw files. By clicking the radio buttons on the left side that much processing will be done on the raw files. All the steps above the selected will also be executed since they are needed to reach that level of processing.
 At the top of the modal the experiments currently going to processing are presented.
 \begin{figure}[h]
@@ -77,19 +100,51 @@ At the top of the modal the experiments currently going to processing are presen
 \includegraphics[width=1\textwidth]{web_process_modalValues.png}
 \caption{\label{fig:web_process_modalValues}The process modal with selected parameters.}
 \end{figure}
+\FloatBarrier
 When the user has decided the parameters as shown in \refer{fig:web_process_modalValues} and wants to start the processing the process button in the bottom right should be pressed. 
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{web_process_success.png}
 \caption{\label{fig:web_process_success}Success message.}
 \end{figure}
+\FloatBarrier
 When results are recived from the server and they were all successfull the processing modal will dissapear and a success message indicating that the processing is starting will be displayed to the user like in \refer{fig:web_process_success}.
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{web_process_notSuccess.png}
 \caption{\label{fig:web_process_notSuccess}All did not success message.}
 \end{figure}
-If some of the files that was going to be processed did for some reason fail the user will learn this by a warning message that tells the user which experiment did not start processing and which did as shown in \refer{fig:web_process_notSuccess}. The ones which started to process will be removed from the modal and the ones that did not start to process will remain. The user can now choose other parameters or do something else to make it work and try to submit a processing request again.
+If some of the files that was going to be processed did for some reason fail the user will learn this by a warning message that tells the user which experiment did not start processing and which did as shown in \refer{fig:web_process_notSuccess}. The ones which started to process will be removed from the modal and the ones that did not start to process will remain. The user can now choose other parameters or do something else to make it work and try to submit a processing request again
+\pagebreak
+\subsubsection{The remove modal}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{web_remove_removeFiles.png}
+\caption{\label{fig:web_remove_removeFiles}The remove modal.}
+\end{figure}
+\FloatBarrier
+When the remove button is pressed the modal in \refer{fig:web_remove_removeFiles} is shown displaying which files and experiments will be removed when the remove button is pressed.
+
+\subsubsection{The process status dropdown}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.4\textwidth]{web_processStatus_withData.png}
+\caption{\label{fig:web_processStatus_withData}The process status dropdown.}
+\end{figure}
+\FloatBarrier
+When pressing the inbox icon a dropdown is shown as in \refer{fig:web_processStatus_withData}displaying processing status of experiments being processed.
+There are four different status a processing can have: Waiting, Running, Complete and Failed.
+These are grouped together with a yellow color for waiting, blue for running, green for complete and red for failed.
+\subsubsection{The process status dropdown}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{web_processStatus_noData.png}
+\caption{\label{fig:web_processStatus_noData}The process status dropdown with no status available.}
+\end{figure}
+\FloatBarrier
+
+If there are no processes status available the user will see the text as shown in \refer{fig:web_processStatus_noData}
+
 \subsubsection{The upload view}
 %figure X7
 \begin{figure}[h]
@@ -98,7 +153,7 @@ If some of the files that was going to be processed did for some reason fail the
 \caption{\label{fig:web_upload_uploadView}The upload view.}
 \end{figure}
 
-When the user presses the upload tab in the navigation bar the view in \refer{fig:web_upload_uploadView} will appear. The user has the option to create a new and fresh experiment or to load an existing experiment by entering its experiment ID. 
+When the user clicks the upload tab in the navigation bar, the view in \refer{fig:web_upload_uploadView} will appear. The user has the option to create a new and fresh experiment or to load an existing experiment by entering its experiment name. 
 %figure X8
 \begin{figure}[h]
 \centering
@@ -106,25 +161,30 @@ When the user presses the upload tab in the navigation bar the view in \refer{fi
 \caption{\label{fig:web_upload_newExperiment}Creating a new experiment.}
 \end{figure}
 
-After clicking the “Create new experiment” button the view in \refer{fig:web_upload_newExperiment} will appear. Here the user can input the annotations for the experiment through either freetext fields or drop-down lists. If a freetext field has a red border around it, that annotation is required and no files can be uploaded before it has been filled in.
+After clicking the “Create new experiment” button, the view in \refer{fig:web_upload_newExperiment} will appear. Here the user can input the annotations for the experiment through either freetext fields or drop-down lists. If a freetext field has a red border around it, that annotation is required and the experiment can not be uploaded before all required fields has been filled in and at least one file has been added.
 
-The user can choose to create more empty experiments by clicking "Create new experiments" button and new empty experiment will be placed below the first experiment.
+The user can create more empty experiments by clicking the "Create new experiment" button and a new, empty, experiment will be placed below the first experiment.
 
-The user also have a way of filling in annotations that will be the same for several experiments and then click the "Clone experiment" button. A copy of the experiment will be created and the user can just change the annotations that will be different from the cloned experiment.
+The user can fill in annotations in one experiment that should be the same for several experiments. By clicking the "Clone experiment" button, a copy of the experiment's annotations will be appended as a new experiment. The user can change the annotations that should be different from the cloned experiment.
 
-Up in the corner of the experiment is a button that can remove the unwanted experiment. 
+Up in the corner of the experiment is a button that can remove the unwanted experiment from the view. 
 
-To add files to one of the experiments the user can browse for local files to upload by clicking the “Select files to upload” button. The user will only see file types that have to do with experiments but have the ability to search for all file types. There is also a way of adding files to the experiment by dragging them from a file browser and dropping it onto the experiment "drag and drop".
+To add files to the experiments the user can browse for local files and upload them by clicking the “Select files to upload” button. The user will only see file types that have to do with experiments but have the ability to search for all file types. There is also a way of adding files to the experiment by dragging them from a file browser and dropping it onto the experiment "drag and drop".
+
+An experiment can only contain two RAW-files and if the user tries to upload more a message with this information will appear and the experiment cannot be uploaded before the extra RAW-file/s is removed. 
+
+To add files to a existing experiment the user types the name of the experiment in the field next to the "Upload to existing experiment" and clicks the button. If the experiment exists on the server it will appear in the experiment view the same way that a new experiment is shown. A existing experiments annotations cannot be changed from this view and if there is any files already in this experiment they cannot be manipulated. Adding new files to existing experiments works the same way as to a new experiment.
+
 %figure X9
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{web_upload_fileUpload.png}
-\caption{\label{fig:web_upload_fileUpload}File selected for upload.}
+\caption{\label{fig:web_upload_fileUpload}Files selected for upload.}
 \end{figure}
  
-When the user have selected files, they will appear below the annotations as in Figure \refer{fig:web_upload_fileUpload}. The file name is displayed in a text field on the left side of the file view. Next to the file name is a box that shows the size of the selected file in a human friendly format (B, KiB, MiB, GiB, TiB). On the right side there is an option to select what type of file is being uploaded and an option to remove the file from the experiment. The file type option will automatically be filled in with a guessed value depending on the file ending as follows: raw = fastq, profile = sgr or wig and region = gff.
+When the user selects files, they will appear below the annotations as in Figure \refer{fig:web_upload_fileUpload}. The file name is displayed in a text field on the left side of the file view. Next to the file name is a box that shows the size of the selected file in a human friendly format (B, KiB, MiB, GiB, TiB). On the right side there is an option to select what type of file is being uploaded and an option to remove the file from the experiment. If the file type is either profile or region, there is an option to select what genome release the file is mapped to. The file type option will automatically be filled in with a guessed value depending on the file ending as follows: fastq files are considered raw and all other formats (sgr, wig, gff) are profile.
 
-When the user is done selecting files, filling in annotations and clicks the “Upload files to experiment” button the experiment view will be minimized showing the name of the experiment and the progressbar of the files beeing uploaded. Now the experiment with all the files will be uploaded to the server. The user also have a way of uploading several experiments at the same time by clicking "Upload all experiments". 
+When the user is done selecting files, filling in annotations and clicks the “Upload experiment” button the experiment view will be minimized showing only the name of the experiment and the progressbar of the files beeing uploaded. When the progressbar is done it turns green and now the experiment with all the files has been uploaded to the server. The user also has a way of uploading several experiments at the same time by clicking "Upload all experiments".
 
 \subsubsection{Systemadministration view}
 
