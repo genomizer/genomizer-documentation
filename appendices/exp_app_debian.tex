@@ -86,7 +86,7 @@ Then reboot the server.
 \subsection{Java}
 Firstly Java must be installed on the system to be able to run some of the server software. The software requires Java 1.7 or later. 
 
-To install Java JDK open a terminal and enter following command:
+To install Java JDK open a terminal and enter the following command:
 \begin{verbatim}
 sudo apt-get install openjdk-7-jdk
 \end{verbatim}
@@ -109,7 +109,7 @@ sudo apt-get install apache2 apache2-utils
 \end{verbatim}
 After installation of Apache2 some configuration is needed. Follow the steps below.
 \subsubsection{Configure listening port}\label{sec:exp_d_ports}
-The default port for listening is set to 80. If this seeks to be changed follow the steps below.
+The default port for listening is set to 80. To change port follow the steps below.
 \begin{enumerate}
 	\item Open file with following command: \begin{verbatim}sudo nano /etc/apache2/ports.conf\end{verbatim}
     \item Edit the value in the file after ``Listen'' to the preferred port to use for listening. 
@@ -319,7 +319,7 @@ sudo service postgresql restart
 \end{verbatim}
 
 
-\subsubsection{Clone database}
+\subsubsection{Clone database}\label{sec:exp_app_clone}
 If there exists an old database that is wished to be migrated to the new database the following command can be executed on the machine where the database is presently:
 
 \begin{verbatim}
@@ -333,8 +333,10 @@ dbPort > backupfile.sql
 \item Change \verb+backupfile.sql+ to whatever filename is wished
 \end{enumerate}
 
-This creates a backup SQL file. Now transfer the file to the server where the database is migrated to and type in the following command to inject it into the database:
+This creates a backup SQL file. 
 
+\subsection{Inject database copy}\label{sec:exp_app_inject}
+To inject a database backup into a new database do the following command.
 \begin{verbatim}
 psql -U dbUserName -h localhost -d dbName -p dbPort < backupfile.sql
 \end{verbatim}
