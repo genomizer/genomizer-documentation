@@ -2,7 +2,7 @@
 The system administration part of the web client is developed using the same tools and frameworks as the rest of the web client.
 This admin part of the system is made up of view classes, model classes and collection classes. The classes are described below:
 
-\texttt{Classes used by all subviews}
+\texttt{Classes used by all views}
 
 Gateway - this is a model class used solely for communication with the server. It is a static class in the sense that it doesn't have to be created. It only needs to be included and then its functions can be called immediately without having to be instantiated. The gateway class retrieves the URL from the main JavaScript file this way the URL only needs to be declared once. The URL can then be fetched by any class that includes the Gateway class.
 
