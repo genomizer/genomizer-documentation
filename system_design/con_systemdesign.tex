@@ -266,7 +266,7 @@ A class used to calculate which steps in the raw-to-profile conversion to be run
 \end{itemize}
 
 
-\subsection{SmoothingParameterChecker}
+\subsubsection{SmoothingParameterChecker}
 
 A class used to validate and convert the smoothing and stepping parameters into a string representation. Is used by the program to give the files the correct name which is needed by the ratio calculation script. 
 
@@ -307,13 +307,19 @@ The ProcessHandler is a controller that handles process-calls. Depending on the 
 \subsubsection{Logic \& interface}
 The main logic in the ProcessHandler is a switch-case that switches on the name of the process being called. For example if the name of the process is “RawToProfile” is sets up a RawToProfile-converter and calls it. 
 
-\begin{itemize}
-\item[processName] A string that tells the handler which kind of process should be executed.
-\item[procedureParams] A list of string with the parameters to the different external  programs/scripts that will be called during the execution. The first element will be a string with parameters/flags for the first external program that will be called, and so on.
-\item[inFile] A string with a path to the directory containing the files that should be operated on.
-\item[outFile] A string with a path to the directory where the result .sgr files should be put.
-
-\end{itemize}
+\begin{tabular}{|l| p{7cm}|}
+\hline
+processName & A string that tells the handler which kind of process should be
+executed. \\ \hline
+procedureParams & A list of string with the parameters to the different external
+programs/scripts that will be called during the execution. The first element
+will be a string with parameters/flags for the first external program that will
+be called, and so on. \\ \hline
+inFile & A string with a path to the directory containing the files that should
+be operated on. \\ \hline
+outFile & A string with a path to the directory where the result .sgr files
+should be put. \\ \hline
+\end{tabular}
 
 
 

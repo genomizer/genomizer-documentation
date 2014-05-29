@@ -1,11 +1,5 @@
-
-
-
-
-
-\subsection{SmoothingAndStep}
-
-The basic algorithm is a dynamic arrayList which carries the rows that are relevant at a given time, smoothing on the first row is performed. The newly smoothed value is shifted out and replaced with a fresh row. This becomes a dynamic window that traverses the entire file one row at a time.
+This section will explain the implementation of the \term{SmoothingAndStep}
+subroutine used in the conversion of files from \term{raw} to \term{profile}. The basic algorithm is a dynamic arrayList which carries the rows that are relevant at a given time, smoothing on the first row is performed. The newly smoothed value is shifted out and replaced with a fresh row. This becomes a dynamic window that traverses the entire file one row at a time.
 
 \subsubsection{Methods}
 
