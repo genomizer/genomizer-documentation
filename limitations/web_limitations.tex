@@ -1,14 +1,21 @@
-\begin{table}[H]
-\centering
-\begin{tabular}{|p{5.5cm} | p{5.5cm}|}
-	\hline
-	Bug description & Suggested solution \\ \hline
-	Moving forward and backwards in the browser does not hide modal windows. & Modify ModalAC and the router \\ \hline
-	If there is an error when adding files to an experiment the experiment collapses so the user won't get a chance to correct it's mistake & Start uploads of files when all files have been added without errors. \\ \hline
-	If the authorization token expires the user will be sent to the login screen and any entered input will dissapear. & Show login modal without redirecting to root url and save errorous ajax-request and resend it when the login has been completed. \\ \hline
-	The collections SearchResults and Experiments represents the same models. & Merge SearchResults and Experiments to one collection to possibly get a cleaner design. \\ \hline
-	If a current upload is in progress, there is no warning when closing the tab currently uploading. & There are some code for this in view/Upload.js, but it's currently broken. \\ \hline
-\end{tabular}
-
-\caption{\label{web_limitations} Table of know bugs and possible solutions.}
-\end{table}
+\subsection{Web}
+\subsubsection{Moving backwards in the browser does not hide modal windows}
+When navigating to a modal window the URL is updated, and added to the browser history. When using the browser back-button the modal is not closed, but the URL is still updated. \\
+\\
+ Modify ModalAC and the router
+\subsubsection{Error handling when uploading experiments}
+If there is an error when adding files to an experiment the experiment collapses so the user won't get a chance to correct it's mistake \\
+\\
+Start uploads of files when all files have been added without errors. 
+\subsubsection{Old authorization token causes page redirect}
+If the authorization token expires the user will be sent to the login screen and any input entered will dissapear. \\
+\\
+Show login modal without redirecting to root url and save errorous ajax-request and resend it when the login has been completed.
+\subsubsection{Code duplication in SearchResults and Experiments}
+The collections SearchResults and Experiments represents the same models. But are different collections as they have different URL. It might be better to have the both use the same collection. \\
+\\
+Merge SearchResults and Experiments one collection.
+\subsubsection{No warning when closing tab during upload.}
+If a upload is in progress, there is no warning when closing the tab and the upload is canceled directly. \\
+\\
+There are some code for this in view/Upload.js, but it's currently broken.
