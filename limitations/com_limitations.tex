@@ -1,4 +1,6 @@
+\subsection{Communication and control}
 The communitcation between the server and the clients has some limitations and security holes. These limitations are described below.
+
 \subsubsection{Don't use the same username as someone else}
 When someone logs in with the same username as someone who already is loged in on that username, this can create problems. The problem occurs if one of the clients logs out while the other is communicating with the server. When one of the clients has loged out, the other will get error response code UNAUTHORIZED telling the client that he/she is not loged in.
 \\To avoid this problem: Never use the same username as someone else.
