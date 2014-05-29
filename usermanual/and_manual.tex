@@ -9,12 +9,7 @@ The user needs to login in order to start working with the \appName\ app. The  u
 registered with the service, the system administrator should be contacted to help with the creation of an account.
 
 \begin{figure}[h]
-\begin{center}
-\begin{tabular}{c | c}
-\addScaledImage{0.1}{figures/andLogin.png} & \addScaledImage{0.1}{figures/and_login_menu.png}
-
-\end{tabular}
-\end{center}
+\addTwoImages{andLogin.png}{and_login_menu.png}
 \caption{Login View}
 \label{fig:and_login_man}
 \end{figure}
@@ -24,7 +19,7 @@ registered with the service, the system administrator should be contacted to hel
 In \refer{fig:and_login_man}, the image to the right shows a drop-down menu with a \term{Settings} button. Selecting this button will display the \term{Settings View}, described in the following \term{Settings} section below.
 
 \subsection{Settings}
-The \term{Settings} view acts to enable the user to choose which server to connect to when using the Genomizer application. As of the current release of the application, in the Settings View, the user is able to:
+The \term{Settings} view acts to enable the user to choose which server to connect to when using the \appName\ application. As of the current release of the application, in the Settings View, the user is able to:
 
 \begin{enumerate}
 \item Select one of previously used server URLs
@@ -36,16 +31,12 @@ The above functionalities are accessed by the drop-down menu as illustrated in t
 
 
 \begin{figure}[h]
-\begin{center}
-\begin{tabular}{c | c | c}
-
-\addScaledImage{0.1}{figures/and_login_settings.png} & 
-\addScaledImage{0.1}{figures/and_login_settings_menu.png} & 
-\addScaledImage{0.1}{figures/and_settings_edit.png}
-
-\end{tabular}
-\end{center}
-\caption{\label{fig:and_settings_man}Settings View}
+\addThreeImages
+{and_login_settings.png}
+{and_login_settings_menu.png}
+{and_settings_edit.png}
+\caption{Settings View}
+\label{fig:and_settings_man}
 \end{figure}
 \FloatBarrier
 
@@ -67,15 +58,9 @@ There is also a dropdown menu for this page (see \refer{fig:and_selected_man}), 
 
 
 \begin{figure}[h]
-\begin{center}
-\begin{tabular}{c | c}
-
-\addScaledImage{0.335}{figures/and_selectedfiles.JPG} & 
-\addScaledImage{0.1}{figures/and_selected_menu.png}
-
-\end{tabular}
-\end{center}
-\caption{\label{fig:and_selected_man}Selected Files View}
+\addTwoImages{and_selectedfiles.JPG}{and_selected_menu.png}
+\caption{Selected Files View}
+\label{fig:and_selected_man}
 \end{figure}
 \FloatBarrier
 
@@ -108,31 +93,27 @@ When entering the Search View all annotations are automatically downloaded from 
 page.
 
 \begin{figure}[h]
-\begin{center}
-\begin{tabular}{c | c}
-
-\addScaledImage{0.1}{figures/and_search.png} & 
-\addScaledImage{0.1}{figures/and_search_menu}
-
-\end{tabular}
-\end{center}
-\caption{\label{fig:and_search_man} The Search View}
+\addTwoImages{and_search.png}{and_search_menu}
+\caption{The Search View}
+\label{fig:and_search_man}
 \end{figure}
 \FloatBarrier
 
 %No support for parantheses? Shoulden't free text simply send the right data?
 \subsection{Pubmed Search}
-The drop-down menu visualized in the right most image of \refer{fig:and_pubmed_man} contains a menu item called \term{Edit pubmed string}. Choosing this drop-down element introduces the Pubmed Search View as seen in \refer{and_pubmed_man}, and include a text-input field together with two buttons. The text field represent the annotations selected in the Search View, with logical connectives in between. These logical connectives, as well as annotation values, can be manually modified by the user. The supported logical connectives are: 
-
-\begin{itemize}
-\item AND
-\item NOT
-\item OR
-\end{itemize}
+The drop-down menu visualized in the right most image of
+\refer{fig:and_pubmed_man} contains a menu item called \term{Edit pubmed
+string}. Choosing this drop-down element introduces the Pubmed Search View as
+seen in \refer{and_pubmed_man}, and include a text-input field together with two
+buttons. The text field represent the annotations selected in the Search View,
+with logical connectives in between. These logical connectives, as well as
+annotation values, can be manually modified by the user. The supported logical
+connectives are: AND, NOT and OR.
 
 \begin{figure}[h]
-\addScaledImage{0.1}{figures/and_search_pubmed.png}
-\caption{\label{fig:and_pubmed_man} The Pubmed Search View}
+\addScaledImage{0.1}{and_search_pubmed.png}
+\caption{The Pubmed Search View}
+\label{fig:and_pubmed_man} 
 \end{figure}
 \FloatBarrier
 
@@ -142,15 +123,9 @@ The drop-down menu visualized in the right most image of \refer{fig:and_pubmed_m
 When searching the user will be redirected to the search results view  that displays a list of available experiments that matches the search annotations. Every experiment is listed showing the experiment name. To receive more information about data files that are available for each experiment, click on an experiment in the list. By clicking an entry you will be taken to a new view displaying all available data files for that experiment, presented in the Experiment List View. 
 
 \begin{figure}[h]
-\begin{center}
-\begin{tabular}{c | c}
-
-\addScaledImage{0.1}{figures/and_search_results.png} & 
-\addScaledImage{0.1}{figures/and_search_results_menu.png}
-
-\end{tabular}
-\end{center}
-\caption{\label{fig:and_search_results_man} The Search Results View}
+\addTwoImages{and_search_results.png}{and_search_results_menu.png}
+\caption{The Search Results View}
+\label{fig:and_search_results_man} 
 \end{figure}
 \FloatBarrier
 
@@ -159,8 +134,9 @@ When searching the user will be redirected to the search results view  that disp
 This will display settings for the files presented to the user after a search is done.(see \refer{fig:and_search_settings}) It will contain the different annotations the user will be able to display about the specific file. The user can select annotations by checking the checkbox next to the annotation name and then click the button to save changes. If the user has no special requests it is also possible to use default settings, which will display (experiment-Id, created by, pubmed and type) annotations for the files displayed. 
 
 \begin{figure}[ht]
-\addScaledImage{0.4}{figures/SearchSettings.png} 
-\caption{\label{fig:and_search_settings}Search Settings View}
+\addScaledImage{0.4}{SearchSettings.png} 
+\caption{Search Settings View}
+\label{fig:and_search_settings}
 \end{figure}
 \FloatBarrier
 
@@ -169,15 +145,9 @@ This will display settings for the files presented to the user after a search is
 Experiment File view displays all files associated with an experiment. This includes all raw, profile and region files derived from the experiment. The user can then select and transport the files to the Selected Files view (\ref{sec:and_manual_selected}) by marking the checkbox of the desired files, as done in  \refer{fig:and_experiment_man}, and then pressing \click{Add to selection}.
 
 \begin{figure}[h]
-\begin{center}
-\begin{tabular}{c | c}
-
-\addScaledImage{0.1}{figures/and_experiment.png} & 
-\addScaledImage{0.1}{figures/and_experiment_menu.png}
-
-\end{tabular}
-\end{center}
-\caption{\label{fig:and_experiment_man} The Experiment File View}
+\addTwoImages{and_experiment.png}{and_experiment_menu.png}
+\caption{ The Experiment File View}
+\label{fig:and_experiment_man}
 \end{figure}
 \FloatBarrier
 
@@ -194,8 +164,9 @@ There are 4 different states that a process can be in:
 \end{enumerate}
 
 \begin{figure}[h]
-\addScaledImage{0.1}{figures/and_process.png}
-\caption{\label{fig:and_process_man} The Process View}
+\addScaledImage{0.1}{and_process.png}
+\caption{ The Process View}
+\label{fig:and_process_man}
 \end{figure}
 \FloatBarrier
 

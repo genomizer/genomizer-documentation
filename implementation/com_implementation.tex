@@ -3,9 +3,20 @@ This section explains implementation details of certain bits of the communicatio
 The doorman is a class which handles all incoming connections and requests. The doorman reads the header and checks what kind of HTTP method it is (GET, PUT, PUSH, PULL or DELETE). A switch statement switch on these different methods.\\
 \\
 After switching on the different methods another switch statement is used to switch on the different types of commands, for example /experiment, /file, /search or /process. From that point a specific command object is created corresponding to the correct command, for example \textbf{GET /experiment} will create a \term{getExperimentCommand}.
+\subsubsection{Authorization}
+The communication between a client and the server is authorized by a user-unique token which is created when the user sends a login request. A token is created when a user has logged in successfully and the token is sent back to the user so that the user can thereafter use this in future requests. 
+\begin{figure}[h]
+\addImage{com_authorization.png}
+\caption{1. The user sends a login request without any authorization token. 2. The server checks the given password. 3. The server creates a unique token for the user. 4. Server sends the token back to the user in a response. 5. Now that the user has a unique token, the token is placed in the header whenever the user sends another request.}
+\label{fig:com_authorization}
+\end{figure}
+The token created when a user sends a login is stored in the server memory until the user sends a logout request.
+\subsubsection{Removing inactive tokens}
+The server has a function which removes inactive tokens after a set limit of time. This is done because a client sometimes skips sending a logout request when shutting down the client program. The InactiveUuidsRemover class is used to achieve this goal. In a thread it sleeps for one hour before checking all clients. If any client hasn't sent a request for 24 hours, the client token is removed from the server memory. 
+\\
+This feature may be turned of with the flag "-nri".
 \subsubsection{Command object}
 The command object represent a specific command. It is created from the RESTful header and/or the JSON body sent from the client. The JSON API provides methods for automatic parsing of the JSON body into an object. The fields in the command object created must match the attributes in the JSON body. This match is case sensitive
-
 \paragraph{Execute}
 Every command object must implement a execute method. This method is the part of the command which uses the system interface to perform the task that corresponds to the command.\\
 \\
@@ -13,7 +24,7 @@ The execute method returns a response object which is sent up to the doorman whi
 \paragraph{Validation}
 Every command must implement a validate method. This method is run after the command is created but before the command is executed.\\
 \\
-The validate method returns a boolean. If the command is correctly parsed with correct data the method returns true, otherwise false. This validate is used to prevent unneccesary communication.
+The validate method returns a boolean. If the command is correctly parsed with correct data the method returns true, otherwise false. This validate is used to prevent unnecessary communication.
 \subsubsection{Heavy work thread}
 For heavy work a queue, namely work handler is used. The command which is put in this queue is ProcessCommand. All the command objects which is in the queue, are executed one at a time  in the order first in first out. This execution is done by another thread with the only responsibility to do this kind of heavy work. The thread constantly checks whether the queue is empty or not and if there is a command object in the queue the thread polls the command object and executes it.\\
 \\
