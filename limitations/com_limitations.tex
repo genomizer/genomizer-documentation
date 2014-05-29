@@ -1,6 +1,21 @@
+\subsection{Communication and control}
 The communitcation between the server and the clients has some limitations and security holes. These limitations are described below.
+
 \subsubsection{Don't use the same username as someone else}
-
+When someone logs in with the same username as someone who already is loged in on that username, this can create problems. The problem occurs if one of the clients logs out while the other is communicating with the server. When one of the clients has loged out, the other will get error response code UNAUTHORIZED telling the client that he/she is not loged in.
+\\To avoid this problem: Never use the same username as someone else.
 \subsubsection{Communication in plain text}
-
-\subsubsection{}
+A major security hole in the system is that all communication between the server and the clients are in plain text. These HTTP-packages can be read by outside people.
+\\To fix this problem: Implement a security function which makes the communication between the server and the clients unreadable by outsiders.
+\subsubsection{Only one process at a time}
+The server can only run one process at a time. This is because only one thread is set to search the queue and if there is a process waiting the single thread takes this process and executes it before going back to search the queue again.\\
+\\
+A solution to this would be to create some kind of thread pool with a user defined amount of threads. Either the size of the threadpool could be decided when starting the server, or in some way be decided by an administrator during runtime to give ability to increase or decrease the number of possible simultaneously running processes.
+\subsubsection{No way to stop a running process}
+When a process is started there is no way to end the processing without restarting the server. So if the user would start a process with wrong parameters or on the wrong files, there is no way to just stop that and start a new process.\\
+\\
+A solution to this would be to keep track of all working threads and give a user the possibility to terminate these through the user interface. When a thread is terminated a cleanup should be executed to remove created folders and files.
+\subsubsection{No way to see if a process is stuck}
+In the case that a process for some reason would get stuck while running, there is no feedback to the user to show that the process is stuck. The only feedback the user is given is that the process is currently being executed.\\
+\\
+This is a hard problem to solve since there is no good way to know if the processing is just taking a long time to complete or if it is stuck. 
