@@ -1,6 +1,5 @@
 The desktop client is constructed around the model-view-controller pattern. It relies heavily on action events being performed in the graphical interface which is then handled by the controller. The model is the part handling the communication and the storing of important information such as ongoing downloads and the user token (used for communication authorization).
 
-\subsubsection{Overview of the desktop client}
 The UML diagram in \refer{fig:des_uml-overview} describes the whole desktop client.
 \begin{figure}[htb!]
 	\addImage{des_UMLdesktop.jpg}
@@ -9,7 +8,7 @@ The UML diagram in \refer{fig:des_uml-overview} describes the whole desktop clie
 \end{figure}
 
 
-\subsubsection{View}
+\subsection{View}
 The view of the \appName\ Desktop client is constructed with tabs. There are 5 different tabs. These are Search, Process, Upload, Workspace and Administration.
 
 Each tab in the view is represented by its own java class. The QuerySearchTab class which represents the search tab can display both a search view and a results view. It uses the QueryBuilderRow class to construct the rows in the query builder which is used to construct search queries. The QueryBuilderRow class represents a row in the query builder and each row is dynamic and can change accordingly to user interaction. The search results are also implemented in the QuerySearchTab and the results are displayed with the TreeTable class which is further described in the utilities section below.
@@ -20,33 +19,37 @@ The ProcessTab class represents the process view in the GUI. It contains a list 
 
 The major part of the WorkspaceTab class consists of a TreeTable which holds all the experiments and the corresponding data which the user has added to the workspace. Then there is also five buttons implemented which allows the user handle the data in the TreeTable. These buttons are Remove from workspace, Delete from database, Upload to, Download and Process. The TreeTable view can be changed to a view which displays all current and completed downloads. This is made using a tabbed pane containing the TreeTable view and the Downloads view.
 
-\subsubsection{Model}
+\subsection{Model}
 The model part of the system contains methods for doing most of the logic in the system. For example there are methods for sending login requests and for downloading files. There are separate classes for downloading and uploading files as well as a class for regular communication with the server called Connection. New connections are created with the ConnectionFactory class. The model also acts a storage for importating information such as the user token and list of ongoing downloads and uploads.
 
-\subsubsection{Requests}
+The AnalyzeTab Class is not yet implemented.
+
+\subsection{Model}
+The model part of the system contains method for doing most of the logic in the system. For example there are methods for sending login requests and for downloading files. There are separate classes for downloading and uploading files as well as a class for regular communication with the server called Connection. New connections are created with the ConnectionFactory class.
+
+\subsection{Requests}
 The Request package contains the Request class , the RequestFactory and all the classes that extends the Request class. Request is the super class and can make a JSON package that all the other Request classes can use. All requests must have a name, type and an URL, but can consist of more information. For example LoginRequest also has username and password. RequestFactory is a class that can create all objects from all types of requests. It is a way to easily create all requests from the same place.
 
 
-\subsubsection{Response}
+\subsection{Response}
 This package consists of all types of responses that the server can send to the client-program. There is a class named Response that all the other response classes extends from. For example there is a response class for the login request called LoginResponse. All types of responses have different properties. There is also a class ResponseParser that can parse the responses so that the important information can be taken out of a JSON-package. This information can then be used to tell the client program what should happen next in the user interface.
 
 
-\subsubsection{Controller}
+\subsection{Controller}
 The controller part of the system consists of ActionListeners for the different buttons and functionalities in the view. For example there are Listeners for searching, downloading and processing. The Controller class has access to both the view and the model and acts as a middle hand between those two parts of the system. Usually a Listener in the controller reacts upon user input and then modifies the model and gives information about the change to the view.
 
 
-\subsubsection{Utilites}
+\subsection{Utilites}
 
 There are several classes which represents different data in the system. There are classes for experiment data, file data and annotation data. For example when a search response is received from the server it is parsed into experiment data and the experiment data contains file data and annotation data. There is also a class representing Process feedback data.
 
 The TreeTable class represents the table which displays experiment data, annotation data and file data in the Search and Workspace tabs. It is specially constructed to handle the data classes and it allows vertical sorting.
 
-\subsubsection{System Administration}
+\subsection{System Administration}
 %Till Sysadmin!
-%skriv nåt här, får inte vara några tomma mellanrum mellan rubriker
 The system administration is developed separately from the rest of the GUI, and therefore has a slightly different way of communicating.
 
-\paragraph{Communication with the Server}
+\subsubsection{Communication with the Server}
 \label{Communication with the Server}
 
 All communication between the server and the system administration tab follows a line of steps. See \refer{fig:adm_com_view} below.
@@ -69,12 +72,15 @@ If the event triggers a request for data, the \textit{Model} will use a parser t
 \end{figure}
 
 
-\paragraph{A communication example}
+\subsubsection{A communication example}
 \label{Communication example}
 
 As an example, assume that the user clicks the 'Genome Files' tab.
-This triggers the \textit{SysadminTabChangeListener} to receive an event. The desired behavior of the tab is to directly show all available genome releases, so they  have to be fetched from the server. The \textit{SysadminTabChangeListener} therefore calls the \textit{SysadminController}.
-This class then retrieves the \textit{GenomeReleaseTableModel} to be able to display the genome releases once they've been fetched.  After that it calls the \textit{getGenomeReleases()} method in the \textit{Model}. This method creates a \textit{GetGenomeReleaseRequest} to be sent to the server by using the \textit{RequestFactory} class. The \textit{Model} then creates a new \textit{Connection} by using the \textit{ConnectionFactory}. The request is then sent to the server. The \textit{Connection} receives the result and the \textit{Model} can read from it. In this case the response will be a JSON string containing all the the genome releases on the server. This string needs to be parsed into something more useful and for that the \textit{ResponseParser} is used. It uses the Google Java library Gson, which is used to convert a JSON string into a Java object. In this case the \textit{ResponseParser} will convert the response JSON string into an array of \textit{GenomeReleaseData} objects. This array is then returned back by to the \textit{SysadminController} which updates the \textit{GenomeReleaseTableModel} with the \textit{GenomeReleaseData} objects. And the user can now see all available genome releases on the server.
+This triggers the \textit{SysadminTabChangeListener} to receive an event. The desired behavior of the tab is to directly show the available genome releases, so now they  have to be fetched from the server. The \textit{SysadminTabChangeListener} therefore calls the \textit{SysadminController}.
+This class then retrieves the \textit{GenomeReleaseTableModel} to be able to use it when sending the data to the user view.  After that it calls the \textit{getGenomeReleases()} method in the \textit{Model}. This method creates a \textit{GetGenomeReleaseRequest} to be sent to the server by using the \textit{RequestFactory} class. The \textit{Model} then creates a new \textit{Connection} by using the \textit{ConnectionFactory}. The request is then sent to the server. The \textit{Connection} receives the result and the \textit{Model} can read from it. In this case the response will be a JSON string containing all the the genome releases on the server. This string needs to be parsed into something more useful and thats when the \textit{ResponseParser} is used. It uses the Google Java library Gson, which is used to convert a JSON string into a Java object. In this case the \textit{ResponseParser} will convert the response JSON string into an array of \textit{GenomeReleaseData} objects. This array is then returned back by to the \textit{SysadminController} which updates the \textit{GenomeReleaseTableModel} with the \textit{GenomeReleaseData} objects. And the user can now see all available genome releases on the server.
+
+\subsubsection{Building the Tabs}
+\label{Building the Tabs}
 
 \paragraph{Building the Administration Tabs}
 \label{Building the Administration Tabs}
@@ -101,7 +107,7 @@ The system administration part of the desktop application depends on quite a few
 \label{Button and Tab names}
 To simplify the naming of buttons and tabs a class called SysStrings is used. All buttons or tabs are named here and then this class is used when setting the actual names. This is to avoid hard code as well as making names easy to change and hence more dynamic.
 
-\subsubsection{Flow of the system}
+\subsection{Flow of the system}
 
 The sequence diagram in \refer{fig:des_download-sequence} describes the flow of the system when the user presses the download file button and the diagram in \refer{fig:des_login-sequence} describes how the desktop clients reacts to a login.
 

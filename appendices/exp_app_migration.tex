@@ -6,9 +6,10 @@ To meet the clients needs in order to be able to migrate the system this manual 
 \begin{enumerate}
 	\item Run pg\_dump command on the server machine to migrate. This creating a database copy. For help, see \emph{Appendix \ref{sec:exp_app_clone}}
 	\item Copy the \emph{/var/www/} folder on the current server machine and save the copy to a removable storage device.
-	\item Install the new server machine with operating system and necessary software. For help with this see Appendix \ref{chap:exp_app_ubuntu} or \ref{chap:exp_app_debian}.
+	\item Install the new server machine with operating system and necessary software. For help with this see Appendix \ref{chap:exp_app_debian}.
 	\item When installation is done, paste the copied \emph{/var/www/} folder, in step 2, to the same location on the new server machine. 
 	\item Insert the database copy into the new database on the new machine. For help, see \emph{Appendix \ref{sec:exp_app_inject}}
+	\item Copy settings.cfg and make sure it is properly set up for the new machine. See \emph{Appendix \ref{sec:com_ArgExpl}}.
 	\item Now the system is ready for the first startup. Make sure to have a new version of the \appName\ server.jar on the machine.
 \end{enumerate}
 
