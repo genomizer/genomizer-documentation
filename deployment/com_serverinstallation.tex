@@ -1,18 +1,33 @@
 To start the server, java needs to be installed on the computer and a runnable JAR file needs to be created.
-There are many ways to create such a file, for example, the terminal or
-an IDE like eclipse could be used. \\The server also needs a database to work properly. This guide assumes that a database is present, otherwise a new database needs to be created and currently hardcoded into the server.\\
-\\
-The creation of the runnable JAR file in the IDE eclipse will be explained in \ref{sec:com_UsingEclipse} below.
-\subsection{Using eclipse to create a runnable JAR file}
+This requires the following things to be installed on the computer: Git, Ant and Java JDK. 
+Refer to Appendix \ref{chap:exp_app_ubuntu} and \ref{chap:exp_app_debian} on how to install these.
+If these are already installed refer to \ref{sec:com_download} on how to download the source files.
+\subsection{Downloading the source code}
+\label{sec:com_download}
+The source code for the Genomizer server is hosted at Github and is completely open source. It can be downloaded in
+two ways. Either manually from http://www.github.com/genomizer/genomizer-server where there is a button to
+download the entire project as a zip file or using Git from command line in the following way:
+\begin{verbatim}
+git clone https://github.com/genomizer/genomizer-server.git
+\end{verbatim}
+This will create a directory named genomizer-server in the current directory.
+\subsection{Creating a runnable JAR file}
+\label{sec:com_makejar}
+\subsubsection{Command line}
+When the source code is downloaded (and unzipped if downloaded manually), use the terminal to navigate into
+the genomizer-server directory.
+\begin{verbatim}
+ant jar
+\end{verbatim}
+A file called server.jar should be created in the same directory.
+\subsubsection{Eclipse}
 \label{sec:com_UsingEclipse}
-This guide was written 2014-05-09 which means that the process of creating the runnable JAR file with eclipse might have changed slightly, but the main idea should still be valid.\\
-\\
-To create the runnable JAR file with eclipse, follow these steps:
+To create the runnable JAR file with Eclipse, follow these steps:
 \begin{enumerate}
 \item Open eclipse and import all the code into a project.
-\item Rightclick on the project and choose export.
+\item Right-click on the project and choose export.
 \item Expand the folder "java" and then choose "runnable JAR file".
-\item Make or choose an already existing launch configuration where ServeMain is the class containing the main-method.
+\item Make or choose an already existing launch configuration where ServerMain is the class containing the main-method.
 \item Choose an export location for the runnable JAR file.
 \end{enumerate}
 
@@ -23,40 +38,46 @@ In order for this to work, the runnable JAR file must have been created.
 \item Choose a computer that should host the server.
 \item Make a runnable JAR file of all the code and place it inside a folder on the computer.
 \item Start the terminal and navigate to the folder containing the runnable JAR file.
-\item In the terminal, type: "java -jar "jarfilename".jar "dbsetting" "portnumber"" (exclude all "). All arguments are explained in more detail in \ref{sec:com_ArgExpl}.\\ 
-The image \refer{fig:com_runserverterminal} below is an example of what it could look like when running the command. 
+\item In the terminal, type: \emph{java -jar filename.jar}. Server configuration is explained in more detail in \ref{sec:com_ArgExpl}.\\ 
 \end{enumerate}
-\begin{figure}[h]
-\addImage{com_RunServer.png}
-\caption{Example of execution of the server}
-\label{fig:com_runserverterminal}
-\end{figure}
 
-\subsubsection{Argument explenation}
+\subsection{Configuration}
 \label{sec:com_ArgExpl}
-To start the server, the system administrator needs to take some arguments into consideration before the starting command in the terminal is executed.\\
-There are two different arguments that are passed to the server when it is started.
-The server uses default settigs if less then two arguments are passed, which currently is the database give from support and port 7001.
+The server requires some parameters to be set before it can be used. They should be stored in a file called
+``settings.cfg'' in the same directory as the server JAR. It can look like this:
+\begin{verbatim}
+databaseuser     = admin
+databasepassword = password
+databasehost     = localhost:6000
+databasename     = genomizer
+publicaddress    = http://www.genomizer.se
+apacheport       = 8000
+downloadurl      = /download.php?path=
+uploadurl        = /upload.php?path=
+genomizerport    = 7000
+passwordsalt     = genomizer
+passwordhash     = 2fd26e9aea528153a865257a723f6d4859e9f6c4a6775c003ae91297f619c6e8
+\end{verbatim}
+Each setting should be on a separate line, and be separated by a '=' sign. The number of spaces does not matter,
+neither does case on the setting names. Case does matter on the setting values however, password and PassWord are
+different things.
 
-\paragraph{dbsetting}
-This is the argument that tells the server what kind of database to use.
-The argument currenlty has tre choices: global, test and nothing. 
-
-
-\begin{itemize}
-\item If "global" is selected, the server currently uses a database that is located at Umeå universitet in lecture hall MC333.
-\item If "test" is the choice, the server used a database that has been given by support at Umeå universitet. 
-\end{itemize}
-
-\paragraph{Flags}
-A set of flags may be set when starting the server from terminal. These are:
+\subsubsection{Database settings}
+The settings databaseuser, databasepassword, databasehost and databasename are all connected to the SQL database,
+and should be the same as the ones used when setting up the database. 
+\subsubsection{Addresses and ports}
+The settings publicaddress, apacheport, downloadurl, uploadurl and genomizerport decide how the clients
+connect to the genomizer system. Downloadurl, uploadurl and genomizerport should generally stay the same as the example file,
+but publicaddress and apacheport depends on how the server is set up.
+\subsubsection{Password handling}
+Passwordsalt is used to increase the security of passwords. It is combined with the password and hashed so that the password does not need to be
+saved in plaintext. Passwordhash is the result of this operation, and this parameter should not be set manually. There is a script called
+changepwd.sh, which when called with the password as parameter will update settings.cfg with the result.
+\subsubsection{Flags}
+In addition to the settings file, a set of flags may be set when starting the server from terminal. These are:
 \begin{itemize}
 \item -p [port] \\This flag sets the listening port. 
-\item -d [database] \\Here you may chose which database to be used. Can be either "global" or "test".
 \item -debug \\If this flag is set the server will print output to terminal for every request and response. Also other outputs are written aswell.
-\item -f [file] \\This flag may be used instead of -d [database]. If this flag is set the database settings will be read from file. This flag is ignored if -d is used.
+\item -f [file] \\Uses file to read settings instead of the default file settings.cfg.
 \item -nri \\If this flag is set the server will not remove inactive users which are logged in on the server.
 \end{itemize}
-
-\paragraph{port}
-This is the server portnumber: \serverPort\ .
