@@ -1,11 +1,9 @@
 
 
 
-This chapter will present an overview of the services that the \appName\ system will provide. 
+This chapter will present an overview of the services that the \appName\ system provides. 
 
 \section{Usage}
-
-
 
 \begin{figure}[h]
 \addImage{genomizerDiagramServiceDescription.png}
@@ -13,27 +11,22 @@ This chapter will present an overview of the services that the \appName\ system 
 \label{con_serviceDescription}
 \end{figure}
 	
-In order to give the users flexibility when using the service there will be clients for many different platforms (Windows, Linux, OSX, Web, Android and iPhone) that they can login on (See \refer{con_serviceDescription}). 
-When a user then chose a given task, for example start raw-to-profile processing that task is sent by internet to the server as shown in \refer{con_serviceDescription} which will handle the request and send a response back to the user.
+In order to give the users flexibility when using the service there are clients for many different platforms (Windows, Linux, OSX, Web, Android and iPhone). 
+When a user chooses a given task, for example start \term{raw} to \term{profile} processing, that task is sent by internet to the server as shown in \refer{con_serviceDescription} which will handle the request and send a response back to the user.
 
-The main purpose of the Genomizer system is to centralize all data. For this purpose a user with a desktop client can upload data with flexible annotation to the data storage on the server. 
-Advanced searches on different annotation can be performed in the database to find data which has previously been uploaded to the database. When some interesting data is found in the database it can be downloaded to the users local computer. 
-After searching the user can also decide to select files and send requests to the server to process said files.
+The main purpose of the \appName\ system is to centralise all data. To enable this a user can annotate and upload data to the server using both desktop and web based clients. 
+Advanced database searches can be performed on the annotations to find previously uploaded data. When the required data is found the user can choose to download the files or schedule them for processing on the server.
 
+\section{Processing}
+Users can schedule various processing procedures on different data sets. This is carried out on the server to avoid heavy workload on the clients. The processing carried out between \term{raw} data and \term{profile} data involves a number of different steps. The user can choose which steps are carried out and the various parameters used.
 
-\section{Genome release}
-The researchers will be able to upload chain files between different genome releases and genome references for different species. When a chain file is uploaded it will be possible to convert profile and region data between different releases. 
-
-\section{Analyze}
-The user will be able to conduct different types of analysis on different datasets, the actual analysis will be calculated on the server to avoid heavy workload on the clients. The primary analysis is between raw data and profile data through many steps including smoothing. Because a user sometimes might not want to do all the steps involved when processing raw data into profile data, the user can choose how far the processing should go.
+\section{Genome releases}
+Users can upload new genome release files and use them in the processing of \term{raw} to \term{profile} data.
 
 \section{Mobile}
-The user can search for files in the database in the mobile application. 
-After they have found the files they want they can schedule them for conversion or processing.
-
-In the mobile application the users will be able to start downloading new datasets from other databases to the genomizer database, start or schedule processing of data and view the visualization of analysed data.
+The mobile applications enable the searching of files in the database and the scheduling of processing procedures for the conversion of \term{raw} to \term{profile} data.
 
 \section{Annotations}
-A user with access to the systemadmin page can add or delete annotations in the database.
+A user with access to the \term{Systemadmin} page can add or delete annotations used to store information about experiments.
 
 
