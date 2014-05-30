@@ -1,25 +1,28 @@
 
-This is a user manual for the desktop client. It will provide guides on how to use the client and the different functionalities it holds. The screen shots shown in this document are made from a Linux machine, but the Desktop application also runs on Windows or Mac, and will follow the design principles thereafter. Because of this, the look of the client may vary, but the functionality is the same, and hopefully this manual will be of service anyways.
+This is a user manual for the desktop client. It will provide guides on how to use the client and the different functionalities it holds. The screen shots shown in this document are made from a Linux machine, but the Desktop application also runs on Windows or Mac, and will follow the design principles thereafter. Because of this, the look of the client may vary, but the functionality remains the same.
 
 \subsection{Login and startup}
-When you start this application the first thing that's displayed is a login screen, as illustrated in \refer{fig:des_login-pic}. In this screen you enter your username, password and the IP-Address for the server and then press login to enter the \appName Desktop.
+When you start this application the first thing that's displayed is a login screen, as illustrated in \refer{fig:des_login-pic}. In this screen you enter your username, password and the IP-Address for the server and then press login to enter the \appName\ Desktop.
 
 \begin{figure}[htb]
 	\addScaledImage{0.5}{login_picture.png}
 	\caption{Screenshot of the login screen.}
 	\label{fig:des_login-pic}
 \end{figure}
-The application is built with tabs, as illustrated below in the upper part of \refer{fig:des_tabs-view}. Each tab contains separate features of the application. There are six tabs: Search, Upload, Process, Workspace and Administration. One tab that is designed and planned, but not implemented is Analyze.
+The application is built with tabs, as illustrated in \refer{fig:des_tabs-view}. Each tab contains separate features of the application. There are six tabs: Search, Upload, Process, Workspace and Administration. One tab that is designed and planned, but not implemented is Analyze.
 \begin{figure}[htb]
 	\addImage{tabs.png}
-	\caption{Illustration of the different tabs of \appName Desktop and displaying the Search tab.}
+	\caption{Illustration of the different tabs of \appName\ Desktop and displaying the Search tab.}
 	\label{fig:des_tabs-view}
 \end{figure}
 \FloatBarrier
 
 \subsection{Search}
-The first tab that meets the user after logging in is the Search tab, illustrated in \refer{fig:des_search-query}. The Search tab uses the same query building technique as the “Pubmed Advanced Search Builder”\cite{des_pubmed_query}. It has one text field where you either can type in the query yourself or you can use the query builder below it. Each row in the query builder has at most five components. These are a logical expression, an annotation name field, a free text field or a drop down menu to insert search words, a minus button and a plus button. The minus button removes a row and the plus button adds a row. These buttons are however not available in each row. The plus button is only available in the last row. The minus button is available in every row except if there is only one row in the query builder. The logical expressions combines the annotations, so they are available in every row but the first.
-By writing in the annotation text field or selecting a value in the drop down menu you can specify the query the row will produce. Together each row builds a full query. As illustrated in \refer{fig:des_search-query} below.
+The first tab that meets the user after logging in is the Search tab, illustrated in \refer{fig:des_search-query}. The Search tab uses the same syntax as the “Pubmed Advanced Search Builder”\cite{des_pubmed_query}. It has a text field where you can type in the search query yourself, or you can use the query builder below it.
+
+A query can be built by choosing an annotation type, eg. \term{Species} and a value to search for, eg. \term{Human}. Additional search parameters can be added using the plus button and require one of the logical expressions \term{AND, OR} or \term{NOT}. This specifies how hits on the parameter are treated.
+
+The example in \refer{fig:des_search-query} would return all experiments on human DNA that are also annotated as female. If the \term{AND} was replaced by \term{OR} it would return all experiments on human DNA together with all experiments annotated as female. Similarly, if the \term{AND} was replaced by \term{NOT} it would return all experiments on human DNA that are not annotated as female.
 \begin{figure}[htb]
 	\addImage{search_tab.png}
 	\caption{Illustration of a query, made by the query builder.}
@@ -34,11 +37,16 @@ When the search button is clicked the search tab will change it's view to displa
 	\caption{Illustration of search results.}
 	\label{fig:des_search-results}
 \end{figure}
-
+\FloatBarrier
 
 \subsection{Upload}
-If the user needs to upload a file to the database it can be done through the upload tab.
-When the tab is pressed the user gets presented with a text field and a button where they can search for an existing experiment to upload to and another button for adding a new experiment. When the user presses the new experiment button, the user is presented with annotations they can choose between. Bolded annotations are {\em forced} and need to be filled in for the user to be able to upload. If they put in an experiment named and pressed the existing experiment button, they are instead presented with the annotations already belonging to that experiment, which they can't change. The user is also presented with buttons named Select files and Upload selected files, with which the user can choose a file in a file browser and then upload them. Dragging and dropping files from the file system also works. The upload tab is illustrated in \refer{fig:des_upload-view} and the file browser is illustrated in \refer{fig:des_upload}.
+Uploading files to the database is done through the \term{Upload} tab.
+When the tab is pressed the user is presented with a text field, a button where they can search for an existing experiment and a button for adding a new experiment. 
+
+When the user presses the new experiment button they are presented with the annotations they can use to provide additional information about the experiment. Annotations in bold text are \term{forced} and need to be provided.
+
+If the name of an existing experiment is entered users can easily upload more files to that experiment by clicking the \term{Search for existing experimnet} button. The user is presented with the buttons \term{Select files} and \term{Upload selected files}. Files can be selected using the file browser, shown in \refer{fig:des_upload}, or by dragging and dropping files from a separate window. Selected files are uploaded by clicking the \term{Upload selected files} button. The upload tab is illustrated in \refer{fig:des_upload-view}.
+
 \begin{figure}[htb]
 	\addImage{upload_existing.png}
 	\caption{Illustration of the upload tab where the browse and upload functions are shown.}
@@ -50,7 +58,7 @@ When the tab is pressed the user gets presented with a text field and a button w
 	\caption{Choosing a file for uploading}
 	\label{fig:des_upload}
 \end{figure}
-\FloatBarrier
+
 
 \subsection{Process}
 In the process tab there is a list called Files that on the left side of the tab. These files are chosen from the Workspace for process, see \ref{sec:des_workspace}. From this list the user can mark RAW-files and choose to create profile data. By left clicking on the files they will be marked. If the user left clicks once again on the same file it will be unmarked. For each file there exists only one specie, the list shows the user which specie a file has. When a file is marked the \emph{Genome release files} dropdown list will be filled with all genome versions that exists for that specie. If the user then enters the create profile data tab and presses the Create profile data button which is visible in the middle of the tab see \refer{fig:des_process-view}, all the files that are marked will now be processed to profile data. This list of files will be empty unless the user has chosen to process selected RAW-files from the workspace tab. If that is the case then those selected RAW-files will then be visible in the list of files in the process tab. When the user has selected some RAW files the user has the option to change conversion parameters that is above the create profile data button as illustrated in \refer{fig:des_process-view}. These parameters has pre-set values and allowed intervals. The conversion parameters are Flags, Genome release files, Window size,Smooth type,Step position,Step size,Print mean and Print zeros. If the user has selected some RAW-files and pressed the Create profile button, then if all went well and the server could convert the files a message "The server has converted: filename" will print in Convert Files for each file that was converted to profile data. If for some reason the server couldn't create profile data for any RAW-file another message "WARNING - The server couldn't convert: filename" will print in Convert Files that is visible in the middle bottom of the process tab see \refer{fig:des_process-view}. If the user wants to perform a ratio calculation while processing a file the user has the option to press the \emph{Use ratio calculation} button. When pressed a popup window appears and the user gets the option to write in several ratio calculation parameters. These parameters consists of eight parameters \emph{Ratio calculation, Input reads cut-off, Chromosomes, Window size ,Smooth type, Step position, print mean} and  \emph{print zeros}.
