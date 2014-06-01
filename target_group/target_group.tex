@@ -66,7 +66,9 @@ As the database is filled with data, the researchers want to ensure that it is k
 \caption{User story for the protection of the database from unauthorized access}
 \label{fig:target_password}
 \end{figure}
+\FloatBarrier
 
+\subsection{Processing}
 The unordered \term{raw} data gained from an experiment requires processing in order to be analyzed. The researchers have written a number of scripts and, when combined with the \term{BowTie} algorithm, generate \term{profile} data. In this format the \term{DNA} pieces are ordered and mapped to the \term{DNA} string. It is important that the system automates this process so that all researchers can easily process the large \term{raw} files, see \refer{fig:target_r2p}. 
 
 \begin{figure}[h]
@@ -75,7 +77,23 @@ The unordered \term{raw} data gained from an experiment requires processing in o
 \label{fig:target_r2p}
 \end{figure}
 
-After processing, the resulting \term{profile} data files should be annotated and saved in the database alongside the original raw data files. It is important that the \term{raw} data files remain traceable and that the parameters used in processing are saved so that the process can be repeated and confirmed (see \refer{fig:target_trace}).
+As new discoveries are made in the area, new standards for the order of the base pairs in a \term{DNA} string are set. This results in a new \term{Genome Release} for a specific species. These are obtained as a set of files specifying this order and are used in the processing of \term{raw} data. \appName\ must support the uploading of new sets of \term{genome release} files to be used in processing otherwise the system will very quickly become outdated. This is specified in the user story ``Add Genome Release'' shown in \refer{fig:target_GR}.
+
+\begin{figure}[h]
+\userstory{Add genome release / reference genome}{To be able to annotate the data properly and extract genome reference \\ the researchers \\ want to be able to add genome releases and reference genome.}
+\caption{User story for the addition of \term{Genome Releases}}
+\label{fig:target_GR}
+\end{figure}
+
+It would also be an advantage if the system could carry out further processing from \term{profile} to \term{region} files and is captured in the user story ``Profile to Region'' shown in \refer{fig:target_profReg}.
+
+\begin{figure}[h]
+\userstory{Profile to region}{To be able to find regions of interest \\ the researchers \\ want to process profile data to region data (Per’s code).}
+\caption{User story for the processing of \term{profile} to \term{region} files}
+\label{fig:target_profReg}
+\end{figure}
+
+After processing, the resulting data files should be annotated and saved in the database alongside their parent files. It is important that the parent files remain traceable and that the parameters used in processing are saved so that the process can be repeated and confirmed (see \refer{fig:target_trace}).
 
 \begin{figure}[h]
 \userstory{File traceabillity}{To be able to access the underlying raw data or profile data \\ the researchers \\ want the raw data files to be traceable from profile files and the profile files to be traceable from the region data (if available) when the files have been generated on the server.}
@@ -88,8 +106,10 @@ After processing, the resulting \term{profile} data files should be annotated an
 %\subsection{File formats}
 %As different software uses different file formats for genome data (''Convert common file formats''), and the tools for converting files between these file formats are not very user friendly. To do analyses on the data it must be processed from raw its raw form, this conversion is a very time consuming process. The researchers want this work to be carried out by the system (''\term{Raw} to \term{Profile}'', ''\term{Profile} to \term{Region}'').
 
-\subsection{Genome release}
-As new discoveries are made in the area, new standards for the order of the base pairs in a \term{DNA} string are set. This results in a new \term{Genome Release} for a specific species. These are obtained as a set of files which specify the order used in generating \term{profile} data. The researchers need a way to convert \term{profile} data files between different genome releases (see \refer{fig:target_genome}). It is not uncommon for errors in a new release to be discovered after publication. It is therefore also important to store files generated using older genome releases for some time after a new release is published.
+\subsection{Conversion}
+\appName\ should also provide a way to convert \term{profile} data files between different genome releases as specified in \refer{fig:target_genome}. This involves the ability to upload new \term{Chain Files} which enable conversion using \term{LiftOver} and the embedding of this program, see \refer{fig:target_chain}.
+
+It is not uncommon for errors in a new release to be discovered after publication. It is therefore also important to store files generated using older genome releases for some time after a new release is published.
 
 \begin{figure}[h]
 \userstory{Convert genome release}{To easier handle files \\ the researchers \\ want to convert files between genome releases (\term{LiftOver}).}
@@ -97,8 +117,17 @@ As new discoveries are made in the area, new standards for the order of the base
 \label{fig:target_genome}
 \end{figure}
 
+\begin{figure}[h]
+\userstory{Add chain file}{To be able to convert between genome releases \\ the researchers \\ want to upload chain files (LiftOver).}
+\caption{User story for the addition of new \term{Chain Files}}
+\label{fig:target_chain}
+\end{figure}
+\FloatBarrier
+
 \subsection{Analysis}
 The researchers also want to be able analyze data using the server. This involves combining regions using logical arithmetic and in such a way construct new regions (``Combine regions''). It should also be possible to create new regions from a reference point (``Create region subset''). Another interesting analysis is overlap analysis which shows how much a number of genome experiments overlap(``Overlap analysis'').
 
 \subsection{Visualization}
-In order to view analysis results, the researchers would like a graphical presentation of the results (``Plot overlap analysis'', ``Plot average regions''). They also want to be able to use the \term{Integrated Genome Browser} (IGB)\cite{IGB} software to view results (``IGB Session''). They therefore want to be able to download a session-file to immediately start the browser. 
+In order to view analysis results, the researchers would like a graphical presentation of the results (``Plot overlap analysis'', ``Plot average regions''). They also want to be able to use the \term{Integrated Genome Browser} (IGB)\cite{IGB} software to view results (``IGB Session''). They therefore want to be able to download a session-file to immediately start the browser.
+
+For a full list of the user stories used in the project see Appendix \ref{chap:userstories}. They are divided into two sections, Implemented User Stories and Product Backlog. The \term{Product Backlog} is the set of user stories that were not completed during the project and will be the target for further development projects.
