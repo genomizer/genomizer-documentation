@@ -55,10 +55,6 @@ As seen in \refer{fig:ios_sequence_convert_request2}, convert requests are sent 
 \subsubsection{Segue Control}
 A segue control package has been implemented to avoid multiple segues being executed at the same time. When a segue is started, a static \term{BOOL} is set to \term{YES} in XYZSegueController. When the segue is finished, the \term{BOOL} in XYZSegueController is set to \term{NO}. This means that the \term{BOOL} is \term{YES} when a segue is being executed, and \term{NO} otherwise. Every time a segue is going to be executed, it first checks the value of the \term{BOOL}. If a segue is already being executed, i.e. the \term{BOOL} is \term{YES}, the new segue is aborted.
 
-\subsubsection{Limitations}
-
-There are a couple of limitations on this application, one of which is crashes when the UI gets overpowered. What this means is that certain combinations of clicks can cause the application to crash, however this is something that would not happen during regular usage. Since the screen of an iPhone is quite small, a lot of search results can be hard to get an overlook of. Hardly any security has been implemented. This should be fixed as soon as possible.  
- 
 \subsection{Testing}
 
 We have worked using the principles of TDD, which means that Unit-tests have been written for nearly all underlying classes. This includes JSONBuilder, ExperimentDescriber, Experiment, ExperimentFile, and ExperimentParser. These tests check all required functionality, including but not limited to proper object creation. Exactly what all the tests do is explained in the test names and comments. ServerConnection has not been tested, this is work for next years workers. User interface functionality and integration testing has been done using exploratory methods. Some UI functionality has been tested using automated tests, where we recorded a certain combination of clicks, and let the computer do them instead. 
