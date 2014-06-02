@@ -1,64 +1,153 @@
-In this section instructions for the usage of the \appName\ Android application is presented. \ref{sec:and_start} describes how to start the application and \ref{sec:and_search} gives instructions on how to search for experiments.
+In this section instructions for the usage of the \appName\ Android application is presented. In \refer{sec:and_start} there is a description on how to start the application and \refer{sec:and_search} gives instructions on how to search for experiments.
 
 \subsection{Start the Application and Login}
 \label{sec:and_start}
 
 %Localize the \appName\ icon in your list of Android applications and click the icon in order to start \appName.
 
-The user needs to login in order to start working with the \appName\ app. The  user name and password is inserted in the corresponding boxes and the \click{Sign in} button pressed to access the application. If this not yet
-registered with the service, the system administrator should be contacted to help with the creation of an account.
+The user needs to login in order to start working with the \appName\ app. The  user name and password is inserted in the corresponding boxes and the clicking the \term{Sign in} button initiates the main application. If you dont have a user name or password, the system administrator should be contacted to help with the creation of an account.
 
 \begin{figure}[h]
-\addTwoImages{andLogin.png}{and_login_menu.png}
+\addScaledImage{0.1}{figures/and_login.png}
 \caption{Login View}
 \label{fig:and_login_man}
 \end{figure}
 \FloatBarrier
 
 
-In \refer{fig:and_login_man}, the image to the right shows a drop-down menu with a \term{Settings} button. Selecting this button will display the \term{Settings View}, described in the following \term{Settings} section below.
+In \refer{fig:and_login_man}, the tool button in the upper right corner leads to the \term{Settings View}, described in  \refer{sec:and_manual_settings} below.
 
-\subsection{Settings}
-The \term{Settings} view acts to enable the user to choose which server to connect to when using the \appName\ application. As of the current release of the application, in the Settings View, the user is able to:
+\subsection{Settings}\label{sec:and_manual_settings}
+The \term{Settings} view acts to enable the user to choose which server to connect to when using the Genomizer application. As of the current release of the application, in the Settings View, the user is able to:
 
 \begin{enumerate}
 \item Select one of previously used server URLs
 \item Add a server URL
 \item Remove a server URL
+\item Edit an existing server URL
 \end{enumerate}
 
-The above functionalities are accessed by the drop-down menu as illustrated in the middle image  of  \refer{fig:and_settings_man}. Any removal or addition of server URLs are stored locally on the device and and are loaded upon subsequent application launch.
+The left most image in \refer{fig:and_settings_man} show three buttons in the top right corner of the view. These buttons are used to access the functionalities listed above. The button with a green plus sign enables the user to add a new server URL, as illustrated in the image in the middle of \refer{fig:and_settings_man}. The button in the middle with a paint brush icon will on selection show the server URL edit view, as illustrated in the right most image in \refer{fig:and_settings_man}. And the left most button with a red cross icon will upon selection enable the user to remove the currently selected server URL from the drop down menu containing all saved server URLs.
+
+
+Any selection, removal, edit or addition of server URLs are stored locally on the device and and are loaded upon subsequent application launches.
 
 
 \begin{figure}[h]
 \addThreeImages
-{and_login_settings.png}
-{and_login_settings_menu.png}
-{and_settings_edit.png}
+{figures/and_server_settings_select.png}
+{figures/and_server_settings_add.png}
+{figures/and_server_settings_edit.png}
 \caption{Settings View}
 \label{fig:and_settings_man}
 \end{figure}
 \FloatBarrier
 
+
+\subsection{Searching for files}\label{sec:and_search}
+
+When entering the Search View, as illustrated in \refer{fig:and_search_man} all annotations are automatically downloaded from the server and displayed as a list. Each annotation consists of an annotation-identifier, a dropdown table/text-input field where the user may specify desired value, and a checkbox. When putting a check-mark in the checkbox, it means that this particular annotation type should be used when searching for files in the database. The search is initiated by pressing \term{Search} at the bottom of the view.
+
+Once the user has been logged in to the system, three buttons will always be visible in the top right corner of each view:
+\begin{enumerate}
+\item Search button
+\item Selected Files button
+\item Process Status button
+\end{enumerate}
+
+Clicking these buttons switches the context of the application and allow the user to quickly navigate between different functionalities.
+
+The search view also contain a button visible in the top right corner, used to activate the advanced search mode described in the following \refer{sec:and_search_pub}. 
+
+\begin{figure}[h]
+\addScaledImage{0.1}{figures/and_search.png}
+\caption{The Search View}
+\label{fig:and_search_man}
+\end{figure}
+\FloatBarrier
+
+
+\subsection{Pubmed Search}\label{sec:and_search_pub}
+The Pubmed Search view provide the means of free-text search using Pubmed-Style queries as seen in \refer{fig:and_pubmed_man}. This view include a text-input field together with two buttons. The text field  is populated with the annotations that the user may have selected within the regular Sarch View. However, if no annotations have been previously selected in the Search View, the user must input all annotations manually. The annotations selected in the Search View are associated with logical connectives. These logical connectives, as well as annotation values, can be manually modified by the user. The supported logical connectives are: 
+
+\begin{enumerate}
+\item AND
+\item NOT
+\item OR
+\end{enumerate}
+
+The user may also choose to provide perentheses to device more specific searches.
+
+\begin{figure}[h]
+\addScaledImage{0.1}{figures/and_search_advanced.png}
+\caption{The Pubmed Search View}
+\label{fig:and_pubmed_man} 
+\end{figure}
+\FloatBarrier
+
+
+%Explains several steps, remove others or shorten this?
+\subsection{Search Results}
+When searching the user will be redirected to the search results view  that displays a list of available experiments matching the search annotations. Every experiment is listed showing the experiment name. To receive more information about data files that are available for each experiment, click on an experiment in the list. By clicking an entry you will be taken to a new view displaying all available data files for that experiment, presented in the Experiment List View. 
+
+Clicking on the cogwheel button in the top right corner of the view enables the user to modify which annotations are presented within the Search Results View, and is described further in the following \refer{sec:search_settings}.
+
+\begin{figure}[h]
+\addScaledImage{0.1}{figures/and_search_result.png}
+\caption{The Search Results View}
+\label{fig:and_search_results_man} 
+\end{figure}
+\FloatBarrier
+
+
+\subsection{Search Settings View}\label{sec:search_settings}
+The Search Settings View display settings for the files presented to the user after a search is done, as illustrated in  \refer{fig:and_search_settings_man} below. The Search Settings View contains all different annotations the user will be able to display about the experiments presented in the Search Results View. The user are able to select annotations by marking the checkbox next to the annotation name and then clicking the Save settings button to save changes. If the user has no special requests it is also possible to use default settings, which will display (experiment-Id, created by, pubmed and type) annotations for the files displayed. 
+
+
+
+\begin{figure}[ht]
+\addScaledImage{0.1}{figures/and_search_select_visible_annotations.png} 
+\caption{Search Settings View}
+\label{fig:and_search_settings_man}
+\end{figure}
+\FloatBarrier
+
+
+\subsection{Experiment File View}
+The Experiment File View is used to present the user with all files associated with an experiment. This includes all raw, profile and region files derived from the experiment. A user may select and add an arbitrary number of files to the Selected Files view, which is described in \refer{sec:and_manual_selected}, by marking the checkbox of the desired files, as done in  \refer{fig:and_experiment_man}, and pressing \term{Add to selection}.
+
+Clicking on a file presented within this view creates a popup containing all different annotations for the selected file, as illustrated in the right most image in \refer{fig:and_experiment_man}.
+
+\begin{figure}[h]
+\addTwoImages{figures/and_experiment_files.png}{figures/and_experiment_file_info.png}
+\caption{The Experiment File View}
+\label{fig:and_experiment_man}
+\end{figure}
+\FloatBarrier
+
+
+
+
+
+
 \subsection{Selected Files}\label{sec:and_manual_selected}
 Once the user has signed in to the server, the user is presented with a \term{Selected Files} view, as illustrated in \refer{fig:and_selected_man}.
 This is the main part of the application where all work and conversions are done to files, when the user has searched and found files that are interesting for further use, it can be moved to the selected files area. 
-The page contains four different tabs that the user can use to show different type of files saved in the selected files workarea. All files stored in this page is only saved during the current session and is meant to be used as a temporary grouping area for files. 
+The page contains three different tabs that the user may use to show different type of files saved in the selected files workarea. All files stored in this page are only saved during the current session and is meant to be used as a temporary grouping area for files. 
 
 \begin{itemize}
 
 	\item \term{Raw}, will diplay all the Raw files that the user has choosen to save to the temporary work area. The files here can be marked and used for converting to profile data.
     \item \term{Profile}, will display the Profile files that the user has choosen to move to the selected files area. No conversions or other work can be done at this stage to profile files.
     \item \term{Region}, this page will display all the region files the user has selected to move to the selected files area for further work. No conversions or other work can in this stage be done to region files.
-    \item \term{Result}, this view is intended to host analyzing results and similar events, at this stage this view does nothing.
     
 \end{itemize}
 
-There is also a dropdown menu for this page (see \refer{fig:and_selected_man}), reachable from the phones default way to obtain menus. This menu will show an option to open up the process view, to show the current status of the users Raw to Profile conversions.
+Similar to the Experiment View, clicking on a file will present the user with a popup containing the annotations for that file.
 
 
 \begin{figure}[h]
-\addTwoImages{and_selectedfiles.JPG}{and_selected_menu.png}
+\addTwoImages{figures/and_selected_files.png}{figures/and_selected_files_file_info.png}
 \caption{Selected Files View}
 \label{fig:and_selected_man}
 \end{figure}
@@ -66,9 +155,9 @@ There is also a dropdown menu for this page (see \refer{fig:and_selected_man}), 
 
 
 \subsection{Converting Files}
-When the user has choosen a file for conversion this page will be presented to the user, with the different parameters needed for the conversion to take place. (see \refer{fig:and_convert_man})	\\
+When the user has choosen a file (or several files) for conversion, the user will be presented with the Conversion View as seen in \refer{fig:and_conversion_man}. In this view the user may enter the parameters needed to perform a Raw-to-Profile-file conversion.
 \newline
-There are 9 different parameters to be filled out in this page for the conversion to be done in a proper way. All parameters do not have to be filled, but they have to be filled in the order that is presented to the user. In order to fill out parameter number 3, both parameter 1 and 2 have to be filled out first.
+There are 9 different parameters to be specified in this page for the conversion to be done in a proper way. All parameters do not have to be filled, but they have to be specified in the order that is presented to the user. In order to fill out parameter number 3, both parameter 1 and 2 have to be filled out first.
 
 \begin{enumerate}
 	\item \term{Bowtie}, is a freetext field where the different parameters for the bowtie program are to be inserted.
@@ -79,99 +168,34 @@ There are 9 different parameters to be filled out in this page for the conversio
     \item \term{Stepsize}, free text field for which stepsize is to be used for the conversion.
     \item \term{Ratio calculation}, on/off field which determines if the ratio calculation is to be used. If checked it will require both next two fields to be filled out.
     \item \term{Ratio}, free text field with the parameters for the ratio, if ratio calculation is wanted.
-    \item \term{Smoothing}, free text field for parameters regarding the smoothing for the ratio calculation. 
-    
+    \item \term{Smoothing}, free text field for parameters regarding the smoothing for the ratio calculation.     
 
 \end{enumerate}
-\FloatBarrier
-
-
-
-\subsection{Searching for files}\label{sec:and_search}
-
-When entering the Search View all annotations are automatically downloaded from the server and displayed as a list. Each annotation consists of an annotation-identifier, a dropdown table/text-input field where the user may specify desired value, and a checkbox. When putting a check-mark in the checkbox, it means that this particular annotation type should be used when searching for files in the database. The search is initiated by pressing \click{Search} at the bottom of the
-page.
 
 \begin{figure}[h]
-\addTwoImages{and_search.png}{and_search_menu}
-\caption{The Search View}
-\label{fig:and_search_man}
+\addScaledImage{0.1}{figures/and_convert_view.png}
+\caption{The Conversion View}
+\label{fig:and_conversion_man}
 \end{figure}
-\FloatBarrier
 
-%No support for parantheses? Shoulden't free text simply send the right data?
-\subsection{Pubmed Search}
-The drop-down menu visualized in the right most image of
-\refer{fig:and_pubmed_man} contains a menu item called \term{Edit pubmed
-string}. Choosing this drop-down element introduces the Pubmed Search View as
-seen in \refer{and_pubmed_man}, and include a text-input field together with two
-buttons. The text field represent the annotations selected in the Search View,
-with logical connectives in between. These logical connectives, as well as
-annotation values, can be manually modified by the user. The supported logical
-connectives are: AND, NOT and OR.
-
-\begin{figure}[h]
-\addScaledImage{0.1}{and_search_pubmed.png}
-\caption{The Pubmed Search View}
-\label{fig:and_pubmed_man} 
-\end{figure}
-\FloatBarrier
-
-
-%Explains several steps, remove others or shorten this?
-\subsection{Search Results}
-When searching the user will be redirected to the search results view  that displays a list of available experiments that matches the search annotations. Every experiment is listed showing the experiment name. To receive more information about data files that are available for each experiment, click on an experiment in the list. By clicking an entry you will be taken to a new view displaying all available data files for that experiment, presented in the Experiment List View. 
-
-\begin{figure}[h]
-\addTwoImages{and_search_results.png}{and_search_results_menu.png}
-\caption{The Search Results View}
-\label{fig:and_search_results_man} 
-\end{figure}
-\FloatBarrier
-
-
-\subsection{Search Settings View}
-This will display settings for the files presented to the user after a search is done.(see \refer{fig:and_search_settings}) It will contain the different annotations the user will be able to display about the specific file. The user can select annotations by checking the checkbox next to the annotation name and then click the button to save changes. If the user has no special requests it is also possible to use default settings, which will display (experiment-Id, created by, pubmed and type) annotations for the files displayed. 
-
-\begin{figure}[ht]
-\addScaledImage{0.4}{SearchSettings.png} 
-\caption{Search Settings View}
-\label{fig:and_search_settings}
-\end{figure}
-\FloatBarrier
-
-
-\subsection{Experiment File view}
-Experiment File view displays all files associated with an experiment. This includes all raw, profile and region files derived from the experiment. The user can then select and transport the files to the Selected Files view (\ref{sec:and_manual_selected}) by marking the checkbox of the desired files, as done in  \refer{fig:and_experiment_man}, and then pressing \click{Add to selection}.
-
-\begin{figure}[h]
-\addTwoImages{and_experiment.png}{and_experiment_menu.png}
-\caption{ The Experiment File View}
-\label{fig:and_experiment_man}
-\end{figure}
 \FloatBarrier
 
 
 \subsection{Process View}
-The process view, as illustrated in \refer{fig:and_process_man} below, is used to visualize the current workload on the server. The process view contains a list of tasks and each task has a status about current processes that the server has been assigned.
+The process view, as illustrated in \refer{fig:and_process_man} below, is used to visualize the current workload on the server. The view contains a list of tasks that has been assigned to the server. Each task contains the name of the experiment in which the process is currently operating in, the time when the process was added, the time when the process was started and the time when the process was finished. Each item also contains information about the process current state.
 
-There are 4 different states that a process can be in:
+Each process may have one of these four states:
 \begin{enumerate}
-\item{Waiting}
-\item{Started}
-\item{Finished}
-\item{Crashed}
+\item{Waiting} - The task is awaiting processing by the server
+\item{Started} - The task is currently being processed by the server
+\item{Finished} - The task has been completed
+\item{Crashed} - The task was not successfully completed
 \end{enumerate}
 
 \begin{figure}[h]
-\addScaledImage{0.1}{and_process.png}
+\addScaledImage{0.1}{figures/and_process_status.png}
 \caption{ The Process View}
 \label{fig:and_process_man}
 \end{figure}
+
 \FloatBarrier
-
-
-
-
-
-
