@@ -1,5 +1,14 @@
 \subsection{System administration - Desktop}
-\subsubsection{Uploading - does not update list automatically}
-After adding a genome release the list does not update automatically. \\
+
+\subsubsection{New annotation - Annotation name too long}
+An annotation name longer than 32 characters will generate an error,
+the annotation will not be created but the user is not shown an
+error message telling them something went wrong.
+
+\subsubsection{New annotation - Value too long generates error}
+If the user tries to create a new annotation with a value that has
+more than 32 characters, the annotation will not be created. The
+server will say that the annotation already exists. The user will not
+see an error message that something went wrong. \\
 \\
-Build functionality to render when upload is done. 
+\subsubsection{New annotation - Value too long generates error}
