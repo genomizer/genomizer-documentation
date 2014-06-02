@@ -1,6 +1,6 @@
 This section focuses on the communication  between classes and how the Android application works.
 \subsection{Login request}
-	When the user starts the application and is prompted for a login, the the following sequence of actions is performed by the system. (See \refer{fig:and_loginseq})	\\
+	When the user starts the application and is prompted for a login, the the following sequence of actions is performed by the system (See \refer{fig:and_loginseq}).	\\
 	
 	\begin{itemize}
 		\item
@@ -13,7 +13,7 @@ This section focuses on the communication  between classes and how the Android a
 		\item
 			MsgFactory responds to ComHandler with a login-package in JSON format. Then the ComHandler calls the sendRequest method in Communicator with the login-package and waits for reply.
 		\item
-			The Communicator connects to the remote \appName\ server with a HTTP-request containing the login-package as a JSON object. If the search is valid the server will respond with code 200 and a user-token as a JSON-object.
+			The Communicator connects to the remote Genomizer server with a HTTP-request containing the login-package as a JSON object. If the search is valid the server will respond with code 200 and a user-token as a JSON-object.
 		\item
 			The JSON-object is then returned to the ComHandler which will store the token and return a boolean to the LoginFragment informing if the login was successful or not.
 		\item 
@@ -22,14 +22,14 @@ This section focuses on the communication  between classes and how the Android a
 	\end{itemize}
 
 	\begin{figure}[h]
-		\addImageVertical{and_login_seq.jpg}
+		\addScaledImageVertical{0.5}{figures/and_login_sequence.jpg}
 		\caption{Sequence diagram for a login-request}
 		\label{fig:and_loginseq}
 	\end{figure}
-	
+	\FloatBarrier
 \subsection{Search request}
-	When the user sends a search request using the search view in the application, the following sequence of actions is performed by the system.
-	(see \refer{fig:and_searchseq})
+	When the user sends a search request using the search view in the application, the following sequence of actions is performed by the system
+	(see \refer{fig:and_searchseq}).
 	
 	\begin{itemize}
 		\item
@@ -43,11 +43,11 @@ This section focuses on the communication  between classes and how the Android a
 		\item
 			ComHandler calls Communicator using the sendRequest method passing on the JSON-object containing the search-list, and waits for the reply from Communicator.
 		\item
-			Communicator connects to the \appName\ server with a HTTP request containing a JSON object with the search-list. The server will respond with code 200 and a JSON-object with the search result from the server.
+			Communicator connects to the Genomizer server with a HTTP request containing a JSON object with the search-list. The server will respond with code 200 and a JSON-object with the search result from the server.
 		\item
-			Communicator will reconfigure the JSON object to a GenomizerHttpPackage object to preserve both the head and body from the server response. Then the GHttp-object is returned to the ComHandler.
+			Communicator will reconfigure the JSON object to a GHTTP\footnote{Genomizer HTTP package} to preserve both the head and body from the server response. Then the GHTTP is returned to the ComHandler.
 		\item
-			The ComHandler will initialize the MsgDeconstruct and send the collected JSON-object containing the search result from the server to the deconSearch method.
+			The ComHandler will initalize the MsgDeconstruct and send the collected JSON-object containing the search result from the server to the deconSearch method.
 		\item
 			MsgDeconstruct will parse the JSON-object to an ArrayList of experiments, and return that to the ComHandler.
 		\item
@@ -55,15 +55,92 @@ This section focuses on the communication  between classes and how the Android a
 	\end{itemize} 
 
 	\begin{figure}
-		\addImageVertical{and_search_seq.jpg}
+		\addScaledImageVertical{0.5}{figures/and_search_sequence.jpg}
 		\caption{Sequence diagram for a search-request}
 		\label{fig:and_searchseq}
 	\end{figure}
+    \FloatBarrier
+\subsection{Request for Genome releases from the server}
+	In order to be able to perform a conversion the genome release version has to be supplied as a part of the parameters. This call will fetch all the available genome releases from the server to be presented to the user in the conversion menu. The flow of the retrieval of the genome releases follows theese steps (see \refer{fig:and_genomeseq}).
+    
+    \begin{itemize}
+    	
+        \item
+        	When the ConverterFragment is being creeated, the retrieval of the genome-releases is started. ConverterFragment calls the ComHandler with the getGenomReleases method and waits for response.
+       	\item
+        	The ComHandler will then initalize MsgFactory and call createRegularPackage that will return a JSON object to be used for the communication with the server. The ComHandler then initalizes the Communicator and sends the JSON by calling the sendHTTPRequest method in the Communicator.
+      	\item
+        	The Communicator will setup a HTTP connection with the server and pass the JSON package to the server, which will respond with a JSON package in return. The response code and the JSON-body is then converted into a GHTTP package that is returned to the ComHandler.
+       	\item
+        	The ComHandler then will initalize the MsgDeconstruct and pass the package to that object with a call to the deconGenomeRelease method. The package is converted to an arrayList containing GenomeReleases and the passed back to the ComHandler, which the will return the arrayList to the ConverterFragment.
+      	\item
+        	The ConverterFragment then will setup a spinner with the numerous choices to be presented to the user when choosing which conversion parameters to use with a specific RAW file.
+    
+    \end{itemize}
+    
+    \begin{figure}
+    	\addScaledImageVertical{0.5}{figures/and_genome_sequence.jpg}
+        \caption{sequence diagram for a request of Genome-releases on the server}
+        \label{fig:and_genomeseq}
+    \end{figure}
+\FloatBarrier
+
+    
+\subsection{Request for conversion of RAW files to profile-data}
+	When the user has choosen which conversion parameters to use and sends that request to the server, this is the flow of calls that follows from the program (see \refer{fig:and_convertseq}).
+    
+    \begin{itemize}
+    	
+        \item
+        	When the user click on the convert button, the ConverterFragment gathers all the parameters that the user selected for the conversion.
+      	\item
+        	The gathered parameters is sent to the ComHandler by calling the rawToProfile method. The Comhandler initalizes MsgFactory and calls the createConversionRequest method and passing along the parameters. The MsgFactory then will return a preformatted JSON message, with the specific parmeters set to it
+     	\item
+        	The ComHandler initalizes the Communicator and makes a sendHTTPrequest call with the created JSON message. The Communicator then will open a HTTP connection to the server and send the JSON message and wait for a response.
+    	\item
+        	When the response is received the Communicator will return the response as a GHTTP package to the ComHandler, which will retreive the responsecode from the package. ComHandler then will return a boolean back to the ConverterFragment, true if the conversion started successfully otherwise false.
+     	\item
+        	The ConverterFragement will display the results of the started conversions to the user based upon the returned boolean from the ComHandler. If the conversion didn't start successfully the genefiles name will be displayed for the user, otherwise a toast with a summary about how many successfully started conversions will be displayed to the user.
+    \end{itemize}
+    
+	\begin{figure}
+    	\addScaledImageVertical{0.5}{figures/and_convert_sequence.jpg}
+        \caption{Sequence diagram for a RAW to Profile -data conversion request}
+        \label{fig:and_convertseq}
+ 	\end{figure}
+   \FloatBarrier
+
+\subsection{Request for status on conversions on the server}
+	This request is made after a conversion is sent to the server to be able to track the the progress of started conversions, it can also be accessed from the menu in the application. To be able to receive current information from the server the ProcessFragment calls the following sequence on creation or when the refresh-button is pressed (see \refer{fig:and_processseq}).
+    
+    \begin{itemize}
+    	
+        \item
+        	On creation or if the refresh-button is pressed the ProcessFragment will call the ComHandler through the getProcesses method, the call is made in a asyncTask and will run in a separate thread.
+       	\item
+        	The ComHandler then initalizes a MsgFactory and request a JSON package through the createRegularPackage method. Then initalizes a Communcator and calls the sendHTTPRequest method with the JSON package and a get command for the server.
+      	\item
+        	The Communicator then will setup a HTTP connection to the server and send the JSON package with a get command for the server. The respons from the server is a JSON package with a response-code and a body with information, and is passed back to the ComHandler converted to a GHTTP object.
+       	\item
+        	The ComHandler then will initialize a MsgDeconstruct and call the deconProcessPackage and pass along the GHTTP object to that instance. MsgDeconstruct converts the package and returns the information in the form of an arrayList with ProcessStatus objects.
+      	\item
+        	Then the ComHandler will pass the arrayList to the ProcessFragment that will setup a listview with the information provided from the server, presenting information to the user about which processes there is, ETA and other information.
+            
+    \end{itemize}
+    
+    \begin{figure}
+    	\addScaledImageVertical{0.5}{figures/and_process_sequence.jpg}
+        \caption{sequence diagram for a request for process status on the server}
+        \label{fig:and_processseq}
+    \end{figure}
+\FloatBarrier
+
+
 \subsection{Testing}
 Testing has been done successively and the foremost type of testing has been JUnit tests. Although regular running and logs have been done too.
 
-All fragments mentioned in \ref{sec:and_classdescription} have been tested visually and through running as no viable way of unit testing them was found.
+All fragments mentioned in \refer{sec:and_classdescription} have been tested visually and through running as no viable way of unit testing them was found.
 
-Most of the classes labeled model in \ref{sec:and_classdescription} have been tested with a test driven development approach, except for the small classes such as Experiment, Annotation, GeneFile and GenomizerHttpPackage as they are very straight forward (And they are indirectly shown as working through the tests of the other classes).
+Most of the classes labeled model in \refer{sec:and_classdescription} have been tested with a test driven developlment approach, except for the small classes such as Experiment, Annotation, GeneFile and GenomizerHttpPackage as they are very straight forward (And they are indirectly shown as working through the tests of the other classes).
 
-Most tests are run against the mockup server. Albeit some are run against the real server as the authenticity of both the methods ability to handle data as well as their ability to get a response from the real server is relevant.
+Most tests are run against the mockup server. Albeit some are run against the real server as the authenticity of both the methods ability to handle data as well as their ability to get a response from the real server is relevant. 

@@ -1,0 +1,120 @@
+\section{Introduction}
+To allow the server to create a mirror of the file system on to a remote backup server, some settings needs to be added. First of make sure that there exists one backup computer 
+with internet access and port forwarding to the ssh port (22 by default) running any Linux distribution.
+
+Make sure both computers have the rsync software by typing in:
+\begin{verbatim}
+man rsync
+\end{verbatim}
+and make sure there is no error message.
+
+Check if the genomizer server computer have ''crontab'' installed by typing:
+\begin{verbatim}
+man crontab
+\end{verbatim}
+and make sure there is no error message. If one of the softwares aren't installed just type:
+\begin{verbatim}
+sudo apt-get install crontab
+
+OR
+
+sudo apt-get install rsync
+\end{verbatim}
+
+
+\section{File backup}
+To synchronize the computer's file systems a simple bash script has to be edited to wanted effect, the script is located at \emph{/var/www/scripts/backup.sh} and looks like this:
+\begin{verbatim}
+#!/bin/bash
+PORT=
+USER=
+IP=
+READPATH=/var/www/data
+SAVEPATH=/var/www/data
+rsync --ignore-existing --delete --update
+         -avze 'ssh -p '$PORT $READPATH $USER@$IP:$SAVEPATH
+         
+\end{verbatim}
+make sure the rsync commad is on one line.
+\begin{itemize}
+\item Set the PORT variable to the ssh port on the backup server.
+\item Set the USER variable to login in the backup server.
+\item Set the IP variable to the ip to the backup server.
+\end{itemize}
+The flags ''-avze'' should be present for the script to work as intended, there are many flags available to change the 
+behaviour of the program rsync. Flags to add to create a direct ''mirror'' of the system is:
+\begin{itemize}
+\item ''--ignore-existing'' - Does not upload files that already exists on the backup server.
+\item ''--delete'' - Deletes files on the backup server that does not longer exist on the genomizer server.
+\item ''--update'' - Updates files if they have been changed.
+\end{itemize}
+To see more available flags check:
+\url{http://linux.about.com/library/cmd/blcmdl1\_rsync.htm}
+
+To give rsync the right to create folders on the backupserver the /var/www folder needs have its user changed to the user of the system. To do this go to the folder /var/ and type in : 
+\begin{verbatim}
+sudo chown -R username www/
+\end{verbatim}
+change the username for the username of the system, now the folders belong to the user and not root.
+
+Finally make the script file runnable by typing:
+\begin{verbatim}
+sudo chmod -x backup.sh
+\end{verbatim}
+
+
+\section{Database backup}
+To synchronize the computer's database a simple bash script has to be edited to wanted effect, the script is located at \emph{/var/www/scripts/sqlback.sh} and looks like this:
+\begin{verbatim}
+#! /bin/bash
+DATE=$(date -I)
+DBUSER=
+DBNAME=
+DBPORT=
+SAVEFILE=SqlBackup-$DATE.sql
+pg_dump -w -U $DBUSER -h localhost -p $DBPORT $DBNAME > tmp
+echo pvt | sudo -S cp tmp /var/www/sqlbackup/$SAVEFILE 
+\end{verbatim}
+\begin{itemize}
+\item Set the DBUSER variable to the username of the database
+\item Set the DBNAME variable to the name of the database
+\item Set the DBPORT variable to the the port of the databse
+\end{itemize}
+to allow the script to access the database a file named 
+\begin{verbatim}
+.pgpass
+\end{verbatim}
+needs to be created in the home folder of the user for example: \\
+\emph{/home/username/.pgpass}. \\
+This file should contain the following information:
+\begin{verbatim}
+localhost:PORT:DATABASE:USERNAME:PASSWORD
+\end{verbatim}
+where:
+\begin{itemize}
+\item PORT is changed to the port of the database.
+\item DATABASE is the database to be cloned.
+\item USERNAME is the username of the postgresql database.
+\item PASSWORD is the passdword for the user of the postgresql database.
+\end{itemize}
+
+\section{Chrontab}
+To enable the server to automatically do syncronizations to the backupserver one line have to be added to a crontab config file.
+open the file by typing:
+\begin{verbatim}
+sudo crontab -e
+\end{verbatim}
+In the end of the file add a line that looks like this:
+\begin{verbatim}
+1 0 * * * /var/www/scripts/backup.sh
+1 0 * * * /var/www/scripts/sqlback.sh
+\end{verbatim}
+Explanation of the settings that executes the script:
+\begin{enumerate}
+\item Setting is the minute (Present: first minute). 
+\item Setting is the hour (Present: midnight).
+\item Setting is the week (Present: every week in each month)
+\item Setting is the month (Present: every month)
+\item Setting is the weekday (0=Sunday,1=Monday, Present: every day)
+\end{enumerate}
+So this backup will run on the first minute of every midnight all year around.
