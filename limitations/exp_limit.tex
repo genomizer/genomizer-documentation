@@ -1,5 +1,5 @@
 \subsection{Upload and download}
-The two scripts used for file transferring in the Genomizer system have some limitations. These will be presented below.
+The two scripts used for file transferring in the Genomizer system have some limitations. These will be presented below. Please note that both the scripts reads the settings.cfg file to get information to be able to access the database. Both the scripts are not dynamical, that meaning the settings.cfg file must be created as the example in \emph{Appendix \ref{sec:com_ArgExpl}}.
 \subsubsection{Upload script}
 The upload script have a limitation when a user tries to upload a file and the upload is interrupted the file entry will remain in the database but the file will not exist in the file system. The file will have the status 'In Progress' but will never be uploaded if the user do not try to upload the file again. Furthermore the script will not return good error messages to the user if a file transfer is interrupted. 
 \subsubsection{Download script}
