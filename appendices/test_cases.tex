@@ -1,0 +1,621 @@
+%start with subsub
+% The workflow for filling this is easy, use commands \cmark for sucess and \xmark for failure and then add some text if you want to.
+
+% Example filling a test:
+%
+% \subsubsection{Download one or more files}
+% \paragraph*{Test Case 1}
+% Given search results and a selected file \\ when a user clicks download \\ then the download starts.
+% \begin{description}
+%  \item[Desktop] \cmark\ 
+%  \item[Web] \xmark\ The button doesn't exist
+% \end{description}
+
+When every separate part of the system is tested independently, the integration of the system will need an extensive testing as well. The following test cases are written to be tested on every relevant platform, to evaluate the actual functionality of the system.
+
+
+\subsubsection{Download one or more files}
+\paragraph*{Test Case 1}
+Given there are files selected \\ when a user clicks download \\ then the download starts.
+\begin{description}
+ \item[Desktop] \cmark\
+ \item[Web] \cmark\
+\end{description}
+\paragraph*{Test Case 2}
+Given no selected file \\ when a user selects a file \\ the download button is enabled.
+\begin{description}
+ \item[Desktop] \cmark\ but the button was not disabled before.
+ \item[Web] \cmark\
+\end{description}
+\paragraph*{Test Case 3}
+Given that a file is selected \\ when the "unselect all files"-command is given,
+ \\ then the download button is disabled.
+\begin{description}
+ \item[Desktop] \xmark\ No such option to unselect
+ \item[Web] \xmark\ No such option to unselect
+\end{description}
+\paragraph*{Test Case 4}
+Given multiple files are selected \\ when a user clicks download \\ then an archive with all files are supplied to the user and the user can choose where to store the archive.
+\begin{description}
+ \item[Desktop] \cmark\
+ \item[Web] \xmark\ No option for download destination, default.
+\end{description}
+\paragraph*{Test Case 5}
+Given that one file encounters error \\ when multiple files are being downloaded, \\ then only the one file with errors is aborted.
+\begin{description}
+ \item[Desktop] 
+ \item[Web]
+\end{description}
+\paragraph*{Test Case 6}
+Given that a user have a valid token \\ when the user wants to download a file, the user sends a download request \\ then the download script checks with the system if the token is valid and sends the answer back to script and starts the download.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+\end{description}
+\paragraph*{Test Case 7}
+Given that the user is not logged in (does not have a valid token) \\ when the user tries to download a file \\ then the script checks the token and then sends an error answer back to user (token not valid).
+\begin{description}
+ \item[Desktop] \cmark\ No response body but correct error code.
+ \item[Web]
+\end{description}
+
+
+\subsubsection{Add annotation Types}
+\paragraph*{Test Case 1}
+Given that a non empty string is given as new annotation and the annotation isnt already in use \\ when the user tries to add it as a new annotation \\ then the database should add it as a new annotation.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 2}
+Given that a non empty string is given as new annotation and the the annotation is already in use \\ when the user tries to add it as a new annotation \\ then the database should not add it as a new annotation.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 3}
+Given that an empty string is given as new annotation \\ when the user tries to add it as a new annotation \\ then error message should display.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark
+\end{description}
+
+
+\subsubsection{Search for files}
+\paragraph*{Test Case 1}
+Given that an experiment has the following annotation: Gender = Male, Species = Human \\ when the user search with the builder function: “Male[Gender] AND Human[Species]”, \\ then the right experiment is shown as a search result.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 2}
+Given that multiple files has the following annotation: Gender = Male \\ when the user search with the builder function: “Male[Gender]” \\ then the right files are shown as a search result.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 3}
+Given that the search field is empty \\ when the user presses “search” \\ then the user will be told that the search field is empty.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark\ Search is deactivated.
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 4}
+Given that no file has the following annotiation field: Species = Alien \\ when the user search with the builder funktion: “Species = Alien” \\ then the user will be told that there does not exist a matching file for that search.
+\begin{description}
+ \item[Desktop]
+ \item[Web] 
+ \item[iPhone] \cmark\ told by being shown an empty list
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 5}
+Given that there is a file that is private in the database \\ when the user search \\ then the file is not shown as a search result.
+\begin{description}
+ \item[Desktop] \xmark
+ \item[Web] \xmark
+ \item[iPhone] \xmark
+ \item[Android] \xmark
+\end{description}
+\paragraph*{Test Case 6}
+Given that there exists files in the database \\ when the user search for all files \\ then the user will be shown all files in database.
+\begin{description}
+ \item[] \emph{Not implemented server-side}
+ \item[Desktop] \xmark\
+ \item[Web] \xmark
+ \item[iPhone] \xmark
+ \item[Android] \xmark
+\end{description}
+\paragraph*{Test Case 7}
+Given that there exists files in different file types in the database \\ when the user search for a specific file type \\ then the user will be shown all files in the specified type.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark\
+ \item[iPhone]
+ \item[Android]
+\end{description}
+
+
+\subsubsection{Upload one or more files to one or more experiments}
+\paragraph*{Test Case 1}
+Given that the database is down \\ when the user tries to upload a selected file, \\ then the user get an error message pop-up telling the user that the database is down.
+\begin{description}
+ \item[Desktop]
+ \item[Web] 
+\end{description}
+\paragraph*{Test Case 2}
+Given that the database is up \\ when the user tries to upload a RAW file, \\ then the RAW file is transferred and stored in the database.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \xmark\ Missing GenomeRelease and author but can't enter them.
+\end{description}
+\paragraph*{Test Case 3}
+Given that the database is up \\ when the user tries to upload a Profile file, \\ then the Profile file is transferred and stored in the database.
+\begin{description}
+ \item[Desktop] 
+ \item[Web] \xmark\ Missing GenomeRelease and author but can't enter them.
+\end{description}
+\paragraph*{Test Case 4}
+Given that the database is up \\ when the user tries to upload a Region file, \\ then the Region file is transferred and stored in the database.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \xmark\ Missing GenomeRelease and author but can't enter them.
+\end{description}
+\paragraph*{Test Case 5}
+Given that the database does not allow the file type "A" \\ when a user tries to upload a file of type "A", \\ then the user gets an error message pop-up telling the user that the filetype is not allowed and the file is not stored in the database.
+
+\begin{description}
+ \item[] \emph{No file types specified as not allowed}
+ \item[Desktop]
+ \item[Web] 
+\end{description}
+\paragraph*{Test Case 6}
+Given that all the annotations are filled in for one file \\ when the user wants to batchupload \\ then the other files annotation gets pre-filled with the same annotations.
+\begin{description}
+ \item[Desktop] 
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 7}
+Given that no annotations are filled in \\ when the user wants to upload a file \\ then the user has to fill in or explicity choose to continue without annotations to upload.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 8}
+Given that a user have a valid token \\ when the user wants to upload a file, the user sends a download request \\ then the download script checks with the system if the token is valid and sends the answer back to script and starts the upload.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 9}
+Given that the user is not logged in (does not have a valid token) \\ when the user tries to upload a file \\ then the script checks the token and then sends an error answer back to user (token not valid).
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+\end{description}
+
+
+\subsubsection{Remove annotation types}
+\paragraph*{Test Case 1}
+Given that a non empty string is given as annotation to remove and the annotation is not in use \\ when the user tries to remove it as a annotation \\ then an error message should display.
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 2}
+Given that a non empty string is given as annotation to remove and the annotation is in use \\ when the user tries to remove it as a annotation \\ then the database should not remove it as an annotation
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web]  \cmark
+\end{description}
+\paragraph*{Test Case 3}
+Given that the user \\tries to add a empty string as annotation \\ then error message should display.
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \cmark
+\end{description}
+
+
+\subsubsection{Edit annotation Values}
+\paragraph*{Test Case 1}
+Given that the annotation value Wood exists \\ when the user uses change annotation value Wood to “”(Empty string) \\ then the user will be told that an annotation value can’t be changed to an empty string.
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \xmark\ Does not work
+\end{description}
+\paragraph*{Test Case 2}
+Given that the annotation value Wood exists \\ when the user uses change annotation value Wood to Tree \\ then the annotation value is changed to Tree.
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 3}
+Given that the annotation value Wood does not exists \\ when the user uses change annotation value Wood to Tree \\ then the user will be told that the annotation does not exist.
+\begin{description}
+ \item[Desktop] \xmark\ Not possible to test, ie does not work that way.
+ \item[Web] \xmark Not possible to test, ie does not work that way.
+\end{description}
+
+
+\subsubsection{Edit annotation name}
+\paragraph*{Test Case 1}
+Given that the annotation type Sex exists \\ when the user uses change annotation type Sex to Gender \\ then the annotation type Sex is be changed to Gender.
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 2}
+Given that the annotation type Sex exists \\ when the user uses change annotation type Sex to “” (empty string) \\ then the user will be told that “” (empty string) is not a valid type.
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 3}
+Given that the annotation type Sex does not exists \\ when the user uses change annotation type Sex to Gender \\ then the user will be told that the annotation type Sex does not exist.
+\begin{description}
+ \item[Desktop] \xmark\ 
+ \item[Web] \xmark
+\end{description}
+\paragraph*{Test Case 4}
+Given that the annotation type Sex exists in multiple file annotation \\ when the user change annotation type Sex to Gender \\ then the annotation type will be changed in all files that fill that criteria.
+\begin{description}
+ \item[Desktop] \cmark\
+ \item[Web] \cmark\
+\end{description}
+
+
+\subsubsection{Build PubMed queries using a querybuilder}
+\paragraph*{Test Case 1}
+Given that the query is empty \\ when the user selects an annotation \\ then it should be added as the query.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark
+  \item[iPhone] \cmark
+ \item[Android] 
+\end{description}
+\paragraph*{Test Case 2}
+Given that the query is not empty \\ when the user selects an annotation \\ then it should be added to the end of the query.
+\begin{description}
+ \item[Desktop]
+ \item[Web] \cmark
+  \item[iPhone] \xmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 3}
+Given that the query is not empty \\ when the user removes an annotation \\ then it should remove that annotation and leave the rest of the query intact.
+\begin{description}
+ \item[Desktop]
+ \item[Web] 
+  \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+
+%% Storys som kanske hinns klart?
+\subsubsection{Backup}
+\paragraph*{Test Case 1}
+Given that a backup image exists \\ when the systems state is broken \\ then it should be possible to restore the system to reflect the backuped image.
+\begin{description}
+ \item[Server]
+\end{description}
+\paragraph*{Test Case 2}
+Given that a backup has not been taken in 24 hours \\ when there are no conversions running \\ then the system should backup itself.
+\begin{description}
+ \item[Server]
+\end{description}
+
+
+\subsubsection{Process Raw files to Profile files}
+\paragraph*{Test Case 1}
+Given the raw data file called "A" \\ When the user wants to process file "A" to profile data \\ Then the user is given options to specify how to process the data.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 2}
+Given a file "B" that is not a raw file \\ When the user wants to process "B" to profile data \\ Then an error popup will be shown for the user describing that you can only process raw datafiles to profile data and the file "B" is not a raw file.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 3}
+Given that the user has seleted options to specify how to process the given raw file "A" to profile data \\ When the user starts the processing \\ Then the "A" will be processed to profile data with the given options and shown as being processed for the user in his workspace.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark (no workspace, but in process view)
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 4}
+Given that the user uses wrong parameters \\ When the users starts the processing. \\ Then the user will get an error message with details about the problem.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \xmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 5}
+Given that a raw datafile "A" has been processed to profile data \\ When the processing is done \\ Then the user will visually see that the processing is done and the processed profile data is located in the users selected files view.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \xmark (not added to selected files)
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 6}
+Given that correct paramters are filled in \\ when a successfull request has been sent \\ then the user should be prohibited from sending the same request again.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+  \item[iPhone] \xmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 7}
+Given that there exists a genome release for the species \\ when the user wants to process the file from raw to profile \\ then a choice of available releases should be given.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 8}
+Given no genome release is selected \\ when the user tries to send a conversion request \\ then an error message should be displayed.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 9}
+Given that there is no genome releases for the species \\ when the user wants to process the file from raw to profile \\ then a process of the file should not be allowed.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+
+
+\subsubsection{Add genome releases}
+\paragraph*{Test Case 1}
+Given that the user has a genome release for a species that exists in the system and the files have not been uploaded to the system \\ when the user wants to upload the files \\ then the user should be prompted the choice of species (dropdown), the number of files and the name of the release.
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 2}
+Given that the user tries to upload a genome release that already exists in the system \\ when the user gives a taken release version \\ then the system should refuse to receive the files
+\begin{description}
+ \item[Desktop] \xmark 
+ \item[Web] \xmark
+\end{description}
+\paragraph*{Test Case 3}
+Given that the user tries to upload a genome release that does not exist in the system \\ when the user enters a new genome release upload \\ then the system should accept to receive the files
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \cmark
+\end{description}
+
+
+\subsubsection{Migration}
+\paragraph*{Test Case 1}
+Given that the system has a populated database and filesystem, \\ when the user wants to move the system to new hardware, \\ then there should exist a guided way for the user to do so.
+\begin{description}
+ \item[Server]
+\end{description}
+
+
+\subsubsection{Remove Files and Experiments}
+\paragraph*{Test Case 1}
+Given that there exist at least one data file in the system \\ when the user requests the removal of one of these files \\ then the file should be completely removed from the system.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+\end{description}
+\paragraph*{Test Case 2}
+Given any state of the filesystem \\ when user tries to remove a file that doesnt exisit \\ then an error message should display and no further actions should be taken.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+\end{description}
+\paragraph*{Test Case 3}
+Given that experiment 'A' exist in the database \\ When the user request the removal the experiment A \\ Then the experiment A will be removed from the database.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+\end{description}
+\paragraph*{Test Case 4}
+Given that experiment 'A' and 'B' exist in the database \\ When the user request the removal of the experiment A \\ Then A is the only experiment that is removed.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+\end{description}
+\paragraph*{Test Case 5}
+Given that the experiment 'A' does not exist in the database \\ When the user request removal of the emperiment A \\ Then the user will be told that experiment A does not exist in database.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+\end{description}
+\paragraph*{Test Case 6}
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+\end{description}
+
+
+\subsubsection{Access Control}
+\paragraph*{Test Case 1}
+Given that an valid access token is supplied \\ When a request is made towards the API \\ Then the API will accept the request.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 2}
+Given that an valid access token is supplied \\ When a request is made towards the file server \\ Then the file server will accept the request.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 3}
+Given that the correct password is supplied along with a username \\ When a request for an access token is made towards the API \\ Then the API will respond with an access token attached to the supplied username.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+
+
+\subsubsection{Edit annotation forced/not forced}
+\paragraph*{Test Case 1}
+Given that an annotation was forced when created \\ When the user edits the field with a valid value \\ then the annotation changes to the new value.
+\begin{description}
+ \item[Desktop] \xmark\ Not implemented
+ \item[Web] \xmark\ Not implemented
+\end{description}
+\paragraph*{Test Case 2}
+Given that an annotation was forced when created \\ When the user edits the field with a invalid value \\ then the user should get an error message.
+\begin{description}
+ \item[Desktop] \xmark\ Not implemented
+ \item[Web] \xmark\ Not implemented
+\end{description}
+\paragraph*{Test Case 3}
+Given that an annotation was added when created \\ When the user edits the field with a valid value \\ then the annotation changes to the new value.
+\begin{description}
+ \item[Desktop] \xmark\ You cannot change forced/required annotations value.
+ \item[Web] \xmark\ You cannot change forced/required annotations value.
+\end{description}
+\paragraph*{Test Case 4}
+Given that an annotation was added when created \\ When the user edits the field with a invalid value \\ then the user should get an error message.
+\begin{description}
+ \item[Desktop] \xmark\ forced not yet implemted
+ \item[Web] \xmark\ forced not yet implemted
+\end{description}
+
+
+\subsubsection{View Processing Status}
+\paragraph*{Test Case 1}
+Given that a process "P" was started today \\ when a user requests processing status \\ then the user will be shown the status of process "P".
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 2}
+Given that multiple processes was started within the last two days \\ when a user requests processing status \\ then the user will be shown the status of all processes started within the last two days.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 3}
+Given that a process "P2" was started three days ago \\ when a user requests processing status
+then the user will not be shown the status of process "P2".
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone]
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 4}
+Given that a process "P1" was started today and another process "P2" was started three days ago \\ when a user requests processing status \\ then the user will be shown the status of "P1" but NOT "P2".
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+\end{description}
+
+\subsubsection{Remove genome releases}
+\paragraph*{Test Case 1}
+Given that a genome release "A" exists in the database \\ when the user selects "A"and removes it \\ then "A" should be deleted from the database.
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \cmark
+\end{description}
+\paragraph*{Test Case 2}
+Given that there exists genome release "A" and "B" in the database \\ when the user selects "A" and removes it \\ then only "A" should be deleted from the database and not "B"
+\begin{description}
+ \item[Desktop] \cmark
+ \item[Web] \cmark
+\end{description}
+
+
+\subsubsection{Batch Processing of raw files}
+\paragraph*{Test Case 1}
+Given that multiple raw files are selected \\ when the user starts processing \\ then all the selected files should be processed.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 2}
+Given that multiple files are selected and any file is in another format than fastq \\ when the user starts processing \\ then the user gets an error message.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \cmark
+ \item[Android]
+\end{description}
+\paragraph*{Test Case 3}
+Given that multiple raw files of different species are selected \\ when the user starts processing \\ then the user gets an error message.
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone] \xmark
+ \item[Android]
+\end{description}
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{}
+\paragraph*{Test Case 1}
+\begin{description}
+ \item[Desktop]
+ \item[Web]
+ \item[iPhone]
+ \item[Android]
+\end{description}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

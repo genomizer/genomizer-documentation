@@ -1,12 +1,14 @@
 This section describes the architectural design of the Android application. All coded functionality is described in this section, including the functionality that is not fully integrated. 
-\subsubsection{Class descriptions}\label{sec:and_classdescription}
-This section focuses on the functionality of each class.
+\subsection{Class descriptions}\label{sec:and_classdescription}
+This section focuses on the functionality of each class. %A description of the
+%different classes are provided in \refer{fig:and_modelclasses} and \refer{fig:and_fragmentclasses}.
 
 The connection between the classes labeled model can be seen in
 \refer{fig:and_umlmodel} while the other classes can be seen in
 \refer{fig:and_uml}. Both are located in \refer{chap:and_appendix}.
 
-\subsubsection{Android activities} 
+\subsection{Android activities}
+
 Activities are used as frames to display various fragments. For anything to be
 displayed it must be a part of a fragment that is a part of an activity. Each
 activity used in this application extends the class SingleFragmentActivity which
@@ -15,6 +17,7 @@ single fragment. This means that in its current state the application contains
 one fragment per activity and each fragment described in this section is coupled
 with an activity.
 
+\newpage
 \begin{tabularx}{\textwidth}{|l|X|}
 \multicolumn{2}{l}{\strongTerm{Fragment Classes}} \\ 
 \hline
@@ -79,3 +82,4 @@ Used to store and transfer information about an experiment.
 Used to simplify the transfer of parameters in a processing request.
 \\ \hline
 \end{tabularx}
+
