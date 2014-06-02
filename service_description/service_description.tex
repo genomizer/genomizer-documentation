@@ -1,9 +1,11 @@
 
 
 
-This chapter will present an overview of the services that the \appName\ system provides. 
+This chapter will present an overview of the services that the \appName\ system currently provides. 
 
 \section{Usage}
+
+
 
 \begin{figure}[h]
 \addImage{genomizerDiagramServiceDescription.png}
@@ -12,21 +14,24 @@ This chapter will present an overview of the services that the \appName\ system 
 \end{figure}
 	
 In order to give the users flexibility when using the service there are clients for many different platforms (Windows, Linux, OSX, Web, Android and iPhone). 
-When a user chooses a given task, for example start \term{raw} to \term{profile} processing, that task is sent by internet to the server as shown in \refer{con_serviceDescription} which will handle the request and send a response back to the user.
+When a user chooses a given task, for example start \term{raw} to \term{profile} processing, that task is sent by Internet to the server as shown in \refer{con_serviceDescription} which will handle the request and send a response back to the user.
 
-The main purpose of the \appName\ system is to centralise all data. To enable this a user can annotate and upload data to the server using both desktop and web based clients. 
-Advanced database searches can be performed on the annotations to find previously uploaded data. When the required data is found the user can choose to download the files or schedule them for processing on the server.
+\section{Storage}
+The main purpose of the \appName\ system is to centralize all data. To enable this a user can annotate and upload data to the server using both desktop and web based clients.
+Advanced database searches can be performed on the annotations to find previously uploaded data. When the required data is found the user can choose to download the files or request that they be processed on the server.
+
+\section{Annotations}
+\appName\  not only allows the annotation of files and experiments, but also enables the addition of new annotation fields. For example, if the user has an experiment that was conducted in zero gravity and the database does not have the annotation field ``Zero Gravity'' the user can add this as a new annotation. In this case a \term{Drop Down} annotation type may be appropriate, with the simple choices ``yes'' or ``no''. Of course it is also possible to leave the annotation type as \term{Free Text} which enables users to write  freely the value of the annotation.
+
+Dynamic annotations must also be managed in order to keep the system clean and up to date. \appName\ therefore provides full editing options for existing annotations. This includes the editing of \term{Drop Down} annotation choices and the removal of unused annotations.
 
 \section{Processing}
-Users can schedule various processing procedures on different data sets. This is carried out on the server to avoid heavy workload on the clients. The processing carried out between \term{raw} data and \term{profile} data involves a number of different steps. The user can choose which steps are carried out and the various parameters used.
+Users can request that a \term{raw} file set be processed to \term{profile} files. This procedure is carried out on the server to avoid heavy workload on the clients. The processing carried out between \term{raw} data and \term{profile} data involves a number of different steps. The user can choose which steps are carried out and the various parameters used.
 
 \section{Genome releases}
 Users can upload new genome release files and use them in the processing of \term{raw} to \term{profile} data.
 
 \section{Mobile}
-The mobile applications enable the searching of files in the database and the scheduling of processing procedures for the conversion of \term{raw} to \term{profile} data.
-
-\section{Annotations}
-A user with access to the \term{Systemadmin} page can add or delete annotations used to store information about experiments.
+Due to the limited storage available on mobile devices it is not appropriate to enable uploading and downloading of files, however the mobile applications enable the searching of files in the database and the scheduling of processing procedures for the conversion of \term{raw} to \term{profile} data.
 
 

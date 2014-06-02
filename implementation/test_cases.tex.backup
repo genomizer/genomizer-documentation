@@ -1,0 +1,12 @@
+%start with subsub
+When every separate part of the system is tested, the integration of the system will need an extensive testing as well.
+
+\subsubsection{Download a file}
+
+\subsubsection{Add annotation Types}
+\subsubsection{Search for files}
+\subsubsection{Upload files}
+\subsubsection{Remove annotation types}
+\subsubsection{Edit annotation Values}
+\subsubsection{Edit annotation name}
+\subsubsection{Build PubMed queries using a querybuilder}

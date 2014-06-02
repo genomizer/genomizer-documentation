@@ -1,0 +1,7 @@
+To handle all the downloads and uploads to and from the clients, two PHP-scripts have been written. 
+
+Both scripts uses the token provided by the client to authenticate the user. This token is sent to the server which will send a code back to the script. The code will be '200' if the client has provided a valid token, and '401' if the token is invalid. The upload script gets the token in an 'Authorization' header, while the download script gets the token in an 'Authorization' header from the desktop client and in an 'Authorization' parameter from the web client.
+
+When the client downloads or uploads a file it will send a path to the script in a 'path' parameter. This path will then be validated against the database. For downloading it will check if the file is 'Done' and when uploading that the file is not 'Done'.
+
+When an upload has been finished and validated the script will change the status for this file to done and then send a '201' response code to the client. When a download request has been validated the script will send the file as an octet-stream as a response to the client.

@@ -1,10 +1,10 @@
 \label{chap:com_api}
-\section{API}
 
-\subsection*{Connection}
+\section*{Connection}
 Login/Logout to and from the server. When a user has been verified a token (user-id) is supplied in the response. The token is generated from the current date and the users password. It is then hashed and given an expiration date. The token should be supplied in the Authorization header for each request in order to identify the user.
 
-\subsubsection*{\textbackslash login}
+\begin{minipage}{\textwidth}
+\subsection*{\textbackslash login}
 \begin{verbatim}
 Login to the server [POST]
 + Request (application/json)
@@ -29,8 +29,9 @@ Logout from the server [DELETE]
         
 + Response 200
 \end{verbatim}
-\newpage
-\subsection*{Experiment}
+\end{minipage}
+
+\section*{Experiment}
 \begin{verbatim}
 An experiment containing annotations and files. `experiment-id` in the header of the 
 request is the unique id (name) of the experiment.
@@ -50,7 +51,7 @@ request is the unique id (name) of the experiment.
         + ...
 \end{verbatim}            
 
-\subsubsection*{\textbackslash experiment} 
+\subsection*{\textbackslash experiment} 
 \begin{verbatim}
 ### Add an Experiment [POST]
 + Request (application/json)
@@ -105,7 +106,7 @@ request is the unique id (name) of the experiment.
 + Response 201
 \end{verbatim}
 
-\subsubsection*{\textbackslash experiment\textbackslash <experiment-id>}
+\subsection*{\textbackslash experiment\textbackslash <experiment-id>}
 \begin{verbatim}
 ### Retrieve an Experiment [GET]
 + Request 
@@ -248,7 +249,7 @@ request is the unique id (name) of the experiment.
 + Response 200
 \end{verbatim}
 
-\subsection*{Files}
+\section*{Files}
 \begin{verbatim}
 Add/remove files in experiment. `file-id` specifies the unique id of 
 the file in the header. 
@@ -261,7 +262,7 @@ the file in the header.
     + (`URL` ... An URL to the file, added when the file has been uploaded)
 \end{verbatim}
 
-\subsubsection*{\textbackslash file}
+\subsection*{\textbackslash file}
 \begin{verbatim}
 ### Add file to experiment [POST]
 + Request (application/json)
@@ -290,7 +291,7 @@ the file in the header.
         }
 
 \end{verbatim}
-\subsubsection*{\textbackslash file\textbackslash <file-id>}
+\subsection*{\textbackslash file\textbackslash <file-id>}
 \begin{verbatim}
 ### Get file from experiment [GET]
 + Request 
@@ -343,14 +344,14 @@ the file in the header.
         
 + Response 200
 \end{verbatim}
-\subsection*{Search}
+\section*{Search}
 \begin{verbatim}
 Searching using annotations. The annotations is included last in the request header. 
 The results from the search is contained in the JSON document in the response. 
 Results are an array of **files** linked to their respective **experiments**.
 \end{verbatim}
 
-\subsubsection*{\textbackslash search\textbackslash ?annotations=<pubmedStyleQuery>}
+\subsection*{\textbackslash search\textbackslash ?annotations=<pubmedStyleQuery>}
 \begin{verbatim}
 ### Search for experiments [GET]
 + Request
@@ -440,12 +441,12 @@ Results are an array of **files** linked to their respective **experiments**.
         ]
 \end{verbatim}
 
-\subsection*{Processing}
+\section*{Processing}
 \begin{verbatim}
 API for executing commands such as file conversions.
 \end{verbatim}
 
-\subsubsection*{\textbackslash process}
+\subsection*{\textbackslash process}
 \begin{verbatim}
 ### Get status of all processes [GET]
 + Request
@@ -516,7 +517,7 @@ API for executing commands such as file conversions.
           }
         ]
 \end{verbatim}    
-\subsubsection*{\textbackslash process\textbackslash rawtoprofile}
+\subsection*{\textbackslash process\textbackslash rawtoprofile}
 \begin{verbatim}
 Parameters
 
@@ -566,11 +567,11 @@ Parameters
 + Response 200
 \end{verbatim}
 
-\subsection*{Annotation handling}'
+\section*{Annotation handling}'
 \begin{verbatim}
 Used to add, modify and delete annotations.
 \end{verbatim}
-\subsubsection*{\textbackslash annotation}
+\subsection*{\textbackslash annotation}
 \begin{verbatim}
 ### Get information about annotations [GET]
 
@@ -625,7 +626,7 @@ Used to add, modify and delete annotations.
          }
         ]
 \end{verbatim}
-\subsubsection*{\textbackslash annotation\textbackslash field}
+\subsection*{\textbackslash annotation\textbackslash field}
 \begin{verbatim}
 ### Add annotation field [POST]
 + Request (appliaction/json)
@@ -675,7 +676,7 @@ Used to add, modify and delete annotations.
 
 + Response 200
 \end{verbatim}
-\subsubsection*{\textbackslash annotation\textbackslash value}
+\subsection*{\textbackslash annotation\textbackslash value}
 \begin{verbatim}
 ### Add annotation value [POST]
 + Request (application/json)
@@ -710,7 +711,7 @@ Used to add, modify and delete annotations.
 
 + Response 201
 \end{verbatim}
-\subsubsection*{\textbackslash annotation\textbackslash value\textbackslash <field-name> \textbackslash <value-name>}
+\subsection*{\textbackslash annotation\textbackslash value\textbackslash <field-name> \textbackslash <value-name>}
 \begin{verbatim}
 ### Remove annotation value [DELETE]
 + Request
@@ -722,11 +723,11 @@ Used to add, modify and delete annotations.
 + Response 200
 \end{verbatim}
 
-\subsection*{Genome release handling}
+\section*{Genome release handling}
 \begin{verbatim}
 Used to get, add and delete genome releases.
 \end{verbatim}
-\subsubsection*{\textbackslash genomeRelease}
+\subsection*{\textbackslash genomeRelease}
 \begin{verbatim}
 ### Get all genome releases, no matter species[GET]
 
@@ -792,7 +793,7 @@ Used to get, add and delete genome releases.
          "URLupload": "url"
         }
 \end{verbatim}
-\subsubsection*{\textbackslash genomeRelease\textbackslash <species>}
+\subsection*{\textbackslash genomeRelease\textbackslash <species>}
 \begin{verbatim}
 ### Get all genome releases for specific species[GET]
 
@@ -827,7 +828,7 @@ Used to get, add and delete genome releases.
 
 
 \end{verbatim}
-\subsubsection*{\textbackslash genomeRelease\textbackslash <species>\textbackslash <genomeVersion>}
+\subsection*{\textbackslash genomeRelease\textbackslash <species>\textbackslash <genomeVersion>}
 \begin{verbatim}
 ### Delete genome release [DELETE]
 + Request 

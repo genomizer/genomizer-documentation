@@ -1,9 +1,8 @@
-  \subsection{Database deployment}
     The following guide assumes access to a server with postgresql installed. If you do not yet have a database, username and password for \appName\ to use proceed to \emph{Set up postgresql account}.
 
     This guide was written using Ubuntu 14.04 LTS (GNU/Linux 3.13.0-24-generic i686) and postgres-9.3.4.
 
-    \subsubsection{Set up postgresql account}
+    \subsection{Set up postgresql account}
       This step is only required if you do not already have a \texttt{psql} username and password. If you have been assigned this from a sysadmin proceed to \emph{Upload SQL Script to server}.
 
     \begin{enumerate}
@@ -37,7 +36,7 @@
 > create database genomizer;
       \end{verbatim}
 
-      \item Grant yourself all permissions on the genomizer database: \begin{verbatim}
+      \item Grant yourself all permissions on the \appName\ database: \begin{verbatim}
 > grant all on database genomizer to <username>;
 > \q
       \end{verbatim}
@@ -92,7 +91,7 @@ host    all    all    127.0.0.1/32    md5
 
     \end{enumerate}
 
-    \subsubsection{Upload SQL Script to server}
+    \subsection{Upload SQL Script to server}
 
     \begin{enumerate}
 
@@ -120,7 +119,7 @@ host    all    all    127.0.0.1/32    md5
 
     \end{enumerate}
 
-    \subsubsection{Create the \appName\ Tables}
+    \subsection{Create the \appName\ Tables}
 
     \begin{enumerate}
 

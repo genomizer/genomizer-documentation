@@ -86,7 +86,7 @@ Then reboot the server.
 \subsection{Java}
 Firstly Java must be installed on the system to be able to run some of the server software. The software requires Java 1.7 or later. 
 
-To install Java JDK open a terminal and enter following command:
+To install Java JDK open a terminal and enter the following command:
 \begin{verbatim}
 sudo apt-get install openjdk-7-jdk
 \end{verbatim}
@@ -109,7 +109,7 @@ sudo apt-get install apache2 apache2-utils
 \end{verbatim}
 After installation of Apache2 some configuration is needed. Follow the steps below.
 \subsubsection{Configure listening port}\label{sec:exp_d_ports}
-The default port for listening is set to 80. If this seeks to be changed follow the steps below.
+The default port for listening is set to 80. To change port follow the steps below.
 \begin{enumerate}
 	\item Open file with following command: \begin{verbatim}sudo nano /etc/apache2/ports.conf\end{verbatim}
     \item Edit the value in the file after ``Listen'' to the preferred port to use for listening. 
@@ -241,6 +241,11 @@ To install git on the server machine, enter the following line in the terminal:
 For easy access to gitHub, SSH-keys can be added to easily execute push and pull of repositories. 
 See gitHub's guide \cite{exp_sshguide}.
 
+\subsection{Ant}
+Ant is a build system to compile java code. It is used to build a runnable jar file for the server.
+To install, run the following command in a terminal:
+\begin{verbatim}sudo apt-get install ant\end{verbatim}
+
 \subsection{PHP5}
 The Apache server uses PHP scripts to upload and download files. Therefore it is necessary to install PHP5 on the server machine. To install PHP5, just enter the following command in a terminal:
 \begin{verbatim}sudo apt-get install php5-curl\end{verbatim}
@@ -319,7 +324,7 @@ sudo service postgresql restart
 \end{verbatim}
 
 
-\subsubsection{Clone database}
+\subsubsection{Clone database}\label{sec:exp_app_clone}
 If there exists an old database that is wished to be migrated to the new database the following command can be executed on the machine where the database is presently:
 
 \begin{verbatim}
@@ -333,8 +338,10 @@ dbPort > backupfile.sql
 \item Change \verb+backupfile.sql+ to whatever filename is wished
 \end{enumerate}
 
-This creates a backup SQL file. Now transfer the file to the server where the database is migrated to and type in the following command to inject it into the database:
+This creates a backup SQL file. 
 
+\subsection{Inject database copy}\label{sec:exp_app_inject}
+To inject a database backup into a new database do the following command.
 \begin{verbatim}
 psql -U dbUserName -h localhost -d dbName -p dbPort < backupfile.sql
 \end{verbatim}
@@ -470,3 +477,44 @@ Restart Apache and phppgadmin by typing:
 sudo service apache2 restart
 sudo service phppgadmin restart
 \end{verbatim}
+
+\subsection{Genomizer configuration}
+\label{sec:com_ArgExpl}
+The server requires some parameters to be set before it can be used. They should be stored in a file called
+``settings.cfg'' in the same directory as the server JAR. It can look like this:
+\begin{verbatim}
+databaseuser     = admin
+databasepassword = password
+databasehost     = localhost:6000
+databasename     = genomizer
+publicaddress    = http://www.genomizer.se
+apacheport       = 8000
+downloadurl      = /download.php?path=
+uploadurl        = /upload.php?path=
+genomizerport    = 7000
+passwordsalt     = genomizer
+passwordhash     = 2fd26e9aea528153a865257a723f6d4859e9f6c4a6775c003ae91297f619c6e8
+\end{verbatim}
+Each setting should be on a separate line, and be separated by a '=' sign. The number of spaces does not matter,
+neither does case on the setting names. Case does matter on the setting values however, password and PassWord are
+different things.
+
+\subsubsection{Database settings}
+The settings databaseuser, databasepassword, databasehost and databasename are all connected to the SQL database,
+and should be the same as the ones used when setting up the database. 
+\subsubsection{Addresses and ports}
+The settings publicaddress, apacheport, downloadurl, uploadurl and genomizerport decide how the clients
+connect to the genomizer system. Downloadurl, uploadurl and genomizerport should generally stay the same as the example file,
+but publicaddress and apacheport depends on how the server is set up.
+\subsubsection{Password handling}
+Passwordsalt is used to increase the security of passwords. It is combined with the password and hashed so that the password does not need to be
+saved in plaintext. Passwordhash is the result of this operation, and this parameter should not be set manually. There is a script called
+changepwd.sh, which when called with the password as parameter will update settings.cfg with the result.
+\subsubsection{Flags}
+In addition to the settings file, a set of flags may be set when starting the server from terminal. These are:
+\begin{itemize}
+\item -p [port] \\This flag sets the listening port. 
+\item -debug \\If this flag is set the server will print output to terminal for every request and response. Also other outputs are written aswell.
+\item -f [file] \\Uses file to read settings instead of the default file settings.cfg.
+\item -nri \\If this flag is set the server will not remove inactive users which are logged in on the server.
+\end{itemize}

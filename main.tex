@@ -7,10 +7,13 @@
 \usepackage{graphicx}
 \usepackage{pifont}
 \usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage[margin=1cm]{caption}
 \usepackage{listings}
 \usepackage[section]{placeins}
 \usepackage{fancyhdr}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[notindex,nottoc,notlof,notlot]{tocbibind}
 
 \title{Genomizer}
 
@@ -87,6 +90,7 @@
 %\newcommand{\click}[1]{\ding{43} \textbf{\textit{{#1}}}}
 \newcommand{\click}[1]{\textbf{\textit{{#1}}}}
 \newcommand{\term}[1]{\textit{#1}}
+\newcommand{\strongTerm}[1]{\textbf{\term{#1}}}
 \newcommand{\serverPort}{\texttt{7000}}
 \newcommand{\userstory}[2]{
 \begin{tabular}{|l|}
@@ -99,6 +103,62 @@
 \end{minipage}
 \\
 \\ \hline
+\end{tabular}
+}
+
+\newcommand{\addTwoImages}[2]{
+\centering
+\begin{tabular}{l l}
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+    \end{minipage}
+& 
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+    \end{minipage}
+\\ 
+\end{tabular}
+}
+
+
+\newcommand{\addThreeImages}[3]{
+\centering
+\begin{tabular}{l l l}
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+    \end{minipage}
+& 
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+    \end{minipage}
+&
+    
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+    \end{minipage}
+\\ 
+\end{tabular}
+}
+
+\newcommand{\addFourImages}[4]{
+\centering
+\begin{tabular}{l l}
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+    \end{minipage}
+& 
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+    \end{minipage}
+\\ 
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+    \end{minipage}
+&
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#4} 
+    \end{minipage}
+\\
 \end{tabular}
 }
 
@@ -135,8 +195,15 @@
 \chapter{System design}
 \input{system_design/system_design.tex}
 
-\chapter{Implementation and tests}
+\chapter{Implementation}
 \input{implementation/implementation}
+
+\chapter{Testing}
+\input{testing/testing.tex}
+
+\chapter{Limitations}
+\input{limitations/limitations}
+
 
 \input{bibliography/bibliography}
 \input{appendices/appendices}

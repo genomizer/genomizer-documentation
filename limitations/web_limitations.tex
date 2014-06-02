@@ -1,0 +1,20 @@
+\subsection{Moving backwards in the browser does not hide modal windows}
+When navigating to a modal window the URL is updated, and added to the browser history. When using the browser back-button the modal is not closed, but the URL is still updated. \\
+\\
+ Modify ModalAC and the router
+\subsection{Error handling when uploading experiments}
+If there is an error when adding files to an experiment the experiment collapses so the user won't get a chance to correct it's mistake \\
+\\
+Start uploads of files when all files have been added without errors. 
+\subsection{Old authorization token causes page redirect}
+If the authorization token expires the user will be sent to the login screen and any input entered will dissapear. \\
+\\
+Show login modal without redirecting to root url and save errorous ajax-request and resend it when the login has been completed.
+\subsection{Code duplication in SearchResults and Experiments}
+The collections SearchResults and Experiments represents the same models. But are different collections as they have different URL. It might be better to have the both use the same collection. \\
+\\
+Merge SearchResults and Experiments one collection.
+\subsection{No warning when closing tab during upload.}
+If a upload is in progress, there is no warning when closing the tab and the upload is canceled directly. \\
+\\
+There are some code for this in view/Upload.js, but it's currently broken.

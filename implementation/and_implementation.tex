@@ -1,5 +1,5 @@
 This section focuses on the communication  between classes and how the Android application works.
-\subsubsection{Login request}
+\subsection{Login request}
 	When the user starts the application and is prompted for a login, the the following sequence of actions is performed by the system. (See \refer{fig:and_loginseq})	\\
 	
 	\begin{itemize}
@@ -11,11 +11,11 @@ This section focuses on the communication  between classes and how the Android a
 		\item
 			The ComHandler initializes Communicator and sends a setupConnection command to verify that connection can be made. Then initializes the MsgFactory and request a login-package using the createLogin method.
 		\item
-			MsgFactory responds to ComHandler with a login-package in JSon format. Then the ComHandler calls the sendRequest method in Communicator with the login-package and waits for reply.
+			MsgFactory responds to ComHandler with a login-package in JSON format. Then the ComHandler calls the sendRequest method in Communicator with the login-package and waits for reply.
 		\item
-			The Communicator connects to the remote Genomizer server with a HTTP-request containing the login-package as a JSon object. If the search is valid the server will respond with code 200 and a user-token as a JSon-object.
+			The Communicator connects to the remote \appName\ server with a HTTP-request containing the login-package as a JSON object. If the search is valid the server will respond with code 200 and a user-token as a JSON-object.
 		\item
-			The JSon-object is then returned to the ComHandler which will store the token and return a boolean to the LoginFragment informing if the login was successful or not.
+			The JSON-object is then returned to the ComHandler which will store the token and return a boolean to the LoginFragment informing if the login was successful or not.
 		\item 
 			If the response was true the LoginFragment will startup the SearchFragment and present that view to the user. The Login Fragment will be terminated at that point. 
 			
@@ -27,7 +27,7 @@ This section focuses on the communication  between classes and how the Android a
 		\label{fig:and_loginseq}
 	\end{figure}
 	
-\subsubsection{Search request}
+\subsection{Search request}
 	When the user sends a search request using the search view in the application, the following sequence of actions is performed by the system.
 	(see \refer{fig:and_searchseq})
 	
@@ -39,17 +39,17 @@ This section focuses on the communication  between classes and how the Android a
 		\item
 			ComHandler initializes the Communicator and determines if a connection can be made.
 		\item
-			If connection can be made the ComHandler initialize the MsgFactory and calls the createRegularPackage method, which will return a pre-formatted JSon-object to be used with the search request to the server.
+			If connection can be made the ComHandler initialize the MsgFactory and calls the createRegularPackage method, which will return a pre-formatted JSON-object to be used with the search request to the server.
 		\item
-			ComHandler calls Communicator using the sendRequest method passing on the JSon-object containing the search-list, and waits for the reply from Communicator.
+			ComHandler calls Communicator using the sendRequest method passing on the JSON-object containing the search-list, and waits for the reply from Communicator.
 		\item
-			Communicator connects to the Genomizer server with a HTTP request containing a JSon object with the search-list. The server will respond with code 200 and a JSon-object with the search result from the server.
+			Communicator connects to the \appName\ server with a HTTP request containing a JSON object with the search-list. The server will respond with code 200 and a JSON-object with the search result from the server.
 		\item
-			Communicator will reconfigure the JSon object to a GenomizerHttpPackage object to preserve both the head and body from the server response. Then the GHttp-object is returned to the ComHandler.
+			Communicator will reconfigure the JSON object to a GenomizerHttpPackage object to preserve both the head and body from the server response. Then the GHttp-object is returned to the ComHandler.
 		\item
-			The ComHandler will initalize the MsgDeconstruct and send the collected JSon-object containing the search result from the server to the deconSearch method.
+			The ComHandler will initialize the MsgDeconstruct and send the collected JSON-object containing the search result from the server to the deconSearch method.
 		\item
-			MsgDeconstruct will parse the JSon-object to an ArrayList of experiments, and return that to the ComHandler.
+			MsgDeconstruct will parse the JSON-object to an ArrayList of experiments, and return that to the ComHandler.
 		\item
 			ComHandler will then return the search-results to the ExperimentListFragment that will present the results for the user on the screen.
 	\end{itemize} 
@@ -59,11 +59,11 @@ This section focuses on the communication  between classes and how the Android a
 		\caption{Sequence diagram for a search-request}
 		\label{fig:and_searchseq}
 	\end{figure}
-\subsubsection{Testing}
+\subsection{Testing}
 Testing has been done successively and the foremost type of testing has been JUnit tests. Although regular running and logs have been done too.
 
 All fragments mentioned in \ref{sec:and_classdescription} have been tested visually and through running as no viable way of unit testing them was found.
 
-Most of the classes labeled model in \ref{sec:and_classdescription} have been tested with a test driven developlment approach, except for the small classes such as Experiment, Annotation, GeneFile and GenomizerHttpPackage as they are very straight forward (And they are indirectly shown as working through the tests of the other classes).
+Most of the classes labeled model in \ref{sec:and_classdescription} have been tested with a test driven development approach, except for the small classes such as Experiment, Annotation, GeneFile and GenomizerHttpPackage as they are very straight forward (And they are indirectly shown as working through the tests of the other classes).
 
 Most tests are run against the mockup server. Albeit some are run against the real server as the authenticity of both the methods ability to handle data as well as their ability to get a response from the real server is relevant.

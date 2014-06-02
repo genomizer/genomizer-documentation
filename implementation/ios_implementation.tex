@@ -1,7 +1,7 @@
-\subsection{Implementation}
-In the following section, details regarding the implementation of the iOS application is described using sequence diagrams and.
+The iOS application has been implemented using Objective C. The decision to use Objective C was made largely because it is the standard language used for writing iOS applications. 
+In the following sections, details regarding the implementation of the iOS application are described using sequence diagrams. The section ends with a description of testing strategies.
 
-\subsubsection{Login}
+\subsection{Login}
 
 When the user tries to log in to the system, they enter username and password and clicks on the login button. The username and password is sent to the server which validates that they are valid. If they are valid, the user is presented with the main view of the application, otherwise an error message is displayed. This sequence is shown in  \refer{fig:ios_sequence_login}.
 
@@ -11,7 +11,7 @@ When the user tries to log in to the system, they enter username and password an
 \label{fig:ios_sequence_login}
 \end{figure}
 
-\subsubsection{Search}
+\subsection{Search}
 
 Once the user is logged in to the system and they have reached the main view, they can immediately start searching by selecting a number of search criteria on the screen and pressing the search button. The search criteria are converted into a valid \term{PubMed}-style query which in turn is converted into a valid \term{HTTP request} and sent to the server. The server responds with all results matching the search criteria and the results are presented to the user in a \term{SearchResultView}. This sequence is shown in \refer{fig:ios_sequence_search}.
 
@@ -21,7 +21,7 @@ Once the user is logged in to the system and they have reached the main view, th
 \label{fig:ios_sequence_search}
 \end{figure}
 
-\subsubsection{Experiment Selection}
+\subsection{Experiment Selection}
 
 In the \term{SearchResultTableView}, the user can click on an experiment to see which files are contained in an experiment. The file contents of an experiment is displayed in a \term{FileView}. The sequence is shown in \refer{fig:ios_sequence_experiment_selection} 
 
@@ -31,7 +31,7 @@ In the \term{SearchResultTableView}, the user can click on an experiment to see 
 \label{fig:ios_sequence_experiment_selection}
 \end{figure}
 
-\subsubsection{File Selection}
+\subsection{File Selection}
 
 From the \term{FileView}, the user can select any number of files to add to a list of currently selected files by pressing the switch button next to each file name and pressing the \term{Add to Selected files} button. After that, the user can press the \term{Selected Files} button to go to the \term{Selected Files View}. This sequence is shown in \refer{fig:ios_sequence_file_selection}
 
@@ -41,18 +41,24 @@ From the \term{FileView}, the user can select any number of files to add to a li
 \label{fig:ios_sequence_file_selection}
 \end{figure}
 
-\subsubsection{Convert Request}
+\subsection{Convert Request}
 
-As seen in \refer{fig:ios_sequence_convert_request}, convert requests are sent with very few steps. 
+As seen in \refer{fig:ios_sequence_convert_request2}, convert requests are sent with very few steps. 
 
 \begin{figure}[ht]
 \addScaledImageVertical{0.5}{ios_send_convert_sequence_diagram.png}
 \caption{Send convert request.}
-\label{fig:ios_sequence_convert_request}
+\label{fig:ios_sequence_convert_request2}
 \end{figure}
-
 \FloatBarrier
 
+\subsubsection{Segue Control}
+A segue control package has been implemented to avoid multiple segues being executed at the same time. When a segue is started, a static \term{BOOL} is set to \term{YES} in XYZSegueController. When the segue is finished, the \term{BOOL} in XYZSegueController is set to \term{NO}. This means that the \term{BOOL} is \term{YES} when a segue is being executed, and \term{NO} otherwise. Every time a segue is going to be executed, it first checks the value of the \term{BOOL}. If a segue is already being executed, i.e. the \term{BOOL} is \term{YES}, the new segue is aborted.
+
+\subsubsection{Limitations}
+
+There are a couple of limitations on this application, one of which is crashes when the UI gets overpowered. What this means is that certain combinations of clicks can cause the application to crash, however this is something that would not happen during regular usage. Since the screen of an iPhone is quite small, a lot of search results can be hard to get an overlook of. Hardly any security has been implemented. This should be fixed as soon as possible.  
+ 
 \subsection{Testing}
 
-Unit-tests have been written for nearly all underlying classes. This includes JSONBuilder, ExperimentDescriber, Experiment, ExperimentFile, and ExperimentParser. These tests check all required functionality, including but not limited to proper object creation. Exactly what all the tests do is explained in the test names and comments. ServerConnection has not been tested, this is work for the next sprint. User interface functionality and integration testing has been done using exploratory methods. These tests have not been recorded or documented.
+We have worked using the principles of TDD, which means that Unit-tests have been written for nearly all underlying classes. This includes JSONBuilder, ExperimentDescriber, Experiment, ExperimentFile, and ExperimentParser. These tests check all required functionality, including but not limited to proper object creation. Exactly what all the tests do is explained in the test names and comments. ServerConnection has not been tested, this is work for next years workers. User interface functionality and integration testing has been done using exploratory methods. Some UI functionality has been tested using automated tests, where we recorded a certain combination of clicks, and let the computer do them instead. 
