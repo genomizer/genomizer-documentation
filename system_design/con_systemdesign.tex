@@ -83,93 +83,13 @@ again with different parameters. Puts the files in a folder called
 \end{enumerate}
 
 
-\begin{tabularx}{\textwidth}{|l|X|}
-\hline
-\term{procedure} &
-Executes all the steps to make a profile .sgr file from a raw file, it checks the directory it gets as file-path so that it contains the raw files and that there are not more then two files, but at least one file to process. Does the procedure to create a profile data and move it to the folder thats specified as a parameter.
-\\ \hline
-
-\term{runBowtie} &
-Constructs a long string with the full execution line for BowTie. It then uses this string as a parameter when calling the method parse. 
-The resulting array is then used when calling executeProgram and the result of the execution is returned.
-\\ \hline
-
-\term{sortSamFile} &
-
-Constructs a string with the full execution line to sort a sam file. It then calls parse to create a string array from the full string and sends it as parameter to executeShellCommand which runs a shell command to sort the file and creates a new .sam file that is sorted with the specified parameters.
-
-\begin{itemize}
-\item \term{makeConversionDirectories}
-    \begin{itemize}
-        \item Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
-    \end{itemize}
-\item \term{initiateConversionStrings}
-    \begin{itemize}
-        \item Defines all strings needed for the directories created when procedure is doing its work. 
-        Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
-    \end{itemize}
-\end{itemize}
-\\ \hline
-\term{getRawFiles} &
-
-Constructs a File object with the parameter inFolder that should be a directory where the .fastq files that the procedure should run on are. 
-returns an array of File objects with all the files procedure will be using.
-
-\\ \hline
-
-\term{makeConversionDirectories} &
-   
-Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
-
-\\ \hline
-
-\term{initiateConversionStrings} &
-Defines all strings needed for the directories created when procedure is doing its work. Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
-\\ \hline
-
-\term{validateParameters} &
-Validates all parameters for the steps procedure should run on. Checks whether a step should be run. If so, validates that steps parameters, returns true if everything is correct.
-\\ \hline
-
-\term{checkBowTieFile} &
-Checks that bowtie succedded to run and that the result is ok. Checks that bowtie created the file it should and that the size of the file is not zero. If everything was correct it returns true.
-\\ \hline
-
-\term{validateInFolder} &
-Perform a check on the parameter inFolder that should be a string with a path to where the files to be processed should be. If the string ends with a "/" it gets removed from the string.
-\\ \hline
-
-\term{runSmoothing} &
-When implementing the scripts to create profile from raw we realized that the smoothing script used alot of memory to run, so we decided to convert it and try to optimise it. The result was a improvement and in this method we uses the smoothing a version of the smoothing that got approved from the customers. The method sets up all parameters the way the smoothing class wants them in and fixes all the paths then we run the smoothing, The method checks whether ratio calculation have been run before smoothing or not and sets the paths and parameters accordingly.
-\\ \hline
-
-\term{isSgr} &
-Gets a string that should be a filename with the file extension and checks if the file extension is ".sgr", if so it returns true.
-\\ \hline
-
-\term{correctInFiles} &
-Takes an array of File objects and checks that it contains a correct amount of raw files to process.
-\\ \hline
-
-\term{doRatioCalculation} &
-Initiates a string using the incoming parameters and executes the the script to do Ratio calculation, uses the method executeScript to execute.
-\\ \hline
-
-\term{checkBowTieProcessors} &
-Bowtie has a parameter where the number of processors used can be specified, we want to restrict the user from being able to run bowtie on all the cores on the server cause that would slow it down. Instead we make it so that bowtie runs on all but 2 of the available cores on the system.
-\\ \hline
-
-\term{verifyInData} &
-Makes a initial check so that all the incoming parameters to the procedure method not is null. Also checks that the array string with parameters is correct size, not zero and not bigger then eight.
-\\ \hline
-
-\end{tabularx}
+\LTXtable{\textwidth}{system_design/des_systemServer_ProcessingTable.tex}
 
 \paragraph{BowTie}
 BowTie takes two raw \term{.fastq} files and converts them to \term{.sam} which is the first step to make the desired \term{.sgr} files. After a \term{.sam} file is converted the Linux command sort is run  on both files which creates two sorted \term{.sam} files, it is sorted by chromosome and position as needed to use the scripts.
 \paragraph{Used scripts}
 The different functions of the Perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
-
+\begin{table}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
 
@@ -189,7 +109,7 @@ folder \filePath{allnucs\_sgr}.
 Does ratio calculation on the processed files, for each position in the IP sample with at least one mapped read, a ratio of IP - input (on a log2 scale) is calculated. If the read count in the input is below the read count mean (in the input sample) is calculated it is set to the mean ( or double mean (2 x mean) as user specified). If the input mean is below four the minimum input value is set to four (to avoid division by near zero values. Calculated as (read length x approximate total number of reads in input samples(9 millin))/ genome size (for Drosophila melanogaster 120381546)). A random number between -0.5 and 0,5 is added to the read counts before log2 conversion to make them discrete for statistical analysis. All ratio values are then adjusted by reducing each value by median of the ratios. This linear adjustment is carried out in order to compensate for differences in IP and input sequencing depth. Also, to visualize ratios distribution, ratios are plotted by binning ratios with user specified numbers of bins and minimum and maximum ratio values (200bins,minimum ratio value: -10, maximum ratio value:10). Ratio values are printed in sgr format.
 \\ \hline
 \end{tabularx}
-
+\end{table}
 \subsubsection{Smoothing and stepping}
 The scripts that was provided was inefficient and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.
 

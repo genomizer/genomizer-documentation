@@ -1,17 +1,22 @@
-\documentclass[a4paper,twoside]{report}
+\documentclass[a4paper,oneside]{report}
 
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+
+\usepackage{ltxtable, longtable}
+
 \usepackage{graphicx}
 \usepackage{pifont}
 \usepackage{hyperref}
 \usepackage{tabularx}
+\usepackage{tabulary}
 \usepackage[margin=1cm]{caption}
 \usepackage{listings}
 \usepackage[section]{placeins}
 \usepackage{fancyhdr}
+\usepackage{comment}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[notindex,nottoc,notlof,notlot]{tocbibind}
 
@@ -21,10 +26,13 @@
 
 \date{\today}
 
-\fancyfoot{}
-\fancyhead[RO,LE]{\thepage}
-\fancyhead[LO]{\leftmark}
-\fancyhead[RE]{\rightmark}
+
+%\fancyhead[RO,LE]{\thepage}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+
+
+
 
 \begin{document}
 
@@ -44,6 +52,12 @@
       {.5\baselineskip}%
       {\normalfont\normalsize\bfseries}}
       
+\renewcommand\chapter{%
+   \@startsection{chapter}{1}{0mm}%
+      {-2cm\pagebreak}%
+      {.5\baselineskip}%
+      {\normalfont\huge\bfseries}}
+
 \renewcommand\subparagraph{%
    \@startsection{paragraph}{4}{0mm}%
       {-\baselineskip}%
@@ -79,6 +93,8 @@
   stringstyle=\color{orange},
 }
 
+
+
 \newcommand{\appName}{\textit{Genomizer}}
 \newcommand{\addImage}[1]{\centering\includegraphics[width=\textwidth, keepaspectratio=true]{#1}}
 \newcommand{\addScaledImage}[2]{\centering\includegraphics[scale=#1]{#2}}
@@ -93,17 +109,15 @@
 \newcommand{\strongTerm}[1]{\textbf{\term{#1}}}
 \newcommand{\serverPort}{\texttt{7000}}
 \newcommand{\userstory}[2]{
-\begin{tabular}{|l|}
+\begin{tabularx}{0.95\textwidth}{|X|}
 \hline
-\\
-{\large \textbf{#1}} \\ \hline
-\\
-\begin{minipage}{0.958\textwidth}
-#2
-\end{minipage}
-\\
-\\ \hline
-\end{tabular}
+\vspace{1pt}
+\large\textbf{#1} \\ 
+\hline
+\vspace{1pt}
+#2 \\
+\hline
+\end{tabularx}
 }
 
 \newcommand{\addTwoImages}[2]{
@@ -171,42 +185,9 @@
 
 \tableofcontents
 
-\chapter{Introduction}
-\input{introduction/introduction}
 
-\chapter{Target group and needs}
-\input{target_group/target_group}
+\input{contents}
 
-\chapter{Service description}
-\input{service_description/service_description}
-
-\chapter{User manual}
-\input{usermanual/user_manual}
-
-\chapter{Deployment and maintenance}
-\input{deployment/deployment.tex}
-
-\chapter{Interaction design}
-\input{interaction_design/interaction_design.tex}
-
-\chapter{Architecture design}
-\input{architecture_design/architecture_design}
-
-\chapter{System design}
-\input{system_design/system_design.tex}
-
-\chapter{Implementation}
-\input{implementation/implementation}
-
-%\chapter{Testing}
-%\input{testing/testing.tex}
-
-%\chapter{Limitations}
-%\input{limitations/limitations}
-
-
-\input{bibliography/bibliography}
-\input{appendices/appendices}
 
 
 \end{document}

@@ -43,7 +43,7 @@ When the search button is clicked the search tab will change it's view to displa
 If the user needs to upload files to the database it can be done through the upload tab. When the tab is pressed the user gets presented with a text field and two buttons. The textfield and the first button is used for searching for existing experiments. The second button is used for creating new experiments. This is illustrated in \ref{fig:des_upload-tab}.
 \subsubsection{Existing experiment}
 \label{sec:des_exists}
-In order to upload files to an existing experiments the users needs to write the experiment name in the textfield and press the "Search for existing experiment"-button shown in figure \refer{fig:des_upload-exists}. When this is done the experiment information get retrieved from the server and presented for the user. For an existing experiment no editing of the annotations can be done. So after retrieving the wanted experiment the user presses the "Browse files"-button. Then a file browser window pops up, it is illustrated in \ref{des_upload}. Here the user selects the files that are supposed to be added to the experiments and then presses "open". The files will be added to the upload tab and there will be some new choices available for the user. Each file  will be associated with one file row, this is also shown in \ref{des_upload_existing}. The new choices are whether the new files are either raw, region or profile files. And if it is region or profile there is another choice for which genome release. There is also the possiblity to delete the file row, by clicking the "X"-button, in case this file is not suppose to be added to the experiment. After all is decided and the files are correct the user simply clicks the "Upload files"-button. Then the progress bar starts to progress and if all goes well it will reach 100\% and the files is added to the existing experiment.
+In order to upload files to an existing experiments the users needs to write the experiment name in the textfield and press the "Search for existing experiment"-button shown in figure \refer{fig:des_upload-exists}. When this is done the experiment information get retrieved from the server and presented for the user. For an existing experiment no editing of the annotations can be done. So after retrieving the wanted experiment the user presses the "Browse files"-button. Then a file browser window pops up, it is illustrated in \ref{fig:des_upload}. Here the user selects the files that are supposed to be added to the experiments and then presses "open". The files will be added to the upload tab and there will be some new choices available for the user. Each file  will be associated with one file row, this is also shown in \ref{fig:des_upload-exists}. The new choices are whether the new files are either raw, region or profile files. And if it is region or profile there is another choice for which genome release. There is also the possiblity to delete the file row, by clicking the "X"-button, in case this file is not suppose to be added to the experiment. After all is decided and the files are correct the user simply clicks the "Upload files"-button. Then the progress bar starts to progress and if all goes well it will reach 100\% and the files is added to the existing experiment.
 \subsubsection{New experiment}
 \label{sec:des_create}
 The first thing a user needs to do when creating a new experiment is pressing the "Create new experiment"-button in the upload tab. After pressing this button all the different annotations get retrieved from the server. If the annotation is of the type that should be filled with text there is an textfield to be filled out, and if it's a multiple choice annotation there is a dropdown menu of the different choices. The boldtexted annotations are forced and needs to be filled out in order to create the experiment. There are also three buttons added to the view. This is illustrated in \ref{fig:des_upload-new}. In order to add files to this experiment the user needs to press the "Browse files"-button and choose in the file browser window which files are to be added. When the files are added they each get displayed in a file row. The file row consists of the file name and a progress bar. And apart from this there are also three button and a checkbox. The checkbox will be explained in section \ref{sec:des_batch} below. The other three button are used in the same manner as in section \ref{sec:des_exists} above. When all the annotations that are needed is filled and the associated files are added the user presses the "Create with all files"-button. The "Create experiment with selected files"-button is discussed in section \ref{sec:des_batch} below.
@@ -52,25 +52,25 @@ The first thing a user needs to do when creating a new experiment is pressing th
 In order to batch upload experiment the workflow of this application is suggested as follows:
 First the user start of as usual when uploading one experiment, as explained in \ref{sec:des_create}. But instead of choosing the wanted files for that experiment the user chooses all the files that are supposed to be uploaded to all the different experiments that are supposed to be batched. When the annotations for the first experiment to be uploaded are chosen the user selects the files to be associated to this experiment by click the "select"-checkbox. Then presses "Create experiment with selected files"-button. This creates the first experiment and starts to upload the files to it. And then the user changes the annotations that needs to be changed for the second experiment and then selects the files for that experiment in the same manner. The user then clicks the "Create experiment with selected files"-button again and then changes the annotations to match the third experiment and the selects the files for it and starts the upload. Every file that is finished will disappear from the view and for each finished experiment a popup window will be shown. So when all files are gone from the view they are all added to the different experiment that the user filled out.
 
-\begin{figure}[htb]
+\begin{figure}[h]
 	\addImage{des_upload_tab.png}
 	\caption{Illustration of the starting view of the upload tab.}
 	\label{fig:des_upload-tab}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[h]
 	\addImage{des_upload_existing.png}
 	\caption{Illustration of the add to existing experiment part of the upload tab.}
 	\label{fig:des_upload-exists}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[h]
 	\addImage{des_upload_new.png}
 	\caption{Illustration of the create new experiment part of the upload tab.}
 	\label{fig:des_upload-new}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[h]
 	\addScaledImage{0.4}{des_upload_select.png}
 	\caption{Illustration of the file browsing window.}
 	\label{fig:des_upload}

@@ -1,0 +1,85 @@
+\newcolumntype{Y}{>{\small\raggedright\arraybackslash}X}
+\renewcommand{\arraystretch}{1.5}
+\noindent 
+\begin{longtable}{|>{\setlength\hsize{0.75\hsize}}X|>{\setlength\hsize{1.25\hsize}}X|}
+\hline
+\term{procedure} &
+Executes all the steps to make a profile .sgr file from a raw file, it checks the directory it gets as file-path so that it contains the raw files and that there are not more then two files, but at least one file to process. Does the procedure to create a profile data and move it to the folder thats specified as a parameter.
+\\ 
+
+
+\term{runBowtie} &
+Constructs a long string with the full execution line for BowTie. It then uses this string as a parameter when calling the method parse. 
+The resulting array is then used when calling executeProgram and the result of the execution is returned.
+\\ \hline
+
+\term{sortSamFile} &
+
+Constructs a string with the full execution line to sort a sam file. It then calls parse to create a string array from the full string and sends it as parameter to executeShellCommand which runs a shell command to sort the file and creates a new .sam file that is sorted with the specified parameters.
+
+\begin{itemize}
+\item \term{makeConversionDirectories}
+    \begin{itemize}
+        \item Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
+    \end{itemize}
+\item \term{initiateConversionStrings}
+    \begin{itemize}
+        \item Defines all strings needed for the directories created when procedure is doing its work. 
+        Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
+    \end{itemize}
+\end{itemize}
+\\ \hline
+\term{getRawFiles} &
+
+Constructs a File object with the parameter inFolder that should be a directory where the .fastq files that the procedure should run on are. 
+returns an array of File objects with all the files procedure will be using.
+
+\\ \hline
+
+\term{makeConversionDirectories} &
+   
+Creates the necessary directories used by RawToProfile's procedure to put the temporary files needed to do all the steps to create a profile .sgr file.
+
+\\ \hline
+
+\term{initiateConversionStrings} &
+Defines all strings needed for the directories created when procedure is doing its work. Also defines a string for each step in the procedure, which gets passed to the corresponding execute methods. 
+\\ \hline
+
+\term{validateParameters} &
+Validates all parameters for the steps procedure should run on. Checks whether a step should be run. If so, validates that steps parameters, returns true if everything is correct.
+\\ \hline
+
+\term{checkBowTieFile} &
+Checks that bowtie succedded to run and that the result is ok. Checks that bowtie created the file it should and that the size of the file is not zero. If everything was correct it returns true.
+\\ \hline
+
+\term{validateInFolder} &
+Perform a check on the parameter inFolder that should be a string with a path to where the files to be processed should be. If the string ends with a "/" it gets removed from the string.
+\\ \hline
+
+\term{runSmoothing} &
+When implementing the scripts to create profile from raw we realized that the smoothing script used alot of memory to run, so we decided to convert it and try to optimise it. The result was a improvement and in this method we uses the smoothing a version of the smoothing that got approved from the customers. The method sets up all parameters the way the smoothing class wants them in and fixes all the paths then we run the smoothing, The method checks whether ratio calculation have been run before smoothing or not and sets the paths and parameters accordingly.
+\\ \hline
+
+\term{isSgr} &
+Gets a string that should be a filename with the file extension and checks if the file extension is ".sgr", if so it returns true.
+\\ \hline
+
+\term{correctInFiles} &
+Takes an array of File objects and checks that it contains a correct amount of raw files to process.
+\\ \hline
+
+\term{doRatioCalculation} &
+Initiates a string using the incoming parameters and executes the the script to do Ratio calculation, uses the method executeScript to execute.
+\\ \hline
+
+\term{checkBowTieProcessors} &
+Bowtie has a parameter where the number of processors used can be specified, we want to restrict the user from being able to run bowtie on all the cores on the server cause that would slow it down. Instead we make it so that bowtie runs on all but 2 of the available cores on the system.
+\\ \hline
+
+\term{verifyInData} &
+Makes a initial check so that all the incoming parameters to the procedure method not is null. Also checks that the array string with parameters is correct size, not zero and not bigger then eight.
+\\ \hline
+
+\end{longtable}

@@ -31,13 +31,13 @@ There are three main data types used in the research and that the system should 
 
 When conducting experiments the researchers treat DNA with a given protein that binds to certain positions. The DNA--strings are then broken up and the bound areas separated. \term{Raw} data can then be collected on what these pieces look like on a base pair level. This data is the foundation for further research and so must be stored securely and in a structured manner. A system that automates the archiving of \term{raw} data to a shared location is therefore desired. This requirement was specified in the \term{user stories} ``Single Upload'' (see \refer{fig:target_upload}) and ``Single Download'' (see \refer{fig:target_download}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{Single upload}{To store a single data file \\ the researchers \\ want to be able to upload a specific file.}
 \caption{User story for uploading a file to the central database}
 \label{fig:target_upload}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{Single download}{To scrutinize a single data file \\ the researchers \\ want to be able to download a specific file.}
 \caption{User story for downloading a file from the central database}
 \label{fig:target_download}
@@ -47,7 +47,7 @@ Another way researchers obtain \term{raw} data is from official publications. Wh
 
 It is not possible/highly impractical to gain knowledge of an experiment by viewing the characters that make up the \term{raw} data files. In order to save information about an experiment and the resulting files, the researchers must be able to annotate them upon entry to the database. There are several \term{user stories} to do with the annotation of experiments/files and the manipulation of the annotation fields. An example of such a \term{user story} is ``Annotation'' (see \refer{fig:target_annotation}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{Annotation}{To structure the data files \\ the researchers \\ want to be able to annotate the data files.}
 \caption{User story for the annotation of files stored in the database}
 \label{fig:target_annotation}
@@ -55,13 +55,13 @@ It is not possible/highly impractical to gain knowledge of an experiment by view
 
 As the database is filled with data, the researchers want to ensure that it is kept safe. They therefore want to have an authorization system to protect the data from unauthorized access. Another risk that must be mitigated is the risk of hardware failure. These concerns were captured in the \term{user stories} ``Password Protected'' and ``Backup'' respectively (see \refer{fig:target_password} and \refer{fig:target_backup}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{Backup}{To prevent loss of data \\ the researchers \\ want the data to be backed up.}
 \caption{User Story for the protection from data loss due to hardware failures}
 \label{fig:target_backup}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{Password protected}{To protect the database from unauthorized use \\ the researchers \\ want the application to be password protected.}
 \caption{User story for the protection of the database from unauthorized access}
 \label{fig:target_password}
@@ -79,7 +79,7 @@ The unordered \term{raw} data gained from an experiment requires processing in o
 
 As new discoveries are made in the area, new standards for the order of the base pairs in a \term{DNA} string are set. This results in a new \term{Genome Release} for a specific species. These are obtained as a set of files specifying this order and are used in the processing of \term{raw} data. \appName\ must support the uploading of new sets of \term{genome release} files to be used in processing otherwise the system will very quickly become outdated. This is specified in the user story ``Add Genome Release'' shown in \refer{fig:target_GR}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{Add genome release / reference genome}{To be able to annotate the data properly and extract genome reference \\ the researchers \\ want to be able to add genome releases and reference genome.}
 \caption{User story for the addition of \term{Genome Releases}}
 \label{fig:target_GR}
@@ -87,7 +87,7 @@ As new discoveries are made in the area, new standards for the order of the base
 
 It would also be an advantage if the system could carry out further processing from \term{profile} to \term{region} files and is captured in the user story ``Profile to Region'' shown in \refer{fig:target_profReg}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{Profile to region}{To be able to find regions of interest \\ the researchers \\ want to process profile data to region data (Per’s code).}
 \caption{User story for the processing of \term{profile} to \term{region} files}
 \label{fig:target_profReg}
@@ -95,7 +95,7 @@ It would also be an advantage if the system could carry out further processing f
 
 After processing, the resulting data files should be annotated and saved in the database alongside their parent files. It is important that the parent files remain traceable and that the parameters used in processing are saved so that the process can be repeated and confirmed (see \refer{fig:target_trace}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{File traceabillity}{To be able to access the underlying raw data or profile data \\ the researchers \\ want the raw data files to be traceable from profile files and the profile files to be traceable from the region data (if available) when the files have been generated on the server.}
 \caption{User story for the traceability of processed data}
 \label{fig:target_trace}
@@ -111,13 +111,13 @@ After processing, the resulting data files should be annotated and saved in the 
 
 It is not uncommon for errors in a new release to be discovered after publication. It is therefore also important to store files generated using older genome releases for some time after a new release is published.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{Convert genome release}{To easier handle files \\ the researchers \\ want to convert files between genome releases (\term{LiftOver}).}
 \caption{User story for the conversion of processed data between different genome releases}
 \label{fig:target_genome}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \userstory{Add chain file}{To be able to convert between genome releases \\ the researchers \\ want to upload chain files (LiftOver).}
 \caption{User story for the addition of new \term{Chain Files}}
 \label{fig:target_chain}
