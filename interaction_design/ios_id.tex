@@ -1,16 +1,16 @@
 Focus has been on making a nice looking application with an intuitive workflow and to follow the iOS design principles. Some of the design decisions are motivated in the text below.
 
 \subsection{Navigation bar}
-A navigation bar is used to make access to different main functionalities available at all times. In the navigation bar iOS approved icons are used combined with a short describing text directly under it.
+A navigation bar is used to make access to different main functionalities available at all times. Big and clear icons are used to show the user which view they all represent. It is also possible to simply swipe between the different views to increase the speed of which the advanced user can use the system.
 
 \subsection{Login Screen}
 The login screen has two responsibilities; to make a nice first impression and to make it easy for the user to login. The design is kept simple and clean to avoid distractions.
 
 \subsection{Search View}
-The search view is designed to be usable for both advanced and new users. A list with available annotations is displayed to make it easy to do basic searches fast. Some annotations can only be selected with a picker view, while others are edited by typing free text. The reason for the occurance of the picker views is to simplify searches and help the user to make correct search requests. For example, the sex of an individual can only be male, female or unknown. Other values for the sex annotation would be nonsence!
+The search view is designed to be usable for both advanced and new users. A list with available annotations is displayed to make it easy to do basic searches fast. Some annotations can only be selected with a picker view, while others are edited by typing free text. The reason for the occurance of the picker views is to simplify searches and help the user to make correct search requests. For example, the sex of an individual can only be male, female or unknown. Other values for the sex annotation would be nonsence! The search button disappears when no annotation is selected to decrease the chance of user sending empty searches and to increase the understanding of the switches. 
 
 \begin{figure}[ht]
-\addTwoImages{ios_searchFirst.png}{ios_searchSecond}
+\addTwoImages{ios_search1.PNG}{ios_search2.PNG}
 \caption{The search screen.}
 \label{fig:ios_search2}
 \end{figure}
@@ -24,7 +24,7 @@ The advanced user can customize the search query sent to the server. This gives 
 The main purpose of the search result view is to give an overview of the search results. The challenge with this view was to summarize large amount of information in a small area. The small screen of the iPhone made it impossible to have columns for each annotation. Instead a decision was made to group the files by experiment as seen in \refer{fig:ios_searchResult2}. The table with the experiments will only expand vertically, both when the number of shown annotations and the number of experiments grows. Thus, the user never has to scroll sideways which would be awkward.
 
 \begin{figure}[ht]
-\addTwoImages{ios_searchResultsFirst.png}{ios_searchResultsSecond.png}
+\addTwoImages{ios_result1.PNG}{ios_result3.PNG}
 \caption{The search result view.}
 \label{fig:ios_searchResult2}
 \end{figure}
@@ -35,19 +35,20 @@ The user can choose which annotations to display in the result view. This gives 
 The file view (see \refer{fig:ios_files2}), which is shown when the user selects an experiment, only contains the filename of the files in the specific experiment. The annotations is not shown in this view to avoid information overload and to give the user a good overview of the files.
 
 \begin{figure}[ht]
-\addTwoImages{ios_filesFirst.png}{ios_filesSecond.png}
+\addTwoImages{ios_files1.PNG}{ios_files2.PNG}
 \caption{The file view.}
 \label{fig:ios_files2}
 \end{figure}
 \FloatBarrier
 
-The functionality of the Convert files button can be reached from other views, but was added to this view as well to improve the workflow. Instead of first selecting the files, then going to the Selected files view and initiate the convertion from there, the user can quickly convert files directly from the search results.
+The star indicates if the file has been added to the Star-view where the user can choose to convert file sto different formats .
+% The functionality of the Convert files button can be reached from other views, but was added to this view as well to improve the workflow. Instead of first selecting the files, then going to the Selected files view and initiate the convertion from there, the user can quickly convert files directly from the search results.
 
 \subsubsection{Selected Files}
-The selected files view can be seen in \refer{fig:ios_selectedFiles2}. The files are grouped into four categories: raw, profile, region and other. This is done by showing each type of files in its own tab. The reason for this is to avoid the possibility to select files of different types since the tasks to perform are file type specific. It also gives a better overview of the files when only one type is shown instead of showing all files at the same time. Additionally, the top tab bar menu is following the iOS design guidelines.
+The selected files view can be seen in \refer{fig:ios_selectedFiles2}. The files are grouped into four categories: raw, profile, region and other. This is done by showing each type of files in its own tab. The reason for this is to avoid the possibility to select files of different types since the tasks to perform are file type specific. It also gives a better overview of the files when only one type is shown instead of showing all files at the same time. The files are also grouped into respective experiment they belong to. This is done to avoid confusion of what file belong to which experiment. Additionally, the top tab bar menu is following the iOS design guidelines.
 
 \begin{figure}[ht]
-\addTwoImages{ios_selectedFilesFirst.png}{ios_selectedFilesSecond.png}
+\addTwoImages{ios_selected1.PNG}{ios_selected2.PNG}
 \caption{The selected files view.}
 \label{fig:ios_selectedFiles2}
 \end{figure}
@@ -56,7 +57,7 @@ The selected files view can be seen in \refer{fig:ios_selectedFiles2}. The files
 \subsubsection{Select task and Convert}
 The select task menu can easily be expanded when new functionality is added to the application. The simplest way we could think of to select a task was to simply press it and hence it's implemented that way.
 \begin{figure}[ht]
-\addTwoImages{ios_selectTask}{ios_convert.png}
+\addTwoImages{ios_convert1.PNG}{ios_convert2.PNG}
 \caption{The convert view.}
 \label{fig:ios_convertParameters}
 \end{figure}
@@ -67,10 +68,20 @@ As seen to the right in \refer{fig:ios_convertParameters}, the convert view, sho
 
 \subsubsection{Processes}
 \begin{figure}[ht]
-\addScaledImage{0.17}{ios_processes.png}
+\addScaledImage{0.17}{ios_processes1.png}
 \caption{The process status view.}
 \label{fig:ios_processingStatus}
 \end{figure}
 \FloatBarrier
 
-As visible in \refer{fig:ios_processingStatus}, we chose to build the processing status view with a simple tableview, to make it dynamic and easy. We also think this gives the user the best possible overview of current processes.
+As visible in \refer{fig:ios_processingStatus}, we chose to build the processing status view with a simple tableview, to make it dynamic and easy. We also think this gives the user the best possible overview of current processes. The status is color coded to make it as easy as possible for the user to see which processes are in which state. 
+
+\subsubsection{Alerts}
+\begin{figure}[ht]
+\addTwoImages{ios_convert3.PNG}{ios_alert1.PNG}
+\caption{Examples of alerts}
+\label{fig:ios_alerts}
+\end{figure}
+\FloatBarrier
+
+Alerts are simple banners animating down from the top to give the user a headsup of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen to the right in \refer{fig:ios_alerts}, indicates an error and a white with a green icon, as seen to the left in \refer{fig:ios_alerts}, indicates something went as expected. 
