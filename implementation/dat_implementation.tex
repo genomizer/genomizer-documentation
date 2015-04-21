@@ -21,12 +21,12 @@ A new folder is also created for each process request and houses the resulting f
 \subsubsection{PubMedToSQLConverter}
 This class converts a \term{PubMed} string to a \term{SQL query}. A typical \term{PubMed} search string takes the form: \texttt{raw[FileType] AND Per[Author]}. In this case the search is for \term{all raw files that Per created}. The user enters the annotation labels and values together with the logical operators \term{AND}, \term{OR} and \term{NOT}. Parentheses are used for disambiguation. 
 
-All the variables in the pubMed string are bound to variables in the \texttt{WHERE} section of the SQL query to avoid SQL injection. 
+All the variables in the PubMed string are bound to variables in the \texttt{WHERE} section of the SQL query to avoid SQL injection. 
 
 When the \texttt{search} method is called in the \texttt{DatabaseAccessor}, the \term{PubMed} string is checked for file attributes by calling the \texttt{hasFileAttributes} method in the \texttt{PubMedToSQLConverter}. This is done so that even empty experiments are returned when searches do not contain a file specific attribute.
 
 \subsubsection{DatabaseAccessor}
-A class that serves as an API for the Genomizer database - it handles all connections and queries to the database. The methods simplify queries to the database by removing the need to write SQL in any other packages. The \texttt{DatabaseAccessor} utilizes it's subclasses as shown in \ref{fig:dat_dbac} where the methods are divided up into more specific areas. \term{Prepared Statements} are created from queries and parameters to avoid SQL injection. Methods that have some resemblance are grouped together for easier navigation.
+A class that serves as an API for the Genomizer database - it handles all connections and queries to the database. The methods simplify queries to the database by removing the need to write SQL in any other packages. The \texttt{DatabaseAccessor} utilizes its subclasses as shown in \ref{fig:dat_dbac} where the methods are divided up into more specific areas. \term{Prepared Statements} are created from queries and parameters to avoid SQL injection. Methods that have some resemblance are grouped together for easier navigation.
 
 \subsubsection{Testing}
 WARNING! Do not run any of the tests found in the \texttt{database} package on a database that is in use. All tuples are removed from the database upon test completion. Every instance of unit testing should start with an empty database and finish with an empty database to avoid dependency between tests.
