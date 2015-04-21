@@ -4,14 +4,14 @@ In order to use the program, import the project from github into Xcode from the 
 To compile and run the program, press \click{cmd+R}. A simulator will start and the login screen will be shown as seen in \refer{fig:ios_login}. A user gets logged in when accepted credentials are entered in the ‘username’ and ‘password’ fields and the ‘Sign in’ button is pressed. If incorrect credentials are entered, a popup message is shown, informing the user that the username or password is incorrect. The user can also change  the server to connect to by pressing the symbol in the top rightmost corner. The user will then be presented with a popup window as seen in the rightmost view in \refer{fig:ios_login}.
 
 \begin{figure}[ht]
-\addThreeImages{ios_login.png}{ios_loginFailed.png}{ios_changeServer}
+\addThreeImages{ios_login1.PNG}{ios_login2.PNG}{ios_login3.PNG}
 \caption{The login screen.}
 \label{fig:ios_login}
 \end{figure}
 \FloatBarrier
-After logging in, the user is presented with a search view as seen in the leftmost view in \refer{fig:ios_search}. The bottom menu bar is used to navigate between the Search-, Selected files-, Processes- and More-view in accordance with Apple's current GUI standards for iOS 7. In the current state, the More-menu only contains a logout button which is used to log out. The Selected files-menu contains a list of files selected by the user, sorted by file type.
+After logging in, the user is presented with a search view as seen in the leftmost view in \refer{fig:ios_search}. The bottom menu bar is used to navigate between the Search-, Starred files-, Processes- and Settings-view in accordance with Apple's current GUI standards for iOS 7. In the current state, the Settings-menu only contains a logout button which is used to log out. The Starred files-menu contains a list of files selected by the user, sorted by file type and experiment.
 \begin{figure}[ht]
-\addThreeImages{ios_searchFirst.png}{ios_searchSecond.png}{ios_advancedSearch.png}
+\addThreeImages{ios_search1.PNG}{ios_search2.PNG}{ios_search4.PNG}
 \caption{The search screen.}
 \label{fig:ios_search}
 \end{figure}
@@ -22,7 +22,7 @@ In top rightmost corner, there is a button for opening an advanced search view a
 When the search button has been pressed, the user is presented with all matching experiments in the Search Results view shown to the left in \refer{fig:ios_searchResult}. To manage which annotations should be displayed for every experiment, the user can press the edit button in the top rightsmost corner and will then be presented with the middle view in \refer{fig:ios_searchResult}. Here the user can set the visibility for each annotation. When the user then presses the ’back’-button, the annotations chosen will be shown for each experiment as seen in the rightmost picture in \refer{fig:ios_searchResult}. To see which files are associated with each experiment, the user can click on the experiment in order to get to the Files view shown in the leftmost view in \refer{fig:ios_files1}.
 
 \begin{figure}[ht]
-\addThreeImages{ios_searchResultsFirst.png}{ios_selectAnnotations.png}{ios_searchResultsSecond.png}
+\addThreeImages{ios_result1.PNG}{ios_result2.PNG}{ios_result3.PNG}
 \caption{The search result screen.}
 \label{fig:ios_searchResult}
 \end{figure}
@@ -30,52 +30,52 @@ When the search button has been pressed, the user is presented with all matching
 In the Files view, the user can see all files connected to the selected experiment, sorted by type. The user can also get additional information about a file by simply clicking the blue information sign close to the filename. The file information is shown in a popup window as shown in rightmost view in \refer{fig:ios_files1}. If the user selects files and presses the ‘Convert files’-button, the user is shown the Select task view as seen in \refer{fig:ios_convert}. More about that later.
 
 \begin{figure}[htb]
-\addTwoImages{ios_filesFirst.png}{ios_filesFileInfo.png}
+\addTwoImages{ios_files4.PNG}{ios_files2.PNG}
 \caption{The files screen.}
 \label{fig:ios_files1}
 \end{figure}
 \FloatBarrier
-The user can also move files to the selected files view. This is done by simply turning the switch to the right of the filename as seen in the left view in \refer{fig:ios_files3} and then pressing the ’Add to Selected files’-button. The user will then be presented with a popup window as shown in the rightmost view in \refer{fig:ios_files3}.
+The user can also move files to the Starred files view. This is done by simply tapping the star next to the file as seen in \refer{fig:ios_files3}.
 
 \begin{figure}[htb]
-\addTwoImages{ios_filesSecond.png}{ios_addedToSelectedFiles.png}
+\addScaledImages{0.17}{ios_files3.PNG}
 \caption{The files screen.}
 \label{fig:ios_files3}
 \end{figure}
 \FloatBarrier
-If the user presses the ‘Selected Files’-button in the menu, the Selected Files screen is presented, containing all files the user has added to selected files, as seen in the leftmost view in \refer{fig:ios_selectedFiles}. If the user wishes to see more information about a file, it is possible to simply click the blue information sign close to the filename. This shows file information in a similar way as in the files view seen in \refer{fig:ios_files1}. In the selected files screen the user can select files and then press the trashcan icon in the top rightmost corner to delete the currently selected files, as seen in the two rightmost views in \refer{fig:ios_selectedFiles}. The user can also select a task to perform on the currently selected files by pressing the ‘Select task to perform’-button. The user will then be presented with the Select task screen as seen in the leftmost view in \refer{fig:ios_convert}.
+If the user presses the ‘Star’-button in the menu, the Star screen is presented, containing all files the user has added to starred files, as seen in the leftmost view in \refer{fig:ios_selectedFiles}. If the user wishes to see more information about a file, it is possible to simply click the blue information sign close to the filename. This shows file information in a similar way as in the files view seen in \refer{fig:ios_files1}. In the starred files screen the user can select files and then press the trashcan icon in the top rightmost corner to delete the currently selected files, as seen in the two rightmost views in \refer{fig:ios_selectedFiles}. The user can also select a task to perform on the currently selected files by pressing the ‘Select task to perform’-button. The user will then be presented with the Select task screen as seen in the leftmost view in \refer{fig:ios_convert}.
 
 \begin{figure}[htb]
-\addThreeImages{ios_selectedFilesFirst.png}{ios_selectedFilesSecond}{ios_filesRemoved}
-\caption{The selected files screen.}
+\addImages{ios_selected1.PNG}{ios_selected2.PNG}
+\caption{The starred files screen.}
 \label{fig:ios_selectedFiles}
 \end{figure}
 \FloatBarrier
 In the Select Task view, the user is presented with a list of possible tasks that can be performed on the currently selected files. To perform a task, the user can simply click on that task.
 
 \begin{figure}[htb]
-\addThreeImages{ios_selectTask.png}{ios_convert.png}{ios_convertSent}
+\addThreeImages{ios_convert1.PNG}{ios_convert2.PNG}{ios_convert3.PNG}
 \caption{The select task screen.}
 \label{fig:ios_convert}
 \end{figure}
 \FloatBarrier
 If the user chooses ‘Convert to profile’, the Convert Raw to Profile screen is shown as seen in the middle view in \refer{fig:ios_convert}. In this view the user can enter parameters used in the converting process. Every step of converting (i.e. SAM to GFF or GFF to SGR) requires that all previous fields are filled in, since every convert step uses results from the previous steps in the process. The minimum number of parameters are the first two, Bowtie and Genome file. When the user has entered the desired parameters, a convert request is sent by clicking the ‘Convert’ button. The user will then be presented with a popup window, showing the number of convert requests that were sent as seen in the rightmost view in \refer{fig:ios_convert}. If the user wants to see the status for the processes on the server, the user can click on the ‘Processes’-button in the menu and the Processes view will be shown as seen in \refer{fig:ios_processes}.
 \begin{figure}[htb]
-\addScaledImage{0.17}{ios_processes.png}
+\addScaledImage{0.17}{ios_processes1.PNG}
 \caption{The select task screen.}
 \label{fig:ios_processes}
 \end{figure}
 \FloatBarrier
 In the Processes view, the user can see all processes that the server have completed in the last two days and also all processes that users have added that are either currently running or waiting to be executed.
-If the ‘More’-button in the menu is clicked the More screen is shown as in \refer{fig:ios_more}.  
+If the ‘Settings’-button in the menu is clicked the Settings screen is shown as in \refer{fig:ios_more}.  
 
 \begin{figure}[htb]
-\addScaledImage{0.17}{ios_more.png}
+\addScaledImage{0.17}{ios_settings.PNG}
 \caption{The more screen.}
 \label{fig:ios_more}
 \end{figure}
 \FloatBarrier
-In the more view the user has the possibilities to log out from the server and to see pictures of the development team.
+In the Settings view the user has the possibilities to log out from the server and see at which server they are currently logged into. 
 
 
 
