@@ -19,22 +19,19 @@ When a new \term{genome release} is added to the database, the \term{FilePathGen
 A new folder is also created for each process request and houses the resulting file set.
 
 \subsubsection{PubMedToSQLConverter}
-This class converts a \term{PubMed} string to an an \term{SQL query}. A typical \term{PubMed} search string takes the form: \texttt{raw[FileType] AND Per[Author]}. In this case the search is for \term{all raw files that Per created}. The user enters the annotation labels and values together with the logical operators \term{AND}, \term{OR} and \term{NOT}. Parentheses are used for disambiguation. 
+This class converts a \term{PubMed} string to a \term{SQL query}. A typical \term{PubMed} search string takes the form: \texttt{raw[FileType] AND Per[Author]}. In this case the search is for \term{all raw files that Per created}. The user enters the annotation labels and values together with the logical operators \term{AND}, \term{OR} and \term{NOT}. Parentheses are used for disambiguation. 
 
 All the variables in the pubMed string are bound to variables in the \texttt{WHERE} section of the SQL query to avoid SQL injection. 
 
 When the \texttt{search} method is called in the \texttt{DatabaseAccessor}, the \term{PubMed} string is checked for file attributes by calling the \texttt{hasFileAttributes} method in the \texttt{PubMedToSQLConverter}. This is done so that even empty experiments are returned when searches do not contain a file specific attribute.
 
 \subsubsection{DatabaseAccessor}
-A class that serves as an API for the server and is used for all database access. It handles all connections and queries to the database. The methods simplify queries to the database by removing the need to write SQL in any other packages. The \texttt{DatabaseAccessor} utilizes its subclasses as shown in \ref{fig:dbac} where the methods are divided up into more specific areas. \term{Prepared Statements} are created from queries and parameters to avoid SQL injection. Methods that have some resemblance are grouped together for easier navigation.
+A class that serves as an API for the Genomizer database - it handles all connections and queries to the database. The methods simplify queries to the database by removing the need to write SQL in any other packages. The \texttt{DatabaseAccessor} utilizes it's subclasses as shown in \ref{fig:dbac} where the methods are divided up into more specific areas. \term{Prepared Statements} are created from queries and parameters to avoid SQL injection. Methods that have some resemblance are grouped together for easier navigation.
 
 \subsubsection{Testing}
-OBS! Do not run any of the tests found in the \texttt{database} package on a database that is in use. All tuples are removed from the database upon completion of testing. All unit testing should start with an empty database and finish with an empty database to avoid dependency between tests.
+WARNING! Do not run any of the tests found in the \texttt{database} package on a database that is in use. All tuples are removed from the database upon test completion. Every instance of unit testing should start with an empty database and finish with an empty database to avoid dependency between tests.
 
-The database package was created using \term{Test Driven Development} (TDD). The full test suite, \texttt{AllTests}, can be found in the \texttt{database.TestSuite} package.
+The database package was created using \term{Test Driven Development} (TDD). The full test suite can be found in the \texttt{database.test} package.
 
-Most of the unit tests utilize the \texttt{TestInitializer} class. This simplifies the process of connecting to the test database, filling it with test tuples and clearing the test database and closing the connection when the test class is finished. 
-The individual unit tests can be found in the \texttt{database.TestSuite.UnitTests} package. The scripts for adding the test tuples and clearing the test database tables can also be found in the \texttt{database.TestSuite} package.
-
-Stress tests are also implemented with the goal to determine functionality by simulating multiple users working in parallel.
-
+All the unit tests utilize the \texttt{TestInitializer} class. This simplifies the process of connecting to the test database, filling it with test tuples and clearing the test database and closing the connection when the test class is finished. 
+The individual unit tests can be found in the \texttt{database.test.unittests} package. The scripts for adding the test tuples and clearing the test database tables can also be found in the \texttt{sql} package.
