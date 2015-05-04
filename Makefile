@@ -8,4 +8,4 @@ main.pdf: $(TEX_FILES)
 	pdflatex main.tex
 
 clean:
-	rm -rf *.pdf *.out *.aux *.toc *.log
+	rm -rf *.pdf *.out *.aux *.toc *.log *.gz
