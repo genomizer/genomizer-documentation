@@ -4,3 +4,5 @@
 *.toc
 *.log
 *.lyx
+*.sh
+*.fdb_latexmk
