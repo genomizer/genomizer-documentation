@@ -1,9 +1,9 @@
 To start the server, java needs to be installed on the computer and a runnable JAR file needs to be created.
 This requires the following things to be installed on the computer: Git, Ant and Java JDK. 
-Refer to Appendix \ref{chap:exp_app_debian} on how to install these.
 If these are already installed refer to \ref{sec:com_download} on how to download the source files.
-\subsection{Downloading the source code}
-\label{sec:com_download}
+
+\subsection{Downloading the source code}\label{sec:com_download}
+
 The source code for the Genomizer server is hosted at Github and is completely open source. It can be downloaded in
 two ways. Either manually from http://www.github.com/genomizer/genomizer-server where there is a button to
 download the entire project as a zip file or using Git from command line in the following way:
@@ -11,25 +11,16 @@ download the entire project as a zip file or using Git from command line in the 
 git clone https://github.com/genomizer/genomizer-server.git
 \end{verbatim}
 This will create a directory named genomizer-server in the current directory.
-\subsection{Creating a runnable JAR file}
-\label{sec:com_makejar}
-\subsubsection{Command line}
+
+\subsection{Creating a runnable JAR file}\label{sec:com_makejar}
+
 When the source code is downloaded (and unzipped if downloaded manually), use the terminal to navigate into
 the genomizer-server directory.
 \begin{verbatim}
 ant jar
 \end{verbatim}
 A file called server.jar should be created in the same directory.
-\subsubsection{Eclipse}
-\label{sec:com_UsingEclipse}
-To create the runnable JAR file with Eclipse, follow these steps:
-\begin{enumerate}
-\item Open eclipse and import all the code into a project.
-\item Right-click on the project and choose export.
-\item Expand the folder "java" and then choose "runnable JAR file".
-\item Make or choose an already existing launch configuration where ServerMain is the class containing the main-method.
-\item Choose an export location for the runnable JAR file.
-\end{enumerate}
+
 
 \subsection{Starting the server}
 Here the actual startup of the server will be explained in a step by step manner.
