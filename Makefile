@@ -7,5 +7,8 @@ all: main.pdf
 main.pdf: $(TEX_FILES)
 	pdflatex main.tex
 
+user-manual: 
+	pdflatex manual_main.tex
+
 clean:
 	rm -rf *.pdf *.out *.aux *.toc *.log *.gz
