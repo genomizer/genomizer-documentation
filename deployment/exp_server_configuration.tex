@@ -1,10 +1,11 @@
 This chapter is directed towards administrators and developers who want to
 set up a server and install the software needed to get a fully functional system.
 It also contains instructions on how to maintain the system in case problems arise.
-\section{Manuals}
-To set up the server with the necessary software and configurations two guides are available. These two manuals are created to help a system administrator in the installation process of the server machine needed for the project. The manuals are written for configuration of the server on two different operating systems, Ubuntu 14.04 and Debian 7.5. 
 
-The manuals can be found in Appendix \ref{chap:exp_app_ubuntu} and \ref{chap:exp_app_debian}.
+\section{Vagrant}
+The server softwere is currently running on a virtual machine with a software called \texttt{Vagrant}.
+It sets up a server with all required settings and programs and is started with the help of:\\*
+\begin{verbatim}
+vagrant up
+\end{verbatim}
 
-\section{Configuration}
-The \appName\ system needs special configuration to work properly. See the manual for the running operating system to get the correct settings for the \appName\ server machine. All settings can be changed, but when changed the system may not work properly anymore. Please only make changes that are documented in the corresponding manual.

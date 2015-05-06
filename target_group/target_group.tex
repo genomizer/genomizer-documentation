@@ -1,5 +1,3 @@
-%To understand who this system is built for and what it needs to do, the following chapter will explain the target group and its needs.
-
 The \appName\ system was designed with a specific target group in mind: Epigenitic researchers. This chapter will explain the needs of these users, the problems they faced before this system was provided and the requirements that were collected and taken into account during the project.
 
 \section{Target group}
@@ -15,119 +13,71 @@ The researchers at \term{EpiCoN} have varying computer skills. While they all ha
 From time to time students are interested in working with the data, however their access is limited to viewing and analyzing the data. 
 
 
-
-%Students at \term{Umeå University} sometimes have the need to look at research done by \term{EpiCoN}. These students doesn't have the same trust to handle the research as the main staff at \term{EpiCoN}. The researchers at \term{EpiCoN} are a diverse group of many nationalities. They are therefore communicating in english.
-
-%Their main field of knowledge lies within epigenetics. It is an international group with many different native languages, which means that they mainly use english to communicate.
-
-%Since biologists have varying experience with software and software development, the system will be designed to be as user friendly as possible. The international language of science is english, therefore the entire product shall be in english (both the product and its documentation). Since target audience has different knowledge in biology, the product and its functions shall be simple, self explanatory and have an interface. The biology students are not as trusted as the standard users and therefore their data access will be restricted in some way. The system might also have some administrators. An administrator primarily handles new users and user rights. If the system expands the administrator may also have to maintain the system. For starters some of the biologists with more computer knowledge will be given authority to handle users and user rights.
-
 \section{Client needs}
-The researchers at \term{EpiCoN} need a system to structure the large amount of genetic data they use daily. The requirements, as described below, were collected and handled as a number of \term{user stories}, each of which describe a desired function from the end users perspective. A complete list of the \term{user stories} are presented in \refer{chap:userstories}. When discussed below the title of the relevant \term{user story} will be used.
+The researchers at \term{EpiCoN} need a system to structure the large amount of genetic data they use daily. The requirements, as described below, were collected and handled as a number of \term{user stories}, each of which describe a desired function from the end users perspective. A complete list of the \term{user stories} are presented in \refer{chap:userstories}. %When discussed below the title of the relevant \term{user story} will be used.
+A overview of the requested system may be seen below in figure \ref{fig:requestOverview}. Where orange colored nodes are must have features while gray nodes are visions of the clients that may be implemented if time allows for it.
 
 There are three main data types used in the research and that the system should handle: \term{raw}, \term{profile} and \term{region} data. \term{Raw} data is the raw output from an experiment and cannot be analyzed directly. It is first processed to so called \term{profile} data. \term{Profile} data describes the amount of reads found for every base--pair in an organism's genome. \term{Region} data is further processed \term{profile} data consisting of the regions where every base--pair's read strength is above a given threshold and fault tolerance. The region gets a value based on the average of the base-pair reads for the given region.
 
-\subsection{Storage}
-
-When conducting experiments the researchers treat DNA with a given protein that binds to certain positions. The DNA--strings are then broken up and the bound areas separated. \term{Raw} data can then be collected on what these pieces look like on a base pair level. This data is the foundation for further research and so must be stored securely and in a structured manner. A system that automates the archiving of \term{raw} data to a shared location is therefore desired. This requirement was specified in the \term{user stories} ``Single Upload'' (see \refer{fig:target_upload}) and ``Single Download'' (see \refer{fig:target_download}).
+The needs are described defined by user stories in Appendix \fullref{chap:userstories}.
 
 \begin{figure}[h!]
-\userstory{Single upload}{To store a single data file \\ the researchers \\ want to be able to upload a specific file.}
-\caption{User story for uploading a file to the central database}
-\label{fig:target_upload}
+\begin{tikzpicture}[ 
+	font=\sffamily,
+  every matrix/.style={ampersand replacement=\&,column sep=0.5cm,row sep=0.5cm},
+  db/.style={cylinder, shape border rotate=90, draw, fill=orange!40, minimum height=2cm, minimum width=1.5cm},
+  must/.style={rectangle, draw, fill=orange!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+  vision/.style={rectangle, draw, fill=gray!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize}, 
+  both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+  to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+  every node/.style={align=center}]
+  
+\matrix{
+	\node[must] (proc) {Processing}; \&
+	\node[must] (add) {Upload}; \&
+	\node[vision] (visual) {Visualization}; \\
+	\node[vision] (analys) {Analysis}; \& 
+	\node[db] (B) {DB}; \& 
+	\node[vision] (quality) {Quality\\ Control}; \\
+ 	\& 	\node[must] (extract) {Download}; \&
+ 	\node[must] (format) {Format Conversion}; \\
+	};
+	
+	\draw[both] (proc) -- (B);
+	\draw[to] (add) -- (B);
+	\draw[both] (visual) -- (B);
+	\draw[both] (analys) -- (B);
+	\draw[both] (B) -- (quality);
+	\draw[to] (B) -- (extract);	
+	\draw[both] (format) -- (B);
+
+\end{tikzpicture}
+\caption{Overview of targeted system}
+\label{fig:requestOverview}
 \end{figure}
 
-\begin{figure}[h!]
-\userstory{Single download}{To scrutinize a single data file \\ the researchers \\ want to be able to download a specific file.}
-\caption{User story for downloading a file from the central database}
-\label{fig:target_download}
-\end{figure}
+\subsection{Upload \& Download}
 
-Another way researchers obtain \term{raw} data is from official publications. When results are published in scientific articles the \term{raw} data from the experiments are often also provided. One location where these \term{raw} data files can be published is the \term{GEO} (\term{Gene Expression Omnibus}) database. A desire to be able to initialize a download of \term{raw} data to \appName\ from this source was also expressed and written up in the \term{user story} ``Download from GEO Database''. 
+When conducting experiments the researchers generate \term{raw} data that generates what they call \term{Raw}-files. These files along with profile data, region data and genome release data may be added and related to an experiment. The requested functionality is to be able to upload these files to the database from multiple sources. The sources may be directly from an experiment conducted by the researchers or from official publications.
 
-It is not possible/highly impractical to gain knowledge of an experiment by viewing the characters that make up the \term{raw} data files. In order to save information about an experiment and the resulting files, the researchers must be able to annotate them upon entry to the database. There are several \term{user stories} to do with the annotation of experiments/files and the manipulation of the annotation fields. An example of such a \term{user story} is ``Annotation'' (see \refer{fig:target_annotation}).
+When results are published in scientific articles the \term{raw} data from the experiments are often also provided. One location where these \term{raw} data files can be published is the \term{GEO} (\term{Gene Expression Omnibus}) database. A desire to be able to initialize a upload to \appName with the source of the upload beeing  \term{GEO}.
 
-\begin{figure}[h!]
-\userstory{Annotation}{To structure the data files \\ the researchers \\ want to be able to annotate the data files.}
-\caption{User story for the annotation of files stored in the database}
-\label{fig:target_annotation}
-\end{figure}
 
-As the database is filled with data, the researchers want to ensure that it is kept safe. They therefore want to have an authorization system to protect the data from unauthorized access. Another risk that must be mitigated is the risk of hardware failure. These concerns were captured in the \term{user stories} ``Password Protected'' and ``Backup'' respectively (see \refer{fig:target_password} and \refer{fig:target_backup}).
-
-\begin{figure}[h!]
-\userstory{Backup}{To prevent loss of data \\ the researchers \\ want the data to be backed up.}
-\caption{User Story for the protection from data loss due to hardware failures}
-\label{fig:target_backup}
-\end{figure}
-
-\begin{figure}[h!]
-\userstory{Password protected}{To protect the database from unauthorized use \\ the researchers \\ want the application to be password protected.}
-\caption{User story for the protection of the database from unauthorized access}
-\label{fig:target_password}
-\end{figure}
-\FloatBarrier
+\subsection{Database}
+The \texttt{Database} module requested has the purpose to archive experiment data in a way of easy access. To allow for this the experiments and files associated with them needs to have information vital for good readability. This is solved with the help of annotations. The reaserchers must add annotations to files related to an experiment.
+This data is the foundation for further research and so must be stored securely. To ensure security the client requested a system for authorization that protects the data from outside tampering. To protect against hardware failure there exists a request for a backup system.
 
 \subsection{Processing}
-The unordered \term{raw} data gained from an experiment requires processing in order to be analyzed. The researchers have written a number of scripts and, when combined with the \term{BowTie} algorithm, generate \term{profile} data. In this format the \term{DNA} pieces are ordered and mapped to the \term{DNA} string. It is important that the system automates this process so that all researchers can easily process the large \term{raw} files, see \refer{fig:target_r2p}. 
+The unordered \term{raw} data gained from an experiment requires processing in order to be analyzed. The researchers have written a number of scripts and, when combined with the \term{BowTie} algorithm, generate \term{profile} data. In this format the \term{DNA} pieces are ordered and mapped to the \term{DNA} string. It is important that the system automates this process so that all researchers can easily process the large \term{raw} files.
 
-\begin{figure}[h]
-\userstory{Raw to profile}{To be able to analyze \\ the researchers \\ want to process raw data to profile data.}
-\caption{User story for converting \term{raw} data to \term{profile} data}
-\label{fig:target_r2p}
-\end{figure}
+As new discoveries are made in the area, new standards for the order of the base pairs in a \term{DNA} string are set. This results in a new \term{Genome Release} for a specific species. These are obtained as a set of files specifying this order and are used in the processing of \term{raw} data. \appName\ must support the uploading of new sets of \term{genome release} files to be used in processing otherwise the system will very quickly become outdated. 
 
-As new discoveries are made in the area, new standards for the order of the base pairs in a \term{DNA} string are set. This results in a new \term{Genome Release} for a specific species. These are obtained as a set of files specifying this order and are used in the processing of \term{raw} data. \appName\ must support the uploading of new sets of \term{genome release} files to be used in processing otherwise the system will very quickly become outdated. This is specified in the user story ``Add Genome Release'' shown in \refer{fig:target_GR}.
+It would also be an advantage if the system could carry out further processing from \term{profile} to \term{region} files.
 
-\begin{figure}[h!]
-\userstory{Add genome release / reference genome}{To be able to annotate the data properly and extract genome reference \\ the researchers \\ want to be able to add genome releases and reference genome.}
-\caption{User story for the addition of \term{Genome Releases}}
-\label{fig:target_GR}
-\end{figure}
+After processing, the resulting data files should be annotated and saved in the database alongside their parent files. It is important that the parent files remain traceable and that the parameters used in processing are saved so that the process can be repeated and confirmed.
 
-It would also be an advantage if the system could carry out further processing from \term{profile} to \term{region} files and is captured in the user story ``Profile to Region'' shown in \refer{fig:target_profReg}.
-
-\begin{figure}[h!]
-\userstory{Profile to region}{To be able to find regions of interest \\ the researchers \\ want to process profile data to region data (Per’s code).}
-\caption{User story for the processing of \term{profile} to \term{region} files}
-\label{fig:target_profReg}
-\end{figure}
-
-After processing, the resulting data files should be annotated and saved in the database alongside their parent files. It is important that the parent files remain traceable and that the parameters used in processing are saved so that the process can be repeated and confirmed (see \refer{fig:target_trace}).
-
-\begin{figure}[h!]
-\userstory{File traceabillity}{To be able to access the underlying raw data or profile data \\ the researchers \\ want the raw data files to be traceable from profile files and the profile files to be traceable from the region data (if available) when the files have been generated on the server.}
-\caption{User story for the traceability of processed data}
-\label{fig:target_trace}
-\end{figure}
-
-% Most importantly the researchers want a central secure location to store their genome data in a structured  way so that it is easy to find the data the researchers are looking for when doing research. By having a central location for genome data the researchers can more easily collaborate than they do today. The researchers want the database to be locked down from outside access and that the data is stored in a secure way to avoid loss of data (''Password protected'', ''Backup''). Data integrity is of great importance, data must not change or become corrupt in the database.
-
-%\subsection{File formats}
-%As different software uses different file formats for genome data (''Convert common file formats''), and the tools for converting files between these file formats are not very user friendly. To do analyses on the data it must be processed from raw its raw form, this conversion is a very time consuming process. The researchers want this work to be carried out by the system (''\term{Raw} to \term{Profile}'', ''\term{Profile} to \term{Region}'').
-
-\subsection{Conversion}
-\appName\ should also provide a way to convert \term{profile} data files between different genome releases as specified in \refer{fig:target_genome}. This involves the ability to upload new \term{Chain Files} which enable conversion using \term{LiftOver} and the embedding of this program, see \refer{fig:target_chain}.
+\subsection{Format Conversion}
+\appName\ should also provide a way to convert \term{profile} data files between different genome releases. This involves the ability to upload new \term{Chain Files} which enable conversion using \term{LiftOver} and the embedding of this program.
 
 It is not uncommon for errors in a new release to be discovered after publication. It is therefore also important to store files generated using older genome releases for some time after a new release is published.
 
-\begin{figure}[h!]
-\userstory{Convert genome release}{To easier handle files \\ the researchers \\ want to convert files between genome releases (\term{LiftOver}).}
-\caption{User story for the conversion of processed data between different genome releases}
-\label{fig:target_genome}
-\end{figure}
-
-\begin{figure}[h!]
-\userstory{Add chain file}{To be able to convert between genome releases \\ the researchers \\ want to upload chain files (LiftOver).}
-\caption{User story for the addition of new \term{Chain Files}}
-\label{fig:target_chain}
-\end{figure}
-\FloatBarrier
-
-\subsection{Analysis}
-The researchers also want to be able analyze data using the server. This involves combining regions using logical arithmetic and in such a way construct new regions (``Combine regions''). It should also be possible to create new regions from a reference point (``Create region subset''). Another interesting analysis is overlap analysis which shows how much a number of genome experiments overlap (``Overlap analysis'').
-
-\subsection{Visualization}
-In order to view analysis results, the researchers would like a graphical presentation of the results (``Plot overlap analysis'', ``Plot average regions''). They also want to be able to use the \term{Integrated Genome Browser} (IGB)\cite{IGB} software to view results (``IGB Session''). They therefore want to be able to download a session-file to immediately start the browser.
-
-For a full list of the user stories used in the project see \refer{chap:userstories}. They are divided into two sections, Implemented User Stories and Product Backlog. The \term{Product Backlog} is the set of user stories that were not completed during the project and will be the target for further development projects.
