@@ -16,7 +16,7 @@ The server has a function which removes inactive tokens after a set limit of tim
 \\
 This feature may be turned of with the flag "-nri".
 \subsubsection{Command object}
-The command object represent a specific command. It is created from the RESTful header and/or the JSON body sent from the client. The JSON API provides methods for automatic parsing of the JSON body into an object. The fields in the command object created must match the attributes in the JSON body. This match is case sensitive
+The command object represent a specific command. It is created from the RESTful header and/or the \json/ body sent from the client. The \json/ API provides methods for automatic parsing of the \json/ body into an object. The fields in the command object created must match the attributes in the \json/ body. This match is case sensitive
 \paragraph{Execute}
 Every command object must implement a execute method. This method is the part of the command which uses the system interface to perform the task that corresponds to the command.\\
 \\
@@ -32,7 +32,7 @@ Which command that is put in the queue or not is determined in the method proces
 \subsubsection{Response object}
 There are different response objects for different kind of responses since the form of the response to the client depends on the command the client initially sent.\\
 \\
-The response object contains all the data necessary to create a RESTful header and a JSON body for the response.
+The response object contains all the data necessary to create a RESTful header and a \json/ body for the response.
 \subsubsection{Testing}
 Testing has been done in multiple steps. The first step is unit testing, where individual methods are tested. This is often difficult
 due to the fact that the responsibility of handling client requests is shared by multiple classes. To catch these test cases a client

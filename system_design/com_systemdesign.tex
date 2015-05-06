@@ -1,7 +1,6 @@
-\label{chap:com_systemdesign}
-The server is based around HTTP, where clients send requests on a non-persistent connection and the server responds to these requests. All communication is initiated by the client and the server has no way of contacting clients except when responding to a request.
 
-Clients send requests to the communication part of the server first. When a request is recognized by the server, the request is parsed and a command is created depending on the request. The command then communicates with the other parts of the server in order to extract or input relevant data.
+\label{chap:com_systemdesign}
+The server is based around a \texttt{RESTful} protocol, where clients send requests on a non-persistent connection and the server responds to these requests. All communication is initiated by the client and the server has no way of contacting clients except when responding to a request. Clients send requests to the communication part of the server first. When a request is recognized by the server, the request is parsed and a command is created depending on the request. The command then communicates with the other parts of the server in order to extract or input relevant data.
 
 To identify clients a unique token is used, which is generated when a user logs in by comparing the sent password with the password on the server. The password is stored in a sha-256 hashed and salted string on the server. The password is sent from the client in plain text.
 
@@ -20,6 +19,8 @@ The commands implemented for the server are:
 	\item $process$
 	\item $genomeRelease$
 \end{itemize}
+
+The way the calls flow in may be seen in figure \fullref{fig:com_systemoverview}.
 
 The $login$ command can take either a $'POST'$ method or $'DELETE'$ method, depending on if the user wants to log in or log out.
 

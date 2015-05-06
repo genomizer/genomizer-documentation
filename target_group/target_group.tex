@@ -14,12 +14,12 @@ From time to time students are interested in working with the data, however thei
 
 
 \section{Client needs}
-The researchers at \term{EpiCoN} need a system to structure the large amount of genetic data they use daily. The requirements, as described below, were collected and handled as a number of \term{user stories}, each of which describe a desired function from the end users perspective. A complete list of the \term{user stories} are presented in \refer{chap:userstories}. %When discussed below the title of the relevant \term{user story} will be used.
+The researchers at \term{EpiCoN} need a system to structure the large amount of genetic data they use daily. The requirements, as described below, were collected and handled as a number of \term{user stories}, each of which describe a desired function from the end users perspective. A complete list of the \term{user stories} are presented in \fullref{chap:userstories}. %When discussed below the title of the relevant \term{user story} will be used.
 A overview of the requested system may be seen below in figure \ref{fig:requestOverview}. Where orange colored nodes are must have features while gray nodes are visions of the clients that may be implemented if time allows for it.
 
 There are three main data types used in the research and that the system should handle: \term{raw}, \term{profile} and \term{region} data. \term{Raw} data is the raw output from an experiment and cannot be analyzed directly. It is first processed to so called \term{profile} data. \term{Profile} data describes the amount of reads found for every base--pair in an organism's genome. \term{Region} data is further processed \term{profile} data consisting of the regions where every base--pair's read strength is above a given threshold and fault tolerance. The region gets a value based on the average of the base-pair reads for the given region.
 
-The needs are described defined by user stories in Appendix \fullref{chap:userstories}.
+
 
 \begin{figure}[h!]
 \begin{tikzpicture}[ 
