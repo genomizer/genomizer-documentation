@@ -1,7 +1,15 @@
-Since a lot of the code which has been implemented so far is related to GUI and connection, it has been hard to write tests for everything.
-The GUI and it's functionality is tested throughout the developing process by the developing team, but the customer is also an important key in this.
+The desktop client is implemented in java 7. The graphical part of the client is made with java swing and the external library swingx. The tree table which is used in the grapical interface is implemented using a modified version of the JxTreeTable found in swingx. The modifications made to the JxTreeTable is that a sorting mechanism has been added and it is possible for the user to choose which columns to show.
+
+The communication with the server is handled with a http protocol involving \json formatted bodies. The external library GSON and the Apache Http Client are used for the communication.
+
+For dragging and dropping files into the upload tab, the desktop client uses a modified version of the class FileDrop, which was originally written by Robert Harder and Nathan Blomquist and was released as public domain.
+
+\subsection{Testing}
+
+The testing of the system has been quite varied since a large part of the desktop client consists of a graphical interface. The graphical part of the client was tested throughout the developing process and the customers also had a part in testing the interface. Another difficult part of the testing was the communication with the server. A part of it was tested with JUnit tests but the larger part of the testing was made manually by interacting with the GUI and communicating manually with the server.
+
 The client will be involved from an early point since the Scrum developing methodology relies in delivering functionality as early as possible. Because of this, it is given that the system will have bugs, and the client will be of assistance in finding these bugs and reporting them. Before each release of implemented functionality however, they are tested with the Test Cases enclosed to each User Story.
 
-A small number of JUnit tests has been done concerning communication with server api.
+A small number of JUnit tests has been done concerning communication with server API.
 
 \FloatBarrier
