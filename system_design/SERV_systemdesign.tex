@@ -1,10 +1,10 @@
 The \appName\ service needs to be able to convert, process and visualize data. This chapter explains how this is done in the system.
 
-\begin{figure}[h]
-\addImage{UMLFinal.png}
-\caption{Class-diagram  for Process}
-\label{con_UML}
-\end{figure}
+%\begin{figure}[h]
+%\addImage{UMLFinal.png}
+%\caption{Class-diagram  for Process}
+%\label{con_UML}
+%\end{figure}
 	
 As can be seen in \refer{con_UML} the RawToProfileConverter extends the Executor class. When a call comes to the ProcessHandler it then starts the correct conversion which right now only can be a raw to profile conversion.
 
@@ -83,7 +83,7 @@ again with different parameters. Puts the files in a folder called
 \end{enumerate}
 
 
-\LTXtable{\textwidth}{system_design/des_systemServer_ProcessingTable.tex}
+\LTXtable{\textwidth}{system_design/SERV_systemServer_ProcessingTable.tex}
 
 \paragraph{BowTie}
 BowTie takes two raw \term{.fastq} files and converts them to \term{.sam} which is the first step to make the desired \term{.sgr} files. After a \term{.sam} file is converted the Linux command sort is run  on both files which creates two sorted \term{.sam} files, it is sorted by chromosome and position as needed to use the scripts.
