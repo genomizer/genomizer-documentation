@@ -3,57 +3,28 @@ In the following sections, details regarding the implementation of the iOS appli
 
 \subsection{Login}
 
-When the user tries to log in to the system, they enter username and password and clicks on the login button. The username and password is sent to the server which validates that they are valid. If they are valid, the user is presented with the main view of the application, otherwise an error message is displayed. This sequence is shown in  \refer{fig:ios_sequence_login}.
+When the user tries to log in to the system, they enter username and password and clicks on the login button. The username and password is sent to the server which validates that they are valid. If they are valid, the user is presented with the main view of the application, otherwise an error message is displayed. This sequence is shown in \refer{fig:ios_sequence_login}.
 
-\begin{figure}[ht]
-\addImageVertical{ios_sequence_login.png}
-\caption{Login sequence diagram.}
-\label{fig:ios_sequence_login}
-\end{figure}
 
 \subsection{Search}
 
 Once the user is logged in to the system and they have reached the main view, they can immediately start searching by selecting a number of search criteria on the screen and pressing the search button. The search criteria are converted into a valid \term{PubMed}-style query which in turn is converted into a valid \term{HTTP request} and sent to the server. The server responds with all results matching the search criteria and the results are presented to the user in a \term{SearchResultView}. This sequence is shown in \refer{fig:ios_sequence_search}.
 
-\begin{figure}[ht]
-\addImageVertical{ios_search_sequence_diagram.png}
-\caption{Search sequence diagram.}
-\label{fig:ios_sequence_search}
-\end{figure}
 
 \subsection{Experiment Selection}
 
 In the \term{SearchResultTableView}, the user can click on an experiment to see which files are contained in an experiment. The file contents of an experiment is displayed in a \term{FileView}. The sequence is shown in \refer{fig:ios_sequence_experiment_selection} 
 
-\begin{figure}[ht]
-\addScaledImageVertical{0.5}{ios_select_experiment_sequence_diagram.png}
-\caption{Experiment selection sequence diagram.}
-\label{fig:ios_sequence_experiment_selection}
-\end{figure}
 
 \subsection{File Selection}
 
 From the \term{FileView}, the user can select any number of files to add to a list of currently selected files by pressing the switch button next to each file name and pressing the \term{Add to Selected files} button. After that, the user can press the \term{Selected Files} button to go to the \term{Selected Files View}. This sequence is shown in \refer{fig:ios_sequence_file_selection}
 
-\begin{figure}[ht]
-\addScaledImageVertical{0.5}{ios_select_file_sequence_diagram.png}
-\caption{File selection sequence diagram.}
-\label{fig:ios_sequence_file_selection}
-\end{figure}
 
 \subsection{Convert Request}
 
 As seen in \refer{fig:ios_sequence_convert_request2}, convert requests are sent with very few steps. 
 
-\begin{figure}[ht]
-\addScaledImageVertical{0.5}{ios_send_convert_sequence_diagram.png}
-\caption{Send convert request.}
-\label{fig:ios_sequence_convert_request2}
-\end{figure}
-\FloatBarrier
-
-\subsubsection{Segue Control}
-A segue control package has been implemented to avoid multiple segues being executed at the same time. When a segue is started, a static \term{BOOL} is set to \term{YES} in XYZSegueController. When the segue is finished, the \term{BOOL} in XYZSegueController is set to \term{NO}. This means that the \term{BOOL} is \term{YES} when a segue is being executed, and \term{NO} otherwise. Every time a segue is going to be executed, it first checks the value of the \term{BOOL}. If a segue is already being executed, i.e. the \term{BOOL} is \term{YES}, the new segue is aborted.
 
 \subsection{Testing}
 
