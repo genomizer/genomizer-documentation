@@ -76,13 +76,4 @@ Sends and receives JSON objects to and from the server.
 
 A more detailed description of these classes, and the ones not mentioned here, can be found in comments in the source code.
 
-\subsection{Segue controll}
-To avoid several segues to be executed at the same time, a segue controll package has been implemented. Instead of extending UIViewController, UITableViewController, UITabBarController and UINavigationBar the corresponding XYZ class should be used instead. An overview of this design can be seen in \refer{fig:ios_UML_segue}. This figure also includes the classes XYZDataFileController and XYZSearchResultController as two examples of such implementations.
-
-\begin{figure}[ht]
-\addScaledImage{0.35}{ios_uml_segue2.png}
-\caption{UML diagram describing the segue controll.}
-\label{fig:ios_UML_segue}
-\end{figure}
-\FloatBarrier
 
