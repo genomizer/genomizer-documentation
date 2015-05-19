@@ -1,51 +1,32 @@
-\documentclass[a4paper, 10pt, oneside]{book}
+\documentclass[a4paper,oneside, 10pt]{article}
+
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
-
-\usepackage{ltxtable, longtable}
-\usepackage{rotating}
-
 \usepackage{graphicx}
-\usepackage{pifont}
+\usepackage{placeins}
 \usepackage{hyperref}
 \usepackage{fancyref}
 \usepackage{tabularx}
 \usepackage{tabulary}
-\usepackage[margin=1cm]{caption}
+
 \usepackage{listings}
-\usepackage[section]{placeins}
+
 \usepackage{fancyhdr}
 \usepackage[yyyymmdd]{datetime}
-\usepackage{comment}
+
 \usepackage{morefloats}
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage[notindex,nottoc,notlof,notlot]{tocbibind}
-
-\usepackage{tikz}
-\usetikzlibrary{shapes, arrows}
-
 
 \input{commands}
 
-%\fancyhead[RO,LE]{\thepage}
-\fancyhead[L]{\leftmark}
-\fancyhead[R]{\thepage}
 \begin{document}
-
 \makeatletter
 \renewcommand\paragraph{%
    \@startsection{paragraph}{4}{0mm}%
       {-\baselineskip}%
       {.5\baselineskip}%
       {\normalfont\normalsize\bfseries}}
-      
-\renewcommand\chapter{%
-   \@startsection{chapter}{1}{0mm}%
-      {-2cm\pagebreak}%
-      {.5\baselineskip}%
-      {\normalfont\huge\bfseries}}
 
 \renewcommand\subparagraph{%
    \@startsection{paragraph}{4}{0mm}%
@@ -61,16 +42,13 @@
 \makeatother
 
 
+
 \pagestyle{fancy}
 
 
-\input{cover}
-
-\tableofcontents
 
 
-\input{contents}
-
+\input{system_design/des_systemdesign}
 
 
 \end{document}
