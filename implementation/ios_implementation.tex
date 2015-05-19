@@ -1,4 +1,4 @@
-The iOS application has been implemented using Objective C. The decision to use Objective C was made largely because it is the standard language used for writing iOS applications. 
+The iOS application has been implemented using Objective C. The decision to use Objective C was made largely because it is the standard language used for writing iOS applications.
 In the following sections, details regarding the implementation of the iOS application are described using sequence diagrams. The section ends with a description of testing strategies.
 
 \subsection{Login}
@@ -18,7 +18,7 @@ In the \term{SearchResultTableView}, the user can click on an experiment to see 
 
 \subsection{File Selection}
 
-From the \term{FileView}, the user can select any number of files to add to a list of currently selected files by pressing the switch button next to each file name and pressing the \term{Add to Selected files} button. After that, the user can press the \term{Selected Files} button to go to the \term{Selected Files View}. This sequence is shown in \refer{fig:ios_sequence_file_selection}
+From the \term{FileView}, the user can select any number of files to add to a list of currently selected files by tapping the star next to each file name. After that, the user can press the \term{Star tab} to go to the \term{Selected Files View}. This sequence is shown in \refer{fig:ios_sequence_file_selection}
 
 
 \subsection{Convert Request}
@@ -28,4 +28,4 @@ As seen in \refer{fig:ios_sequence_convert_request2}, convert requests are sent 
 
 \subsection{Testing}
 
-We have worked using the principles of TDD, which means that Unit-tests have been written for nearly all underlying classes. This includes JSONBuilder, ExperimentDescriber, Experiment, ExperimentFile, and ExperimentParser. These tests check all required functionality, including but not limited to proper object creation. Exactly what all the tests do is explained in the test names and comments. ServerConnection has not been tested, this is work for next years workers. User interface functionality and integration testing has been done using exploratory methods. Some UI functionality has been tested using automated tests, where we recorded a certain combination of clicks, and let the computer do them instead. 
+We have worked using the principles of TDD, which means that Unit-tests have been written for nearly all underlying classes. This includes JSONBuilder, ExperimentDescriber, Experiment, ExperimentFile, and ExperimentParser. These tests check all required functionality, including but not limited to proper object creation. Exactly what all the tests do is explained in the test names and comments. UI testing is done by using Xcode's UI Automation instrument which uses scripts written in JavaScript to simulate user's interaction with an iOS app. The UI Automation got its own JavaScript library which are used to write the UI tests.
