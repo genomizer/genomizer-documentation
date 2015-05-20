@@ -1,4 +1,10 @@
-The following text describes the different classes the server uses to communicate with the database and update the file system.
+The following text describes the different classes the server uses to communicate with the database and update the file system. All the communication with the database happens through the DatabaseAccessor-class, which in turn uses several helper classes that contains the actual logic. 
+
+\begin{figure}[h]
+\addImage{dat_overview_schema.png}
+\caption{AMEN DURÅA!}
+\label{fig:dat_overview_schema}
+\end{figure}
 
 \subsubsection{Annotation}
 When a user wants the properties of an \term{annotation} they will retrieve this object. It holds information about the data type, label, forced annotation, default value and annotation choices for drop down menus. With this object the graphical interfaces can set up a search view dynamically.

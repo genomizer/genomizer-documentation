@@ -1,4 +1,7 @@
 \frontmatter
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\input{introduction/preface}
 \chapter{Introduction}
 \input{introduction/introduction}
 
@@ -9,25 +12,24 @@
 \input{service_description/service_description}
 
 \mainmatter
-\part{Deployment}
-
-\chapter{Deployment and maintenance}
-\input{deployment/deployment.tex}
-
 \part{Development}
-
-\chapter{Implementation}
-\input{implementation/implementation}
-
-\chapter{Interaction design}
-\input{interaction_design/interaction_design.tex}
 
 \chapter{Architectual design}
 \input{architecture_design/architecture_design_chap}
 
+\chapter{Interaction design}
+\input{interaction_design/interaction_design.tex}
+
 \chapter{System design}
 \input{system_design/system_design.tex}
 
+\chapter{Implementation}
+\input{implementation/implementation}
+
+%\part{Deployment}
+%
+%\chapter{Deployment and maintenance}
+%\input{deployment/deployment.tex}
 
 
 %\chapter{Testing}
@@ -40,4 +42,5 @@
 %\end{comment}
 \backmatter
 \input{bibliography/bibliography}
+\input{glossary}
 \input{appendices/appendices}
