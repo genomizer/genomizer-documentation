@@ -22,7 +22,19 @@
 \usepackage{morefloats}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[notindex,nottoc,notlof,notlot]{tocbibind}
-
+\usepackage{mdframed}
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.95}
+%Warnings
+\newmdtheoremenv[%
+	outerlinewidth = 2 ,
+	roundcorner = 10pt ,
+	leftmargin = 40 ,
+	rightmargin = 40 ,
+	backgroundcolor = light-gray ,
+	outerlinecolor = black ,
+	]{example}{Example}
+	
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows}
 \makenomenclature
