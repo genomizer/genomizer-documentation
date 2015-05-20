@@ -123,18 +123,7 @@ When the remove button is pressed the modal in \refer{fig:web_remove_removeFiles
 \caption{\label{fig:web_processStatus_withData}The process status dropdown.}
 \end{figure}
 \FloatBarrier
-When pressing the inbox icon a dropdown is shown as in \refer{fig:web_processStatus_withData}displaying processing status of experiments being processed.
-There are four different status a processing can have: Waiting, Running, Complete and Failed.
-These are grouped together with a yellow color for waiting, blue for running, green for complete and red for failed.
-\subsubsection{The process status dropdown}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.4\textwidth]{web_processStatus_noData.png}
-\caption{\label{fig:web_processStatus_noData}The process status dropdown with no status available.}
-\end{figure}
-\FloatBarrier
-
-If there are no processes status available the user will see the text as shown in \refer{fig:web_processStatus_noData}
+When pressing the inbox icon, a dropdown is shown as in \refer{fig:web_processStatus_withData} displaying the status of experiments currently being processed. There are four different statuses a processing can have, all grouped into colors: Waiting (yellow), Running (blue), Complete (green) and Failed (red). For example, in the figure, the two bottom experiments are complete and the rest have failed. If there are no experiments being processed, the dropdown will simply display "No process status available".
 
 \subsubsection{The upload view}
 
@@ -155,8 +144,8 @@ When the user clicks the upload tab in the navigation bar, the view in \refer{fi
 \end{figure}
 
 After clicking the “Create new experiment” button, the view in \refer{fig:web_upload_newExperiment} will appear. Here the user can input the annotations for the experiment through either free text fields or drop-down lists. If a free text field has a red border around it, that annotation is required and the experiment can not be uploaded before all required fields have been filled in and at least one file has been added.
-% new, empty, experiment? Instead of new empty experiment? Why the commas?
-The user can create more empty experiments by clicking the "Create new experiment" button and a new, empty, experiment will be placed below the first experiment.
+
+The user can create more empty experiments by clicking the "Create new experiment" button and a new empty experiment will be placed below the first experiment.
 
 The user can fill in annotations in one experiment that should be the same for several experiments. By clicking the "Clone experiment" button, a copy of the experiment's annotations will be appended as a new experiment. The user can change the annotations that should be different from the cloned experiment.
 
@@ -170,11 +159,11 @@ An experiment can only contain two RAW-files and if the user tries to upload mor
 To add files to a existing experiment the user types the name of the experiment in the field next to the "Upload to existing experiment" and clicks the button. If the experiment exists on the server it will appear in the experiment view the same way that a new experiment is shown. The annotations of an existing experiment cannot be changed from this view and if there are files already in this experiment they cannot be manipulated. Adding new files to existing experiments works the same way as to a new experiment.
 
 %figure X9
-\begin{sidewaysfigure}[h]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{web_upload_fileUpload.png}
 \caption{\label{fig:web_upload_fileUpload}Files selected for upload.}
-\end{sidewaysfigure}
+\end{figure}
  
 When the user selects files, they will appear below the annotations as in Figure \refer{fig:web_upload_fileUpload}. The file name is displayed in a text field on the left side of the file view. Next to the file name is a box that shows the size of the selected file in a human friendly format (B, KiB, MiB, GiB, TiB). On the right side there is an option to select what type of file is being uploaded and an option to remove the file from the experiment. If the file type is either profile or region, there is an option to select what genome release the file is mapped to. The file type option will automatically be filled in with a guessed value depending on the file ending as follows: fastq files are considered raw and all other formats (sgr, wig, gff) are interpreted as profile.
 
@@ -189,20 +178,20 @@ annotations, add new annotations and edit existing ones.
 The start page of this section has a ''Create New Annotations'' button, a list of existing annotations in the database and an edit button per existing annotation. 
 The view looks like in \refer{adm__web_annotationView}. 
 
-\begin{sidewaysfigure}[h]
+\begin{figure}[h]
  \addImage{web_SysadminAnnotationView.jpg}
- \caption{The start page for the administrator in the web client}
+ \caption{The start page for the administrator in the web client.}
  \label{adm__web_annotationView}
-\end{sidewaysfigure}
+\end{figure}
 
 For each annotation in the annotations list, an Edit button is available. 
 When pressed, it will take you to a page in which you can edit the selected annotation to change its name and what values the drop-down list will have if it's not a free text field (See \refer{adm_web_editView}). 
 
-\begin{sidewaysfigure}[h]
+\begin{figure}[h]
  \addImage{web_SysadminEditView.jpg}
- \caption{The edit annotation view}
+ \caption{The edit annotation view.}
  \label{adm_web_editView}
-\end{sidewaysfigure}
+\end{figure}
 In the edit page the admin can see the attributes of the chosen annotation and is able to delete the chosen annotation or change it's information.
 The delete Annotation button will delete the whole annotation and for that reason two popup windows will appear to make sure that the administrator is sure of the action.
 
@@ -227,34 +216,38 @@ A Create Annotation will, if all necessary information has been entered, result 
 If canceled the administrator can keep making changes or go back to exit this view. If not all values is entered the admin will be alerted of the mistake and nothing will be created.
 
 \begin{figure}[h]
- \addImage{web_SysadminCreateAnnotationConfirm.jpg}
- \caption{The confirm annotation popup}
+ \centering
+ \includegraphics[width=0.7\textwidth]{web_SysadminCreateAnnotationConfirm.jpg}
+ \caption{The confirm annotation popup.}
  \label{adm_web_createPopup}
 \end{figure}
+
+
 
 The example in \refer{adm_web_createPopup} will result in a drop-down annotation with the name Number of toes and possible values: 0, 1, 2, 3, 4, 5 with 0 as default and is not forced.
 
 A back button which takes the user back to the annotations start page is also available in this view. In \refer{adm_web_createView} the create annotation view can be seen.
 
-\begin{sidewaysfigure}[t]
- \addImage{web_SysadminCreateAnnotation.jpg}\textbf{•}
- \caption{The view for administrators where new annotations can be created}
+\begin{figure}[t]
+ \addImage{web_SysadminCreateAnnotation.jpg}
+ \caption{The view for administrators where new annotations can be created.}
  \label{adm_web_createView}
-\end{sidewaysfigure}
+\end{figure}
 
 The ''Genome-releases'' link on the sidebar takes the administrator to a page where it's possible to add and remove genome releases to and from the server (see \refer{adm_web_genomereleaseView}.
 
-\begin{sidewaysfigure}[h]
+\begin{figure}[h]
  \addImage{web_SysadminGenomeReleaseView.jpg}
- \caption{The genome-release view}
+ \caption{The genome-release view.}
  \label{adm_web_genomereleaseView}
-\end{sidewaysfigure}
+\end{figure}
 
 The button ''Select files to upload'' opens the native file explorer where the user can select one ore multiple files and click on ''OK''. This will open a popup-window, seen in \refer{adm_web_uploadconfirm}, showing what files that where chosen and asks for species and genome version before uploading. 
 
 \begin{figure}[h]
- \addImage{web_SysadminUploadGenomeReleaseModal.jpg}
- \caption{Popup for uploading genome releases}
+ \centering
+ \includegraphics[width=0.7\textwidth]{web_SysadminUploadGenomeReleaseModal.jpg}
+ \caption{Popup for uploading genome releases.}
  \label{adm_web_uploadconfirm}
 \end{figure}
 
