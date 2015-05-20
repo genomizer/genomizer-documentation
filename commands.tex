@@ -1,63 +1,5 @@
-\documentclass[a4paper,oneside]{article}
-
-\usepackage[english]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-
-\usepackage{ltxtable, longtable}
-\usepackage{rotating}
-
-\usepackage{graphicx}
-\usepackage{pifont}
-\usepackage{hyperref}
-\usepackage{tabularx}
-\usepackage{tabulary}
-\usepackage[margin=1cm]{caption}
-\usepackage{listings}
-\usepackage[section]{placeins}
-\usepackage{fancyhdr}
-\usepackage[yyyymmdd]{datetime}
-\usepackage{comment}
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage[notindex,nottoc,notlof,notlot]{tocbibind}
-
-\title{Genomizer}
-\def\version{2.3}
 
 
-
-
-%\fancyhead[RO,LE]{\thepage}
-\fancyhead[L]{\leftmark}
-\fancyhead[R]{\thepage}
-
-
-
-
-\begin{document}
-
-\pagestyle{fancy}
-
-
-\input{usermanual/manual_cover}
-
-
-\makeatletter
-\renewcommand\paragraph{%
-   \@startsection{paragraph}{4}{0mm}%
-      {-\baselineskip}%
-      {.5\baselineskip}%
-      {\normalfont\normalsize\bfseries}}
-      
-
-
-\renewcommand\subparagraph{%
-   \@startsection{paragraph}{4}{0mm}%
-      {-\baselineskip}%
-      {.5\baselineskip}%
-      {\normalfont\normalsize\bfseries}}
-\makeatother
 
 \lstdefinestyle{customc}{
   belowcaptionskip=1\baselineskip,
@@ -86,7 +28,10 @@
   identifierstyle=\color{blue},
   stringstyle=\color{orange},
 }
+\title{Genomizer}
+\def\version{2.4}
 
+\def\json{\texttt{JSON}}
 
 
 \newcommand{\appName}{\textit{Genomizer}}
@@ -114,57 +59,91 @@
 \end{tabularx}
 }
 
-\newcommand{\addTwoImages}[2]{
+\newcommand{\addTwoImages}[4]{
 \centering
 \begin{tabular}{l l}
     \begin{minipage}{0.4\textwidth}
+        
         \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+	\caption*{#2}
+
     \end{minipage}
 & 
     \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+        
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+	\caption*{#4}
+
     \end{minipage}
 \\ 
 \end{tabular}
 }
 
+\fancypagestyle{preface}
+{
+	\fancyhead[L]{PREFACE}
+	\fancyhead[R]{\thepage}
 
-\newcommand{\addThreeImages}[3]{
+}
+
+
+\newcommand{\addThreeImages}[6]{
 \centering
 \begin{tabular}{l l l}
     \begin{minipage}{0.3\textwidth}
+
         \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+	\caption*{#2}
+
     \end{minipage}
 & 
     \begin{minipage}{0.3\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+	\caption*{#4}
+
     \end{minipage}
 &
     
     \begin{minipage}{0.3\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#5} 
+	\caption*{#6}
+
     \end{minipage}
 \\ 
 \end{tabular}
 }
 
-\newcommand{\addFourImages}[4]{
+\newcommand{\addFourImages}[8]{
 \centering
 \begin{tabular}{l l}
     \begin{minipage}{0.4\textwidth}
+        
         \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+	\caption*{#2}
+
     \end{minipage}
 & 
     \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+        
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+	\caption*{#4}
+
     \end{minipage}
 \\ 
     \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+        
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#5} 
+	\caption*{#6}
+
     \end{minipage}
 &
     \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#4} 
+        
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#7} 
+	\caption*{#8}
+
     \end{minipage}
 \\
 \end{tabular}
@@ -177,11 +156,3 @@
 
 \graphicspath{ {figures/}}
 
-\tableofcontents
-\newpage
-
-\input{manual_contents}
-
-
-
-\end{document}

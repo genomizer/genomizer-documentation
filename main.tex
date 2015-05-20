@@ -1,5 +1,4 @@
-\documentclass[a4paper,oneside]{book}
-
+\documentclass[a4paper, 10pt, oneside]{book}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -7,7 +6,7 @@
 
 \usepackage{ltxtable, longtable}
 \usepackage{rotating}
-
+\usepackage{nomencl}
 \usepackage{graphicx}
 \usepackage{pifont}
 \usepackage{hyperref}
@@ -23,30 +22,29 @@
 \usepackage{morefloats}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[notindex,nottoc,notlof,notlot]{tocbibind}
-
+\usepackage{mdframed}
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.95}
+%Warnings
+\newmdtheoremenv[%
+	outerlinewidth = 2 ,
+	roundcorner = 10pt ,
+	leftmargin = 40 ,
+	rightmargin = 40 ,
+	backgroundcolor = light-gray ,
+	outerlinecolor = black ,
+	]{example}{Example}
+	
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows}
+\makenomenclature
 
-\title{Genomizer}
-\def\version{2.3}
-
-\def\json{\texttt{JSON}}
-
+\input{commands}
 
 %\fancyhead[RO,LE]{\thepage}
 \fancyhead[L]{\leftmark}
 \fancyhead[R]{\thepage}
-
-
-
-
 \begin{document}
-
-\pagestyle{fancy}
-
-
-\input{cover}
-
 
 \makeatletter
 \renewcommand\paragraph{%
@@ -74,123 +72,11 @@
       {\normalfont\normalsize\bfseries}}
 \makeatother
 
-\lstdefinestyle{customc}{
-  belowcaptionskip=1\baselineskip,
-  breaklines=true,
-  frame=L,
-  xleftmargin=\parindent,
-  language=C,
-  showstringspaces=false,
-  basicstyle=\footnotesize\ttfamily,
-  keywordstyle=\bfseries\color{green!40!black},
-  commentstyle=\itshape\color{purple!40!black},
-  identifierstyle=\color{blue},
-  stringstyle=\color{orange},
-}
 
-\lstdefinestyle{customsh}{
-  belowcaptionskip=1\baselineskip,
-  breaklines=true,
-  frame=L,
-  xleftmargin=\parindent,
-  language=C,
-  showstringspaces=false,
-  basicstyle=\footnotesize\ttfamily,
-  keywordstyle=\bfseries\color{green!40!black},
-  commentstyle=\itshape\color{purple!40!black},
-  identifierstyle=\color{blue},
-  stringstyle=\color{orange},
-}
+\pagestyle{fancy}
 
 
-
-\newcommand{\appName}{\textit{Genomizer}}
-\newcommand{\addImage}[1]{\centering\includegraphics[width=\textwidth, keepaspectratio=true]{#1}}
-\newcommand{\addScaledImage}[2]{\centering\includegraphics[scale=#1]{#2}}
-\newcommand{\addImageVertical}[1]{\centering\includegraphics[height=\textwidth, angle=90, keepaspectratio=true]{#1}}
-\newcommand{\addScaledImageVertical}[2]{\centering\includegraphics[scale=#1, angle=90]{#2}}
-\newcommand{\refer}[1]{\autoref{#1}}
-\newcommand{\addCode}[3][c]{\lstinputlisting[caption=#3, escapechar=, style=custom#1]{#2}}
-\newcommand{\filePath}[1]{\texttt{#1}}
-%\newcommand{\click}[1]{\ding{43} \textbf{\textit{{#1}}}}
-\newcommand{\click}[1]{\textbf{\textit{{#1}}}}
-\newcommand{\term}[1]{\textit{#1}}
-\newcommand{\strongTerm}[1]{\textbf{\term{#1}}}
-\newcommand{\serverPort}{\texttt{7000}}
-\newcommand{\userstory}[2]{
-\begin{tabularx}{0.95\textwidth}{|X|}
-\hline
-\vspace{1pt}
-\large\textbf{#1} \\ 
-\hline
-\vspace{1pt}
-#2 \\
-\hline
-\end{tabularx}
-}
-
-\newcommand{\addTwoImages}[2]{
-\centering
-\begin{tabular}{l l}
-    \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
-    \end{minipage}
-& 
-    \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
-    \end{minipage}
-\\ 
-\end{tabular}
-}
-
-
-\newcommand{\addThreeImages}[3]{
-\centering
-\begin{tabular}{l l l}
-    \begin{minipage}{0.3\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
-    \end{minipage}
-& 
-    \begin{minipage}{0.3\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
-    \end{minipage}
-&
-    
-    \begin{minipage}{0.3\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
-    \end{minipage}
-\\ 
-\end{tabular}
-}
-
-\newcommand{\addFourImages}[4]{
-\centering
-\begin{tabular}{l l}
-    \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
-    \end{minipage}
-& 
-    \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
-    \end{minipage}
-\\ 
-    \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
-    \end{minipage}
-&
-    \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#4} 
-    \end{minipage}
-\\
-\end{tabular}
-}
-
-\setcounter{secnumdepth}{5}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{10pt}
-
-\graphicspath{ {figures/}}
+\input{cover}
 
 \tableofcontents
 

@@ -1,0 +1,56 @@
+\documentclass[a4paper,oneside, 10pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+\usepackage{fancyref}
+\usepackage{tabularx}
+\usepackage{tabulary}
+
+\usepackage{listings}
+
+\usepackage{fancyhdr}
+\usepackage[yyyymmdd]{datetime}
+
+\usepackage{morefloats}
+
+\input{commands}
+
+\begin{document}
+\makeatletter
+\renewcommand\paragraph{%
+   \@startsection{paragraph}{4}{0mm}%
+      {-\baselineskip}%
+      {.5\baselineskip}%
+      {\normalfont\normalsize\bfseries}}
+
+\renewcommand\subparagraph{%
+   \@startsection{paragraph}{4}{0mm}%
+      {-\baselineskip}%
+      {.5\baselineskip}%
+      {\normalfont\normalsize\bfseries}}
+ 
+ \renewcommand\subsection{%
+   \@startsection{subsection}{4}{0mm}%
+      {-\baselineskip}%
+      {.5\baselineskip}%
+      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
+
+\pagestyle{fancy}
+
+
+
+
+\input{architecture_design/architecture_design_chap}
+
+
+
+
+\end{document}

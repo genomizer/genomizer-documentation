@@ -1,43 +1,81 @@
+\subsection{How to run the app in Xcode}
 In order to use the program, import the project from github into Xcode from the following repository:
 \url{https://github.com/genomizer/genomizer-iOS.git} 
 
-To compile and run the program, press \click{cmd+R}. A simulator will start and the login screen will be shown as seen in \refer{fig:ios_login}. A user gets logged in when accepted credentials are entered in the ‘username’ and ‘password’ fields and the ‘Sign in’ button is pressed. If incorrect credentials are entered, a popup message is shown, informing the user that the username or password is incorrect. The user can also change  the server to connect to by pressing the symbol in the top rightmost corner. The user will then be presented with a popup window as seen in the rightmost view in \refer{fig:ios_login}.
+To compile and run the program, press \click{cmd+R}. A simulator will start and the login screen will be shown as seen in \refer{fig:ios_login}a.
+
+\subsection{How to login}
+
+\begin{enumerate}
+\item Tap the settings button in the upper right corner and enter the url and port for the server you want to use and press \click{Done}. See \refer{fig:ios_login}a,c.
+\item Tap on the \click{Username} textfield and enter your username.
+\item Tap on the \click{Password} textfield and enter your password.
+\item Tap on \click{Sign in} to sign in.
+\end{enumerate}
+A user gets logged in when accepted credentials are entered in the ‘username’ and ‘password’ fields and the ‘Sign in’ button is pressed. If incorrect credentials are entered, a popup message is shown, informing the user that the username or password is incorrect.
 
 \begin{figure}[ht]
-\addThreeImages{ios_login1.PNG}{ios_login2.PNG}{ios_login3.PNG}
+\addThreeImages{ios_login1.PNG}{a}{ios_login2.PNG}{b}{ios_login3.PNG}{c}
 \caption{The login screen.}
 \label{fig:ios_login}
 \end{figure}
 \FloatBarrier
-After logging in, the user is presented with a search view as seen in the leftmost view in \refer{fig:ios_search}. The bottom menu bar is used to navigate between the Search-, Starred files-, Processes- and Settings-view in accordance with Apple's current GUI standards for iOS 7. In the current state, the Settings-menu only contains a logout button which is used to log out. The Starred files-menu contains a list of files selected by the user, sorted by file type and experiment.
+
+\subsection{How to logout}
+\begin{enumerate}
+\item Tap \click{Gear}-symbol on the tab bar and a \emph{Setting}-screen will appear. See \refer{fig:ios_more}
+\item Tap \click{Logout} to logout.
+\end{enumerate}
+
+\begin{figure}[htb]
+\addScaledImage{0.17}{ios_settings.PNG}
+\caption{The settings screen.}
+\label{fig:ios_more}
+\end{figure}
+\FloatBarrier
+
+\subsection{How to search an experiment}
+
+\begin{enumerate}
+\item Ensure that you on the search-screen by looking at the title on the top. If it says \emph{Search} you can skip (2). 
+\item Tap on leftmost button(magnifying glass) on the tab bar which you can find on the bottom of the screen.
+\item Tap on the annotation you want to search for and a spinning wheel with options will appear from the bottom of the screen. See \refer{fig:ios_search}a.
+\item Drag the wheel up or down to select the option you want.
+\item Enable the annotation to use when searching by toggling the switch to the right of the annotation. See \refer{fig:ios_search}b.
+\item Do 2-4 for more search criteria.
+\item Tap \click{Search} to search.
+\end{enumerate}
+
 \begin{figure}[ht]
-\addThreeImages{ios_search1.PNG}{ios_search2.PNG}{ios_search4.PNG}
+\addThreeImages{ios_search1.PNG}{a}{ios_search2.PNG}{b}{ios_search4.PNG}{c}
 \caption{The search screen.}
 \label{fig:ios_search}
 \end{figure}
 \FloatBarrier
-In the search view, the user can search the database for results matching any number of search criteria. To be able to modify the search quickly, a toggle button is available in the rightmost edge of each search field which enables or disables each search field. For example, if the user wants to search for experiments where species is ‘human’, the user clicks on ‘Species’, chooses human, clicks done and the toggle button will automatically switch to active as seen in in the view in the middle in \refer{fig:ios_search}.
-In top rightmost corner, there is a button for opening an advanced search view as seen in the rightmost view in \refer{fig:ios_search}. Here the user is supposed to enter a search query in ’pubmed-style-format’. If a user fills in fields in the regular search view and then opens the advanced search view, the fields that currently have values set at the regular search view will apper as a query in the advanced search view.
 
-When the search button has been pressed, the user is presented with all matching experiments in the Search Results view shown to the left in \refer{fig:ios_searchResult}. To manage which annotations should be displayed for every experiment, the user can press the edit button in the top rightsmost corner and will then be presented with the middle view in \refer{fig:ios_searchResult}. Here the user can set the visibility for each annotation. When the user then presses the ’back’-button, the annotations chosen will be shown for each experiment as seen in the rightmost picture in \refer{fig:ios_searchResult}. To see which files are associated with each experiment, the user can click on the experiment in order to get to the Files view shown in the leftmost view in \refer{fig:ios_files1}.
+\subsection{How to use advanced search}
 
-\begin{figure}[ht]
+\begin{enumerate}
+\item Ensure that you on the search-screen by looking at the title on the top. If it says \emph{Search} you can skip (2). 
+\item Tap on leftmost button(magnifying glass) on the tab bar which you can find on the bottom of the screen.
+\item Tap on the symbol to top right of the screen and a new view will appear with the title \emph{Advanced Search}. See \refer{fig:ios_search}c.
+\item Write your search criteria in PubMed-style and tap \click{search}
+\end{enumerate}
+The annotations you select on the search-screen will also show in advanced search.
 
-\addThreeImages{ios_result1.PNG}{ios_result2.PNG}{ios_result3.PNG}
-\caption{The search result screen.}
-\label{fig:ios_searchResult}
-\end{figure}
-\FloatBarrier
-In the Files view, the user can see all files connected to the selected experiment, sorted by type. The user can also get additional information about a file by simply clicking the blue information sign close to the filename. The file information is shown in a popup window as shown in rightmost view in \refer{fig:ios_files1}. If the user selects files and presses the ‘Convert files’-button, the user is shown the Select task view as seen in \refer{fig:ios_convert}. More about that later.
+\subsection{How to convert raw files to profile}
 
-\begin{figure}[htb]
-\addTwoImages{ios_files4.PNG}{ios_files2.PNG}
 
-\caption{The files screen.}
-\label{fig:ios_files1}
-\end{figure}
-\FloatBarrier
-The user can also move files to the Starred files view. This is done by simply tapping the star next to the file as seen in \refer{fig:ios_files3}.
+\begin{enumerate}
+\item Search for experiments
+\item In \emph{Search Results}-screen tap on an experiment and the \emph{Files}-screen will appear showing the files which belongs to the experiment.
+\item Tap the \click{Star}-symbol to the right of the file you want to process, to add them to your workspace. Selected files are shown by having a yellow star on them. See \refer{fig:ios_files3}
+\item Tap on the \click{Star}-symbol(the workspace) on the tab bar to view all selected files. See \refer{fig:io_selectedFiles}a
+\item Toggle the switch on the files you want to process.
+\item Tap \click{Select task to perform} and then tap \click{Convert to profile} and the \emph{Convert}-screen will appear. See \refer{fig:ios_selectedFiles}b and \refer{fig:ios_convert}a
+\item Enter the settings you want to use when converting.
+\item Tap \click{Convert} to convert. See \refer{fig:ios_convert}b-c
+\end{enumerate}
 
 \begin{figure}[htb]
 \addScaledImage{0.17}{ios_files3.PNG}
@@ -46,45 +84,69 @@ The user can also move files to the Starred files view. This is done by simply t
 \end{figure}
 \FloatBarrier
 
-If the user presses the ‘Star’-button in the menu, the Star screen is presented, containing all files the user has added to starred files, as seen in the leftmost view in \refer{fig:ios_selectedFiles}. If the user wishes to see more information about a file, it is possible to simply click the blue information sign close to the filename. This shows file information in a similar way as in the files view seen in \refer{fig:ios_files1}. In the starred files screen the user can select files and then press the trashcan icon in the top rightmost corner to delete the currently selected files, as seen in the two rightmost views in \refer{fig:ios_selectedFiles}. The user can also select a task to perform on the currently selected files by pressing the ‘Select task to perform’-button. The user will then be presented with the Select task screen as seen in the leftmost view in \refer{fig:ios_convert}.
-
 \begin{figure}[htb]
-\addTwoImages{ios_selected1.PNG}{ios_selected2.PNG}
-\caption{The starred files screen.}
+\addTwoImages{ios_selected1.PNG}{a}{ios_selected2.PNG}{b}
+\caption{Workspace.}
 \label{fig:ios_selectedFiles}
 \end{figure}
 \FloatBarrier
-In the Select Task view, the user is presented with a list of possible tasks that can be performed on the currently selected files. To perform a task, the user can simply click on that task.
 
 \begin{figure}[htb]
-\addThreeImages{ios_convert1.PNG}{ios_convert2.PNG}{ios_convert3.PNG}
+\addThreeImages{ios_convert1.PNG}{a}{ios_convert2.PNG}{b}{ios_convert3.PNG}{c}
 \caption{The select task screen.}
 \label{fig:ios_convert}
 \end{figure}
 \FloatBarrier
-If the user chooses ‘Convert to profile’, the Convert Raw to Profile screen is shown as seen in the middle view in \refer{fig:ios_convert}. In this view the user can enter parameters used in the converting process. Every step of converting (i.e. SAM to GFF or GFF to SGR) requires that all previous fields are filled in, since every convert step uses results from the previous steps in the process. The minimum number of parameters are the first two, Bowtie and Genome file. When the user has entered the desired parameters, a convert request is sent by clicking the ‘Convert’ button. The user will then be presented with a popup window, showing the number of convert requests that were sent as seen in the rightmost view in \refer{fig:ios_convert}. If the user wants to see the status for the processes on the server, the user can click on the ‘Processes’-button in the menu and the Processes view will be shown as seen in \refer{fig:ios_processes}.
+
+
+\subsection{How to set which annotation to be visible on Search Results}
+
+\begin{enumerate}
+\item In Search Results view, tap \click{Edit} and \emph{Select Annotations}-screen will appear
+\item Select which annotations to show by toggle the switch next to each annotation.
+\item Tap \click{Back} to go back to \emph{Search Results}. See \refer{fig:ios_searchResult}a-c
+\end{enumerate}
+
+\begin{figure}[ht]
+\addThreeImages{ios_result1.PNG}{a}{ios_result2.PNG}{b}{ios_result3.PNG}{c}
+\caption{Select annotation}
+\label{fig:ios_searchResult}
+\end{figure}
+\FloatBarrier
+
+\subsection{How to remove files from workspace}
+\begin{enumerate}
+\item Tap \click{Star}-symbol on the tab bar to view the workspace.
+\item Toggle the switch next to the file you want to remove.
+\item Tap \click{Trash can}-symbol to the upper right corner to remove the selected files. See \refer{fig:ios_selectedFiles}
+\end{enumerate}
+
+\subsection{How to view process status on the server}
+
+\begin{enumerate}
+\item Tap \click{Process}-symbol(the symbol between the star and the trash can) to view the processes on the server.
+\item To refresh the view, drag the view down until an activity indicator icon is visible below the title of the screen and release. See \refer{fig:ios_processes}
+\end{enumerate}
+
 \begin{figure}[htb]
 \addScaledImage{0.17}{ios_processes1.PNG}
 \caption{The select task screen.}
 \label{fig:ios_processes}
 \end{figure}
 \FloatBarrier
-In the Processes view, the user can see all processes that the server have completed in the last two days and also all processes that users have added that are either currently running or waiting to be executed.
-If the ‘Settings’-button in the menu is clicked the Settings screen is shown as in \refer{fig:ios_more}.  
+
+\subsection{How to view information about a file}
+
+\begin{enumerate}
+\item In either workspace tab or files view, tap \click{information}-symbol next to the file to view information of the file.
+\item Close by tapping \click{Close}. See \refer{fig:ios_files1}a-b
+\end{enumerate}
 
 \begin{figure}[htb]
-\addScaledImage{0.17}{ios_settings.PNG}
-\caption{The settings screen.}
-\label{fig:ios_more}
+\addTwoImages{ios_files4.PNG}{a}{ios_files2.PNG}{b}
+\caption{The files screen.}
+\label{fig:ios_files1}
 \end{figure}
 \FloatBarrier
-In the Settings view the user has the possibilities to log out from the server and see at which server they are currently logged into. 
-
-
-
-
-
-
-
 
 
