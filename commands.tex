@@ -59,15 +59,21 @@
 \end{tabularx}
 }
 
-\newcommand{\addTwoImages}[2]{
+\newcommand{\addTwoImages}[4]{
 \centering
 \begin{tabular}{l l}
     \begin{minipage}{0.4\textwidth}
+        
         \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+	\caption*{#2}
+
     \end{minipage}
 & 
     \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+        
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+	\caption*{#4}
+
     \end{minipage}
 \\ 
 \end{tabular}
@@ -109,23 +115,35 @@
 \end{tabular}
 }
 
-\newcommand{\addFourImages}[4]{
+\newcommand{\addFourImages}[8]{
 \centering
 \begin{tabular}{l l}
     \begin{minipage}{0.4\textwidth}
+        
         \includegraphics[width=\textwidth, keepaspectratio=true]{#1} 
+	\caption*{#2}
+
     \end{minipage}
 & 
     \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#2} 
+        
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+	\caption*{#4}
+
     \end{minipage}
 \\ 
     \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#3} 
+        
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#5} 
+	\caption*{#6}
+
     \end{minipage}
 &
     \begin{minipage}{0.4\textwidth}
-        \includegraphics[width=\textwidth, keepaspectratio=true]{#4} 
+        
+        \includegraphics[width=\textwidth, keepaspectratio=true]{#7} 
+	\caption*{#8}
+
     \end{minipage}
 \\
 \end{tabular}
