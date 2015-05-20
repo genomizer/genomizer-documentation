@@ -1,7 +1,9 @@
 The following text describes the different classes the Genomizer server uses to communicate with the database and the file system. All the communication with the database happens through the DatabaseAccessor-class, which uses several helper classes that contain methods with the actual logic. These relationships are visualized in \refer{fig:dat_overview_schema}. 
 
-\begin{figure}[h]
-\addImage{dat_overview_schema.png}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.67\textwidth]{dat_overview_schema}
+%\addImage{dat_overview_schema.png}
 \caption{Conceptual overview - The implementation of data access and storage}
 \label{fig:dat_overview_schema}
 \end{figure}
@@ -38,6 +40,6 @@ Searches can be made on labels corresponding to file attributes as well as exper
 To validate filename a check against a \term{regex} is done in the \texttt{FileValidator} class.
 
 \subsubsection{Testing}
-WARNING! The unit tests in the \texttt{database.test} package have a database dependency. Do not run any of the tests found in this package on a database that is in use. All tuples are removed from the database upon test completion. Every instance of unit testing should start with an empty database and finish with an empty database to avoid dependency between tests.
+WARNING! The unit tests in the \texttt{database.test} package have a database dependency. Do not run any of the tests found in this package on a database that is in use. All tuples are removed from the database upon test completion. Every instance of unit testing should start with an empty database and finish with an empty database to avoid test interdependency.
 
-All the unit tests utilize the \texttt{TestInitializer} class. This simplifies the process of connecting to the test database, filling it with test tuples and clearing the test database and closing the connection when the test class is finished. The individual unit tests can be found in the \texttt{database.test.unittests} package. The scripts for adding the test tuples and clearing the test database tables can also be found in the \texttt{sql} package.
+All the unit tests use the JUnit package and utilize the \texttt{TestInitializer} class. This simplifies the process of connecting to the test database, filling it with test tuples and clearing the test database and closing the connection when the test class is finished. The individual unit tests can be found in the \texttt{database.test.unittests} package. The scripts for adding the test tuples and clearing the test database tables can also be found in the \texttt{sql} package.
