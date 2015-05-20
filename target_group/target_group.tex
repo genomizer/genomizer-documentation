@@ -1,5 +1,5 @@
 The \appName\ system was designed with a specific target group in mind: Epigenitic researchers. This chapter will explain the needs of these users, the problems they faced before this system was provided and the requirements that were collected and taken into account during the project.
-
+\nomenclature{Genomizer}{Collective name for the project.}
 \section{Target group}
 
 The target group for the \appName\ system is  the \term{Epigenetic Cooperation Norrland (EpiCoN)}, a diverse group of researchers at \term{Umeå University} made up of many different nationalities. Their main communication language is English.
@@ -12,6 +12,9 @@ The researchers at \term{EpiCoN} have varying computer skills. While they all ha
 
 From time to time students are interested in working with the data, however their access is limited to viewing and analyzing the data. 
 
+\nomenclature{Bowtie}{Program the preforms parsing of the raw data and counts base pairs}
+\nomenclature{LiftOver}{Converts genome release versions.}
+\nomenclature{Genome releases}{Constant research gives more understanding, new genome versions are often found.}
 
 \section{Client needs}
 The researchers at \term{EpiCoN} need a system to structure the large amount of genetic data they use daily. The requirements, as described below, were collected and handled as a number of \term{user stories}, each of which describe a desired function from the end users perspective. A complete list of the \term{user stories} are presented in \fullref{chap:userstories}. %When discussed below the title of the relevant \term{user story} will be used.
@@ -19,8 +22,7 @@ A overview of the requested system may be seen below in figure \ref{fig:requestO
 
 There are three main data types used in the research and that the system should handle: \term{raw}, \term{profile} and \term{region} data. \term{Raw} data is the raw output from an experiment and cannot be analyzed directly. It is first processed to so called \term{profile} data. \term{Profile} data describes the amount of reads found for every base--pair in an organism's genome. \term{Region} data is further processed \term{profile} data consisting of the regions where every base--pair's read strength is above a given threshold and fault tolerance. The region gets a value based on the average of the base-pair reads for the given region.
 
-
-
+\nomenclature{Region}{Region data is small parts of the profile data.}
 \begin{figure}[h!]
 \begin{tikzpicture}[ 
 	font=\sffamily,
@@ -61,7 +63,7 @@ There are three main data types used in the research and that the system should 
 When conducting experiments the researchers generate \term{raw} data that generates what they call \term{Raw}-files. These files along with profile data, region data and genome release data may be added and related to an experiment. The requested functionality is to be able to upload these files to the database from multiple sources. The sources may be directly from an experiment conducted by the researchers or from official publications.
 
 When results are published in scientific articles the \term{raw} data from the experiments are often also provided. One location where these \term{raw} data files can be published is the \term{GEO} (\term{Gene Expression Omnibus}) database. A desire to be able to initialize a upload to \appName with the source of the upload beeing  \term{GEO}.
-
+\nomenclature{GEO}{Centralized database where article data can be found.}
 
 \subsection{Database}
 The \texttt{Database} module requested has the purpose to archive experiment data in a way of easy access. To allow for this the experiments and files associated with them needs to have information vital for good readability. This is solved with the help of annotations. The reaserchers must add annotations to files related to an experiment.
@@ -81,3 +83,4 @@ After processing, the resulting data files should be annotated and saved in the 
 
 It is not uncommon for errors in a new release to be discovered after publication. It is therefore also important to store files generated using older genome releases for some time after a new release is published.
 
+\nomenclature{Chain files}{Genome release files with small alterations to previous genome releases.}
