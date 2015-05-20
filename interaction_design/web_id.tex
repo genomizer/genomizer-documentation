@@ -1,23 +1,55 @@
-Generally the design of the user interface for the web application is an integration of the principles previously described with core design elements of web and the twitter bootstrap element library.
+% WHAT?
+% WHY?
+% User story compatibility 
+
+Generally, the design of the user interface for the web application is an integration of the principles previously described with core design elements of web and the twitter bootstrap element library.
 
 \subsubsection{Layout and Structure}
 The structure of the application is in most cases shallow, the navigational depth is usually two steps but sub views with modal views may result in a depth of 3. There are three types of views which are hierarchical in some way, main views contain sub views and modal views, sub views may contain modal views.
+
 \begin{itemize}
+    \item \textbf{Navigation bar:}
+A navigation bar is a menu that contains an overview of the functionality in the form of, in this case, tabs that leads the user to other views and that is always visible for the user to allow easy navigation. The navigation bar for the application can be seen in \autoref{adm_web_annotationView1}.
+
+\begin{figure}
+ \centering
+ \includegraphics[trim=40 260 45 50, clip, width=0.8\textwidth]{web_SysadminAnnotationView.jpg}
+ \caption{The web client navigation bar.}
+ \label{adm_web_annotationView1}
+\end{figure}
+
 	\item \textbf{Main views:}
-A main view covers the entire page. The structure among main views is shallow and the user may freely navigate between all main views using the navigation bar. Typically a main view contains a toolbar and a set of panels.
+A main view covers the entire page except for the navigation bar. The structure among main views is shallow and the user may freely navigate between all main views using the navigation bar. Typically a main view contains a toolbar and a set of panels. \autoref{adm_web_annotationView2} shows the administration main view.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{web_SysadminAnnotationView.jpg}
+ \caption{The web client administrator main view.}
+ \label{adm_web_annotationView2}
+\end{figure}
+
 	\item \textbf{Sub views:}
-A sub view is a part of a main view. In this case the main view has a vertical navigation bar on the left side used to navigate between sub views, sub views may not be directly navigated outside of its main view. The user may navigate to other main views from a sub view. Except for the sub navigation bar the sub view covers the entire main view, replacing its content.
+A sub view is a part of a main view. In the case of the administrator view seen in \autoref{adm_web_annotationView2}, the main view has a vertical navigation bar on the left side used to navigate between sub views, sub views may not be directly navigated outside of its main view. The user may navigate to other main views from a sub view. Except for the sub navigation bar the sub view covers the entire main view, replacing its content, as does the annotation view in this case.
+
 	\item \textbf{Modal views:}
-Modal views “rolls over” the current main view and are used for specialized operations. Modal views can be navigated to using buttons inside main views and sub views. Usually the user will be taken back to the previous view when the modal is closed but navigation in a sequence of modal views could be implemented in the future.
+Modal views are opened on top of the current main view and are used for specialized operations. Modal views can be navigated to using buttons inside main views and sub views. Usually the user will be taken back to the previous view when the modal is closed but navigation in a sequence of modal views could be implemented in the future. An example
+of a modal view is the login view seen in \autoref{fig:web_search_login1}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{web/manual/web_login.png}
+\caption{The login modal.}
+\label{fig:web_search_login1}
+\end{figure}
+
     \item \textbf{Panels:}
-Content that belong together is grouped using so bootstrap panels. Main views and sub views should contain one or more panels.
+Content that belongs together is grouped using so bootstrap panels. Main views and sub views should contain one or more panels.
     
     \item \textbf{Toolbars:}
-In main views and sub views we use a toolbar at the top of the view where operation controls available to the user are presented.
+In main views and sub views we use a toolbars where operation controls available to the user are presented, for example, add and search experiment functionality in the upload view.
     
     \item \textbf{Popovers:}
-For elements that belong to a view but have no need to be visible at all times are shown in bootstrap popovers. Popovers that do not belong to a specific view may be placed in the nav bar.
-    
+Elements that belong to a view but have no need to be visible at all times are shown in bootstrap popovers. Popovers that do not belong to a specific view may be placed in the navigation bar, that is, the main menu.
 \end{itemize}
 
 \subsubsection{Colors}
@@ -27,4 +59,4 @@ Grayscale colors are mostly used, black or dark gray is used for text, icons and
 Buttons that perform actions should always contain an icon as well as text so that the experienced user may more quickly desired actions by identifying buttons at a glance instead of having to read the button text. 
 
 \subsubsection{Batching}
-For operations performed on objects that there are multiples of e.g. experiments or files, let the user perform these operations on multiple objects at the same time in cases where it makes sense.
+For operations performed on objects that there are multiples of e.g. experiments or files, let the user perform these operations on multiple objects at the same time in cases where it makes sense using checkboxes.
