@@ -1,26 +1,34 @@
-The following text describes the different classes the server uses to communicate with the database and update the file system. All the communication with the database happens through the DatabaseAccessor-class, which in turn uses several helper classes that contains the actual logic. 
+The following text describes the different classes the Genomizer server uses to communicate with the database and the file system. All the communication with the database happens through the DatabaseAccessor-class, which uses several helper classes that contain methods with the actual logic. These relationships are visualized in \refer{fig:dat_overview_schema}. 
 
 \begin{figure}[h]
 \addImage{dat_overview_schema.png}
-\caption{AMEN DURÅA!}
+\caption{Conceptual overview - The implementation of data access and storage}
 \label{fig:dat_overview_schema}
 \end{figure}
 
-\subsubsection{Annotation}
-When a user wants the properties of an \term{annotation} they will retrieve this object. It holds information about the data type, label, forced annotation, default value and annotation choices for drop down menus. With this object the graphical interfaces can set up a search view dynamically.
+\subsubsection{DatabaseAccessor}
+DatabaseAccessor is a class that serves as an API for the Genomizer database - it handles all connections and queries to the database. The methods simplify queries to the database by removing the need to write SQL in any other packages. For more details see the class diagram, \refer{fig:dat_dbac}, in \refer{chap:dat_umls}.
 
-\subsubsection{Experiment}
-A container of an experiments annotations and their values. The annotation labels and values are contained in a \term{hashmap} with label as key. All files corresponding to the actual experiment lies in a list of \term{FileTuple} objects.
+\subsubsection{Containers}
+The classes grouped under the name Containers are used for representation of domain specific objects. An \term{Experiment} is a container for an experiment's annotations and their values as well as a list of files corresponding to that experiment. These files are contained in \term{FileTuple} objects which holds information regarding filename, type, size etc. The \term{Annotation} class contains information about label, whether or not the label is required, the default value and annotation choiches for drop down menus. More information can be found in the class diagram \refer{fig:dat_containers} in \refer{chap:dat_umls}.
 
-\subsubsection{FileTuple}
-A simple class that holds all information of a file in variables found in the database. Holds links for download and upload of the specific file.
+\subsubsection{Methods}
+The \term{DatabaseAccessor} uses helper classes to execute SQL queries. These helper classes are grouped by their area of responsibility:
+\begin{itemize}
+\item Annotation methods
+\item Experiment methods
+\item File methods
+\item Genome methods
+\item User methods
+\end{itemize}
+These classes execute the basic SQL functions Create, Read, Update and Delete (CRUD). The use of \term{Prepared Statements} (also known as parameterized queries) safeguards against SQL injection.
 
-\subsubsection{FilePathGenerator}
-The creation of folders is handled by the \texttt{FilePathGenerator} class. When a new experiment is added to the database a folder is also created for the new experiment. Sub folders are also created in preperation for the uploading of files.
+\subsubsection{Helper classes}
+The creation of folders is handled by the \texttt{FilePathGenerator} class. Folders are created for a new experiment when the experiment is added to the database, including subfolders in preparation of files to be uploaded.
 
-When a user requests to upload a file, the \term{FilePathGenerator} class will, if required, generate a new folder to house the file. 
+When a user requests to upload a file the \term{FilePathGenerator} class will, if required, generate a new folder to house the file.
 
-When a new \term{genome release} is added to the database, the \term{FilePathGenerator} will create a folder to house the associated files. Genome releases are divided into folders corresponding to species.
+When a new \term{genome release} is added to the database the \term{FilePathGenerator} will create a folder to house the associated files. Genome releases are divided into folders corresponding to species.
 
 A new folder is also created for each process request and houses the resulting file set.
 
@@ -31,8 +39,7 @@ All the variables in the PubMed string are bound to variables in the \texttt{WHE
 
 When the \texttt{search} method is called in the \texttt{DatabaseAccessor}, the \term{PubMed} string is checked for file attributes by calling the \texttt{hasFileAttributes} method in the \texttt{PubMedToSQLConverter}. This is done so that even empty experiments are returned when searches do not contain a file specific attribute.
 
-\subsubsection{DatabaseAccessor}
-A class that serves as an API for the Genomizer database - it handles all connections and queries to the database. The methods simplify queries to the database by removing the need to write SQL in any other packages. The \texttt{DatabaseAccessor} utilizes its subclasses as shown in \ref{fig:dat_dbac} where the methods are divided up into more specific areas. \term{Prepared Statements} are created from queries and parameters to avoid SQL injection. Methods that have some resemblance are grouped together for easier navigation.
+
 
 \subsubsection{Testing}
 WARNING! Do not run any of the tests found in the \texttt{database} package on a database that is in use. All tuples are removed from the database upon test completion. Every instance of unit testing should start with an empty database and finish with an empty database to avoid dependency between tests.

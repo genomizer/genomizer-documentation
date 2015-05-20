@@ -17,12 +17,12 @@ The search view is designed to be usable for both advanced and new users. A list
 \end{figure}
 \FloatBarrier
 
-Each annotation has a corresponding switch button as seen in \refer{fig:ios_search2}. The button determines if the annotation should be included in the search request. This make it easy to make small changes to the search, while not clearing the annotation values.
+Each annotation has a corresponding switch button as seen in \refer{fig:ios_search2}a-b. The button determines if the annotation should be included in the search request. This make it easy to make small changes to the search, while not clearing the annotation values.
 
 The advanced user can customize the search query sent to the server. This gives the user the possibility make more complex search queries and possibly make use of already accuried PubMed-search skills.
 
 \subsection{Search Result View}
-The main purpose of the search result view is to give an overview of the search results. The challenge with this view was to summarize large amount of information in a small area. The small screen of the iPhone made it impossible to have columns for each annotation. Instead a decision was made to group the files by experiment as seen in \refer{fig:ios_searchResult2}. The table with the experiments will only expand vertically, both when the number of shown annotations and the number of experiments grows. Thus, the user never has to scroll sideways which would be awkward.
+The main purpose of the search result view is to give an overview of the search results. The challenge with this view was to summarize large amount of information in a small area. The small screen of the iPhone made it impossible to have columns for each annotation. Instead a decision was made to group the files by experiment as seen in \refer{fig:ios_searchResult2}a. The table with the experiments will only expand vertically, both when the number of shown annotations and the number of experiments grows. Thus, the user never has to scroll sideways which would be awkward.
 
 \begin{figure}[ht]
 \addTwoImages	{ios_result1.PNG}{a}
@@ -32,9 +32,9 @@ The main purpose of the search result view is to give an overview of the search 
 \end{figure}
 \FloatBarrier
 
-The user can choose which annotations to display in the result view. This gives the user the possibility to only show the annotations which are interesting at the moment. 
+The user can choose which annotations to display in the result view, more annotations have been added in \refer{fig:ios_searchResult2}b. This gives the user the possibility to only show the annotations which are interesting at the moment. 
 
-The file view (see \refer{fig:ios_files2}), which is shown when the user selects an experiment, only contains the filename of the files in the specific experiment. The annotations is not shown in this view to avoid information overload and to give the user a good overview of the files.
+The files view (see \refer{fig:ios_files2}a), which is shown when the user selects an experiment, only contains the filename of the files in the specific experiment. The annotations is not shown in this view to avoid information overload and to give the user a good overview of the files. More information can be seen when the circled 'i' to the left of the filename is tapped, an example of this can be seen in \refer{fig:ios_files2}b. 
 
 \begin{figure}[ht]
 \addTwoImages	{ios_files4.PNG}{a}
@@ -44,11 +44,13 @@ The file view (see \refer{fig:ios_files2}), which is shown when the user selects
 \end{figure}
 \FloatBarrier
 
-The star indicates if the file has been added to the Star-view where the user can choose to convert file sto different formats .
+The star indicates if the file has been added to the selected files view where the user can choose to convert file into different formats.
 % The functionality of the Convert files button can be reached from other views, but was added to this view as well to improve the workflow. Instead of first selecting the files, then going to the Selected files view and initiate the convertion from there, the user can quickly convert files directly from the search results.
 
 \subsubsection{Selected Files}
-The selected files view can be seen in \refer{fig:ios_selectedFiles2}. The files are grouped into four categories: raw, profile, region and other. This is done by showing each type of files in its own tab. The reason for this is to avoid the possibility to select files of different types since the tasks to perform are file type specific. It also gives a better overview of the files when only one type is shown instead of showing all files at the same time. The files are also grouped into respective experiment they belong to. This is done to avoid confusion of what file belong to which experiment with similar filenames etc. Additionally, the top navigation bar menu is following the iOS design guidelines.
+The selected files view can be seen in \refer{fig:ios_selectedFiles2}a. The files are grouped into four categories: raw, profile, region and other. This is done by showing each type of files in its own tab located at the top of the screen. The reason for this is to avoid the possibility to select files of different types since the tasks to perform are file type specific. It also gives a better overview of the files when only one type is shown instead of showing all files at the same time. The files are also grouped into respective experiment they belong to. This is done to avoid confusion of what file belong to which experiment with similar filenames etc. Additionally, the top navigation bar menu is following the iOS design guidelines. 
+
+When at least one file is selected with the switch next to it (see \refer{fig:ios_selectedFiles2}b) a button will appear at the bottom of the screen letting the user choose a task to perform with the file by leading to the select task menu, as seen in \refer{fig:ios_convertParameters}a.
 
 \begin{figure}[ht]
 \addTwoImages	{ios_selected1.PNG}{a}
@@ -68,7 +70,7 @@ The select task menu can easily be expanded when new functionality is added to t
 \end{figure}
 \FloatBarrier
 
-As seen to the right in \refer{fig:ios_convertParameters}, the convert view, shows a number of parameters to be filled. Only the first two fields has to be filled before a convert request can be sent and they are pre-filled with standard flags etc. to make it easier to send a processrequest for the user, which we thought was essential on a mobile-device. Furthermore our thought was that a user should be able to skip all non-optional settings, and let the server have the standard parameter values. 
+As seen in \refer{fig:ios_convertParameters}b, the convert view, shows a number of parameters to be filled. Only the first two fields has to be filled before a convert request can be sent and they are pre-filled with standard flags etc. to make it easier to send a processrequest for the user, which we thought was essential on a mobile-device. Furthermore our thought was that a user should be able to skip all non-optional settings, and let the server have the standard parameter values. 
 
 
 \subsubsection{Processes}
@@ -90,8 +92,4 @@ As visible in \refer{fig:ios_processingStatus}, we chose to build the processing
 \end{figure}
 \FloatBarrier
 
-<<<<<<< HEAD
-Alerts are simple banners animating down from the top to give the user a headsup of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen to the right in \refer{fig:ios_alerts}, indicates an error and a white with a green icon, as seen to the left in \refer{fig:ios_alerts}, indicates something went as expected. 
-=======
-Alerts are simple banners animating down from the top to give the user a headsup of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen to the right in \refer{fig:ios_alerts}, indicates an error and a white with a green icon, as seen to the left in \refer{fig:ios_alerts}, indicates something went as expected. The colors are used to allow the user to just notice which color pops down and give them somewhat of an understanding of what is going on without having to read the text every time. 
->>>>>>> a40b1da11054260c5e796d55d206ef19a6eb79b3
+Alerts are simple banners animating down from the top to give the user a headsup of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen in \refer{fig:ios_alerts}b, indicates an error and a white with a green icon, as seen in \refer{fig:ios_alerts}a, indicates something went as expected. The colors are used to allow the user to just notice which color pops down and give them somewhat of an understanding of what is going on. without having to read the text every time.
