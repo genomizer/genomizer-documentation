@@ -45,7 +45,7 @@ The star indicates if the file has been added to the Star-view where the user ca
 % The functionality of the Convert files button can be reached from other views, but was added to this view as well to improve the workflow. Instead of first selecting the files, then going to the Selected files view and initiate the convertion from there, the user can quickly convert files directly from the search results.
 
 \subsubsection{Selected Files}
-The selected files view can be seen in \refer{fig:ios_selectedFiles2}. The files are grouped into four categories: raw, profile, region and other. This is done by showing each type of files in its own tab. The reason for this is to avoid the possibility to select files of different types since the tasks to perform are file type specific. It also gives a better overview of the files when only one type is shown instead of showing all files at the same time. The files are also grouped into respective experiment they belong to. This is done to avoid confusion of what file belong to which experiment. Additionally, the top tab bar menu is following the iOS design guidelines.
+The selected files view can be seen in \refer{fig:ios_selectedFiles2}. The files are grouped into four categories: raw, profile, region and other. This is done by showing each type of files in its own tab. The reason for this is to avoid the possibility to select files of different types since the tasks to perform are file type specific. It also gives a better overview of the files when only one type is shown instead of showing all files at the same time. The files are also grouped into respective experiment they belong to. This is done to avoid confusion of what file belong to which experiment with similar filenames etc. Additionally, the top navigation bar menu is following the iOS design guidelines.
 
 \begin{figure}[ht]
 \addTwoImages{ios_selected1.PNG}{ios_selected2.PNG}
@@ -63,7 +63,7 @@ The select task menu can easily be expanded when new functionality is added to t
 \end{figure}
 \FloatBarrier
 
-As seen to the right in \refer{fig:ios_convertParameters}, the convert view, shows a number of parameters to be filled. Only the first two fields has to be filled before a convert request can be sent. Our thought was that a user should be able to skip all non-optional settings, and let the server have the standard parameter values. 
+As seen to the right in \refer{fig:ios_convertParameters}, the convert view, shows a number of parameters to be filled. Only the first two fields has to be filled before a convert request can be sent and they are pre-filled with standard flags etc. to make it easier to send a processrequest for the user, which we thought was essential on a mobile-device. Furthermore our thought was that a user should be able to skip all non-optional settings, and let the server have the standard parameter values. 
 
 
 \subsubsection{Processes}
@@ -74,7 +74,7 @@ As seen to the right in \refer{fig:ios_convertParameters}, the convert view, sho
 \end{figure}
 \FloatBarrier
 
-As visible in \refer{fig:ios_processingStatus}, we chose to build the processing status view with a simple tableview, to make it dynamic and easy. We also think this gives the user the best possible overview of current processes. The status is color coded to make it as easy as possible for the user to see which processes are in which state. 
+As visible in \refer{fig:ios_processingStatus}, we chose to build the processing status view with a simple tableview, to make it dynamic and easy. We also think this gives the user the best possible overview of current processes. The status is color coded to make it as easy as possible for the user to see which processes are in which state.
 
 \subsubsection{Alerts}
 \begin{figure}[ht]
@@ -84,4 +84,4 @@ As visible in \refer{fig:ios_processingStatus}, we chose to build the processing
 \end{figure}
 \FloatBarrier
 
-Alerts are simple banners animating down from the top to give the user a headsup of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen to the right in \refer{fig:ios_alerts}, indicates an error and a white with a green icon, as seen to the left in \refer{fig:ios_alerts}, indicates something went as expected. 
+Alerts are simple banners animating down from the top to give the user a headsup of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen to the right in \refer{fig:ios_alerts}, indicates an error and a white with a green icon, as seen to the left in \refer{fig:ios_alerts}, indicates something went as expected. The colors are used to allow the user to just notice which color pops down and give them somewhat of an understanding of what is going on without having to read the text every time. 
