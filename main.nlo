@@ -6,3 +6,4 @@
 \nomenclatureentry{aGenome releases@[{Genome releases}]\begingroup Constant research gives more understanding, new genome versions are often found.\nomeqref {2.0}|nompageref}{iv}
 \nomenclatureentry{aRegion@[{Region}]\begingroup Region data is small parts of the profile data.\nomeqref {2.0}|nompageref}{iv}
 \nomenclatureentry{aGEO@[{GEO}]\begingroup Centralized database where article data can be found.\nomeqref {2.0}|nompageref}{v}
+\nomenclatureentry{aChain files@[{Chain files}]\begingroup Genome release files with small alterations to previous genome releases.\nomeqref {2.0}|nompageref}{vi}
