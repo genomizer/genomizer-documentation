@@ -6,3 +6,4 @@
 *.lyx
 *.sh
 *.fdb_latexmk
+*.syntex.*
