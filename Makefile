@@ -6,7 +6,7 @@ implementation: desktop-implement webb-implement android-implement ios-implement
 id: desktop-id webb-id android-id ios-id 
 
 main.pdf: main.tex
-	pdflatex main.tex && pdflatex main.tex
+	pdflatex main.tex && makeindex main.nlo -s nomencl.ist -o main.nls && pdflatex main.tex
 
 ################# User Manual [X] #############################
 
