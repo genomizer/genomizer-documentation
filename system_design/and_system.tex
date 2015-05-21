@@ -28,9 +28,9 @@ The following sections describe the system design of the Android application. Al
 	The \verb!search_result! package handles the results of the search by displaying the experiments found. When an experiment is selected, the files associated with the experiment is displayed.
 	
 	The \verb!selected_files! handles all the files that has been selected. They are sorted into raw, profile and region. The raw files can be selected for processing from here.
-
+\pagebreak
 \subsection{Class description}
-\begin{figure}[h]
+\begin{table}[h!]
 \begin{tabularx}{\textwidth}{|l|X|}
 \multicolumn{2}{l}{\strongTerm{Fragment classes}} \\
 \hline
@@ -54,7 +54,7 @@ SearchSettingsFragment handles settings for which annotations are displayed in t
 ExperimentListFragment handles the displaying of search results to the user. The fragment includes a ListView with an ArrayAdapter set to it. An OnItemClickListener is used to detect when the user is selecting an item in the list and is currently starting FileListActivity when a list item is selected. This fragment receives a HashMap with search values from SearchListFragment and when activity is starting an ASyncTask is started to send and receive search results from the server through the ComHandler class. When an experiment is selected from the list the file names belonging to that experiment is sent to FileListFragment that will display the file information.
 \\ \hline
 \end{tabularx}
-\end{figure}
+\end{table}
 \begin{figure}[h]
 \begin{tabularx}{\textwidth}{|l|X|}
 \multicolumn{2}{l}{\strongTerm{Fragment classes}} \\
