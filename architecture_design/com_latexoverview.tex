@@ -40,12 +40,12 @@ The web server is a \textit{Apache} system in the current implementation.
 
 The connection to the server from any client goes through the web server which acts as a proxy aswell. This to insure a \textit{SSL} connection between the web server and the clients and a regular connection between the server and web server. The proxy protects the web client from \textit{XSS} (Cross site scripting). 
 
-All of the clients use the \term{RESTful} protocol where the message body consists of a \json/ object.
-These messages are requests that gets passed through the web server to the \appName/ server. The \appName/ server communicates with database to perform the request. Then it generates a response following the \term{RESTful} protocol. The \term{RESTful} protocol is used to promise that the server will be state-less. State-less meaning that a request from a client can not lock the server for other clients requests. 
+All of the clients use the \term{RESTful} protocol where the message body consists of a \json\ object.
+These messages are requests that gets passed through the web server to the \appName\ server. The \appName\ server communicates with database to perform the request. Then it generates a response following the \term{RESTful} protocol. The \term{RESTful} protocol is used to promise that the server will be state-less. State-less meaning that a request from a client can not lock the server for other clients requests. 
 
 The different requests that can be sent to the server are defined in the Appendix \fullref{chap:com_api} that goes into deeper detail about the API.
 
-The architecture of the system can be seen in Figure \ref{fig:archOverview} where the clients are the colors blue, yellow, and red. Web server is green and the \appName/ server and its database are colored orange.
+The architecture of the system can be seen in Figure \ref{fig:archOverview} where the clients are the colors blue, yellow, and red. Web server is green and the \appName\ server and its database are colored orange.
 
 
 
