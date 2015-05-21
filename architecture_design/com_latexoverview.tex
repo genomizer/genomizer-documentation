@@ -43,23 +43,24 @@ The connection to the server from any client goes through the web server which a
 All of the clients use the \term{RESTful} protocol where the message body consists of a \json/ object.
 These messages are requests that gets passed through the web server to the \appName/ server. The \appName/ server communicates with database to perform the request. Then it generates a response following the \term{RESTful} protocol. The \term{RESTful} protocol is used to promise that the server will be state-less. State-less meaning that a request from a client can not lock the server for other clients requests. 
 
-The different requests that can be sent to the server are defined in the appendix for the \term{API} 
-\ref{app:API}.
+The different requests that can be sent to the server are defined in the Appendix \fullref{chap:com_api} that goes into deeper detail about the API.
 
-The architecture of the system can be seen in Figure \ref{fig:archOverview} where the clients are the colors blue, yellow, and red. 
+The architecture of the system can be seen in Figure \ref{fig:archOverview} where the clients are the colors blue, yellow, and red. Web server is green and the \appName/ server and its database are colored orange.
+
+
 
 \subsection{Genomizer server}
 The server is devided up in three main components, the front end, the data storage and the processing.
 
-The front end consist of a handler for the \term{API} requests mentioned above. The handler parses incomming request and passes them through to either processing or data storage depending request type.
+The front end consist of a handler for the \term{API} requests mentioned above. The handler interpret incomming request and passes them through to either processing or data storage depending request type.
 
-Data storage consists of the back-end, talking to the file system and the database to return the correct information that was requested by the front-end.
+Data storage makes up the back-end of the server. Its purpose is to communicate with file system and the database to return the correct information that was requested by the front-end.
 
 The processing does the processing of files and convertation between file types. Processing is a heavy workload on the server and has to be scheduled for both time of day and  parallel processing.
 
-\refer{fig:com_systemoverview} shows a simple flow diagram which
-describes how the client and server communicates. The particular
-example shows the data flow when the client process a file.
+\refer{fig:com_systemoverview} shows a simple flow diagram which describes how the client and server
+ communicates. The particular example shows the data flow when the client process a file.
+ In the figure the front-end is the data transfer and communication node while data storage makes up the database node and processing the final process node.
 
 \begin{figure}[htb]
 \addImage{com_systemoverview.jpg}
@@ -69,10 +70,9 @@ example shows the data flow when the client process a file.
 
 Every request the client does creates a non persistent connection to
 the server. When the server receives a request it checks which kind of
-request it is and routes it to either the communication part of the
-server or handles it directly. This is done by the data transfer.
+request it is and routes it to the communication part of the server.
 
-If the request is routed to communication a specific command is
+When the request is routed to communication a specific command is
 created. The command is an object which consists of information from
 the \term{RESTful}-header and \json/ body sent from the
 client. The command is then parsed and sent to different parts of the
@@ -88,7 +88,4 @@ for requests like $getAnnotations$. The response can also contain
 error messages, describing what went wrong when executing the command.
 
 After a client receives the response the connection with the server is
-lost until the next request.
-
-There is a special kind of user called system admin. A user with these
-priveleges has the rights to add and delete annotations.
+closed and a new is opened with the next request.
