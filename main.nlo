@@ -1,9 +1,9 @@
-\nomenclatureentry{araw@[{raw}]\begingroup Collection word for files that are the result from a \textit{DNA}-sequencing machine.\nomeqref {1.0}|nompageref}{iii}
-\nomenclatureentry{aprofile@[{profile}]\begingroup Data converted to a human readable file for analysis.\nomeqref {1.0}|nompageref}{iii}
-\nomenclatureentry{aGenomizer@[{Genomizer}]\begingroup Collective name for the project.\nomeqref {2.0}|nompageref}{iv}
-\nomenclatureentry{aBowtie@[{Bowtie}]\begingroup Program the preforms parsing of the raw data and counts base pairs\nomeqref {2.0}|nompageref}{iv}
-\nomenclatureentry{aLiftOver@[{LiftOver}]\begingroup Converts genome release versions.\nomeqref {2.0}|nompageref}{iv}
-\nomenclatureentry{aGenome releases@[{Genome releases}]\begingroup Constant research gives more understanding, new genome versions are often found.\nomeqref {2.0}|nompageref}{iv}
-\nomenclatureentry{aRegion@[{Region}]\begingroup Region data is small parts of the profile data.\nomeqref {2.0}|nompageref}{iv}
-\nomenclatureentry{aGEO@[{GEO}]\begingroup Centralized database where article data can be found.\nomeqref {2.0}|nompageref}{v}
-\nomenclatureentry{aChain files@[{Chain files}]\begingroup Genome release files with small alterations to previous genome releases.\nomeqref {2.0}|nompageref}{vi}
+\nomenclatureentry{araw@[{raw}]\begingroup Collection word for files that are the result from a \textit{DNA}-sequencing machine.\nomeqref {1.0}|nompageref}{iv}
+\nomenclatureentry{aprofile@[{profile}]\begingroup Data converted to a human readable file for analysis.\nomeqref {1.0}|nompageref}{iv}
+\nomenclatureentry{aGenomizer@[{Genomizer}]\begingroup Collective name for the project.\nomeqref {2.0}|nompageref}{v}
+\nomenclatureentry{aBowtie@[{Bowtie}]\begingroup Program the preforms parsing of the raw data and counts base pairs\nomeqref {2.0}|nompageref}{v}
+\nomenclatureentry{aLiftOver@[{LiftOver}]\begingroup Converts genome release versions.\nomeqref {2.0}|nompageref}{v}
+\nomenclatureentry{aGenome releases@[{Genome releases}]\begingroup Constant research gives more understanding, new genome versions are often found.\nomeqref {2.0}|nompageref}{v}
+\nomenclatureentry{aRegion@[{Region}]\begingroup Region data is small parts of the profile data.\nomeqref {2.0}|nompageref}{v}
+\nomenclatureentry{aGEO@[{GEO}]\begingroup Centralized database where article data can be found.\nomeqref {2.0}|nompageref}{vi}
+\nomenclatureentry{aChain files@[{Chain files}]\begingroup Genome release files with small alterations to previous genome releases.\nomeqref {2.0}|nompageref}{vii}
