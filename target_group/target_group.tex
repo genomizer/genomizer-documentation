@@ -2,15 +2,15 @@ The \appName\ system was designed with a specific target group in mind: Epigenit
 \nomenclature{Genomizer}{Collective name for the project.}
 \section{Target group}
 
-The target group for the \appName\ system is  the \term{Epigenetic Cooperation Norrland (EpiCoN)}, a diverse group of researchers at \term{Umeå University} made up of many different nationalities. Their main communication language is English.
+The target group for the \appName\ system is  \term{Epigenetic Cooperation Norrland (EpiCoN)}, a diverse group of researchers at \term{Umeå University} made up of many different nationalities. Their main communication language is English.
 
-\term{EpiCon} are involved in the research of how proteins bind to \term{DNA} strings and its effects. Experiments are carried out which yield large amounts of raw data. This information, combined with knowledge about the location of genes within a given genome, enable the researchers to gain valuable information about which proteins are active in enabling and disabling genes. These results are important in the study of how cells "remember" which genes should be enabled after cell division.
+\term{EpiCon} are involved in the research of how proteins bind to \term{DNA} strings and its effects. Experiments are carried out which yield large amounts of raw data. This information, combined with knowledge about the location of genes within a given genome, enable the researchers to gain valuable information about which proteins are active in enabling and disabling genes. These results are important in the study of how cells ''remember'' which genes should be enabled after cell division.
 
 Previous to the \appName\ project the raw data files retrieved from experiments were manually processed by the researchers using inefficient \term{Perl} scripts. This process also involved using \term{Bowtie}\cite{BOWTIE}, a program used to unscramble the \term{DNA} data, and \term{LiftOver}\cite{LIFTOVER} which is used to adjust results to conform to different \term{genome releases}.
 
 The researchers at \term{EpiCoN} have varying computer skills. While they all have basic computer knowledge, not all are familiar with more advanced computing tasks such as running scripts at command line level. As such, some researchers have become dependent on others to process the raw data. At \term{EpiCon} the researcher that has the knowledge to use all the scripts and software performs many of these time consuming tasks for other researchers.
 
-From time to time students are interested in working with the data, however their access is limited to viewing and analyzing the data. 
+From time to time students of molecular biology are interested in working with the data, however their access is limited to viewing and analysing the data. 
 
 \nomenclature{Bowtie}{Program the preforms parsing of the raw data and counts base pairs}
 \nomenclature{LiftOver}{Converts genome release versions.}
@@ -20,7 +20,7 @@ From time to time students are interested in working with the data, however thei
 The researchers at \term{EpiCoN} need a system to structure the large amount of genetic data they use daily. The requirements, as described below, were collected and handled as a number of \term{user stories}, each of which describe a desired function from the end users perspective. A complete list of the \term{user stories} are presented in \fullref{chap:userstories}. %When discussed below the title of the relevant \term{user story} will be used.
 A overview of the requested system may be seen below in figure \ref{fig:requestOverview}. Where orange colored nodes are must have features while gray nodes are visions of the clients that may be implemented if time allows for it.
 
-There are three main data types used in the research and that the system should handle: \term{raw}, \term{profile} and \term{region} data. \term{Raw} data is the raw output from an experiment and cannot be analyzed directly. It is first processed to so called \term{profile} data. \term{Profile} data describes the amount of reads found for every base--pair in an organism's genome. \term{Region} data is further processed \term{profile} data consisting of the regions where every base--pair's read strength is above a given threshold and fault tolerance. The region gets a value based on the average of the base-pair reads for the given region.
+There are three main data types used in the research and that the system should handle: \term{raw}, \term{profile} and \term{region} data. \term{Raw} data is the raw output from an experiment and cannot be analysed directly. It is first processed to so called \term{profile} data. \term{Profile} data describes the amount of reads found for every base--pair in an organism's genome. \term{Region} data is further processed \term{profile} data consisting of the regions where every base--pair's read strength is above a given threshold and fault tolerance. The region gets a value based on the average of the base-pair reads for the given region.
 
 \nomenclature{Region}{Region data is small parts of the profile data.}
 \begin{figure}[h!]
@@ -70,7 +70,7 @@ The \texttt{Database} module requested has the purpose to archive experiment dat
 This data is the foundation for further research and so must be stored securely. To ensure security the client requested a system for authorization that protects the data from outside tampering. To protect against hardware failure there exists a request for a backup system.
 
 \subsection{Processing}
-The unordered \term{raw} data gained from an experiment requires processing in order to be analyzed. The researchers have written a number of scripts and, when combined with the \term{BowTie} algorithm, generate \term{profile} data. In this format the \term{DNA} pieces are ordered and mapped to the \term{DNA} string. It is important that the system automates this process so that all researchers can easily process the large \term{raw} files.
+The unordered \term{raw} data gained from an experiment requires processing in order to be analysed. The researchers have written a number of scripts and, when combined with the \term{BowTie} algorithm, generate \term{profile} data. In this format the \term{DNA} pieces are ordered and mapped to the \term{DNA} string. It is important that the system automates this process so that all researchers can easily process the large \term{raw} files.
 
 As new discoveries are made in the area, new standards for the order of the base pairs in a \term{DNA} string are set. This results in a new \term{Genome Release} for a specific species. These are obtained as a set of files specifying this order and are used in the processing of \term{raw} data. \appName\ must support the uploading of new sets of \term{genome release} files to be used in processing otherwise the system will very quickly become outdated. 
 
