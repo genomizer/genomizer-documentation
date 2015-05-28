@@ -34,15 +34,15 @@ A user gets logged in when accepted credentials are entered in the â€˜usernameâ€
 \end{figure}
 \FloatBarrier
 
-\subsection{How to search an experiment}
+\subsection{How to search for experiments}
 
 \begin{enumerate}
-\item Ensure that you on the search-screen by looking at the title on the top. If it says \emph{Search} you can skip (2). 
+\item Ensure that you on the search-screen by looking at the title on the top. If it says \emph{Search} you can skip step (2). 
 \item Tap on leftmost button(magnifying glass) on the tab bar which you can find on the bottom of the screen.
 \item Tap on the annotation you want to search for and a spinning wheel with options will appear from the bottom of the screen. See \refer{fig:ios_search}a.
 \item Drag the wheel up or down to select the option you want.
 \item Enable the annotation to use when searching by toggling the switch to the right of the annotation. See \refer{fig:ios_search}b.
-\item Do 2-4 for more search criteria.
+\item Do steps (2)-(4) for more search criteria.
 \item Tap \click{Search} to search.
 \end{enumerate}
 
@@ -56,45 +56,47 @@ A user gets logged in when accepted credentials are entered in the â€˜usernameâ€
 \subsection{How to use advanced search}
 
 \begin{enumerate}
-\item Ensure that you on the search-screen by looking at the title on the top. If it says \emph{Search} you can skip (2). 
+\item Ensure that you on the search-screen by looking at the title on the top. If it says \emph{Search} you can skip step (2). 
 \item Tap on leftmost button(magnifying glass) on the tab bar which you can find on the bottom of the screen.
 \item Tap on the symbol to top right of the screen and a new view will appear with the title \emph{Advanced Search}. See \refer{fig:ios_search}c.
 \item Write your search criteria in PubMed-style and tap \click{search}
 \end{enumerate}
 The annotations you select on the search-screen will also show in advanced search.
 
-\subsection{How to convert raw files to profile}
+\subsection{How to process files}
 
 
 \begin{enumerate}
 \item Search for experiments
-\item In \emph{Search Results}-screen tap on an experiment and the \emph{Files}-screen will appear showing the files which belongs to the experiment.
-\item Tap the \click{Star}-symbol to the right of the file you want to process, to add them to your workspace. Selected files are shown by having a yellow star on them. See \refer{fig:ios_files3}
-\item Tap on the \click{Star}-symbol(the workspace) on the tab bar to view all selected files. See \refer{fig:io_selectedFiles}a
-\item Toggle the switch on the files you want to process.
-\item Tap \click{Select task to perform} and then tap \click{Convert to profile} and the \emph{Convert}-screen will appear. See \refer{fig:ios_selectedFiles}b and \refer{fig:ios_convert}a
-\item Enter the settings you want to use when converting.
-\item Tap \click{Convert} to convert. See \refer{fig:ios_convert}b-c
+\item In \emph{Search Results}-screen tap on an experiment and the \emph{Files}-screen will appear showing the files which belongs to the experiment. See \refer{fig:ios_files_view}a
+\item Tap the \click{Plus}-symbol next to the file you want to process.
+\item Do step (3) for every file you want to process. Same file can be used more than once. A counter will appear next to the Plus-symbol to keep track on how many times the file will be used in the process-step, see \refer{fig:ios_files_view}b.
+\item Tap the \click{Process}-button and \emph{Make a process}-view will appear with every file you have selected. See \refer{fig:ios_make_process_view}a
+\item Tap \click{Add Process} and select what kind of process you want to do on the selected files.
+\item After you have selected a process the input files and output files will appear with the selected process separating them. You can add parameter values by tapping \click{Flag}-symbol below the input files. The output files can be renamed by tapping on the filename. See \refer{fig:ios_make_process_view}b
+\item Do step (6) to create a sequence of processes to be made on the selected files. See \refer{fig:ios_make_process_view}c for an example of a process sequence.
+
+\item Tap \click{Done}-button to send the sequence of processes to the server.
 \end{enumerate}
 
+%\begin{figure}[htb]
+%\addScaledImage{0.17}{ios_process_files.jpg}
+%\caption{Files screen.}
+%\label{fig:ios_process_files}
+%\end{figure}
+%\FloatBarrier
+
 \begin{figure}[htb]
-\addScaledImage{0.17}{ios_files3.PNG}
-\caption{The files screen.}
-\label{fig:ios_files3}
+\addTwoImages{ios_process_files.jpg}{a}{ios_files_added.jpg}{b}
+\caption{Files view.}
+\label{fig:ios_files_view}
 \end{figure}
 \FloatBarrier
 
 \begin{figure}[htb]
-\addTwoImages{ios_selected1.PNG}{a}{ios_selected2.PNG}{b}
-\caption{Workspace.}
-\label{fig:ios_selectedFiles}
-\end{figure}
-\FloatBarrier
-
-\begin{figure}[htb]
-\addThreeImages{ios_convert1.PNG}{a}{ios_convert2.PNG}{b}{ios_convert3.PNG}{c}
-\caption{The select task screen.}
-\label{fig:ios_convert}
+\addThreeImages{ios_empty_make_process.jpg}{a}{ios_one_process.jpg}{b}{ios_many_process.jpg}{c}
+\caption{Create processes.}
+\label{fig:ios_make_process_view}
 \end{figure}
 \FloatBarrier
 
@@ -114,12 +116,12 @@ The annotations you select on the search-screen will also show in advanced searc
 \end{figure}
 \FloatBarrier
 
-\subsection{How to remove files from workspace}
-\begin{enumerate}
-\item Tap \click{Star}-symbol on the tab bar to view the workspace.
-\item Toggle the switch next to the file you want to remove.
-\item Tap \click{Trash can}-symbol to the upper right corner to remove the selected files. See \refer{fig:ios_selectedFiles}
-\end{enumerate}
+%\subsection{How to remove files from workspace}
+%\begin{enumerate}
+%\item Tap \click{Star}-symbol on the tab bar to view the workspace.
+%\item Toggle the switch next to the file you want to remove.
+%\item Tap \click{Trash can}-symbol to the upper right corner to remove the selected files. See \refer{fig:ios_selectedFiles}
+%\end{enumerate}
 
 \subsection{How to view process status on the server}
 
@@ -138,7 +140,7 @@ The annotations you select on the search-screen will also show in advanced searc
 \subsection{How to view information about a file}
 
 \begin{enumerate}
-\item In either workspace tab or files view, tap \click{information}-symbol next to the file to view information of the file.
+\item Tap \click{information}-symbol next to the file to view information of the file.
 \item Close by tapping \click{Close}. See \refer{fig:ios_files1}a-b
 \end{enumerate}
 
