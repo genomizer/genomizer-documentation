@@ -32,7 +32,9 @@
 \def\version{2.4}
 
 \def\json{\texttt{JSON}}
+\renewcommand{\fullref}[1]{\autoref{#1} on page \pageref{#1}}
 
+\renewcommand{\nomlabel}[1]{\textbf{\titlecap{#1}}}
 
 \newcommand{\appName}{\textit{Genomizer}}
 \newcommand{\addImage}[1]{\centering\includegraphics[width=\textwidth, keepaspectratio=true]{#1}}
@@ -47,6 +49,8 @@
 \newcommand{\term}[1]{\textit{#1}}
 \newcommand{\strongTerm}[1]{\textbf{\term{#1}}}
 \newcommand{\serverPort}{\texttt{7000}}
+\newcommand{\class}[1]{\texttt{#1}}
+
 \newcommand{\userstory}[2]{
 \begin{tabularx}{0.95\textwidth}{|X|}
 \hline
