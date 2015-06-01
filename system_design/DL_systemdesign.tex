@@ -57,20 +57,20 @@ The \texttt{Genome\_Release\_Files} table stores the information about the files
 \subsection{The Data Storage Subsystem}
 All the classes used in the manipulation of the database and the creation of the file systems directory structure is contained in the java project's \texttt{database} package.
 
-The other \appName\ subsystems execute all updates to the data storage through the \texttt{DatabaseAccessor} class. As a result there are many methods in this class, however most methods send the request on to the classes in the \texttt{database.subclasses} package. Here the methods that modify the different areas of the data storage system are broken up into different classes of a more manageable size. An UML diagram of the \texttt{DatabaseAccessor} class and its subclasses is available in \refer{fig:dat_dbac} in  \refer{chap:dat_umls}.
+The other \appName\ subsystems execute all updates to the data storage through the \class{DatabaseAccessor} class. As a result there are many methods in this class, however most methods send the request on to the classes in the \texttt{database.subclasses} package. Here the methods that modify the different areas of the data storage system are broken up into different classes of a more manageable size. An UML diagram of the \class{DatabaseAccessor} class and its subclasses is available in \refer{fig:dat_dbac} in  \refer{chap:dat_umls}.
 
-The \texttt{DatabaseAccessor} utilizes a number of classes in order to return information to the method caller. These classes are contained in the \texttt{database.containers} package and are as follows:
+The \class{DatabaseAccessor} utilizes a number of classes in order to return information to the method caller. These classes are contained in the \texttt{database.containers} package and are as follows:
 \begin{itemize}
-\item \texttt{Experiment}
-\item \texttt{FileTuple}
-\item \texttt{Annotation}
-\item \texttt{Genome}
+\item \class{Experiment}
+\item \class{FileTuple}
+\item \class{Annotation}
+\item \class{Genome}
 \end{itemize}
 
 An UML diagram of these classes is also available in \refer{fig:dat_containers} in \refer{chap:dat_umls}.
 
 \subsection{Interaction}
-Below are examples of typical interactions with the \texttt{DatabaseAccessor} class.
+Below are examples of typical interactions with the \class{DatabaseAccessor} class.
 
 \subsubsection{Adding an experiment}
 In order to add an annotated experiment the following steps must be followed:
@@ -79,7 +79,7 @@ In order to add an annotated experiment the following steps must be followed:
 
 \item If there are no annotations that can be used to provide extra information about the experiment they must first be added by calling the \texttt{addFreeTextAnnotation} or \texttt{addDropDownAnnotation} methods.
 
-\subitem If a \term{Drop Down} annotation already exists, but there is no suitable choice for the experiment a choice can be added by calling the \texttt{AddDropDownAnnotationValue} method.
+\subitem If a \term{Drop Down} annotation already exists, but there is no suitable choice for the experiment a choice can be added by calling the \texttt{addDropDownAnnotationValue} method.
 
 \item An available annotation can be used to provide extra information about an experiment by calling the \texttt{annotateExperiment} method.
 \end{enumerate}
