@@ -7,7 +7,7 @@ Each experiment contains files that were either generated during the experiment 
 The full database schema is shown in \refer{fig:dat_databaseSchema}. The tables and columns currently not utilized by \appName\ are in grey. These have not been removed from the database under expectation of future development.
 
 \begin{figure}[p]
-\addImageVertical{dat_database_schema_v2.png}
+\addImageVertical{dat_database_schema_v3.png}
 \caption{The database schema}
 \label{fig:dat_databaseSchema}
 \end{figure}
@@ -57,7 +57,7 @@ The \texttt{Genome\_Release\_Files} table stores the information about the files
 \subsection{The Data Storage Subsystem}
 All the classes used in the manipulation of the database and the creation of the file systems directory structure is contained in the java project's \texttt{database} package.
 
-The other \appName\ subsystems execute all updates to the data storage through the \class{DatabaseAccessor} class. As a result there are many methods in this class, however most methods send the request on to the classes in the \texttt{database.subclasses} package. Here the methods that modify the different areas of the data storage system are broken up into different classes of a more manageable size. An UML diagram of the \class{DatabaseAccessor} class and its subclasses is available in \refer{fig:dat_dbac} in  \refer{chap:dat_umls}.
+The other \appName\ subsystems execute all updates to the data storage through the \class{DatabaseAccessor} class. As a result there are many methods in this class, however most methods forwards the request to one of the classes in the \texttt{database.subclasses} package. Here the methods that modify the different areas of the data storage system are separated into different classes of more manageable sizes. An UML diagram of the \class{DatabaseAccessor} class and its subclasses is available in \refer{fig:dat_dbac} in  \refer{chap:dat_umls}.
 
 The \class{DatabaseAccessor} utilizes a number of classes in order to return information to the method caller. These classes are contained in the \texttt{database.containers} package and are as follows:
 \begin{itemize}
@@ -88,6 +88,8 @@ Now that an experiment has been added files can be added added to it.
 
 \subsubsection{Annotation Handling}
 
+Annotations can be handled using the methods below.
+
 \begin{tabular}{|l| p{7cm}|}
 \hline
 \term{getChoices} & gets all the available annotation choices connected to a specific label. For example the possible choices returned for the label "sex" might be "Male, Female and Unknown". \\ \hline
@@ -109,10 +111,15 @@ Now that an experiment has been added files can be added added to it.
 \end{tabular}
 
 \subsubsection{File Handling}
-To add a file you will need to have an experiment added before you call the \texttt{addNewFile} method. Raw files usually come in pairs and so they can be added together by specifying the input file name.
+The actions of adding and deleting experiment files or genome releases can be performed using the following methods.
 
-\texttt{deleteFile} deletes the given file from both the database and the file system. This can be done by either specifying the path or the file's ID number.
+\begin{tabular}{|l| p{7cm}|}
+\hline
+\term{addNewFile} & To add a file you will need to have an experiment added before you call the \term{addNewFile} method. Raw files usually come in pairs and so they can be added together by specifying the input file name. \\ \hline
 
-Genome release files must be added one at a time by calling the \texttt{addGenomeRelease} method. This returns an upload URL.
+\term{deleteFile} & Deletes the given file from both the database and the file system. This can be done by either specifying the path or the file's ID number. \\ \hline
 
-\texttt{removeGenomeRelease} removes all the files associated with a genome release. This can only be done if there are no files that have been generated using the specified genome release.
+\term{addGenomeRelease} & Genome release files must be added one at a time by calling the \term{addGenomeRelease} method. This method returns an upload URL. \\ \hline
+
+\term{removeGenomeRelease} & \term{removeGenomeRelease} removes all the files associated with a genome release. This can only be done if there are no files that have been generated using the specified genome release. \\ \hline
+\end{tabular}
