@@ -88,21 +88,25 @@ Now that an experiment has been added files can be added added to it.
 
 \subsubsection{Annotation Handling}
 
-\texttt{getChoices} gets all the available annotation choices connected to a specific label. For example the possible choices returned for the label "sex" might be "Male, Female and Unknown".
+\begin{tabular}{|l| p{7cm}|}
+\hline
+\term{getChoices} & gets all the available annotation choices connected to a specific label. For example the possible choices returned for the label "sex" might be "Male, Female and Unknown". \\ \hline
 
-\texttt{getAnnotations} returns all annotation labels currently stored in the database. Examples could be "Sex,Species,Tissue,etc.".
+\term{getAnnotations} & returns all annotation labels currently stored in the database. Examples could be "Sex,Species,Tissue,etc.". \\ \hline
 
-\texttt{getAllAnnotationObjects} Combines the two previous methods. Here an annotation object is returned that holds all the relevant information including the label, datatype, and the possible choices for a \term{Drop Down} annotation.
+\term{getAllAnnotationObjects} & Combines the two previous methods. Here an annotation object is returned that holds all the relevant information including the label, datatype, and the possible choices for a \term{Drop Down} annotation. \\ \hline
 
-\texttt{changeAnnotationLabel} updates the given label in the database. This will change the label for all experiments that use it. For example changing "specie" to "Species".
+\term{changeAnnotationLabel} & updates the given label in the database. This will change the label for all experiments that use it. For example changing "specie" to "Species". \\ \hline
 
-\texttt{changeAnnotationValue} updates a value for a specific annotation label. For example changing "Human" to "Homosapien".
+\term{changeAnnotationValue} & updates a value for a specific annotation label. For example changing "Human" to "Homosapien".  \\ \hline
 
-\texttt{updateExperiment} Updates an annotation for one specific experiment. Example: "experiment1, Species, Homosapien" can be changed to "experiment1, Species, Fly".
+\term{updateExperiment} & Updates an annotation for one specific experiment. Example: "experiment1, Species, Homosapien" can be changed to "experiment1, Species, Fly". \\ \hline
 
-\texttt{deleteAnnotation} deletes an unused annotation from the database. This will also delete all the choices for that annotation. 
+\term{deleteAnnotation} & deletes an unused annotation from the database. This will also delete all the choices for that annotation. \\ \hline
 
-\texttt{removeAnnotationValue} removes a single annotation value for a particular label.
+\term{removeAnnotationValue} & removes a single annotation value for a particular label. \\ \hline
+
+\end{tabular}
 
 \subsubsection{File Handling}
 To add a file you will need to have an experiment added before you call the \texttt{addNewFile} method. Raw files usually come in pairs and so they can be added together by specifying the input file name.
