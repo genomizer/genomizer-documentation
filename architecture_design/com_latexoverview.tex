@@ -6,6 +6,7 @@ The \appName\ is a server-client architecture. It consists of four different cli
 The web server is a \textit{Apache} system in the current implementation.
 
 \begin{figure}[h!]
+\centering	
 \begin{tikzpicture}[ 
 	font=\sffamily,
 	every matrix/.style={ampersand replacement=\&,column sep=0.5cm,row sep=0.5cm},
@@ -34,11 +35,11 @@ The web server is a \textit{Apache} system in the current implementation.
 	\draw[both] (genomizer) -- (db);
 
 \end{tikzpicture}
-\caption{Overview of the system architectur}
+\caption{Overview of the system architecture}
 \label{fig:archOverview}
 \end{figure}
 
-The connection to the server from any client goes through the web server which acts as a proxy aswell. This to insure a \textit{SSL} connection between the web server and the clients and a regular connection between the server and web server. The proxy protects the web client from \textit{XSS} (Cross site scripting). 
+The connection to the server from any client goes through the web server which acts as a proxy as well. This to insure a \textit{SSL} connection between the web server and the clients and a regular connection between the server and web server. The proxy protects the web client from \textit{XSS} (Cross site scripting). 
 
 All of the clients use the \term{RESTful} protocol where the message body consists of a \json\ object.
 These messages are requests that gets passed through the web server to the \appName\ server. The \appName\ server communicates with the database to perform the request. Then it generates a response following the \term{RESTful} protocol. The \term{RESTful} protocol is used to promise that the server will be state-less. State-less meaning that a request from a client can not lock the server for other clients requests. 

@@ -5,9 +5,6 @@ It also contains instructions on how to maintain the system in case problems ari
 \section{A brief introduction to
 vagrant}\label{a-brief-introduction-to-vagrant}
 
-Notice: Please consider talking to me before modifying the vagrant
-instaces.
-
 \subsection{Basic usage}\label{basic-usage}
 
 Vagrant is configured by a \texttt{Vagrant} file, which defines how the
@@ -66,7 +63,7 @@ and you will be logged in using ssh to the virtual machine.
 production}\label{systems-overview-of-production}
 
 The production server runs currently on \texttt{130.239.192.110}. The
-production server is construct of several virtual machines, configured
+production server is constructed of several virtual machines, configured
 by vagrant\footnote{Vagrant is a virtual machine configuration manager.
   The manual is available at https://docs.vagrantup.com/v2/}.
 
@@ -77,7 +74,7 @@ by vagrant\footnote{Vagrant is a virtual machine configuration manager.
 \end{figure}
 
 The system is entirely scripted, that is, everything can be set up using
-the scripts located in the vagrant git\footnote{Insert link here.}. The
+the scripts located in the vagrant git\footnote{git.cs.umu.se, access required.}. The
 scripts located under \texttt{scripts/provision} deal with the virtual
 environments, while the scripts under \texttt{scripts/environment} deal
 with the server, such as setting up the firewall and external
@@ -549,7 +546,8 @@ otherwise specified, they are located under \texttt{scripts/provision}.
   client to the apache server.
 \end{enumerate}
 
-If you are confused by what a script does, reading it is a good start.
+If you are confused by what a script does, reading it can give you a
+clearer picture of what it does.
 
 \subsection{Creating a new
 environment}\label{creating-a-new-environment}
