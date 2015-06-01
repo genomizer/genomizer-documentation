@@ -145,6 +145,8 @@ You can make the choice to download files to their local computer. If you press 
 
 %SYSADMIN START HERE...!
 \subsection{Administration}
+\subsubsection{annotation}
+
 The system administration tools for the desktop client is available under the Administration tab. There are two different tools: Annotation and Genome files. The annotation tab is the first sub tab in the Administration tab. Annotations are used for specifying properties of uploaded data. For example, if new data from an experiment done with rat tissue is uploaded, the data shuld have an annotation called "species" with the value "rat". The Annotations sub tab in the Administration tab gives you the tools to create, edit and remove annotations and annotation values. 
 \begin{figure}[htb]
 	\addImage{annotationsView.png}
@@ -169,8 +171,12 @@ To remove an annotation, you select an annotation from the table in the center o
 \caption{The remove annotation popup.}
 \label{fig:adm_desktopRemoveAnnotation}
 \end{figure}
+\subsubsection{Genome files}
 
-The genome files tab shown in \refer{fig:adm_desktopGenomeTab} contains a table with information about which genome release versions are stored on the server. If you click on one of the entries, a smaller frame is displayed at the bottom of the table showing which files are included in the selected genome release. To the right of the genome release tab are the tools for adding new genome releases. You can name the new genome release in the text field and you are then able to upload the files associated with that genome release. When the desired files are selected, progress bars representing the upload of those files appear at the bottom of the "Add Genome Release" frame. When you press "Upload", the upload of the selected files will commence and you can follow the upload progress from the progress bars. After the upload is finished, you will be notified of its success or failure with a message dialog.
+
+The genome files tab shown in \refer{fig:adm_desktopGenomeTab} contains a table with information about which genome release versions are stored on the server. If you click on one of the entries, a smaller frame is displayed at the bottom of the table showing which files are included in the selected genome release. To the right of the genome release tab are the tools for adding new genome releases. You can name the new genome release in the text field and you are then able to upload the files associated with that genome release. \\
+
+ When the desired files are selected, progress bars representing the upload of those files appear at the bottom of the "Add Genome Release" frame. When you press "Upload", the upload of the selected files will commence and you can follow the upload progress from the progress bars. After the upload is finished, you will be notified of its success or failure with a message dialog.
 Genome releases can also be removed by selecting the release version from the table and pressing the "Remove genome release" button which appears at the bottom of the table when a release version is selected. This will remove the genome release and all associated files.
 
 \begin{figure}[h!]
@@ -180,3 +186,16 @@ Genome releases can also be removed by selecting the release version from the ta
 \end{figure}
 
 If you want to add a new species to add or remove genome releases for, this can be done in the top right corner of the genome release tab. You simply writes the name of the new species and presses the "add" button and the species will be added to the "Species" annotation.
+
+
+\subsubsection{Users}
+
+The Users tab shown in \refer{fig:des_users} contains four different panels, one to create a new user, one to update an existing user, one to delete an existing user and one to show all the users. Just fill in all information in the text fields and press one of the buttons to do that command. There is three different kind of users, the Guest, User and the admin. The Admin is the only one to have access to this User tab.
+
+\begin{figure}[h!]
+\addImage{des_users.png}
+\caption{The Users admin view.}
+\label{fig:des_users}
+\end{figure}
+
+
