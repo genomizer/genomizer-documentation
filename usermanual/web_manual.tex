@@ -109,6 +109,19 @@ If some of the files that was going to be processed did for some reason fail the
 
 \subsubsection{The convert view} \label{sssec:convertView}
 
+The web application allows conversion between a number of file formats which both are of profile type. More specifically, the user may convert any of the file formats (bla bla bla) to either bla1 or bla2, with the exception that a file cannot be converted to the same file format.
+
+Assume that there is an experiment \class{ExampleExperiment} which contains a profile file \class{file.sam}. Then the experiment will show up in the search view, see \refer{fig:web_convert_searchExp}, when typing ”ExampleExperiment[ExpID]” as search query and then clicking the search button. If the user wants to convert \class{file.sam} to a new file of format \class{.wig} called \class{file.wig}, the following steps can be taken:
+\begin{itemize}
+	\item From the view in \refer{fig:web_convert_searchExp}., select \class{file.sam} by clicking in its checkbox.
+	\item Click the “Convert” button next to the search text field.
+	\item The user will now be taken to the convert view shown in \refer{fig:web_convert_convertView}.
+	\item Select \class{file1.sam} by clicking on it.
+	\item Mark the \class{.wig} checkbox in “Convert to” and click the “Convert” button.
+\end{itemize}
+
+The file conversion will now start on the server. Once the conversion is done, the user will be able to see \class{file.wig} listed together with the old file \class{file.sam}, as seen in \refer{fig:web_convert_searchExp2}.
+
 \subsubsection{The remove pop-up window}
 \begin{figure}[h]
 \centering
