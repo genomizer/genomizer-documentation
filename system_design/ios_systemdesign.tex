@@ -43,7 +43,9 @@ Parses experiment information from a NSDictionary to an Experiment object.
 \term{FileContainer} &
 Contains files and sorts them by file type.
 \\ \hline
-
+\term{HTTP} &
+Handles the server connection.
+\\ \hline
 \term{JSONBuilder} &
 Creates different JSON requests.
 \\ \hline
@@ -65,7 +67,7 @@ A controller class for the The selected files view shown in \refer{fig:ios_selec
 \\ \hline
 
 \term{ServerConnection} &
-Sends and receives JSON objects to and from the server.
+Handles sending JSON objects to the HTTP class and receives and handles JSON objects from the server.
 \\ \hline
 \end{tabularx}
 

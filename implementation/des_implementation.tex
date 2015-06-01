@@ -1,15 +1,14 @@
-The desktop client is implemented in java 7. The graphical part of the client is made with java swing and the external library swingx. The tree table which is used in the grapical interface is implemented using a modified version of the JxTreeTable found in swingx. The modifications made to the JxTreeTable is that a sorting mechanism has been added and it is possible for the user to choose which columns to show.
+The desktop client is implemented in \texttt{java 7}. The graphical part of the client is made with java \textit{swing} and the external library \textit{swingx}. The tree table which is used in the grapical interface is implemented using a modified version of the \texttt{JxTreeTable} found in \textit{swingx}. The modifications made to the \texttt{JxTreeTable} is that a sorting mechanism has been added and it is possible for the user to choose which columns to show. Other packages needed for the user interface include the \texttt{MIG-layout} layout-manager.
 
-The communication with the server is handled with a http protocol involving \json-formatted bodies. The external library GSON and the Apache Http Client are used for the communication.
+The communication with the server is handled with a \texttt{http} protocol involving \texttt{\json}-formatted bodies. The external library \texttt{GSON} and the \textit{Apache Http Client} are used for the communication. Connections are done over the ecrypted \texttt{SSL} communication layer, using \texttt{java(x).net} modules. The \texttt{SSL}-certificates are however never verified, and validated ones not used, limiting the security provided.
 
-For dragging and dropping files into the upload tab, the desktop client uses a modified version of the class FileDrop, which was originally written by Robert Harder and Nathan Blomquist and was released as public domain.
+For dragging and dropping files into the upload tab, the desktop client uses a modified version of the class \textit{FileDrop}, which was originally written by Robert Harder and Nathan Blomquist and was released as public domain.
 
 \subsection{Testing}
 
-The testing of the system has been quite varied since a large part of the desktop client consists of a graphical interface. The graphical part of the client was tested throughout the developing process and the customers also had a part in testing the interface. Another difficult part of the testing was the communication with the server. A part of it was tested with JUnit tests but the larger part of the testing was made manually by interacting with the GUI and communicating manually with the server.
+The testing of the system has been quite varied since a large part of the desktop client consists of a graphical interface. The graphical part of the client was tested throughout the developing process and the customers also had a part in testing the interface. Another difficult part of the testing was the communication with the server. A part of it was tested with JUnit tests but the larger part of the testing was made manually by interacting with the \textit{GUI} and communicating manually with the server.
+A number of \textit{JUnit} tests has been created concerning communication with server \textit{API}.
 
-Since the client were developed using the Scrum developing methodology, testing were an important part of the development. The client were built by using Test Driven Development, so all functionality should have been tested thoroughly during development. Use cases were later put together to further test the implementation and to make sure the program is working as intended.
-
-A small number of JUnit tests has been done concerning communication with server API.
+Use cases of most functionality were put together to further formalize the testing of the implementation and to make sure the program is working as intended. These will also show all supported functionality in the system.
 
 \FloatBarrier

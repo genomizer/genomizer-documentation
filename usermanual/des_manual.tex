@@ -5,14 +5,14 @@ also runs on Windows or Mac, and will follow the design principles thereafter.
 Because of this, some details of the look of the client may vary, but the functionality is the same.
 
 \subsection{Login and startup}
-When you start this application the first thing that's displayed is a login screen, as illustrated in \refer{fig:des_login-pic}. In this screen you enter your username, password and the IP-Address for the server and then press enter or login to enter the \appName\ Desktop.
+When you start this application the first thing that's displayed is a login screen, as illustrated in \refer{fig:des_login-pic}. In this screen you enter your username, password and the IP-Address for the server and then press the login button to enter the \appName\ Desktop.
 
 \begin{figure}[h!]
 	\addScaledImage{0.4}{des_login_picture.png}
 	\caption{Screenshot of the login screen.}
 	\label{fig:des_login-pic}
 \end{figure}
-The application is built with tabs, as illustrated below in \refer{fig:des_tabs-view}. Each tab contains separate features of the application. There are five tabs: Search, Upload, Process, Workspace and Administration.
+The application is built with tabs, as illustrated below in \refer{fig:des_tabs-view}. Each tab contains separate features of the application. There are seven tabs: Search, Upload, Process, Workspace, Administration, Convert and Settings.
 \begin{figure}[htb]
 	\addImage{des_tabs.png}
 	\caption{Illustration of the different tabs of \appName Desktop and displaying the Search tab.}
@@ -21,7 +21,10 @@ The application is built with tabs, as illustrated below in \refer{fig:des_tabs-
 \FloatBarrier
 
 \subsection{Search}
-The first tab you see after logging in is the Search tab, illustrated in \refer{fig:des_search-query}. The Search tab uses the same query building technique as the “Pubmed Advanced Search Builder”\cite{des_3}. It has one text field where you either can type in the query yourself or you can use the query builder below it to build the query. To switch between manually editing the query and using the query builder there are two radio buttons to the left of the text field. Each row in the query builder has at most five components. These are a logical expression, an annotation name field, a free text field or a drop down menu to insert search words, a minus button and a plus button. The plus button is only available in the last row and it adda another row to the query. The minus button is used to remove a row and it exists on every row except if there is only one row in the query. The logical expressions combines the annotations, so they are available in every row but the first.
+The first tab you see after logging in is the Search tab, illustrated in \refer{fig:des_search-query}. The Search tab uses the same query building technique as the “Pubmed Advanced Search Builder”\cite{des_3}. It has one text field where you either can type in the query yourself or you can use the query builder to build the query. \\
+
+To switch between manually editing the query and using the query builder there are two radio buttons to the left of the text field. Each row in the query builder has at most five components. These are a logical expression, an annotation name field, a free text field or a drop down menu to insert search words, a minus button and a plus button. The plus button is only available in the last row and it adda another row to the query. The minus button is used to remove a row and it exists on every row except if there is only one row in the query. The logical expressions combines the annotations, so they are available in every row but the first. \\
+
 By writing in the annotation text field or selecting a value in the drop down menu you can specify the query the row will produce. Together each row builds a full query. As illustrated in \refer{fig:des_search-query} below.
 \begin{figure}[htb]
 	\addImage{des_search_tab.png}
@@ -30,7 +33,11 @@ By writing in the annotation text field or selecting a value in the drop down me
 \end{figure}
 \FloatBarrier
 \subsubsection{Search results}
-When you press the search button the search tab will change it's view to display the search results as illustrated in \refer{fig:des_search-results}. The results are displayed as experiments in a tree table. Each row is an experiment that cn be expanded to show more information and the files associated with the experiment. The tree table can be sorted both vertically by clicking the headings and horizontally by dragging and dropping the columns. You can choose which columns to display by using the menu in the upper right corner of the table. In the same menu there are also buttons for expanding and collapsing all experiments in the search results. To go back to the previous view, you can click the \emph{Back} button. There is also a button called \emph{Add to workspace} for adding the selected files or experiments to the workspace. The last button, \emph{Upoad to experiment} is used to upload more files to an experiment.
+When you press the search button the search tab will change it's view to display the search results as illustrated in \refer{fig:des_search-results}. The results are displayed as experiments in a tree table. Each row is an experiment that can be expanded to show more information and the files associated with the experiment. \\
+
+The tree table can be sorted both vertically or horizontally by clicking the headings or by dragging and dropping the columns. You can choose which columns to display by using the menu in the upper right corner of the table. In the same menu there are also buttons for expanding and collapsing all experiments in the search results. \\
+
+To go back to the previous view, you can click the \emph{Back} button. There is also a button called \emph{Add to workspace} for adding the selected files or experiments to the workspace. The last button, \emph{Edit experiment} is used to upload more files to an experiment or to edit information in the marked experiment.
 
 \begin{figure}[htb]
 	\addImage{des_search_res.png}
@@ -41,7 +48,7 @@ When you press the search button the search tab will change it's view to display
 
 \subsection{Upload}
 If you need to upload files to the database it can be done through the upload tab. When the tab is pressed you get presented with a button to create a new experiment shown in figure \ref{fig:des_upload-tab}.
-\newpage
+
 \begin{figure}[h!]
 	\addImage{des_upload_tab.png}
 	\caption{Illustration of the starting view of the upload tab.}
@@ -49,7 +56,11 @@ If you need to upload files to the database it can be done through the upload ta
 \end{figure}
 \subsubsection{Existing experiment}
 \label{sec:des_exists}
-In order to upload files to an existing experiments you need to search for the experiment in the search tab and then press the \emph{Upload to experiment} button. When this is done the experiment information get retrieved from the server and presented to you. For an existing experiment no editing of the annotations can be done at the moment. So after retrieving the wanted experiment you can press the "Browse files"-button to add files to the experiment. Then a file browser window pops up, it is illustrated in figure \ref{fig:des_upload}. Here you cn select the files you want to add to the experimant. The files will be added to the upload tab and there will be some new choices available for you. Each file  will be associated with one file row, this is also shown in \ref{fig:des_upload-exists}. The new choices are whether the new files are either raw, region or profile files. And if it is region or profile there is another choice for which genome release. There is also the possiblity to delete the file row, by clicking the "X"-button, in case this file is not suppose to be added to the experiment. After all is decided and the files are correct you simply click the "Upload files"-button. Then the progress bar starts to progress and if all goes well it will reach 100\% and the files is added to the existing experiment.
+In order to edit files or upload files to an existing experiment you need to search for the experiment in the search tab and then press the \emph{Edit experiment} button. When this is done the experiment information get retrieved from the server and presented to you. \\
+
+To edit the experiment, change the annotation values and press the \emph{Save changes} button. To add files to the wanted experiment you can press the "Browse files"-button to add files to the experiment. Then a file browser window pops up, it is illustrated in figure \ref{fig:des_upload}. Here you can select the files you want to add to the experiment. The files will be added to the upload tab and there will be some new choices available for you. Each file  will be associated with one file row, this is also shown in \ref{fig:des_upload-exists}. \\
+
+The new choices are whether the new files are either raw, region or profile files. And if it is region or profile there is another choice for which genome release. There is also the possiblity to delete the file row, by clicking the "X"-button, in case this file is not suppose to be added to the experiment. After all is decided and the files are correct you simply click the "Upload files"-button. Then the progress bar starts to progress and if all goes well it will reach 100\% and the files is added to the existing experiment.
 
 \begin{figure}[h!]
 	\addImage{des_upload_existing.png}
@@ -59,8 +70,10 @@ In order to upload files to an existing experiments you need to search for the e
 \newpage
 \subsubsection{New experiment}
 \label{sec:des_create}
-The first thing you need to do when creating a new experiment is pressing the "Create new experiment"-button in the upload tab. After pressing this button all the different annotations get retrieved from the server. If the annotation is of the type that should be filled with text there is an textfield to be filled out, and if it's a multiple choice annotation there is a dropdown menu of the different choices. The annotations who have bold text are forced and needs to be filled out in order to create the experiment. There are also three buttons added to the view. This is illustrated in \ref{fig:des_upload-new}. In order to add files to this experiment you need to press the "Browse files"-button where a filebrowser appears and choose which files are to be added. When the files are added they each get displayed in a file row. The file row consists of the file name and a progress bar. And apart from this there are also three button and a checkbox. The checkbox will be explained in section \ref{sec:des_batch} below. The other three button are used in the same manner as in section \ref{sec:des_exists} above. When all the annotations that are needed is filled and the associated files are added you press the "Create with all files"-button to create the experiment. The "Create experiment with selected files"-button is discussed in section \ref{sec:des_batch} below.
-\\
+The first thing you need to do when creating a new experiment is pressing the "Create new experiment"-button in the upload tab. After pressing this button all the different annotations get retrieved from the server. If the annotation is of the type that should be filled with text there is an textfield to be filled out, and if it's a multiple choice annotation there is a dropdown menu of the different choices. The annotations who have bold text are forced and needs to be filled out in order to create the experiment. There are also three buttons added to the view. This is illustrated in \ref{fig:des_upload-new}. In order to add files to this experiment you need to press the "Browse files"-button where a filebrowser appears and choose which files are to be added. When the files are added they each get displayed in a file row. The file row consists of the file name and a progress bar. \\
+
+ Apart from the add experiments there are also three buttons and a checkbox. The checkbox will be explained in section \ref{sec:des_batch} below. The other three buttons are used in the same manner as in section \ref{sec:des_exists} above. When all the annotations that are needed is filled in and the associated files are added you press the "Create with all files"-button to create the experiment. The "Create experiment with selected files"-button is discussed in section \ref{sec:des_batch} below. \\
+
 \begin{figure}[h]
 	\addImage{des_upload_new.png}
 	\caption{Illustration of the create new experiment part of the upload tab.}
@@ -69,7 +82,9 @@ The first thing you need to do when creating a new experiment is pressing the "C
 \subsubsection{Batch upload experiments}
 \label{sec:des_batch}
 In order to batch upload experiment the workflow of this application is suggested as follows:
-You start of as when uploading one experiment, as explained in \ref{sec:des_create}. But instead of choosing the wanted files for that experiment you choos all the files that are supposed to be uploaded to all the different experiments that are supposed to be created. You then starts to fill in the annotaions for the first experiment and selects the files that is going to be used in the experiment by checking the select field. After the files are selected you need to press the "Create experiment with selected files"-button. This creates the first experiment and starts to upload the selected files to it. And after the experiment is created, you can change the annotations  needed for the second experiment and then select the files for that experiment in the same manner. You can then click the "Create experiment with selected files"-button again and change the annotations to match the third experiment and the select the files for it and starts the upload. Every file that is uploaded is removed from the list of files. 
+You start of as when uploading one experiment, as explained in \ref{sec:des_create}. But instead of choosing the wanted files for that experiment you choose all the files that are supposed to be uploaded to the experiments. You then starts to fill in the annotaions for the first experiment and selects the files that is going to be used in the experiment by checking the select field. After the files are selected you need to press the "Create experiment with selected files"-button. This creates the first experiment and starts to upload the selected files to it. \\
+
+After the experiment is created, you can change the annotations needed for the second experiment and then select the files for that experiment. You can then click the "Create experiment with selected files"-button again and change the annotations to match the third experiment and the select the files for it and start the upload. Every file that is uploaded is removed from the list of files. 
 
 \begin{figure}[h]
 	\addScaledImage{0.5}{des_upload_select.png}
@@ -130,6 +145,8 @@ You can make the choice to download files to their local computer. If you press 
 
 %SYSADMIN START HERE...!
 \subsection{Administration}
+\subsubsection{annotation}
+
 The system administration tools for the desktop client is available under the Administration tab. There are two different tools: Annotation and Genome files. The annotation tab is the first sub tab in the Administration tab. Annotations are used for specifying properties of uploaded data. For example, if new data from an experiment done with rat tissue is uploaded, the data shuld have an annotation called "species" with the value "rat". The Annotations sub tab in the Administration tab gives you the tools to create, edit and remove annotations and annotation values. 
 \begin{figure}[htb]
 	\addImage{annotationsView.png}
@@ -154,8 +171,12 @@ To remove an annotation, you select an annotation from the table in the center o
 \caption{The remove annotation popup.}
 \label{fig:adm_desktopRemoveAnnotation}
 \end{figure}
+\subsubsection{Genome files}
 
-The genome files tab shown in \refer{fig:adm_desktopGenomeTab} contains a table with information about which genome release versions are stored on the server. If you click on one of the entries, a smaller frame is displayed at the bottom of the table showing which files are included in the selected genome release. To the right of the genome release tab are the tools for adding new genome releases. You can name the new genome release in the text field and you are then able to upload the files associated with that genome release. When the desired files are selected, progress bars representing the upload of those files appear at the bottom of the "Add Genome Release" frame. When you press "Upload", the upload of the selected files will commence and you can follow the upload progress from the progress bars. After the upload is finished, you will be notified of its success or failure with a message dialog.
+
+The genome files tab shown in \refer{fig:adm_desktopGenomeTab} contains a table with information about which genome release versions are stored on the server. If you click on one of the entries, a smaller frame is displayed at the bottom of the table showing which files are included in the selected genome release. To the right of the genome release tab are the tools for adding new genome releases. You can name the new genome release in the text field and you are then able to upload the files associated with that genome release. \\
+
+ When the desired files are selected, progress bars representing the upload of those files appear at the bottom of the "Add Genome Release" frame. When you press "Upload", the upload of the selected files will commence and you can follow the upload progress from the progress bars. After the upload is finished, you will be notified of its success or failure with a message dialog.
 Genome releases can also be removed by selecting the release version from the table and pressing the "Remove genome release" button which appears at the bottom of the table when a release version is selected. This will remove the genome release and all associated files.
 
 \begin{figure}[h!]
@@ -165,3 +186,16 @@ Genome releases can also be removed by selecting the release version from the ta
 \end{figure}
 
 If you want to add a new species to add or remove genome releases for, this can be done in the top right corner of the genome release tab. You simply writes the name of the new species and presses the "add" button and the species will be added to the "Species" annotation.
+
+
+\subsubsection{Users}
+
+The Users tab shown in \refer{fig:des_users} contains four different panels, one to create a new user, one to update an existing user, one to delete an existing user and one to show all the users. Just fill in all information in the text fields and press one of the buttons to do that command. There is three different kind of users, the Guest, User and the admin. The Admin is the only one to have access to this User tab.
+
+\begin{figure}[h!]
+\addImage{des_users.png}
+\caption{The Users admin view.}
+\label{fig:des_users}
+\end{figure}
+
+
