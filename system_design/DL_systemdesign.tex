@@ -75,13 +75,13 @@ Below are examples of typical interactions with the \class{DatabaseAccessor} cla
 \subsubsection{Adding an experiment}
 In order to add an annotated experiment the following steps must be followed:
 \begin{enumerate}
-\item First the \texttt{addExperiment} method must be called. This will add one experiment to the database without any annotations set for that experiment. If you try to add one experiment that already exist then the addition will be refused and an exception will be thrown.
+\item First the \term{addExperiment} method must be called. This will add one experiment to the database without any annotations set for that experiment. If you try to add one experiment that already exist then the addition will be refused and an exception will be thrown.
 
-\item If there are no annotations that can be used to provide extra information about the experiment they must first be added by calling the \texttt{addFreeTextAnnotation} or \texttt{addDropDownAnnotation} methods.
+\item If there are no annotations that can be used to provide extra information about the experiment they must first be added by calling the \term{addFreeTextAnnotation} or \term{addDropDownAnnotation} methods.
 
-\subitem If a \term{Drop Down} annotation already exists, but there is no suitable choice for the experiment a choice can be added by calling the \texttt{addDropDownAnnotationValue} method.
+\subitem If a \term{Drop Down} annotation already exists, but there is no suitable choice for the experiment a choice can be added by calling the \term{addDropDownAnnotationValue} method.
 
-\item An available annotation can be used to provide extra information about an experiment by calling the \texttt{annotateExperiment} method.
+\item An available annotation can be used to provide extra information about an experiment by calling the \term{annotateExperiment} method.
 \end{enumerate}
 
 Now that an experiment has been added files can be added added to it.
