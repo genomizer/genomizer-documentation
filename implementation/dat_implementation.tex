@@ -23,7 +23,7 @@ The \class{DatabaseAccessor} uses helper classes to execute \term{SQL} queries. 
 \item Genome methods
 \item User methods
 \end{itemize}
-These classes execute the basic \term{SQL} functions create, read, update and delete (CRUD). The use of \term{prepared statements} (also known as parameterized queries) safeguards against \term{SQL} injection.
+These classes execute the basic \term{SQL} functions create, read, update and delete (CRUD). The use of \term{prepared statements} (also known as parameterized queries) safeguards against \term{SQL} injection. When modifications to more than one relation are made from a single method, transactions are used to not put the database in an inconsistent state.
 
 \subsubsection{Helpers}
 The creation of folders is handled by the \class{FilePathGenerator} class. Folders are created for a new experiment when the experiment is added to the database, including subfolders in preparation of files to be uploaded. All files are divided into folders corresponding to experiment id, except for genome release files that are divided in regards to species.
