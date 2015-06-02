@@ -6,5 +6,10 @@
 *.lyx
 *.sh
 *.fdb_latexmk
+*.syntex.*
 *.synctex.*
 *~
+*.ilg
+*.nls
+*.nlo
+.nfs*

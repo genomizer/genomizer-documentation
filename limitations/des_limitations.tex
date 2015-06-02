@@ -1,0 +1,60 @@
+
+
+\subsection{Desktop}
+
+	Some of these following issues are better documented via \textit{GIT} issues.
+
+\subsubsection{Cosmetic Issues}
+	Some cosmetic and usability issues of the GUI is described below.
+
+	\paragraph{ Component size and resize }
+		The components making up the GUI will in several places not have well adapted sizes, making them more difficult to use than is neccessary. Several will also not resize correctly together with the main window, due to bad layout managers used.
+		
+	\paragraph{ Repainting status and selectors not direct  }
+		When for example hovering over selector arrows, or doing something that updates the status panel, the GUI element in question might not automatically update its visible part, due to not calling repaint at the correct time.
+		
+	\paragraph{ Flickering tab panes }
+		Some GUI elements seem to flicker on mouseover, or update at incorrect times. This might lead to minor inconvenience or irritation for the user.
+		
+	\paragraph{ Feedback limited }
+		The feedback on some operations is rather limited, and the only way to make sure whether some things worked is to reload the data from the search panel and check.
+		
+	% Sizes of components and resizing
+	% Repainting issues
+	% Flickering tab-panes
+	% Limited feedback of some parts
+
+\subsubsection{Event Dispatch and Threads}
+	Some more serious threading issues are described in the following sections.
+
+	\paragraph{ Threading solutions }
+		The threading solutions are at several places very messy and not very well understood. It might not be thread-safe, and at some, rare, times give the user issues. A complete overhaul and restructuring might be neccessary.
+		
+	\paragraph{ The event dispatch }
+		The \textit{swing} event dispatch thread should be used for all GUI related operations. It is not correctly used so at all places. This leads to rare issues with certain panels not loading as expected. 
+		Until the threading is restructured, the workaround is to simply reload the application. 	
+	
+	% Threading solutions broken
+	% Rarely does give issues, like not loading panels!
+
+\subsubsection{Transfer Handling}
+	The communication and transfer of data to the server has some known issues, described below.
+		
+		\paragraph{ Empty files }
+			Empty files might not be up/down-loaded correctly, or these processes not started at all. 
+			
+		\paragraph{ Feedback }
+			The feedback for when uploading a large file might not be appropriate, or come at the expected time. The same might hold for the download. Generally, the feedback for file transfers could be improved. The system status could also be updated better.
+			
+		\paragraph{ Limitations and restrictions }
+			Some restrictions of what names and values are allowed exist, and controlled by the server. These include dissallowing certain file-names, and extensions.
+			
+				
+		
+
+	% Empty file
+	% Large file feedback
+	% System status update
+	% Limitations and restrictions
+	
+	
