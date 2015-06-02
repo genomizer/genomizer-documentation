@@ -1,0 +1,137 @@
+The \textit{genomizer-server-tester} is a separate program from the rest of the server system that uses parts from
+the desktop clients code. The purpose of the program is to in sequence execute all possible commands that the server should be able to handle.
+
+The program was given a repository under the main \textit{genomizer} repository. The repository is named \textit{genomizer-server-tester}. 
+
+\section{User guide}
+The repository contains the a build script that creates a jar of the program with the help of \textit{Ant} as follows:
+\begin{verbatim}
+ant jar
+\end{verbatim}
+
+The program then is ran with the help of one argument which is the address of the server.
+\begin{verbatim}
+java -jar genomizer-server-tester.jar <address>
+\end{verbatim}
+
+The address supplied has to be \texttt{https://} followed by a \texttt{/api} to redirect the program right.
+
+The program then runs a mulitple of pre-defined tests and prints the result on standard output.
+
+\begin{example}
+	\begin{verbatim}
+		...
+		...
+		...
+		--------------- USER ----------------------
+		TEST: POST ADMIN USER 		STATUS: SUCCESS
+		TEST: DELETE ADMIN USER     STATUS: FAILED
+		.
+		.
+		.
+		-------------------------------------------
+		Total tests run: 113
+		Successfull tests: 109
+		Failed tests: 4
+		-------------------------------------------
+		Failed:
+		DELETE ADMIN USER
+		-------------------------------------------
+		
+	\end{verbatim}
+\end{example}
+
+
+\section{Program structure}
+The program uses the desktop style for upload, requests and connection so the tests ran will give some feedback to desktop code as well.
+
+The tests is built with the help of two classes \class{SuperTestClass} and \class{TestCollection}.
+\class{TestCollection} contains a list of \class{SuperTestClass} and has an execute where it runs tests.
+
+The \class{SuperTestClass} insures that for each tests constructed the test promises to have at least three things, some have a forth.
+
+\begin{enumerate}
+	\item The test has a identifier string.
+	\item The test has a expected result.
+	\item The test has a execute method.
+	\item Some test has a expected result string to match the result received from the server.
+\end{enumerate}
+
+\subsection*{Example}
+First each test has to have a collection.
+\begin{verbatim}
+public class CollectionExample extends TestCollection {
+	private String testName;	
+	
+	public CollectionExample () {
+		super()
+		this.testName = "test";
+		
+		super.commandList.add(new exampleTest("IDENT", true));
+	}
+	
+	@Override
+	public boolean execute() {
+		System.out.println("------------ TEST COLLECTION -----------");
+		boolean bigResult = true;
+		
+		for(SuperTestCommand stc: super.commandList) {
+			stc.execute();
+			
+			runTests++;
+			
+			boolean succeeded = stc.finalResult == stc.expectedResult;
+
+            if (succeeded){
+                succeededTests++;
+            } else {
+                failedTests++;
+                nameOfFailedTests.add(stc.ident);
+                bigResult = false;
+            }
+
+            Debug.log(stc.toString(), succeeded);
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }			
+			
+		}
+		return bigResult;
+	}
+}
+\end{verbatim}
+
+Then construct a test.
+
+\begin{verbatim}
+public class ExampleTest extends SuperTestCommand {
+	
+	public ExampleTest(String ident, boolean expectedResult) {
+		super(ident, expectedResult);
+	}
+	
+	@Override
+	public void execute() {
+		try {
+			CommandTester.conn.sendRequest(new SearchRequest(""),
+                    CommandTester.token, Constants.JSON);
+
+            if (CommandTester.conn.getResponseCode() == 200){
+                super.finalResult = true;
+            }
+        } catch (RequestException e) {
+            if (super.expectedResult) ErrorLogger.log(e);
+        }
+   }
+   
+}
+\end{verbatim}
+And finally add the test to the \texttt{CommandTester.java}.
+
+\begin{verbatim}
+	CollectionExample ex = new CollectionExample();
+	ex.execute();
+\end{verbatim}
+
