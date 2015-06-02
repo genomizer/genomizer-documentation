@@ -1,40 +1,59 @@
-\subsection{Moving backwards in the browser does not hide modal windows}
-When navigating to a modal window the URL is updated, and added to the browser history. When using the browser back-button the modal is not closed, but the URL is still updated. \\
-\\
- Modify ModalAC and the router
 \subsection{Error handling when uploading experiments}
-If there is an error when adding files to an experiment the experiment collapses so the user won't get a chance to correct it's mistake \\
-\\
+If there is an error when adding files to an experiment the experiment collapses so the user won't get a chance to correct their mistake 
+
 Start uploads of files when all files have been added without errors. 
+
 \subsection{Old authorization token causes page redirect}
-If the authorization token expires the user will be sent to the login screen and any input entered will dissapear. \\
-\\
-Show login modal without redirecting to root url and save errorous ajax-request and resend it when the login has been completed.
+If the authorization token expires the user will be sent to the login screen and any input entered will disappear.
+
+Show login modal without redirecting to root url and save erroneous ajax request and resend it when the login has been completed.
+
 \subsection{Code duplication in SearchResults and Experiments}
-The collections SearchResults and Experiments represents the same models. But are different collections as they have different URL. It might be better to have the both use the same collection. \\
-\\
+The collections SearchResults and Experiments represents the same models. But are different collections as they have different URL. It might be better to have the both use the same collection.
+
 Merge SearchResults and Experiments one collection.
+
 \subsection{No warning when closing tab during upload.}
-If a upload is in progress, there is no warning when closing the tab and the upload is canceled directly. \\
-\\
+If a upload is in progress, there is no warning when closing the tab and the upload is canceled directly.
+
 There are some code for this in view/Upload.js, but it's currently broken.
-\\
+
 \subsection{Uploading genome release - does not update list automatically}
-After adding a genome release the list does not update automatically. \\
-\\
+After adding a genome release the list does not update automatically.
+
 Build functionality to render when upload is done. 
+
 \subsection{The annotation list can't be sorted}
-The annotation list should be re-ordered by clicking on table headers. \\
-\\
+The annotation list should be re-ordered by clicking on table headers.
+
 Rebuild list to match design of GenomeReleaseView. We had some problems as we are using a separate list for the search-bar.
-\subsection{Sidebar on adminpage dosen't stay vertical}
-The sidebar items goes horizontally when page width is 2480px. \\
-\\
-CSS the sidebar better. 
-\subsection{Missing error check on annotation values}
-It is possible to add one space as annotation value (and name) \\
-\\
-The server should check for such faults, otherwise some regex code should go around line 70 in NewAnnotationView
+
 \subsection{No warning when closing tab during uploading genome releases}
-If a upload is in progress, there is no warning when closing the tab and the upload is canceled directly. \\
-\\
+If an upload is in progress, there is no warning when closing the tab and the upload is cancelled directly.
+
+\subsection{The page have to be refreshed after adding a new annotation}
+If the page is not refreshed, the annotation will not be visible in any view,
+which is a problem especially when the annotation is forced.
+
+\subsection{Closing raw processing status window does not stop update JSON messages to be sent}
+Having the processing status window open is correctly causing JSON objects
+reporting the processing status to be sent continuously, but closing the
+window does not stop the objects from being sent. 
+
+\subsection{Pressing ''select all'' in the convert view allows reconversion}
+Files are not supposed to be converted several times, but when ''select all''
+is pressed, the GUI allows for files that has already been converted to be
+marked again.
+
+Change the behaviour of the ''select all'' button.
+
+\subsection{Pressing ''upload experiment'' when editing an experiment causes
+the ''update annotations'' button to stop working}
+Should be clickable at all times during editing of an already existing 
+experiment, perhaps the ''upload experiment'' button should only be clickable
+when new files are added.
+
+\subsection{File selection in process view should be improved}
+A file that results from one processing step should turn up in the selection
+menu of the subsequent processing steps. Now, mainly simple text fields are used.
+
