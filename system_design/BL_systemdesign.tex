@@ -1,39 +1,76 @@
 
 \label{chap:com_systemdesign}
-The server is based around a \texttt{RESTful} protocol, where clients send requests on a non-persistent connection and the server responds to these requests. All communication is initiated by the client and the server has no way of contacting clients except when responding to a request. Clients send requests to the communication part of the server first. When a request is recognized by the server, the request is parsed and a command is created depending on the request. The command then communicates with the other parts of the server in order to extract or input relevant data.
+The server is based around a \texttt{RESTful} protocol where all communication is handled over non-persistent connections which the clients initiate. Since the communication is non-persistent, the server has no way of contacting clients except for responding to requests. When a client wants to connect it sends the request to a proxy, which only accepts encrypted trafic, that is then forwarded to the actual server. Once inside the server, the request is parsed, executed and a response is sent back to the proxy which forwards the message back to the client. 
 
-To identify clients a unique token is used, which is generated when a user logs in by comparing the sent password with the password on the server. The password is stored in a sha-256 hashed and salted string on the server. The password is sent from the client in plain text.
+To uniquely identify different logins a token is generated when a user logs in, the client now should identify itself with this token in all other requests for them to be executed. Otherwise, the server will not recognize who the client
+is and therefore can't know what server commands the client has permissions to execute. 
 
-The token is sent back to the client, and the client must include this token with all following requests. Since there is no persistent connection between the client and the server this token is the only way for the server to identify the sender for any given request. The token is also used to prevent unauthorized requests from being executed on the server.
+Most commands are executed immediately when ther server recieves it, and the result is sent back as soon as the command is finished. There are however an exception to this, the processcommand, which is put in the back of a queue instead of being executed. The server continuously takes work from this queue and executes them as fast as it can, but due to the huge computing power requirement it cannot do them all at the same time. 
 
-Most commands are executed immediately when the server gets a request, and the result is sent back to the client when the command is finished. This happens when for example searching the database. To take away some effort from the rest of the system, a queue with all the heavy ProcessCommands runs on another thread. These commands are executed one at a time in the order first in first out.
+For a visual reference of the flow between the different parts of the system, see \fullref{fig:com_systemoverview}.
 
-The commands implemented for the server are:
+\paragraph*{Server Commands}
+
+The following 11 items are the main categories of commands that can be sent: 
 
 \begin{itemize}
-	\item $login$
-	\item $search$
-	\item $annotation$
-	\item $experiment$
-	\item $file$
-	\item $process$
-	\item $genomeRelease$
+	\item \textit{Connection}
+	\item \textit{Experiment}
+	\item \textit{Files}
+	\item \textit{File conversion}
+	\item \textit{Search}
+	\item \textit{User}
+	\item \textit{Admin}
+	\item \textit{Processing}
+	\item \textit{Annotation}
+	\item \textit{Genome release}
+	\item \textit{File upload/download}
 \end{itemize}
 
-The way the calls flow in may be seen in figure \fullref{fig:com_systemoverview}.
+Connection handles the \textit{Login} and \textit{Logout} commands, which are self-explanatory in their functions. There is also
 
-The $login$ command can take either a $'POST'$ method or $'DELETE'$ method, depending on if the user wants to log in or log out.
+\subparagraph*{Connection}
 
-$search$ is used for searching for experiments in the database. Results will display all experiments which match the search query, and the user can chose o expand these experiments in order to view the containing files.
+Connection handles the \textit{Login} and \textit{Logout} commands, which are self-explanatory in their functions. There is also a deprecated command which can be used, but should not, to check if the clients token is still valid or if it has expired. This was used before, but was deemed unnecessary due to this check happening on every other command as well. 
 
-The $annotation$ command can be used to modify and view annotations associated with experiments. The server can respond to a $'GET'$ request with an array of all possible annotations currently in use in the database. There is also possible to add new annotations, update the values for an annotation or delete a complete annotation field.
+\subparagraph*{Experiment}
 
-Clients can get information about a specific $experiment$ by using a $'GET'$ together with this command. The server will respond with information about the experiment as well as information about all the files associated with the experiment. Clients can also add, modify and delete experiments.
+Used to create new experiments, update or delete existing experiments as well as retrieving information about specific experiments. Deleting or retrieving information only requires the experiments ID, whilst creating new or updating existing experiments require annotations to be specified as well.
 
-An experiment contains $file$s which can be uploaded with this command. A $'POST'$ will let the client upload a file to a specific experiment. Clients can also download, modify and delete files. When a client downloads a file, the communication part of the server is never contacted. This is because a download URL is already present in the file on the client side. Therefore no contact is needed with the communication part of the server, but instead the file system server takes care of the request.
+\subparagraph*{Files}
 
-In order to convert files, the client can send the command $process$ together with a $'PUT'$. This will convert specific raw files into profile files. If the client instead sends a $'GET'$ it will receive a list of all processes started, and their remaining time until completion.
+Contains commands to create new file-posts, update or delete existing file-posts and retrieving information about specific file-posts, just as Experiment does for experiments, but for file-posts. A file-post is a database entry which keeps information about a file, as well as the path to the file. A file cannot be uploaded without having a matching file-post. When discussing files in general, file-posts and the file together will be refered to as a file. 
 
-$genomeRelease$ can be used to edit genome releases, these files are then used when converting files. The client can specify to convert a file from one genome release to another, if it exists in the database.
+\subparagraph*{File conversion}
+
+File conversion has a single command, which converts files from one file-format to another. The formats that can be converted from and to are: \texttt{.bed}, \texttt{.gff}, \texttt{.sgr} and \texttt{.wig}. 
+
+\subparagraph*{Search}
+
+Search is used for searching after experiments in the database, the search uses a PubMed-style query system which can be found and explained at \url{http://www.ncbi.nlm.nih.gov/pubmed}. All experiments that match the query are sent back to the client. No post-processing or ordering is done on the list ofexperiments by the server.
+
+\subparagraph*{User}
+
+Only contains two commands at the moment, update and retrieve information. Via the update command users can updates their password, name (fullname, not username) and email. Any other editing of users is done via the Admin category. 
+
+\subparagraph*{Admin}
+
+The Admin commands are the primary way of creating, editing and deleting users. Creating a new user requires a username, password, privilege level, name and email. To make editing and deleting easy to use there is also a command to get a complete list of all the usernames in the system, which together with the get user command from User, a client can get all the information about any user. 
+
+\subparagraph*{Process}
+
+In order to process files, the client can send a process command which is a collection of sub-commands, one sub-command for each step of the processing pipeline. Each of these sub-commands contain all the information they need to run and a list of infiles and outfiles. 
+
+When a process command is executed, it executes the each sub-command in order. Since a sub-command might contain many input files and output files, it in turn executes on all the input files, producing all the output files before finishing, and thus, causing the process to be parallellized in each step, but each step is sequential in order.
+
+Process also has commands to retrieve information about all the processes that are waiting, running or finished as well as canceling a running or waiting process. 
+
+\subparagraph*{Annotation}
+
+Annotation has two different sub-categories, annotation field and annotation value, the field is the name of the annotation and the value is the actual value. A annotation can only have a single field, but several values, and is displayed with dropdown menus in the clients. The reason for two different sub-categories is that both of the two need to be able to be created, edited, deleted separately. The retrieve only retrieves full annotations, i.e. both the name and all the possible values. 
+
+\subparagraph*{Genome release}
+
+Genome release is used to manage genome releases, works similarly to how file works, except a single genome release-post can have many files associated with it. 
 
 A more detailed specification of the API can be found in \refer{chap:com_api}.
