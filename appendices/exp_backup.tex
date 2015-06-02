@@ -1,120 +1,159 @@
 \section{Introduction}
-To allow the server to create a mirror of the file system on to a remote backup server, some settings needs to be added. First of make sure that there exists one backup computer 
-with internet access and port forwarding to the ssh port (22 by default) running any Linux distribution.
+To backup the genomizer-server \texttt{rsync} and \texttt{crontab} are
+required. The backup can either be stored on an external storage
+device (e.g hard drive or USB-storage) connected to the
+genomizer-server or a remote backup-server.
 
-Make sure both computers have the rsync software by typing in:
-\begin{verbatim}
-man rsync
-\end{verbatim}
-and make sure there is no error message.
+Using a remote server requires setting up \texttt{ssh} keys for the
+genomizer-server to remote backup communication. This can be achieved
+using \texttt{ssh-copy-id} or equivalent.
 
-Check if the genomizer server computer have ''crontab'' installed by typing:
-\begin{verbatim}
-man crontab
-\end{verbatim}
-and make sure there is no error message. If one of the softwares aren't installed just type:
-\begin{verbatim}
-sudo apt-get install crontab
+Keep in mind that \texttt{rsync} synchronizes the chosen directory
+trees on the genomizer-server and the backup-server. This means that
+all deleted files on the genomizer-server will be deleted on the
+backup-server.
 
-OR
+In addition to the \texttt{rsync} setup, we include a script intended
+for use on the backup-server, which packs the synchronized directory
+tree into a compressed archive. If added to the backup-servers \texttt{crontab},
+this script will automate the process, and also clean up old archives.
 
-sudo apt-get install rsync
-\end{verbatim}
+All backup scripts are located at \texttt{resources/backup/} in the
+genomizer-server project folder.
+
 
 
 \section{File backup}
-To synchronize the computer's file systems a simple bash script has to be edited to wanted effect, the script is located at \emph{/var/www/scripts/backup.sh} and looks like this:
-\begin{verbatim}
-#!/bin/bash
-PORT=
-USER=
-IP=
-READPATH=/var/www/data
-SAVEPATH=/var/www/data
-rsync --ignore-existing --delete --update
-         -avze 'ssh -p '$PORT $READPATH $USER@$IP:$SAVEPATH
-         
-\end{verbatim}
-make sure the rsync commad is on one line.
+
+Two scripts are available to perform the directory synchronization
+part of the backup of the genomizer-server. These are named
+\texttt{local\_file\_backup.sh} and \texttt{remote\_file\_backup.sh},
+and correspond to the local or remote storage options mentioned in the
+previous section.
+
+\texttt{local\_file\_backup.sh} will backup to a local path on the
+genomizer-server. Suggested use is to mount an external storage device
+somewhere on the filesystem, and to backup to that.
+
+Conversely, \texttt{remote\_file\_backup.sh} will backup to a remote
+backup-server. This is where the \texttt{ssh} keys are required.
+
+Both scripts need to be edited to work properly. The following
+variables must be set:
+
 \begin{itemize}
-\item Set the PORT variable to the ssh port on the backup server.
-\item Set the USER variable to login in the backup server.
-\item Set the IP variable to the ip to the backup server.
+\item READPATH: Path to the directory tree that you wish to backup
+\item SAVEPATH: Path to the synchronize to
 \end{itemize}
-The flags ''-avze'' should be present for the script to work as intended, there are many flags available to change the 
-behaviour of the program rsync. Flags to add to create a direct ''mirror'' of the system is:
+
+The script \texttt{remote\_file\_backup.sh} also requires the following variables to be set:
 \begin{itemize}
-\item ''--ignore-existing'' - Does not upload files that already exists on the backup server.
-\item ''--delete'' - Deletes files on the backup server that does not longer exist on the genomizer server.
-\item ''--update'' - Updates files if they have been changed.
+\item PORT: The \texttt{ssh} port on the backup-server
+\item USER: The user identity to use when connecting to the backup-server
+\item IP: IP-address to the backup-server
 \end{itemize}
-To see more available flags check:
-\url{http://linux.about.com/library/cmd/blcmdl1\_rsync.htm}
 
-To give rsync the right to create folders on the backupserver the /var/www folder needs have its user changed to the user of the system. To do this go to the folder /var/ and type in : 
-\begin{verbatim}
-sudo chown -R username www/
-\end{verbatim}
-change the username for the username of the system, now the folders belong to the user and not root.
+%To be able to automate the backup with \texttt{crontab} a ssh key-pair needs to
+%be generated between the genomizer-server and backup-server.
 
-Finally make the script file runnable by typing:
-\begin{verbatim}
-sudo chmod -x backup.sh
-\end{verbatim}
+\subsection{Archiving}
 
+The archiving script, \texttt{backup\_tar.sh}, compresses a given
+directory tree into a \texttt{gzip}'d tarball. This script should be
+invoked at the backup site. This is easily automated by adding the
+script to an appropriate \texttt{crontab} at the backup site, and
+setting the script to remove old archives at regular intervals.
+
+The following variables need to be edited in the script:
+\begin{itemize}
+\item WORKDIR: Path to the parent folder of the directory to which the
+  genomizer-server is backed up.\footnote{That is, if the data is
+    backed up to \texttt{EXAMPLE/PATH/genomizer/data}, then the
+    ``WORKDIR'' should be \texttt{EXAMPLE/PATH/genomizer} }
+\item READFOLDER: Name of the directory in ``WORKDIR'' to which the
+  genomizer-server is backed up.
+\item SAVEPATH: Path to the directory in which to store archives 
+\item DAYS: Specifies how many days old archives should be stored
+  before the script deletes them
+\end{itemize}
 
 \section{Database backup}
-To synchronize the computer's database a simple bash script has to be edited to wanted effect, the script is located at \emph{/var/www/scripts/sqlback.sh} and looks like this:
-\begin{verbatim}
-#! /bin/bash
-DATE=$(date -I)
-DBUSER=
-DBNAME=
-DBPORT=
-SAVEFILE=SqlBackup-$DATE.sql
-pg_dump -w -U $DBUSER -h localhost -p $DBPORT $DBNAME > tmp
-echo pvt | sudo -S cp tmp /var/www/sqlbackup/$SAVEFILE 
-\end{verbatim}
+
+To backup the database a script called \texttt{db\_backup.sh} is
+available. The following variables in the script need to be edited:
+
 \begin{itemize}
-\item Set the DBUSER variable to the username of the database
-\item Set the DBNAME variable to the name of the database
-\item Set the DBPORT variable to the the port of the databse
+\item DBNAME: Name of the database
+\item DBPORT: Port of the databse
+\item DBUSER: Username for the database
+\item FILENAME: Name to give to the created backup file
+\item SAVEPATH: Path to the directory in which to store the backup file
 \end{itemize}
-to allow the script to access the database a file named 
-\begin{verbatim}
-.pgpass
-\end{verbatim}
-needs to be created in the home folder of the user for example: \\
-\emph{/home/username/.pgpass}. \\
-This file should contain the following information:
+
+The variable \texttt{SAVEPATH} should be the same as the variable
+\texttt{READPATH} in the file backup scripts. Otherwise the database
+file will not be copied to the backup site.
+
+To allow the script to access the database a file called \texttt{.pgpass}
+needs to be created in the home directory of the user calling the script.
+This file must contain the following information:
+
 \begin{verbatim}
 localhost:PORT:DATABASE:USERNAME:PASSWORD
 \end{verbatim}
-where:
-\begin{itemize}
-\item PORT is changed to the port of the database.
-\item DATABASE is the database to be cloned.
-\item USERNAME is the username of the postgresql database.
-\item PASSWORD is the passdword for the user of the postgresql database.
-\end{itemize}
 
-\section{Chrontab}
-To enable the server to automatically do syncronizations to the backupserver one line have to be added to a crontab config file.
-open the file by typing:
+\section{Crontab}
+
+\texttt{Crontab} is the suggested method for automating the invocation
+of the backup scripts. Adding system-wide tasks to \texttt{crontab} is
+easily achieved using the following command:
+
 \begin{verbatim}
-sudo crontab -e
+crontab -e
 \end{verbatim}
-In the end of the file add a line that looks like this:
+
+This will open the crontab for the current user, where tasks may then
+be defined. Running a background task such as a backup should preferably
+be in the root \texttt{crontab} (using \texttt{sudo crontab -e})
+or in the \texttt{crontab} of some other ``non-user'' user.
+
+Make sure that the scripts added to \texttt{crontab} are kept in a
+secure location, and aren't editable by users without proper access
+rights. This is necessary to keep malicious users from adding
+arbitrary code to the \texttt{crontab} schedule.
+ 
+Here is a short example of how to add a scheduled script:
 \begin{verbatim}
-1 0 * * * /var/www/scripts/backup.sh
-1 0 * * * /var/www/scripts/sqlback.sh
+0 0 * * * /path/to/script.sh
 \end{verbatim}
-Explanation of the settings that executes the script:
-\begin{enumerate}
-\item Setting is the minute (Present: first minute). 
-\item Setting is the hour (Present: midnight).
-\item Setting is the week (Present: every week in each month)
-\item Setting is the month (Present: every month)
-\item Setting is the weekday (0=Sunday,1=Monday, Present: every day)
-\end{enumerate}
-So this backup will run on the first minute of every midnight all year around.
+The above line tells \texttt{Crontab} to run the script at midnight
+every day. For more information on \texttt{crontab} syntax and
+behavior, see the \texttt{crontab} manual.
+
+\section{Restoring}
+
+Restoring a backup is much like backing up in reverse. Simply invoke
+\texttt{rsync} from the backup site, with the backup directory as
+source and the genomizer-server's data directory as target.
+
+To restore from an archive, extract the archive contents to a suitable
+location, and then invoke \texttt{rsync} with that directory as source
+and the genomizer-server's data directory as target.
+
+%Restoring the files using a local backup is made by just copying all
+%the backup files to the genomizer data folder. When using a remote
+%backup-server the easiest way is to use \texttt{rsync} from the backup-server
+%to the genomizer-server.
+
+Restoring the database is achieved by piping the database dump to
+the live database: 
+\begin{verbatim}
+psql dbname < FILENAME.sql
+\end{verbatim}
+
+Equivalently, one could log in to the database and call the dump as a
+normal \texttt{sql} script.
+
+Note that in either case, this operation requires the user to have
+permission to open and overwrite the database.
+

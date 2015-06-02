@@ -4,24 +4,24 @@
 
 %In the following sub-sections, we will attempt to explain our design desisions.
 
-The \appName\ Android application was designed to allow for a quick search of the database while on the move. It also makes it possible to start file conversions in advance so that the data is ready when further work and analysis is to be done. The app will also provide a way to continuously view the status of the users file conversions. 
+The \appName\ Android application was designed to allow for a quick search of the database while on the move. It also makes it possible to start processes in advance so that the data is ready when further work and analysis is to be done. The application will also provide a way to continuously view the status of active processes on the server. 
 
-The application was designed in close collaboration with the \term{iOS} application in order to provide a consistent experience on both plattforms.  We did, however, find it necessary to take into consideration some of the Android specific design paradigms which distinguish Android applications from other smart phone platforms. One of theses paradigms is the actionbar at the top of the screen that provides navigational functions. In this section the layout and design decisions will be described.
+The application was designed in close collaboration with the \term{iOS} application in order to provide a consistent experience on both plattforms.  We did, however, find it necessary to take into consideration some of the Android specific design paradigms which distinguish Android applications from other smart phone platforms. In this section the layout and design decisions will be described.
 
 
-\subsection{Login View}
-There are two textfields available for the user to type user name and password and a button to click when user is ready to log in.
+\subsection{Login view}
+There are two textfields available for the user to type username and password and a button to click when user is ready to log in.
 This is a popular layout for many login screens and thus a design many users are familiar with.
 
 
 \begin{figure}[ht]
-\addScaledImage{0.3}{figures/and_login.png}
-\caption{Login View}
+\addScaledImage{0.2}{figures/and_login.png}
+\caption{Login view}
 \label{fig:and_login}
 \end{figure}
 \FloatBarrier
 
-\subsection{Search View}
+\subsection{Search view}
 The design illustrated in \refer{fig:and_search} show the search view, 
 which is also the view the user is presented with upon successful login.
 The search annotations are displayed in a list and it is easy to learn how to search.
@@ -29,78 +29,73 @@ Scroll bars are used for multiple options and textfields are used for free text.
 At the bottom of the view there is a button to press in order to start the search.
 
 \begin{figure}[ht]
-\addScaledImage{0.3}{figures/and_search.png} 
-\caption{Search View}
+\addScaledImage{0.2}{figures/and_search_regular.png} 
+\caption{Search view}
 \label{fig:and_search}
 \end{figure}
 \FloatBarrier
 
-\subsection{Search Results View}
-The design illustrated in \refer{fig:and_result} below show the search result view. 
+\subsection{Search result view}
+The design illustrated in \refer{fig:and_result} show the search result view. 
 The result is shown in a list, sorted by experiments. The list displaying search results is large to facilitate usage for user and to take advantage of the screen space. 
 It's easy to learn how to navigate the list. 
 Scrolling is available if the list is long and if the user clicks on an experiment they are redirected to the experiment view displaying more information about that experiment.
 
 \begin{figure}[ht]
-\addScaledImage{0.3}{figures/and_search_result.png} 
-\caption{Search Result View}
+\addScaledImage{0.2}{figures/and_search_result.png} 
+\caption{Search result view}
 \label{fig:and_result}
 \end{figure}
 \FloatBarrier
 
-\subsection{Experiment View}
+\subsection{Experiment view}
 The design illustrated in \refer{fig:and_experiment} shows more information about a specific experiment. 
-All files for the experiment selected in the search result view is displayed here organised by data type.
-Checkboxes are commonly used and most users are familiar with how to handle them when making choices and selecting items.
-The button \click{Add to selection} will be used to send selected files to the conversion view.
+All files associated with the experiment is displayed here and sorted by type (raw, profile and region).
+The button \click{Go to process} at the bottom takes the user to the process view, where the user can process all raw files associated with the experiment.
+If no raw files should exist, the button will be disabled.
 
 \begin{figure}[ht]
-\addScaledImage{0.3}{figures/and_experiment_files.png} 
-\caption{Experiment View}
+\addScaledImage{0.2}{figures/and_result_experiment.png} 
+\caption{Experiment view}
 \label{fig:and_experiment}
 \end{figure}
 \FloatBarrier
 
-\subsection{Search Settings View}
+\subsection{Search settings view}
 The design illustrated in \refer{fig:and_search_settings} is showing the view for search settings. 
 This is a way for the user to select annotations to be displayed in the search result view.
-The user can select annotations by checking the checkbox next to the annotation name and then click the button to save changes.
-The changes are stored on internal storage and saved between runs of the application.
-If the user has no special requests it is also possible to use default settings. 
+The user can select annotations by checking the checkbox next to the annotation name.
+The user can also select on how to sort the experiments.
 This functionality gives the users the possibility to design the search result view the way they want to have it, which often is appreciated. 
 
 \begin{figure}[ht]
-\addScaledImage{0.3}{figures/and_search_select_visible_annotations.png} 
-\caption{Search Settings View}
+\addScaledImage{0.2}{figures/and_search_select_visible_annotations.png} 
+\caption{Search settings view}
 \label{fig:and_search_settings}
 \end{figure}
 \FloatBarrier
 
-\subsection{Selected Files View}
-The design illustrated in \refer{fig:and_selected} shows the view for selecting files.
-The view has four tabs, one for each data type and one for results. 
-To make it easy to navigate the user can switch tab by sliding the finger horizontally. 
-There is also the option of clicking the tabs. 
-The files are displayed in a list which gives a clear view to the user.
-At the bottom of the view there is a button with option to what to do with the data files stored.
-For example in the view for raw data there is a button to click to convert the files into profile data.
+\subsection{Process view}
+The design illustrated in \refer{fig:and_processing_view} is showing the view for processing. 
+This enables the user to start a process from raw to profile. The only selectable input files are the ones that exist in the experiment.
+The \click{Parameters} button enables the user to change the \verb!Bowtie! flags.
+The plus icon in the action bar adds a new entry, and the cross removes the associated entry.
 
-\begin{figure}[h]
-\addScaledImage{0.3}{figures/and_selected_files.png} 
-\caption{Selecting Files View}
-\label{fig:and_selected}
+\begin{figure}[ht]
+\addScaledImage{0.2}{figures/and_processing_view.png} 
+\caption{Processing view}
+\label{fig:and_processing_view}
 \end{figure}
 \FloatBarrier
 
-\subsection{Convert View}
-The design illustrated in \refer{fig:and_convert_man} shows the conversion view. 
-This view displays different parameters that needs to be set before starting to convert data files. 
-The view is clear with headlines and hints guiding the user to what parameters that needs to be set that facilitates the work for the user and also prevents errors from occuring. 
-At the bottom of the view there is a button to press to start the conversion when all the parameters are set. 
+\subsection{Active processes view}
+The design illustrated in \refer{fig:and_active_processes_view} is showing the view for active processes on the server. 
+The user is automatically navigated here when the \click{Process} button in the process view is clicked.
+The user can here choose to remove any process on the server.
 
-\begin{figure}[h]
-\addScaledImage{0.3}{figures/and_convert_view.png}
-\caption{The Convert View}
-\label{fig:and_convert_man} 
+\begin{figure}[ht]
+\addScaledImage{0.2}{figures/and_process_status.png} 
+\caption{Active processes view}
+\label{fig:and_active_processes_view}
 \end{figure}
 \FloatBarrier
