@@ -1,8 +1,8 @@
 The following sections describe the system design of the Android application. All functionality of the system components are described in this section. Worth noting is that the figures referred to in this section can be found further down in the document.
 
 \subsection{System overview}
-	The Android application is divided into eight \emph{packages}. These packages are \verb!default!, \verb!com!, \verb!login!, \verb!model!, \verb!process!, \verb!processStatus!, \verb!search! and \verb!selected_files!.
-	All packages (except for \verb!com! and \verb!model!) contains one or several pairs of activities and fragments. An \verb!Activity! is a single, focused thing the user can do. A \verb!Fragment! is an object that helps to modularize the code and brings more sophisticated user 	interfaces.
+	The Android application is divided into seven \emph{packages}. These packages are \verb!default!, \verb!com!, \verb!login!, \verb!model!, \verb!process!, \verb!processStatus! and \verb!search!.
+	All packages (except for \verb!com! and \verb!model!) contains one or several fragments. A \verb!Fragment! is an object that helps to modularize the code and brings more sophisticated user interfaces.
 
 	\begin{figure}[h]
 		\centering
@@ -13,7 +13,7 @@ The following sections describe the system design of the Android application. Al
 	The user will interact with an activity that holds a fragment. The fragment (which contains some logic) will tell the class \verb!ComHandler! what action that should be performed. The \verb!ComHandler! will construct a message by using \verb!MsgFactory!. The message is then passed on to \verb!Communicator! which sends the message to the server with REST. The \verb!Communicator! returns the response to the \verb!ComHandler! that parses it by using the class \verb!MsgDeconstructor! and then returns it to the fragment. Hopefully, \refer{fig:and_system_overview} will bring some clarity.
 	
 \subsection{Package overview}
-	The \verb!default! package only contains one class, \verb!SingleFragmentActivity!. This class is the base of every screen in the application. It is responsible for the navigation in the application and to inflate the correct \verb!ActionBar!. All other activities extends this 	class.
+	The \verb!default! package contains the \verb!MainActivity!. This class is the base of every screen in the application after logging in. The top level navigation is handled from here.
 
 	The \verb!com! package is responsible for communication with the server. It also contains classes and methods for construction and deconstruction of JSON.
 
@@ -21,12 +21,11 @@ The following sections describe the system design of the Android application. Al
 	
 	The \verb!model! package holds information about experiments, annotations, files etc. found on the server.
 	
-	The \verb!processing! package is responsible for displaying processing parameters etc. for when the user wants to process a certain file.
+	The \verb!process! package is responsible for displaying processing parameters etc. for when the user wants to start a process.
+
+	The \verb!processStatus! package shows the running, failed and succeeded processes on the server.
 	
-	The \verb!search! package handles searches by either selecting annotations, or by manually typing in PubMed style.
+	The \verb!search! package handles searches by either selecting annotations, or by manually typing in PubMed style. It also handles the search results by displaying the found experiments in a list.
 	
-	The \verb!search_result! package handles the results of the search by displaying the experiments found. When an experiment is selected, the files associated with the experiment is displayed.
-	
-	The \verb!selected_files! handles all the files that has been selected. They are sorted into raw, profile and region. The raw files can be selected for processing from here.
 \pagebreak
 
