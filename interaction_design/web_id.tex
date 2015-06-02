@@ -77,3 +77,18 @@ files and parameters for each processing step as shown in
     \caption{Files selected for upload.}
     \label{fig:web_process_processOverview}
 \end{figure}
+
+\subsection{System administration}
+The admin page is built up by a number of components: the main view, the side bar, the create annotation view, the edit annotation view and the genome-release view. The first one is the main view which consists of a sidebar and an empty div-tag. The empty div-tag is then replaced with the annotation list view which has a Create new annotation button and a list of the available annotations on the database with an option to edit. 
+
+When the user clicks on for example Create New Annotation, the div tag in the main view is replaced with the create annotation view. The same goes for the Edit buttons on each annotation. This way we only have to render that specific div-tags current information and the sidebar is unaffected. 
+
+The design is made so that the user should be able to avoid mistakes. For example in the create annotation page the user is not able to create an annotation without filling in all the fields. Futher more the field for Items in drop-down list is disabled if the user don't choose Drop-down list as the annotation type. 
+
+In the Edit annotation view the same principles apply, but also there is a Delete Annotation button on this page which will delete the entire annotation from the database.For that reason we decided to ask if the user is sure of this action and of course made the button red.
+
+The back buttons on the different views work as one would expect and the sidebar option Annotations takes the user back to the main adminview.
+
+The sidebar item ''Genome-releases'' takes the administrator to the page for adding and editing genome-releases. This page have the same look and feel as the previous. The delete buttons are red and will prompt a confirmation-popup. 
+
+The ''Select files to upload'' will as expected open the file explorer and the user chooses files according to normal operativesystem standards, then the ''Upload'' button will prompt the user for information about the files such as species and genomeversion before uploading. 
