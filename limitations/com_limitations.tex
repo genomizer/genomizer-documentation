@@ -9,6 +9,7 @@ To avoid this problem, never use the same username as someone else.
 A major security hole in the system is that all communication between the server and the clients are in plain text. These HTTP-packages can be read by outside people.\\
 \\
 To fix this problem, implement a cryptographic protocol, like Secure Sockets Layer(SSL) or Transport Layer Security (TLS), which makes the communication between the server and the clients unreadable by outsiders.
+
 \subsubsection{Only one process at a time}
 The server can only run one process at a time. This is because only one thread is set to search the queue and if there is a process waiting the single thread takes this process and executes it before going back to search the queue again.\\
 \\
@@ -21,3 +22,6 @@ A solution to this would be to keep track of all working threads and give a user
 In the case that a process for some reason would get stuck while running, there is no feedback to the user to show that the process is stuck. The only feedback the user is given is that the process is currently being executed.\\
 \\
 This is a hard problem to solve since there is no good way to know if the processing is just taking a long time to complete or if it is stuck. A bad solution would be to check how long the process have been running and end it if the time exceeds some defined number.
+
+\subsection{Deleting annotations that are in use}
+Deleting an entire annotation (dropdown or freetext) even though it is used by one or more experiments is not considered an error. However, attempting to delete a specific value from a dropdown annotation is considered an error if that value is in use.

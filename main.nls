@@ -3,6 +3,25 @@
  \nomgroup{A}
 
   \item [{Bowtie}]\begingroup Program the preforms parsing of the raw data and counts base pairs\nomeqref {2.0}
+<<<<<<< HEAD
+		\nompageref{v}
+  \item [{Chain files}]\begingroup Genome release files with small alterations to previous genome releases.\nomeqref {2.0}
+		\nompageref{vii}
+  \item [{genome releases}]\begingroup Constant research gives more understanding, new genome versions are often found.\nomeqref {2.0}
+		\nompageref{v}
+  \item [{Genomizer}]\begingroup Collective name for the project.\nomeqref {2.0}
+		\nompageref{v}
+  \item [{GEO}]\begingroup Centralized database where article data can be found.\nomeqref {2.0}
+		\nompageref{vi}
+  \item [{liftOver}]\begingroup Converts genome release versions.\nomeqref {2.0}
+		\nompageref{v}
+  \item [{Profile}]\begingroup Data converted to a human readable file for analysis.\nomeqref {1.0}
+		\nompageref{iv}
+  \item [{Raw}]\begingroup Collection word for files that are the result from a \textit{DNA}-sequencing machine.\nomeqref {1.0}
+		\nompageref{iv}
+  \item [{region}]\begingroup Region data is small parts of the profile data.\nomeqref {2.0}
+		\nompageref{v}
+=======
 		\nompageref{iv}
   \item [{Chain files}]\begingroup Genome release files with small alterations to previous genome releases.\nomeqref {2.0}
 		\nompageref{vi}
@@ -20,5 +39,6 @@
 		\nompageref{iii}
   \item [{region}]\begingroup Region data is small parts of the profile data.\nomeqref {2.0}
 		\nompageref{iv}
+>>>>>>> master
 
 \end{thenomenclature}
