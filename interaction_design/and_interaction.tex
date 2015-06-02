@@ -16,7 +16,7 @@ This is a popular layout for many login screens and thus a design many users are
 
 \begin{figure}[ht]
 \addScaledImage{0.2}{figures/and_login.png}
-\caption{Login View}
+\caption{Login view}
 \label{fig:and_login}
 \end{figure}
 \FloatBarrier
@@ -55,7 +55,7 @@ The button \click{Go to process} at the bottom takes the user to the process vie
 If no raw files should exist, the button will be disabled.
 
 \begin{figure}[ht]
-\addScaledImage{0.2}{figures/and_experiment_files.png} 
+\addScaledImage{0.2}{figures/and_result_experiment.png} 
 \caption{Experiment view}
 \label{fig:and_experiment}
 \end{figure}
@@ -72,5 +72,30 @@ This functionality gives the users the possibility to design the search result v
 \addScaledImage{0.2}{figures/and_search_select_visible_annotations.png} 
 \caption{Search settings view}
 \label{fig:and_search_settings}
+\end{figure}
+\FloatBarrier
+
+\subsection{Process view}
+The design illustrated in \refer{fig:and_processing_view} is showing the view for processing. 
+This enables the user to start a process from raw to profile. The only selectable input files are the ones that exist in the experiment.
+The \click{Parameters} button enables the user to change the \verb!Bowtie! flags.
+The plus icon in the action bar adds a new entry, and the cross removes the associated entry.
+
+\begin{figure}[ht]
+\addScaledImage{0.2}{figures/and_processing_view.png} 
+\caption{Processing view}
+\label{fig:and_processing_view}
+\end{figure}
+\FloatBarrier
+
+\subsection{Active processes view}
+The design illustrated in \refer{fig:and_active_processes_view} is showing the view for active processes on the server. 
+The user is automatically navigated here when the \click{Process} button in the process view is clicked.
+The user can here choose to remove any process on the server.
+
+\begin{figure}[ht]
+\addScaledImage{0.2}{figures/and_process_status.png} 
+\caption{Active processes view}
+\label{fig:and_active_processes_view}
 \end{figure}
 \FloatBarrier
