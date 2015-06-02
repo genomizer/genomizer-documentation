@@ -1,37 +1,110 @@
-
-
-
 This chapter will present an overview of the services that the \appName\ system currently provides. 
 
 \section{Usage}
 
+\begin{figure}[h!]
+\centering	
+\begin{tikzpicture}[ 
+	font=\sffamily,
+	every matrix/.style={ampersand replacement=\&,column sep=0.5cm,row sep=0.5cm},	
+	server/.style={rectangle, draw, fill=red!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	user/.style={rectangle, draw, fill=blue!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	back/.style={rectangle, draw, fill=orange!50, minimum height=2cm, minimum width=6cm, font=\ttfamily\footnotesize},
+	human/.style={rectangle, draw, fill=white, minimum height = 1cm, minimum width = 1cm}, 
+	interface/.style={rectangle, draw, fill=light-gray, minimum height = 1cm, minimum width = 1cm}, 
+	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},	
+	to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	every node/.style={align=center}]  
+\matrix (m){
+	\& \node[server] (ds) {Data Storage};
+	\& \node[server] (processing) {Processing}; \&  \\
+	\node[interface] (internet) {Internet}; \&\&\&\\
+	\& \node[user] (desktop) {Desktop}; \&
+       \node[user] (mobile) {Mobile applications}; \&
+       \node[user] (webb) {Web}; \\
+    \node[interface] (userIn) {User Input}; \&\&\&\\      
+    \& \& \node[human] (user) {\LARGE\Gentsroom\Ladiesroom}; \&\\
+	};	
+	\draw[dotted] (internet) -- (5,1.5);
+	\draw[dotted] (userIn) -- (5,-1.5);
+	\draw[to] (user) -- (desktop);
+	\draw[to] (user) -- (webb);
+	\draw[to] (user) -- (mobile);	
+	
+	\begin{scope}[on background layer]
+		\node[back, yshift=3cm, xshift=-0.4cm]  (server) {\parbox[b][2cm]{2cm}{\LARGE{Server}}};	
+	\end{scope}
+	\draw[to] (desktop) -- (server);
+	\draw[to] (webb) -- (server);
+	\draw[to] (mobile) -- (server);
+	
+
+	\end{tikzpicture}
+	\caption{Communication diagram of the product}
+	\label{fig:con_serviceDescription}
+\end{figure}
 
 
+\begin{comment}
 \begin{figure}[h]
 \addImage{genomizerDiagramServiceDescription.png}
 \caption{Communication diagram of the product}
-\label{con_serviceDescription}
+\label{fig:con_serviceDescription}
 \end{figure}
+\end{comment}
 	
-In order to give the users flexibility when using the service there are clients for many different platforms (Windows, Linux, OSX, Web, Android and iPhone). 
-When a user chooses a given task, for example start \term{raw} to \term{profile} processing, that task is sent by Internet to the server as shown in \refer{con_serviceDescription} which will handle the request and send a response back to the user.
+In order to give the users flexibility when using the service there are clients for many different platforms (Windows, Linux, OSX, Web, Mobile devices). 
+When a user chooses a given task, for example start \term{raw} to \term{profile} processing. The task i sent via Internet to the server as shown in \ref{fig:con_serviceDescription}. The server then handles the request and return a response back to the user.
 
-\section{Storage}
-The main purpose of the \appName\ system is to centralize all data. To enable this a user can annotate and upload data to the server using both desktop and web based clients.
-Advanced database searches can be performed on the annotations to find previously uploaded data. When the required data is found the user can choose to download the files or request that they be processed on the server.
+\section{User Input}
+The user input in the \appName system may be done with four different clients: a desktop client, a web client, an \textit{Android} client and a \textit{iOS} client. The last two clients are collected under mobile application since they offer the same functionality.
 
-\section{Annotations}
-\appName\  not only allows the annotation of files and experiments, but also enables the addition of new annotation fields. For example, if the user has an experiment that was conducted in zero gravity and the database does not have the annotation field ``Zero Gravity'' the user can add this as a new annotation. In this case a \term{Drop Down} annotation type may be appropriate, with the simple choices ``yes'' or ``no''. Of course it is also possible to leave the annotation type as \term{Free Text} which enables users to write  freely the value of the annotation.
+\section{Desktop}
+The desktop client is the main client for the \appName\ system. It offers all implemented functionality. 
+\begin{itemize}
+\item Login and logout.
+\item Searching for experiments and different files.
+\item Create new experiments.
+\item Modify existing experiments.
+\item Upload files to experiments.
+\item Download files from experiments.
+\item Process files from raw to profile.
+\item Delete files and experiments from the database.
+\item Add annotations to experiments.
+\item Remove and modify annotations.
+\item Search annotations by name.
+\item Upload, remove and rename genome release files.
+\end{itemize}
 
-Dynamic annotations must also be managed in order to keep the system clean and up to date. \appName\ therefore provides full editing options for existing annotations. This includes the editing of \term{Drop Down} annotation choices and the removal of unused annotations.
+\section{Web}
+The web client mimics the behaviour and functionality of the desktop client. Additionally, unlike the desktop client, it enables the user to log in and use the service remotely via Internet. This is useful if the user needs to, for example, download or upload files to the server but is not currently on the same local network as the server. The web client is easy to start using since it runs in a web browser and needs no installation.
 
-\section{Processing}
-Users can request that a \term{raw} file set be processed to \term{profile} files. This procedure is carried out on the server to avoid heavy workload on the clients. The processing carried out between \term{raw} data and \term{profile} data involves a number of different steps. The user can choose which steps are carried out and the various parameters used.
 
-\section{Genome releases}
-Users can upload new genome release files and use them in the processing of \term{raw} to \term{profile} data.
-
-\section{Mobile}
+\section{Mobile application}
 Due to the limited storage available on mobile devices it is not appropriate to enable uploading and downloading of files, however the mobile applications enable the searching of files in the database and the scheduling of processing procedures for the conversion of \term{raw} to \term{profile} data.
 
+\section{Server}
+The purpose server is to take care of the organizations of files and experiments as seen in the top part of Figure \ref{fig:con_serviceDescription} as the part \textit{Data storage}. The server also serves as a processing tool of the files added to the \textit{Data storage}. 
 
+\subsection{Data storage}
+The main purpose of the \appName\ system is to centralize all data. To enable this a user can annotate and upload data to the server using both desktop and web based clients. Uploaded files are organized in \term{Experiments} which are the representation of actual experiments in a laboratory. An experiment acts as the logical container for files that are related to each other - it can hold many files of different types (\term{raw}, \term{profile} and \term{region}). These files can either be uploaded directly by the user or generated from processing by the server.
+
+Advanced database searches can be performed on the annotations to find previously uploaded data. When the required data is found the user can choose to download the files or request that they be processed on the server. 
+
+
+\subsubsection{Annotations}
+Annotations is a way for the researchers to keep track of what an experiment consists of as well as files associated with an experiment.
+\appName\ has two kinds of annotations. There is \textit{multiple-choice} annotations which have a defined name and choices. An example is the annotation named \textit{species} that have the choices human, fly and rat.
+Then there is \textit{free text} annotations where the user may enter what they want.
+
+Dynamic annotations must also be managed in order to keep the system clean and up to date. \appName\ therefore provides full editing options for existing annotations if the user have the credentials. This includes the editing of \term{mulitple-choice} annotation choices and the removal of unused annotations.
+
+\begin{example}
+If the user has an experiment that was conducted in zero gravity and the database does not have the annotation field ``Zero Gravity'' the user can add this as a new annotation. In this case a \term{Drop Down} annotation type may be appropriate, with the simple choices ``yes'' or ``no''. Of course it is also possible to leave the annotation type as \term{Free Text} which enables users to write  freely the value of the annotation.
+\end{example}
+
+\subsection{Processing}
+Users can request that a \term{raw} file set be processed to \term{profile} files. This procedure is carried out by the server to avoid heavy workload and the requirements of certain programs on the clients side. The processing carried out between \term{raw} data and \term{profile} data involves a number of different steps. The user can choose which steps are carried out and the various parameters used.
+
+\subsection{Profile data conversion}
+The server can be requested to convert between different formats of profile data. The conversions currently handled by \appName\ are \term{gff}, \term{sgr}, \term{wig} and \term{bed}. These formats are specified by the Genome Bioinformatics Group at UC Santa Cruz\cite{des_4}. Since different formats carry different amount of information or meta data, conversions from each file format to every other is not possible.

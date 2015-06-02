@@ -3,10 +3,18 @@ relies heavily on action events being performed in the graphical interface which
 is then handled by the controller. The model is the part handling the
 communication and the storing of important information such as ongoing downloads
 and the user token (used for communication authorization). In
-\refer{chap:des_appendix} a UML-diagram of the desktop client is presented. 
+\refer{chap:des_appendix} a UML-diagram of the desktop client is presented. A basic
+overview can also be seen in \refer{fig:des_overviewUML}.
+
+\begin{figure}[hbt!]
+\addImage{des_DesktopBriefSystemUML.png}
+\caption{Overview of desktop client design. (Excluding SysAdmin related parts.)}
+\label{fig:des_overviewUML}
+\end{figure}
+
 
 \subsection{View}
-The view of the \appName\ Desktop client is constructed with tabs. There are 5 different tabs. These are Search, Process, Upload, Workspace and Administration.
+The view of the \appName\ Desktop client is constructed with tabs. There are 5 different tabs. These are Search, Process, Upload, Workspace and Administration. In the \textit{gui} package of \refer{fig:des_overviewUML} these are shown.
 
 Each tab in the view is represented by its own java class. The QuerySearchTab class which represents the search tab can display both a search view and a results view. It uses the QueryBuilderRow class to construct the rows in the query builder which is used to construct search queries. The QueryBuilderRow class represents a row in the query builder and each row is dynamic and can change accordingly to user interaction. The search results are also implemented in the QuerySearchTab and the results are displayed with the TreeTable class which is further described in the utilities section below.
 
@@ -17,10 +25,10 @@ The ProcessTab class represents the process view in the GUI. It contains a list 
 The major part of the WorkspaceTab class consists of a TreeTable which holds all the experiments and the corresponding data which the user has added to the workspace. Then there is also five buttons implemented which allows the user handle the data in the TreeTable. These buttons are Remove from workspace, Delete from database, Upload to, Download and Process. The TreeTable view can be changed to a view which displays all current and completed downloads. This is made using a tabbed pane containing the TreeTable view and the Downloads view.
 
 \subsection{Model}
-The model part of the system contains methods for doing most of the logic in the system. For example there are methods for sending login requests and for downloading files. There are separate classes for downloading and uploading files as well as a class for regular communication with the server called Connection. New connections are created with the ConnectionFactory class. The model also acts a storage for importating information such as the user token and list of ongoing downloads and uploads.
+The model part of the system contains methods for doing most of the logic in the system. For example there are methods for sending login requests and for downloading files. There are separate classes for downloading and uploading files as well as a class for regular communication with the server called Connection. New connections are created with the ConnectionFactory class. The model also acts a storage for importing information such as the user token and list of ongoing downloads and uploads. This is shown in the \textit{model} and \textit{communication} packages of \refer{fig:des_overviewUML}.
 
 \subsection{Requests}
-The Request package contains the Request class , the RequestFactory and all the classes that extends the Request class. Request is the super class and can make a JSON package that all the other Request classes can use. All requests must have a name, type and an URL, but can consist of more information. For example LoginRequest also has username and password. RequestFactory is a class that can create all objects from all types of requests. It is a way to easily create all requests from the same place.
+The Request package contains the Request class, the RequestFactory and all the classes that extends the Request class. Request is the super class and can make a JSON package that all the other Request classes can use. All requests must have a name, type and an URL, but can consist of more information. For example LoginRequest also has username and password. RequestFactory is a class that can create all objects from all types of requests. It is a way to easily create all requests from the same place.
 
 
 \subsection{Response}
@@ -28,12 +36,12 @@ This package consists of all types of responses that the server can send to the 
 
 
 \subsection{Controller}
-The controller part of the system consists of ActionListeners for the different buttons and functionalities in the view. For example there are Listeners for searching, downloading and processing. The Controller class has access to both the view and the model and acts as a middle hand between those two parts of the system. Usually a Listener in the controller reacts upon user input and then modifies the model and gives information about the change to the view.
+The controller part of the system consists of ActionListeners for the different buttons and functionalities in the view. For example there are Listeners for searching, downloading and processing. The Controller class has access to both the view and the model and acts as a middle hand between those two parts of the system. Usually a Listener in the controller reacts upon user input and then modifies the model and gives information about the change to the view. Many of the actionlisteners have been divided into tab-specific classes.
 
 
 \subsection{Utilites}
 
-There are several classes which represents different data in the system. There are classes for experiment data, file data and annotation data. For example when a search response is received from the server it is parsed into experiment data and the experiment data contains file data and annotation data. There is also a class representing Process feedback data.
+There are several classes which represents different data in the system. There are classes for experiment data, file data and annotation data. For example when a search response is received from the server it is parsed into experiment data and the experiment data contains file data and annotation data. There is also a class representing Process feedback data. As we can see in \refer{fig:des_overviewUML},  a lot of the other packages will use some of the data or funktionality within the \textit{util} package.
 
 The TreeTable class represents the table which displays experiment data, annotation data and file data in the Search and Workspace tabs. It is specially constructed to handle the data classes and it allows vertical sorting.
 
@@ -95,7 +103,7 @@ The system administration part of the desktop application depends on quite a few
 
 \textbf{Button and Tab names}
 
-To simplify the naming of buttons and tabs a class called SysStrings is used. All buttons or tabs are named here and then this class is used when setting the actual names. This is to avoid hard-coding as well as making names easy to change and hence more dynamic.
+To simplify the naming of buttons and tabs a class called SysStrings is used. All buttons or tabs are named here and then this class is used when setting the actual names. This is to avoid inconsistencies as well as making names easy to change.
 
 \subsection{Flow of the system}
 

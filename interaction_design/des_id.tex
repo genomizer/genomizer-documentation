@@ -1,9 +1,64 @@
-The desktop application is constructed in a topdown approach that separates all the different functionalities into groups. Similar functions will be grouped together to utilize space.
-The application is built with tabs that simplifies work by letting the user easily switch between different views. Each tab is described by appropriate name and contains related functionality.
+The first thing a user will see when starting the desktop client is the login window (see \refer{fig:des_login_window}). The window prompts the user for user name, password, and a server IP to connect to. If the correct credentials are entered, the user will be logged in and taken to the next screen. If the user enters an invalid password, user name, or server, an appropriate error message will be displayed as seen in \refer{fig:des_login_failed}. This feedback informs that user the login was unsuccessful.
+\begin{figure}[h]
+	\addScaledImage{0.4}{des_login_window.png}
+	\caption{The login window.}
+	\label{fig:des_login_window}
+\end{figure}
+\begin{figure}[h!]
+	\addScaledImage{0.4}{des_login_failed.png}
+	\caption{The login window with an error message after a failed login.}
+	\label{fig:des_login_failed}
+\end{figure}
+\\\\
+After the user has been successfully logged in, the main window will appear (see \refer{fig:des_main_window}). The main window  is built with tabs to simplify work by letting the user easily switch between different views for different work tasks. Each tab is described by appropriate name and contains related functionality. The main window also has a log out button. This button is of little importance, and is therefore located in the upper right corner.
+\\\\
+At the bottom of the main window a status panel is located. The status panel gives feedback from different tasks executed by the user. When a task is executed successfully, the color of the status bar will turn green, and display a message. In case of an unsuccessful execution, the status bar will turn red, to indicate that something went wrong.
+\begin{figure}[h]
+	\addScaledImage{0.5}{des_main_window.png}
+	\caption{The Genomizer desktop client's main window. The window have tabs for different views (1), a log out button (2), and a status panel for feedback (3).}
+	\label{fig:des_main_window}
+\end{figure}
 
-The workspace tab lets the user easily manage files and experiments. It has easy access to the download and process functions.
+From the search view (see \refer{fig:des_search_tab_interaction}) the user can build search queries and look up existing experiments. The search view has been designed to have a similar layout and interaction as the advanced search tool on the site \\ \url{http://www.ncbi.nlm.nih.gov/pubmed/advanced}{http://www.ncbi.nlm.nih.gov/pubmed/advanced}
+. The researchers are familiar with this site, so they can recognize interaction elements from it when using the search function of the desktop client.
+\\\\
+To search for experiments the user can click the magnifying glass. This icon is well-known and often associated with searching. The icon is located next to the search field, so that the user can easily understand that the search field and the icon are connected. The user can also press the enter key to perform a search, without letting go of the keyboard, making the interaction faster. Next to the magnifying glass is a button for emptying the search field. The button has an icon depicting a trash can -- a well-known metaphor for removing or emptying things.
 
-The administration tab design is centered around to have different views that can be reached from the buttons on the left side of the screen. The Annotations view is where you can add new annotations to the database. This view has a table of all current annotations in the middle of the screen and a toolbar on the right side. Additional functions can be reached from pop up windows when a user clicks on the buttons in the tool bar.
-A principle in the design is when the user types in something wrong, an alert (popup) will be shown telling what went wrong and why, for example if the user did not type in a name of the annotation a popup telling that a annotation needs a name will be shown.  
+\begin{figure}[h!]
+	\addScaledImage{0.7}{des_search_tab_interaction.png}
+	\caption{The search view of the Genomizer desktop client with the icons for search and emptying the search field highlighted.}
+	\label{fig:des_search_tab_interaction}
+\end{figure}
+
+From the upload view (see \refer{fig:des_upload_view}) the user can create new experiments and upload files to them. When creating a new experiment the user is forced to fill in some fields. These fields have been given a bold-texted label, to indicate that they are of more importance than the others. A text below the fields also states that bold fields are forced. Non-forced fields are labeled with non-bold text.
+
+To inform the user that information is missing, constraints has been put on the buttons for creating the experiment. If any forced field has not been filled in, or no files have been added for upload, these buttons will be grayed-out and cannot be clicked.
+
+For each file added to the experiment there is a progress bar. This bar gives the user feedback on upload process. Each file also has  its size displayed after its name. This gives the user an idea of how time consuming the upload will be.
+
+\begin{figure}[h!]
+	\addScaledImage{0.6}{des_upload_view.png}
+	\caption{The upload view of the Genomizer desktop client. An empty forced field (1), as stated by the bold-texted label (2), makes the upload buttons (3) grayed-out. The upload progression bar (4) and the size of the file (5) gives the user an idea of how time consuming the uploading process will be.}
+	\label{fig:des_upload_view}
+\end{figure}
+
+The workspace tab lets the user easily manage files and experiments. Files and experiments in the work space are listed the same way as search results in the search view, making the design consistent throughout the system. The workspace view has easy access to the download and process functions.
+
+The administration view (see \refer{fig:des_admin_view}) is divided into two seperate views, one for managing annotations and the other one for managing genome releases. The division of the views makes the interface less cluttered and less confusing, and also increases the cohesion of the views. The user can easily switch between the views by clicking the the tabs on the left-hand side.
+
+\begin{figure}[h]
+	\addScaledImage{0.5}{des_admin_view.png}
+	\caption{The administration view showing part of the view for managing annotation. The highlighted tabs to the left let's the user switch between views.}
+	\label{fig:des_admin_view}
+\end{figure}
+
+To improve the feedback when errors occur, an error dialog (see \refer{fig:des_error_dialog}) will be shown. The dialog explains what went wrong and why the error occurred. The user can find additional information about the error by clicking a button labled 'More info'. This information can be useful for system administrators, developers or support, but not for regular users (which is why it is initially hidden).
+
+\begin{figure}[h!]
+	\addScaledImage{0.6}{des_error_dialog.png}
+	\caption{An error dialog that explains that the user have entered invalid characters for an experiment name.}
+	\label{fig:des_error_dialog}
+\end{figure}
+
 \FloatBarrier
 

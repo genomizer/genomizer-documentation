@@ -26,13 +26,21 @@ When you are satisfied with the server URL simply go back to the \term{login scr
 In order to login to a server first make sure that the correct server is displayed. If it is, simply insert your username and password in the corresponding boxes and press the \term{sign in}. If the server is incorrect see \refer{sec:and_seturl} on how to fix it. If you don't have a username or password, the system administrator should be contacted to help with the creation of an account.
 
 \begin{figure}[h]
+<<<<<<< HEAD
 \addScaledImage{0.25}{figures/and_login.png}
+=======
+\addScaledImage{0.3}{figures/and_login.png}
+>>>>>>> f3c1e1c847730d885048490032b7e303db8dbb9b
 \caption{Login View}
 \label{fig:and_login_man}
 \end{figure}
 \FloatBarrier
 
 \begin{figure}[h]
+<<<<<<< HEAD
+=======
+
+>>>>>>> f3c1e1c847730d885048490032b7e303db8dbb9b
 \addThreeImages	{figures/and_server_settings_select.png}{a}
 		{figures/and_server_settings_add.png}{b}
 		{figures/and_server_settings_edit.png}{c}
@@ -45,9 +53,15 @@ In order to login to a server first make sure that the correct server is display
 To navigate in the application you can open the navigation menu shown in \refer{fig:and_main_nav} by pressing the top left corner of any base view (Search and process or Active processes). In this menu you can logout or navigate to the diffent base views of the application which are described below.
 
 \begin{figure}[h]
+<<<<<<< HEAD
 \addScaledImage{0.25}{figures/and_main_navigation.png}
 \caption{The Navigation Menu}
 \label{fig:and_main_nav}
+=======
+\addScaledImage{0.3}{figures/and_search.png}
+\caption{The Search View}
+\label{fig:and_search_man}
+>>>>>>> f3c1e1c847730d885048490032b7e303db8dbb9b
 \end{figure}
 \FloatBarrier
 
@@ -55,9 +69,15 @@ To navigate in the application you can open the navigation menu shown in \refer{
 The search view has two tabs, one for regular searches and one for pubmed searches.
 
 \begin{figure}[h]
+<<<<<<< HEAD
 \addTwoImages{figures/and_search_regular.png}{a}{figures/and_search_pubmed.png}{b}
 \caption{The Search View}
 \label{fig:and_search_man}
+=======
+\addScaledImage{0.3}{figures/and_search_advanced.png}
+\caption{The Pubmed Search View}
+\label{fig:and_pubmed_man} 
+>>>>>>> f3c1e1c847730d885048490032b7e303db8dbb9b
 \end{figure}
 \FloatBarrier
 
@@ -74,7 +94,11 @@ After a search have been performed you will come to the search results. Here you
 annotations with values corresponding to the search (see \refer{fig:and_search_results_man}). To receive more information about data files that are available for each experiment you can click on each experiment in the list. This will take you to the view seen in \refer{fig:and_experiment_man}a and is described further in \refer{sec:and_experiment_file}.
 
 \begin{figure}[h]
+<<<<<<< HEAD
 \addScaledImage{0.2}{figures/and_search_result.png}
+=======
+\addScaledImage{0.3}{figures/and_search_result.png}
+>>>>>>> f3c1e1c847730d885048490032b7e303db8dbb9b
 \caption{The Search Results View}
 \label{fig:and_search_results_man} 
 \end{figure}
@@ -85,7 +109,11 @@ annotations with values corresponding to the search (see \refer{fig:and_search_r
 Clicking on the cogwheel button in the top right corner of the view seen in \refer{fig:and_search_results_man} will take you to the search result settings (see \refer{fig:and_search_settings_man}). Here you can Modify which annotations are presented on the experiments of the search result by marking them in the list. You can also order the experiments by one annotation in alphabetical order by chosing that annotation under the \term{Sort by} header.
 
 \begin{figure}[ht]
+<<<<<<< HEAD
 \addScaledImage{0.2}{figures/and_search_select_visible_annotations.png} 
+=======
+\addScaledImage{0.3}{figures/and_search_select_visible_annotations.png} 
+>>>>>>> f3c1e1c847730d885048490032b7e303db8dbb9b
 \caption{Search Settings View}
 \label{fig:and_search_settings_man}
 \end{figure}
@@ -119,9 +147,42 @@ After pressing the \term{Go to processing} button seen in the bottom of \refer{f
 
 
 \begin{figure}[h]
+<<<<<<< HEAD
 \addScaledImage{0.2}{figures/and_processing_view.png}
 \caption{The Processing View}
 \label{fig:and_processing_man}
+=======
+\addTwoImages	{figures/and_selected_files.png}{a}
+		{figures/and_selected_files_file_info.png}{b}
+\caption{Selected Files View}
+\label{fig:and_selected_man}
+\end{figure}
+\FloatBarrier
+
+
+\subsection{Converting Files}
+When the user has choosen a file (or several files) for conversion, the user will be presented with the Conversion View as seen in \refer{fig:and_conversion_man}. In this view the user may enter the parameters needed to perform a Raw-to-Profile-file conversion.
+\newline
+There are 9 different parameters to be specified in this page for the conversion to be done in a proper way. All parameters do not have to be filled, but they have to be specified in the order that is presented to the user. In order to fill out parameter number 3, both parameter 1 and 2 have to be filled out first.
+
+\begin{enumerate}
+	\item \term{Bowtie}, is a freetext field where the different parameters for the bowtie program are to be inserted.
+    \item \term{Genome Version}, is a dropdown menu where the user is presented with all the different genome versions that can be used for the conversion.
+    \item \term{Sam to GFF}, is an on/off option.
+    \item \term{GFF to SGR}, is an on/off option. 
+    \item \term{Smoothing}, free text field for the parameters for smoothing if it is to be used.
+    \item \term{Stepsize}, free text field for which stepsize is to be used for the conversion.
+    \item \term{Ratio calculation}, on/off field which determines if the ratio calculation is to be used. If checked it will require both next two fields to be filled out.
+    \item \term{Ratio}, free text field with the parameters for the ratio, if ratio calculation is wanted.
+    \item \term{Smoothing}, free text field for parameters regarding the smoothing for the ratio calculation.     
+
+\end{enumerate}
+
+\begin{figure}[h]
+\addScaledImage{0.3}{figures/and_convert_view.png}
+\caption{The Conversion View}
+\label{fig:and_conversion_man}
+>>>>>>> f3c1e1c847730d885048490032b7e303db8dbb9b
 \end{figure}
 
 \FloatBarrier
@@ -148,7 +209,11 @@ To abort a running or remove a finished process you can press the red cross seen
 
 
 \begin{figure}[h]
+<<<<<<< HEAD
 \addScaledImage{0.2}{figures/and_process_status.png}
+=======
+\addScaledImage{0.3}{figures/and_process_status.png}
+>>>>>>> f3c1e1c847730d885048490032b7e303db8dbb9b
 \caption{ The Process View}
 \label{fig:and_process_man}
 \end{figure}

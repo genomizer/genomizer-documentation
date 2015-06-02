@@ -1,49 +1,151 @@
 \label{chap:com_latexoverview}
 \section{System overview}
+\label{sec:sys_overview}
+%Things that people perceive as hard to change;[6] since designing the architecture takes place at the beginning of a software system's lifecycle, the architect should focus on decisions that “have to” be right the first time, since reversing such decisions may be impossible or prohibitively expensive.
+The \appName\ is a server-client architecture. It consists of four different clients: a web client, a desktop client and a two kinds of mobile clients. The mobile clients are implemented in \textit{Android} and \textit{iOS}. The server side consists of three components, a web server that acts as a proxy, a \textit{Java} server that connects to the final component a \textit{postgresql} database.
 
-The \appName\ is a server-client system, which involves four different
-clients, a Java server and one \term{postgresql} database. The
-different kinds of clients are:
+The web server is a \textit{Apache} system in the current implementation.
 
-\begin{itemize}
-\item iOS
-\item Android
-\item Web
-\item Desktop
-\end{itemize}
+\begin{figure}[h!]
+\centering	
+\begin{tikzpicture}[ 
+	font=\sffamily,
+	every matrix/.style={ampersand replacement=\&,column sep=0.5cm,row sep=0.5cm},
+	db/.style={cylinder, shape border rotate=90, draw, fill=orange!40, minimum height=2cm, minimum width=1.5cm},
+	server/.style={rectangle, draw, fill=orange!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	webb/.style={rectangle, draw, fill=blue!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize}, 
+	mobile/.style={rectangle, draw, fill=red!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	desktop/.style={rectangle, draw, fill=yellow!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	apache/.style={rectangle, draw, fill=green!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	every node/.style={align=center}]  
+\matrix{
+	\node[webb] (webb) {Web}; \&
+	\node[desktop] (desktop) {Desktop}; \&
+	\node[mobile] (mobile) {Mobile}; \\
+	\& \node[apache] (webServer) {Web server\\ Proxy}; \& \\
+	\& \node[server] (genomizer) {Genomizer}; \& \\
+	\& \node[db] (db) {DB}; \& \\
+	};
+	
+	\draw[both] (webb) -- (webServer);
+	\draw[both] (desktop) -- (webServer);
+	\draw[both] (mobile) -- (webServer);
+	\draw[both] (webServer) -- (genomizer);
+	\draw[both] (genomizer) -- (db);
 
-All of these clients use the \term{RESTful} protocol together with
-\term{Json} to communicate with the server, sent over a non persistent
-\term{HTTP-socket}. How the different requests sent over this socket
-is specified in the API which can be found in the appendix or at
-$docs.genomizer.apiary.io$.
+\end{tikzpicture}
+\caption{Overview of the system architecture}
+\label{fig:archOverview}
+\end{figure}
 
-The server is also divided in different parts, each with a specific
-responsibility. These are:
+The connection to the server from any client goes through the web server which acts as a proxy as well. This to insure a \textit{SSL} connection between the web server and the clients and a regular connection between the server and web server. The proxy protects the web client from \textit{XSS} (Cross site scripting). 
 
-\begin{itemize}
-\item Communication - Handles requests and responses
-\item Data storage - Handles the database
-\item Data transfer - Handles URL and file paths aswell as routing
-\item Process - Handles processing of files
-\end{itemize}
+All of the clients use the \term{RESTful} protocol where the message body consists of a \json\ object.
+These messages are requests that gets passed through the web server to the \appName\ server. The \appName\ server communicates with the database to perform the request. Then it generates a response following the \term{RESTful} protocol. The \term{RESTful} protocol is used to promise that the server will be state-less. State-less meaning that a request from a client can not lock the server for other clients requests. 
 
-\refer{fig:com_systemoverview} shows a simple flow diagram which
-describes how the client and server communicates. The particular
-example shows the data flow when the client process a file.
+The different requests that can be sent to the server are defined in the Appendix \fullref{chap:com_api} that goes into deeper detail about the API.
 
+The architecture of the system can be seen in Figure \ref{fig:archOverview} where the clients are the colors blue, yellow, and red. Web server is green and the \appName\ server and its database are colored orange.
+
+\subsection{Genomizer clients}
+
+All the clients that are part of the \appName\ service are implemented using the architectural design pattern MVC (\texttt{Model View Controller}). This pattern is based around keeping the logic and data separate from its representation and user interface. The basic idea is shown in figure \refer{fig:MVCimage}.
+
+\begin{figure}[h!]
+\centering	
+\begin{tikzpicture}[ 
+	font=\sffamily,
+	every matrix/.style={ampersand replacement=\&,column sep=1.5cm,row sep=1.0cm},
+	db/.style={cylinder, shape border rotate=90, draw, fill=orange!40, minimum height=2cm, minimum width=1.5cm},
+	server/.style={rectangle, draw, fill=orange!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	human/.style={rectangle, draw=white, fill=white, minimum height = 1cm, minimum width = 1cm}, 
+	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	every node/.style={align=center}]  
+\matrix{
+	\node[server] (comm) {Communication}; \& 
+	\node[server] (controller) {Controller}; \& 
+	\\
+	\& \& 	\node[human] (human) {\LARGE\Gentsroom\Ladiesroom}; \\	
+	\node[server] (model) {Model}; \&
+	\node[server] (view) {View}; \& \\
+	};
+	
+	\draw (comm) -- (model);
+	\draw[to] (controller) -- (model) node[midway, sloped, anchor=center, above] {\footnotesize\texttt{Update data}};
+	\draw[to] (controller) -- (view) node[midway, xshift=0.2cm, yshift=-1.2cm, anchor=center, rotate=90, right] {\footnotesize\texttt{Listen to action}};
+	\draw[to] (human) -- (view) node[midway, sloped, anchor=center, above] {\footnotesize\texttt{Interact}};
+	\draw[to] (view) -| (human) node[midway, anchor=center, below] {\footnotesize\texttt{Show GUI}};
+	\draw[to] (model) -- (view) node[midway, anchor=cneter, below] {\footnotesize\texttt{Represent}};
+\end{tikzpicture}
+\caption{Basic MVC pattern.}
+\label{fig:MVCimage}
+\end{figure}
+
+ The view will contain lists of experiments and annotations, data regarding process status, and other information. It will also present the user with windows and buttons that present and allow data to be manipulated. When a user interacts with the graphical interface the action will be handled by the controller using listeners. This in turn modifies the model; representing the data and information, as well as the operations available on it. 
+ 
+ For this project a communication part is also necessary; often as a part of the model. As mentioned in the overview section above, the communication is performed via a \term{RESTful} protocol using \json\ requests and responses. \json\ is used because it is easy to parse and is directly compatible with the standard frameworks used in the web client.
+ 
+ The advantage of this approach lies in the separation of the interface- and logic-code; allowing one to be more easily replaced or modified. In our case the communication data and interface can be kept the same, while the client representation of it can be changed freely.
+ 
+
+\subsection{Genomizer server}
+The server is devided up in three main components, the front end, the data storage and the processing.
+
+The front end consist of a handler for the \term{API} requests mentioned above. The handler interpret incoming request and passes them through to either processing or data storage depending request type.
+
+Data storage makes up the back-end of the server. Its purpose is to communicate with the file system and the database to return the correct information that was requested by the front-end.
+
+The processing component of the server has the purpose of interpreting the \term{raw} files and convert them to \term{profile} data. This conversion is very heavy on the hardware of the server, thus the processing needs to be scheduled to times when user activity is low.
+
+\refer{fig:com_systemoverview} shows a simple flow diagram which describes how the client and server
+ communicates. The particular example shows the data flow when the client process a file.
+ In the figure the front-end is the data transfer and communication node while data storage makes up the database node and processing the final process node.
+
+\begin{figure}[h!]
+\centering	
+\begin{tikzpicture}[ 
+	font=\sffamily,
+	every matrix/.style={ampersand replacement=\&,column sep=1.5cm,row sep=1.0cm},
+	db/.style={cylinder, shape border rotate=90, draw, fill=white, minimum height=1.5cm, minimum width=1.5cm, font=\ttfamily\footnotesize},
+	server/.style={rectangle, draw, fill=orange!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	human/.style={rectangle, draw, fill=white, minimum height = 1cm, minimum width = 1cm}, 
+	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	every node/.style={align=center}]  
+\matrix{
+	\node[human] (client) {Client}; \&
+	\node[human] (server) {Proxy}; \&
+	\node[human] (comm) {Server\\(Communication)}; \&
+	\node[human] (procc) {Server\\(Process)}; \\
+	\&\& \node[db] (db) {Server\\(Database)}; \\
+	};
+	\draw[to] (client) -- (server) node[midway, anchor=center, above] {\tiny{HTTP Request}};
+	\draw[to] (server) -- (comm) node[midway, anchor=center, above] {\tiny{Routed request}};
+	\draw[to] (comm) -- (procc.north west) node[sloped, midway, anchor=center, above] {\tiny{Start process}};	
+	\draw[to] (procc.south west) -- (comm) node[sloped, midway, anchor=center, below] {\tiny{Send info}};		
+	\draw[to] (comm.south west) -- (db) node[midway, anchor=center, left] {\tiny{Database call}};
+	\draw[to] (db) -- (comm) node[midway, anchor=center, right] {\tiny{Data}};
+\end{tikzpicture}
+\caption{The flow of a request through the server.}
+\label{fig:com_systemoverview}
+\end{figure}
+
+\begin{comment}
 \begin{figure}[htb]
 \addImage{com_systemoverview.jpg}
 \caption{A simple flow diagram for the system}
 \label{fig:com_systemoverview}
 \end{figure}
+\end{comment}
 
 Every request the client does creates a non persistent connection to
 the server. When the server receives a request it checks which kind of
-request it is and routes it to either the communication part of the
-server or handles it directly. This is done by the data transfer.
+request it is and routes it to the communication part of the server.
 
-If the request is routed to communication a specific command is
+When the request is routed to communication a specific command is
 created. The command is an object which consists of information from
 the \term{RESTful}-header and \json/ body sent from the
 client. The command is then parsed and sent to different parts of the
@@ -59,7 +161,4 @@ for requests like $getAnnotations$. The response can also contain
 error messages, describing what went wrong when executing the command.
 
 After a client receives the response the connection with the server is
-lost until the next request.
-
-There is a special kind of user called system admin. A user with these
-priveleges has the rights to add and delete annotations.
+closed and a new is opened with the next request.

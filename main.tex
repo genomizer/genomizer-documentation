@@ -2,8 +2,10 @@
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-
+\usepackage{amsmath, marvosym}
+\usepackage{booktabs}
+\usepackage{titlecaps}
+\usepackage{array}
 \usepackage{ltxtable, longtable}
 \usepackage{rotating}
 \usepackage{nomencl}
@@ -20,11 +22,25 @@
 \usepackage[yyyymmdd]{datetime}
 \usepackage{comment}
 \usepackage{morefloats}
+
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[notindex,nottoc,notlof,notlot]{tocbibind}
+\usepackage{mdframed}
 
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.95}
+%Warnings
+\newmdtheoremenv[%
+	outerlinewidth = 2 ,
+	roundcorner = 10pt ,
+	leftmargin = 40 ,
+	rightmargin = 40 ,
+	backgroundcolor = light-gray ,
+	outerlinecolor = black ,
+	]{example}{Example}
+	
 \usepackage{tikz}
-\usetikzlibrary{shapes, arrows}
+\usetikzlibrary{shapes, arrows, backgrounds, fit, positioning, scopes, matrix}
 \makenomenclature
 
 \input{commands}
