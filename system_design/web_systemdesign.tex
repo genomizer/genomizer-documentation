@@ -35,6 +35,9 @@ When a user clicks the \textit{search} tab, the router navigates to \url{/search
 
 The \class{Misc} category also holds the \class{main.js}, which is in charge of setting up and starting the app. The views are responsible for the user interface, displaying information and handling events. The collections and models are responsible for holding the data.
 
+\subsection{Log in}
+Log in has a single view that is a \textit{modal}, meaning that it is not a full page like the tabs but a pop-up that appears over the entire main view when a user enters the page.
+
 \label{sec:web_search}
 \subsection{Search}
 The search tab has three views that together make up the \class{Search Views} as they have been denoted in \refer{fig:web_system_overview}. When searching for data, the models and collections will update themselves to contain the new annotations, experiments and files pertaining to that particular search, so the search views can display them. Once new data has been retrieved, the user can perform a number of actions on the displayed experiments and files. 
@@ -56,5 +59,22 @@ In \refer{fig:web_system_sequenceDiagram} is a simple sequence diagram for the s
 \subsection{Upload}
 The upload tab has three views, that together make up the ``Upload Views'' as we have denoted them in \refer{fig:web_system_overview}. Unlike search (see section \ref{sec:web_frame}) that uses experiment and file models to retrieve information about experiments and files, upload uses the same models to create new experiments and files. To do this, it needs to be aware of what annotations are available, so it uses an annotation type collection to retrieve the current annotations offered when a user wants to create a new experiment.
 
-\subsection{Process}
-Process has a single view that is a \textit{modal}, meaning that it is not a full page like the other tabs but a pop-up that appears over the search view when a user chooses an experiment to process. Process has collections and models to store and send data necessary for a process, like genome releases available for the chosen species of an experiment.   
+\subsection{Process} 
+Process consists of two views that are reached either through the process
+tab in the main navigation bar or through the process button in the search view
+that allows the user to search for experiments prior to entering the process
+view. Process also has collections and models to store and send data necessary 
+for a process, like genome releases available for the chosen species of an 
+experiment.
+
+The view reached through the tab is simply a textfield where you can enter an
+experiment name and a button which allows you to proceed to the process view
+for that experiment, which is exactly the same thing that happens when marking
+an experiment in the search view and pressing the process button there.
+
+The process view is at first only a dropdown list where any process step can
+be chosen and added to the view by pressing the add button. Similarly, to each 
+process step, a line can be added using the + button, which represents one run
+of that process step. Adding more than one line to one step allows simultaneous
+processing, but should any infile depend on an outfile a new process step of the
+same sort must be created below.
