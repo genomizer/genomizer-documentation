@@ -80,29 +80,22 @@ BowTie takes a raw \term{.fastq} file together with a genome release and convert
 After a \term{.sam} file is converted the external dependency \term{Picard} is run with its internal command \term{samSort}, which produces a sorted \term{.sam} file sorted by chromosome and position as needed to use the scripts.
 \paragraph{After-processing scripts}
 The different functions of the Perl scripts is explained below. They are explained in the same order that they are executed. All scripts take a directory of files to be processed as input parameter.
-\begin{table}
-\begin{tabularx}{\textwidth}{|l|X|}
-\hline
-
-
-\term{ratio\_calculation\_v2} & 
+The given Perl scripts are modified and wrapped by expect scripts in order for better usability and callability from the Java implementation.
+\subsubsection{Ratio calculation}
 Does ratio calculation on the processed files, for each position in the IP sample with at least one mapped read, a ratio of IP - input (on a log2 scale) is calculated. If the read count in the input is below the read count mean (in the input sample) is calculated it is set to the mean ( or double mean (2 x mean) as user specified). If the input mean is below four the minimum input value is set to four (to avoid division by near zero values. Calculated as (read length x approximate total number of reads in input samples(9 millin))/ genome size (for Drosophila melanogaster 120381546)). A random number between -0.5 and 0,5 is added to the read counts before log2 conversion to make them discrete for statistical analysis. All ratio values are then adjusted by reducing each value by median of the ratios. This linear adjustment is carried out in order to compensate for differences in IP and input sequencing depth. Also, to visualize ratios distribution, ratios are plotted by binning ratios with user specified numbers of bins and minimum and maximum ratio values (200bins,minimum ratio value: -10, maximum ratio value:10). Ratio values are printed in sgr format.
-\\ \hline
-\end{tabularx}
-\end{table}
+
 \subsubsection{Smoothing and stepping}
-The scripts that was provided was inefficient and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.
+Both Smoothing and Step are implemented as separate classes calling external Perl scripts.
+The classes provide some validation and a clean interface towards the external dependencies.
+The programs can handle file corruption to some extent. 
+If the file contains empty or wrongly formatted rows the program will not crash, it will simply ignore the corrupt rows.
 
-\paragraph{SmoothingAndStep}
-Smoothing means that we either calculate the trimmed mean value or median value for a position and its surrounding positions. The number of positions we should smooth on is called the Window Size. For example: if we have a window size of 10 we will calculate the smoothed value on position X by calculating on the interval (X-4, X+5). We also need to have a "minimum positions to smooth" number, which tells us that if we have fewer rows to calculate on than the "minimum positions to smooth" we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any ste\term{BowTie}, \term{Picard} and by running
-pping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
+\paragraph{Smoothing}
+Smoothing means that a trimmed mean value or median value for a position and its surrounding positions is calculated. The number of positions to smooth on is called the Window Size. For example: with a window size of 10, the smoothed value on position X is calculated on the interval (X-4, X+5). A number of position which below shouldn't be smoothed at all should also be provided. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
 
-The class SmoothingAndStep have one public method and many private ones. The public one called smoothing starts by validating the inparameters and setting up file readers/writers. It then reads as many rows from the file as the window size into an array. It then checks which values that have been read that should be smoothed, after this is done the initiation of the program is complete. From then on the program removes the first row from the array and add one new row to the array and then smooth the middle one in the array. This continues until the end of chromosome or end of file both of which are handled in a similar way. When the program approaches end of chromosome it smoothes as many values as it can until there's less values to smooth than "minimum positions to smooth". It then empties the array and refills it in the same way as it did in the beginning of the file.
-
-The program can handle file corruption to some extent. If the file contains empty or wrongly formatted rows the program will not crash, it will simply ignore the corrupt rows.
-
-The program can also calculate the total mean value of the whole file.
-
+\paragraph{Step}
+Step also takes a window size, the number of genome reads to skip. 
+This afterprocessing reduces the granularity of the file and thus the file size, whilst information is lost of course.
 
 
 \paragraph{Tuple}
@@ -133,4 +126,4 @@ should be put. \\ \hline
 
 
 
-
+:
