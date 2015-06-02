@@ -1,0 +1,3769 @@
+\section{Introduction}\label{introduction}
+
+This document contains acceptance tests for the \texttt{genomizer}
+system. It is based on the list of ``use cases'' found on the
+\texttt{genomizer-documentation}
+\href{https://github.com/genomizer/genomizer-documentation/wiki/Use-cases}{wiki}.
+
+The list is as follows\footnote{I've omitted a few duplicate items in
+  this rendition of the list.}:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Logging In
+\item
+  Logging Out
+\item
+  Upload Genome Release
+\item
+  Delete Genome Release
+\item
+  Add annotations
+\item
+  Remove annotations
+\item
+  Update/Alter Genome Release
+\item
+  Create Experiment
+\item
+  Add files to an experiment
+\item
+  Search experiments
+\item
+  Search with partial terms
+\item
+  Processing single files
+\item
+  Processing multiple files
+\item
+  Download files
+\item
+  File conversion: SGR to WIG, WIG to SGR etc
+\end{itemize}
+
+\section{Tests}\label{tests}
+
+This section contains tests for each of the bullet points in the above
+section.
+
+\subsection{Logging In}\label{logging-in}
+
+\texttt{Logging\ In} is considered to be ``working'' if the following
+tests pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ In}: Correct login.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available..
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Start a \texttt{genomizer} client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to log in using a valid username and a valid password.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is logged in.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ In}: Bad username.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.27\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.64\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.27\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.64\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available..
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
+Start a \texttt{genomizer} client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
+Attempt to log in using an incorrect username.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.64\columnwidth}\raggedright\strut
+The server and client are both still running. The user is \emph{not}
+logged in. An error message is displayed, which communicates that the
+log in failed. The message does \emph{not} communicate why it failed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ In}: Bad password.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available..
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Start a \texttt{genomizer} client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to log in using an incorrect password.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is \emph{not}
+logged in. An error message is displayed, which communicates that the
+log in failed. The message does \emph{not} communicate why it failed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ In}: No username.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available..
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Start a \texttt{genomizer} client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to log in with no username.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is \emph{not}
+logged in. An error message is displayed, which communicates that the
+log in failed. The message does \emph{not} communicate why it failed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ In}: No password.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Start a \texttt{genomizer} client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to log in with no password.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is \emph{not}
+logged in. An error message is displayed, which communicates that the
+log in failed. The message does \emph{not} communicate why it failed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ In}: Garbage username.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Start a \texttt{genomizer} client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to log in with garbage\footnotemark{} input in the username
+field.
+\strut\end{minipage}
+\footnotetext{Very long random unicode string for instance.}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is \emph{not}
+logged in. An error message is displayed, which communicates that the
+log in failed. The message does \emph{not} communicate why it failed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ In}: Garbage password.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step Des
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+cription
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step Des
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+cription
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Start a \texttt{genomizer} client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to log in with garbage input in the password field.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is \emph{not}
+logged in. An error message is displayed, which communicates that the
+log in failed. The message does \emph{not} communicate why it failed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ In}: Bad address.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+None.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Start a \texttt{genomizer} client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to log in on a server that does not exist.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The client is still running. The user is \emph{not} logged in. An error
+message is displayed, which communicates that the log in failed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\subsection{Logging Out}\label{logging-out}
+
+\texttt{Logging\ Out} is considered to be ``working'' if the following
+tests pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ Out}: Standard behaviour.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to log out.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is no longer
+logged in.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Logging\ Out}: Logging in after logging
+out.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Log out.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to log in again with the same credentials.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is logged in.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\subsection{Upload Genome Release}\label{upload-genome-release}
+
+\texttt{Upload\ Genome\ Release} is considered to be ``working'' if the
+following tests pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Upload\ Genome\ Release}: Add genome release with 1
+file.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server and
+has permission to add genome releases. An experiment with processable
+files exists.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``genome release'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``Select files to upload'' button.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select a valid file and upload it.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select a valid species and enter a new name for the release.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+6
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Upload''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+7
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Ensure that the file upload completes successfully (or appears to, in
+the user interface).
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is still logged
+in. The new genome release is visible in the list of genome releases,
+and can be selected in the processing view.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Upload\ Genome\ Release}: Add genome release with
+multiple files.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server and
+has permission to add genome releases. An experiment with processable
+files exists.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``genome release'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``Select files to upload'' button.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select several valid files and upload them.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select a valid species and enter a new name for the release.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+6
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Upload''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+7
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Ensure that the file upload completes successfully (or appears to, in
+the user interface).
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is still logged
+in. The new genome release is visible in the list of genome releases,
+and can be selected in the processing view.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Upload\ Genome\ Release}: Add a genome release with a
+name already in use.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server and
+has permission to add genome releases. A previously added genome release
+exists on the server.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``genome release'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``Select files to upload'' button.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select several valid files and upload them.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select a valid species, but enter the name of an already existing genome
+release for the new one.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+6
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Upload''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is still logged
+in. An error message is displayed explaining that a genome release with
+the chosen name already exists.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Upload\ Genome\ Release}: Add a genome release without
+a species.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server and
+has permission to add genome releases.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``genome release'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``Select files to upload'' button
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select several valid files and upload them.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Enter a valid name, but do \emph{not} select a species for the release.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+6
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Upload''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is still logged
+in. An error message is displayed explaining that the genome release
+needs to be associated with a species.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\subsection{Delete Genome Release}\label{delete-genome-release}
+
+\texttt{Delete\ Genome\ Release} is considered to be ``working'' if the
+following tests pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Delete\ Release}: Delete an unused genome
+release.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server and
+has permission to delete genome releases. A genome release which is not
+referenced by any experiment exists on the server.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``genome release'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the delete button connected to the genome release mentioned above.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Confirm the deletion.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is still logged
+in. The chosen genome release is no longer visible in the list, and
+cannot be selected in the processing view.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Delete\ Release}: Delete a genome release which is
+still in use.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server and
+has permission to delete genome releases. A genome release which is
+referenced by at least one experiment exists on the server.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``genome release'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the delete button connected to the genome release mentioned above.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Confirm the deletion.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running. The user is still logged
+in. An error message is displayed explaining that the genome release
+cannot be deleted.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\subsection{Add Annotation}\label{add-annotation}
+
+\texttt{Add\ Annotation} is considerd to be ``working'' if the folowing
+works test pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ Annotation}: Add forced dropdown
+annotation.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in with
+an appropriate client and has permission to add annotations.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Add/Create new''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the annotation name field.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the Value field.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+6
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the plus sign if you want to add more values and fill out the new
+field.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+7
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Mark the forced annotation option.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+8
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press create annotation.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and a new
+forced Dropdown annotation has been created and is available in the list
+of annotations.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ Annotation}: Add non-forced dropdown
+annotation.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in with
+an appropriate client and has permission to add annotations.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Add/Create new''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the annotation name field.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the Value field.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+6
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the plus sign if you want to add more values and fill out the new
+field.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+7
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press create annotation.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and a new
+non-forced Dropdown annotation has been created and is available in the
+list of annotations.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ Annotation}: Add forced freetext
+annotation.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in with
+an appropriate client and has permission to add annotations.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Add/Create new''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Change tab to Free Text.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the field annotation namee
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+6
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Mark the forced annotation option
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+7
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press create annotation
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and a new
+forced freetext annotation is created and is in the annotation list.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ Annotation}: Add non-forced freetext
+annotation.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in with
+an appropriate client and has permission to add annotations.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press add.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Change tab to Free text.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the field annotation name
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+6
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press create annotation
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and a new
+forced freetext annotation is created and is available in the list of
+annotations.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ Annotation}: Add dropdown annotation with default
+values.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in with
+an appropriate client and has permission to add annotations.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press add.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the field annotation name.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press create annotation.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and a new
+Dropdown annotation with the values Yes, No and Unknown is created.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ Annotation}: Add dropdown annotation with freetext
+as only value.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in with
+an appropriate client and has permission to add annotations.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Add/Create new''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the field annotation name.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Mark freetext in the Value field.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+6
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press create annotation
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and a new
+freetext annotation is created and is available in the list of
+annotations.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ Annotation}: Add dropdown annotation with garbage
+values.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in with
+an appropriate client and has permission to add annotations.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Add/Create new''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the field annotation name or value with invalid
+characters\footnotemark{}
+\strut\end{minipage}
+\footnotetext{What counts as invalid here? - NG}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press create annotation
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and a error
+message should be shown and the annotation should not have been created.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ Annotation}: Add freetext annotation with garbage
+values.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in with
+an appropriate client and has permission to add annotations.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press ``Add/Create new''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill out the field annotation name with invalid
+characters.\footnotemark{}
+\strut\end{minipage}
+\footnotetext{What counts as invalid here? -NG}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press create annotation.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and a error
+message should be shown and the annotation should not have been created.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\subsection{Delete annotation}\label{delete-annotation}
+
+\texttt{Delete\ annotation} is considered to be working if the following
+tests pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Delete\ annotation}: Delete unused
+annotation.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server and
+has permission to remove annotations. An unused annotation exists on the
+system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Enter the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the edit button associated with the chosen annotation.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the delete button.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running and the user is still logged in. The chosen
+annotation is no longer visible in the list in the annotation view.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Delete\ annotation}: Delete an annotation in
+use.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server and
+has permission to remove annotations. An annotation, which is referenced
+in at least one experiment exists on the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Enter the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the edit button associated with the chosen annotation.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the delete button.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running and the user is still logged in. An error
+message is displayed explaining that the annotation cannot be removed
+while it is still in use.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Delete\ annotation}: Delete a ``hardcoded''
+annotation.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on a suitable \texttt{genomizer} client connected to the server and
+has permission to remove annotations.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the administration tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Enter the ``annotation'' view.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the edit button associated with the one of the ``hardcoded''
+annotations\footnotemark{}.
+\strut\end{minipage}
+\footnotetext{Currently these are: ``Species'' and ``Sex''.}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Attempt to press the delete button.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running and the user is still logged in. One of the
+following is true: An error message is displayed explaining that the
+annotation cannot be removed \textbf{OR} the button is disabled,
+preventing its use.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\subsection{Update Annotation}\label{update-annotation}
+
+\texttt{Update\ Annotation} is considered to be working if the following
+tests pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Update value in a forced
+dropdown.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu and is of the
+type ``forced dropdown''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Edit one of the annotation values.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The updated annotation is visible in the list of annotations,
+and contains the updated value.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Update value in a non-forced
+dropdown.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu and is of the
+type non-forced dropdown.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Edit one of the annotation values.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The updated annotation is visible in the list of annotations,
+and contains the updated value.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Update value in a freetext
+annotation.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu and is of the
+type freetext.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Try updating the annotation value.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The annotation value should not be able to be updated.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Update value to a value which
+already exists.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu, is of the type
+dropdown, and has at least two annotation values.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Edit one of the annotation values to be identical to one of the other
+annotation values.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The new annotation value should not be updated, and the
+system should tell the user that duplicate annotation values are not
+allowed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Update value to contain a special
+character.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu, and is of the
+type dropdown.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Edit an annotation value to contain a special character.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The new annotation value should not be updated, and the
+system should tell the user that special characters values are not
+allowed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Update value to be
+empty.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu, and is of the
+type dropdown.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Edit an annotation value to be empty.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The new annotation value should not be updated, and the
+system should tell the user that empty annotation values are not
+allowed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Add an annotation
+value.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu, and is of the
+type dropdown.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Add an annotation value.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The updated annotation is visible in the list of annotations,
+and contains the added value.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Add value identical to an already
+existing value.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu, and is of the
+type dropdown.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Add an annotation value that is identical to an already existing
+annotation value.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The new annotation value should not be added, and the system
+should tell the user that duplicate annotation values are not allowed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Add value
+"freetext".}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu, and is of the
+type dropdown.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Add the string "freetext" as an annotation value.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The new annotation value should not be added, and the system
+should tell the user that their annotation value is invalid.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Add empty value.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu, and is of the
+type dropdown.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Add an empty string to annotation values.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The new annotation value should not be added, and the system
+should tell the user that empty annotation values are not allowed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Remove value from
+dropdown.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu, is of the type
+dropdown, and contains at least one annotation value.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Remove a value from annotation values.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The updated annotation is visible in the list of annotations,
+and does not contain the removed value.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Remove value currently in
+use.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu, is of the type
+dropdown, and contains an annotation value that is currently in use by
+some experiment.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Remove an annotation value that is currently in use.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The remove annotation value should still exist, and the
+system should tell the user that annotation values which are currently
+in use cannot be removed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Update name.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Edit the annotation name.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The updated annotation is visible in the list of annotations,
+and contains the updated name.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Update name to a name which
+already exists.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Edit the annotation name to a name that an already existing annotation
+already has.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The new annotation name should not be updated, and the system
+should tell the user that duplicate annotation names are not allowed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Update\ annotation}: Update name to be
+empty.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a running \texttt{genomizer} server available. A user is logged
+in on an appropriate client and has permission to edit annotations. The
+annotation to be updated is visible in a relevant menu.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Edit the annotation name to be empty.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the update button to save annotation changes.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server and client are both still running, and the user is still
+logged in. The new annotation name should not be updated, and the system
+should tell the user that empty annotation names are not allowed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\subsection{Create experiment}\label{create-experiment}
+
+\texttt{Create\ experiment} is considered to be working if the following
+tests pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Create\ experiment}: Create experiment without typing
+an experiment name. pass:}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the ``Upload'' tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Leaving the ``Experiment name'' field blank, click ``Upload
+experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, and the user is still logged in and in the
+upload menu. The system should tell the user an experiment name is
+needed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Create\ experiment}: Create experiment without filling
+in forced annotations. pass:}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client. A forced annotation exists.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the ``Upload'' tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill in a valid experiment name.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Leaving a forced annotation blank, click ``Upload experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, and the user is still logged in and in the
+upload menu. The system should tell the user that forced annotations
+cannot be blank.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Create\ experiment}: Create experiment without files.
+pass:}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the ``Upload'' tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill in a valid experiment name and annotation values.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click ``Upload experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, and the user is still logged in. The new
+experiment should be visible when being searched, and should contain no
+files.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Create\ experiment}: Create experiment with one file.
+pass:}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the ``Upload'' tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill in a valid experiment name and annotation values.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select one file to be uploaded.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click ``Upload experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, and the user is still logged in. The new
+experiment should be visible when being searched, and should contain one
+file.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Create\ experiment}: Create experiment with multiple
+files.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click the ``Upload'' tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Fill in a valid experiment name and annotation values.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select multiple files to be uploaded.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click ``Upload experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, and the user is still logged in. The new
+experiment should be visible when being searched, and should contain all
+selected files.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\subsection{Add files to an
+Experiment}\label{add-files-to-an-experiment}
+
+\texttt{Add\ files\ to\ an\ Experiment} is considered to be working if
+the following tests pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ files\ to\ an\ Experiment}: Add one file to an
+Experiment.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client. A suitable experiment is available in the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Mark the experiment in the client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click ``Upload to experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select the file that will be uploaded.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Add the necessary attributes and press ``Upload experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and the
+uploaded file should be in the experiment view.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ files\ to\ an\ Experiment}: Add multiple files to
+an Experiment.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client. A suitable experiment is available in the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Mark the experiment in the client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click ``Upload to experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select the files that will be uploaded.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Add the necessary annotations and press ``Upload experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and the
+uploaded files should be in the experiment view.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Add\ files\ to\ an\ Experiment}: Add files without
+filling in forced annotations.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client. A suitable experiment and a forced annotation is available in
+the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Mark the experiment in the client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Click ``Upload to experiment''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Select the files that will be uploaded.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Just press ``Upload experiment'' without filling in the forced
+annotation.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in and a warning
+message should be telling the user that forced annotations must be
+filled in.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\subsection{Delete Experiment}\label{delete-experiment}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Delete\ Experiment}: Delete empty
+experiment.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client and has permission to delete experiments. A ``deletable''
+experiment with no files exists on the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the Search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Search for the aforementioned experiment.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Mark the experiment in the client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press remove, and confirm this.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Search for the experiment again.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. The experiment
+is not visible in the search results.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Delete\ Experiment}: Delete non-empty
+experiment.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client and has permission to delete experiments. A ``non-deletable''
+experiment with at least one file exists on the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the Search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Search for the aforementioned experiment.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Mark the experiment in the client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press remove, and confirm this.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. An error
+message is displayed explaining why the experiment cannot be deleted.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Searching}\label{searching}
+
+\texttt{Searching} is considered to be ``working'' if the following
+tests pass:
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Search}: Single term.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client. At least one experiment with correct annotations and files
+exists on the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Enter a valid\footnotemark{} search term associated with the
+aforementioned experiment\footnotemark{}.
+\strut\end{minipage}
+\addtocounter{footnote}{-1}
+\footnotetext{That is, \texttt{PubMed} syntax: \texttt{{[}expId{]}}.}
+\addtocounter{footnote}{1}
+\footnotetext{You may want to repeat this test with several different
+  kinds of terms; \texttt{expId}, \texttt{annotations} ..}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``search'' button or equivalently the \texttt{Enter} key.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. The
+aforementioned experiment is visible in the search results.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Search}: Multiple terms.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client. At least one experiment with correct annotations and files
+exists on the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Enter a valid search string containing multiple terms associated with
+the aforementioned experiment. Include multiple operators if possible.
+\footnotemark{}
+\strut\end{minipage}
+\footnotetext{If necessary, the number of operators/terms can be
+  ``artificially'' increased by adding a meaningless \texttt{OR} or
+  \texttt{AND\ NOT} term.}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``search'' button or equivalently the \texttt{Enter} key.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. The
+aforementioned experiment is visible in the search results.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Search}: Multiple terms using
+constructor.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client. At least one experiment with correct annotations and files
+exists on the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the query constructor.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Build a search string containing multiple terms associated with the
+aforementioned experiment. Include multiple operators if possible.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``search'' button or equivalently the \texttt{Enter} key.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. No results are
+displayed. An error message is displayed explaining why the search
+failed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Search}: Incorrect syntax.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Enter an invalid search term, such as ``asdasd''.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``search'' button or equivalently the \texttt{Enter} key.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. An error
+message is displayed, explaining that the query failed to bad syntax.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Search}: Empty string.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+``Enter'' the empty string as the search term.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``search'' button or equivalently the \texttt{Enter} key.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. All
+experiments (visible to the user in question) are visible in the search
+results.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Search}: Garbage input.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Enter garbage into the search field.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Press the ``search'' button or equivalently the \texttt{Enter} key.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. No results are
+displayed. An error message is displayed explaining why the search
+failed.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Search}: Search after add.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client and has permission to add experiments.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Search for an \texttt{expId} that does not exist.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Ensure that there are no search results.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the upload tab, and add a new experiment with the chosen
+\texttt{expId}.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Return to the search tab and search again.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. The new
+experiment is visible in the search results.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ll@{}}
+\caption{\texttt{Search}: Search after add.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.31\columnwidth}\raggedright\strut
+Step
+\strut\end{minipage} &
+\begin{minipage}[b]{0.63\columnwidth}\raggedright\strut
+Description
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Precondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+There is a \texttt{genomizer} server running. A user is logged in on a
+client and has permission to delete experiments. A ``deleteable''
+experiment exists on the system.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Open the search tab.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+2
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Search for the \texttt{expId} of the aforementioned experiment.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Ensure that the experiment is visible in the search results.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+4
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Mark the experiment and press the ``Remove'' button.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+Confirm the deletion, and search for the \texttt{expId} again.
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.31\columnwidth}\raggedright\strut
+\textbf{Postcondition}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.63\columnwidth}\raggedright\strut
+The server is still running, the user is still logged in. The experiment
+is no longer visible the search results.
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\pagebreak
+
+\section{Not yet specified}\label{not-yet-specified}
+
+The following has not yet been dealt with:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Processing
+\item
+  File conversion
+\item
+  User addition/deletion/updates
+\end{itemize}

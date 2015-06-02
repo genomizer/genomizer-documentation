@@ -3,9 +3,9 @@ set up a server and install the software needed to get a fully functional system
 It also contains instructions on how to maintain the system in case problems arise.
 
 \section{A brief introduction to
-vagrant}\label{a-brief-introduction-to-vagrant}
+vagrant}\label{sec:a-brief-introduction-to-vagrant}
 
-\subsection{Basic usage}\label{basic-usage}
+\subsection{Basic usage}\label{sec:basic-usage}
 
 Vagrant is configured by a \texttt{Vagrant} file, which defines how the
 virtual machine is constructed. This should not be modified unless you
@@ -36,7 +36,7 @@ starts the genomizer server in the virtual machine, inside a screen
 session labeled \texttt{server}.
 
 \subsection{Modifying the
-configuration}\label{modifying-the-configuration}
+configuration}\label{sec:modifying-the-configuration}
 
 To make vagrant set up a specific branch, modify the corresponding
 script, such as \texttt{scripts/provision/install\_genomizer\_server.sh}
@@ -47,7 +47,7 @@ If your feature requires changes to the settings.cfg it is located at
 with a fresh instance of the virtual machine.
 
 \subsection{Entering the vagrant virtual
-machine}\label{entering-the-vagrant-virtual-machine}
+machine}\label{sec:entering-the-vagrant-virtual-machine}
 
 If you need to reach the environment using SSH, simply go to the
 environment you require with
@@ -60,7 +60,7 @@ vagrant ssh
 and you will be logged in using ssh to the virtual machine.
 
 \section{Systems overview of
-production}\label{systems-overview-of-production}
+production}\label{sec:systems-overview-of-production}
 
 The production server runs currently on \texttt{130.239.192.110}. The
 production server is constructed of several virtual machines, configured
@@ -80,11 +80,11 @@ environments, while the scripts under \texttt{scripts/environment} deal
 with the server, such as setting up the firewall and external
 directories used by the virtual machines.
 
-\subsection{Using the toolchain}\label{using-the-toolchain}
+\subsection{Using the toolchain}\label{sec:using-the-toolchain}
 
 This is a short introduction to the tools used in the environments.
 
-\subsubsection{Using gnu screen}\label{using-gnu-screen}
+\subsubsection{Using gnu screen}\label{sec:using-gnu-screen}
 
 To ensure processes run even when nobody has a terminal open to the
 server \texttt{screen} is used. \texttt{screen} is a terminal
@@ -144,11 +144,11 @@ $ screen -S <session name>
 
 To terminate a \texttt{screen}, attach to it and run \texttt{exit}.
 
-\subsection{Configured environments}\label{configured-environments}
+\subsection{Configured environments}\label{sec:configured-environments}
 
 The environments as currently configured are described below.
 
-\subsubsection{Production}\label{production}
+\subsubsection{Production}\label{sec:production}
 
 This environment runs the production code. Hands off if you are unsure
 of or have not communicated your change clearly to everyone else.
@@ -207,7 +207,7 @@ of or have not communicated your change clearly to everyone else.
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Development-1}\label{development-1}
+\subsubsection{Development-1}\label{sec:development-1}
 
 This environment is assigned to the \texttt{database} group.
 
@@ -265,7 +265,7 @@ This environment is assigned to the \texttt{database} group.
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Development-2}\label{development-2}
+\subsubsection{Development-2}\label{sec:development-2}
 
 This environment is assigned to the \texttt{business-logic} group.
 
@@ -323,7 +323,7 @@ This environment is assigned to the \texttt{business-logic} group.
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Development-3}\label{development-3}
+\subsubsection{Development-3}\label{sec:development-3}
 
 This environment is assigned to the \texttt{processing} group.
 
@@ -381,7 +381,7 @@ This environment is assigned to the \texttt{processing} group.
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Client-development}\label{client-development}
+\subsubsection{Client-development}\label{sec:client-development}
 
 This environment is assigned to the \texttt{desktop} group.
 
@@ -439,7 +439,7 @@ This environment is assigned to the \texttt{desktop} group.
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Web-development}\label{web-development}
+\subsubsection{Web-development}\label{sec:web-development}
 
 This environment is assigned to the \texttt{web} and \texttt{app}
 groups.
@@ -498,7 +498,7 @@ groups.
   \end{itemize}
 \end{itemize}
 
-\subsection{The important scripts}\label{the-important-scripts}
+\subsection{The important scripts}\label{sec:the-important-scripts}
 
 The machines are configured using a myriad of scripts with various
 responsibilities. The \texttt{Vagrantfile} defines how the virtual
@@ -550,9 +550,9 @@ If you are confused by what a script does, reading it can give you a
 clearer picture of what it does.
 
 \subsection{Creating a new
-environment}\label{creating-a-new-environment}
+environment}\label{sec:creating-a-new-environment}
 
-\subsubsection{Considerations}\label{considerations}
+\subsubsection{Considerations}\label{sec:considerations}
 
 Before setting up a new environment, you should consider the memory and
 CPU footprint inherent in running a virtual machine. The host machine as
@@ -563,7 +563,7 @@ recommended to exceed this configuration, as unexpected side-effects
 could occur.
 
 \subsubsection{Checking out the correct
-files}\label{checking-out-the-correct-files}
+files}\label{sec:checking-out-the-correct-files}
 
 When building a new environment, you may wish to configure which
 versions of the server software and web client software the script
@@ -580,7 +580,7 @@ the \texttt{scripts/
 provision/install\_genomizer\_server.sh} script.
 Locate the line(s)
 
-\hyperdef{}{mycode}{\label{mycode}}
+
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{# We checkout the master version by default}
@@ -590,7 +590,7 @@ Locate the line(s)
 
 and replace them with
 
-\hyperdef{}{mycode}{\label{mycode}}
+
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{# We checkout the <desired branch> version by default}
@@ -602,7 +602,7 @@ To change the version of the \texttt{genomizer-web} client, edit the
 \texttt{scripts/provision/} \texttt{install\_genomizer\_webclient.sh}
 script. Locate the line(s)
 
-\hyperdef{}{mycode}{\label{mycode}}
+
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{# We run the master branch by default}
@@ -613,7 +613,7 @@ script. Locate the line(s)
 
 and replace them with
 
-\hyperdef{}{mycode}{\label{mycode}}
+
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{# We run the <desired branch> branch by default}
