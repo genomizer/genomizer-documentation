@@ -50,11 +50,11 @@
 \BOOKMARK [2][-]{subsection.6.1.7}{System Administration}{section.6.1}% 50
 \BOOKMARK [2][-]{subsection.6.1.8}{Flow of the system}{section.6.1}% 51
 \BOOKMARK [1][-]{section.6.2}{Web application}{chapter.6}% 52
-\BOOKMARK [2][-]{subsection.6.2.1}{How our web application works}{section.6.2}% 53
+\BOOKMARK [2][-]{subsection.6.2.1}{How the web application works}{section.6.2}% 53
 \BOOKMARK [2][-]{subsection.6.2.2}{System overview}{section.6.2}% 54
 \BOOKMARK [2][-]{subsection.6.2.3}{Search}{section.6.2}% 55
-\BOOKMARK [2][-]{subsection.6.2.4}{Process}{section.6.2}% 56
-\BOOKMARK [2][-]{subsection.6.2.5}{Upload}{section.6.2}% 57
+\BOOKMARK [2][-]{subsection.6.2.4}{Upload}{section.6.2}% 56
+\BOOKMARK [2][-]{subsection.6.2.5}{Process}{section.6.2}% 57
 \BOOKMARK [2][-]{subsection.6.2.6}{System administration - Web}{section.6.2}% 58
 \BOOKMARK [1][-]{section.6.3}{Android application}{chapter.6}% 59
 \BOOKMARK [2][-]{subsection.6.3.1}{System overview}{section.6.3}% 60
@@ -93,8 +93,8 @@
 \BOOKMARK [2][-]{subsection.7.5.3}{File-transfer}{section.7.5}% 93
 \BOOKMARK [2][-]{subsection.7.5.4}{Data Storage}{section.7.5}% 94
 \BOOKMARK [1][-]{section.7.6}{Limitations}{chapter.7}% 95
-\BOOKMARK [0][-]{section*.62}{Bibliography}{part.1}% 96
-\BOOKMARK [0][-]{section*.62}{Nomenclature}{part.1}% 97
+\BOOKMARK [0][-]{section*.63}{Bibliography}{part.1}% 96
+\BOOKMARK [0][-]{section*.63}{Nomenclature}{part.1}% 97
 \BOOKMARK [0][-]{appendix.A}{User manual}{part.1}% 98
 \BOOKMARK [1][-]{section.A.1}{Desktop application}{appendix.A}% 99
 \BOOKMARK [2][-]{subsection.A.1.1}{Login and startup}{section.A.1}% 100

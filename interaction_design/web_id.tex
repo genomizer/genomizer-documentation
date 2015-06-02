@@ -4,7 +4,7 @@
 
 Generally, the design of the user interface for the web application is an integration of the principles previously described with core design elements of web and the twitter bootstrap element library. 
 
-\subsubsection{Layout and Structure}
+\subsection{Layout and Structure}
 The structure of the application is in most cases shallow, the navigational depth is usually two steps but sub views with modal views may result in a depth of 3. There are three types of views which are hierarchical in some way, main views contain sub views and modal views, sub views may contain modal views.
 
 \begin{itemize}
@@ -52,20 +52,28 @@ In main views and sub views we use a toolbars where operation controls available
 Elements that belong to a view but have no need to be visible at all times are shown in bootstrap popovers. Popovers that do not belong to a specific view may be placed in the navigation bar, that is, the main menu.
 \end{itemize}
 
-\subsubsection{Colors}
+\subsection{Colors}
 Grayscale colors are mostly used, black or dark gray is used for text, icons and borders while white or light gray is used for backgrounds. Colors of different hues are used to distinguish elements from each other and to highlight important elements. Colors with high saturation are reserved for smaller elements while colors with lower saturation can be used regardless of element size. Light gray of varying brightness may also be used to highlight or distinguish elements.
 
-\subsubsection{Icons}
+\subsection{Icons}
 Buttons that perform actions should always contain an icon as well as text so that the experienced user may more quickly desired actions by identifying buttons at a glance instead of having to read the button text. 
 
-\subsubsection{Batching}
+\subsection{Batching}
 For operations performed on objects that there are multiples of e.g. experiments or files, let the user perform these operations on multiple objects at the same time in cases where it makes sense using checkboxes.
 
-\subsubsection{Processing}
+\subsection{Processing}
 The interaction flow of the processing is adapted from the actual processing 
 steps in order to help the researchers by increasing usability through providing
 a well-known but more optimized approach.
 
 After having chosen an experiment for processing and entered the processing 
 view, the user can choose the processing steps wanted and enter the correct
-files and parameters for each processing step as shown in .
+files and parameters for each processing step as shown in 
+\autoref{fig:web_process_processOverview}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[trim=0 0 85 0, clip, width=1\textwidth]{web_process_processOverview.png}
+    \caption{Files selected for upload.}
+    \label{fig:web_process_processOverview}
+\end{figure}

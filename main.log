@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.1.27)  2 JUN 2015 10:56
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.1.27)  2 JUN 2015 11:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1978,31 +1978,42 @@ File: figures/web/manual/web_login.png Graphic file (type png)
 Package pdftex.def Info: figures/web/manual/web_login.png used on input line 40
 .
 (pdftex.def)             Requested size: 275.9989pt x 144.44168pt.
- [9 <./figures/web/manual/web_login.png (PNG copy)>]) (./interaction_design/adm
-_web_id.tex [10])
-(./interaction_design/and_interaction.tex
-<figures/and_login.png, id=1153, 1084.05pt x 1927.2pt>
+ [9 <./figures/web/manual/web_login.png (PNG copy)>]
+<figures/web_process_processOverview.png, id=1146, 1207.51125pt x 708.6475pt>
+File: figures/web_process_processOverview.png Graphic file (type png)
+
+<use figures/web_process_processOverview.png>
+Package pdftex.def Info: figures/web_process_processOverview.png used on input 
+line 76.
+(pdftex.def)             Requested size: 344.9993pt x 217.86186pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./interaction_design/adm_web_id.tex [10])
+(./interaction_design/and_interaction.tex [11 <./figures/web_process_processOve
+rview.png>] <figures/and_login.png, id=1163, 1084.05pt x 1927.2pt>
 File: figures/and_login.png Graphic file (type png)
 
 <use figures/and_login.png>
 Package pdftex.def Info: figures/and_login.png used on input line 18.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
 
-<figures/and_search.png, id=1155, 1084.05pt x 1927.2pt>
+<figures/and_search.png, id=1165, 1084.05pt x 1927.2pt>
 File: figures/and_search.png Graphic file (type png)
 
 <use figures/and_search.png>
 Package pdftex.def Info: figures/and_search.png used on input line 32.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
- [11 <./figures/and_login.png>]
-<figures/and_search_result.png, id=1163, 1084.05pt x 1927.2pt>
+ [12 <./figures/and_login.png>]
+<figures/and_search_result.png, id=1174, 1084.05pt x 1927.2pt>
 File: figures/and_search_result.png Graphic file (type png)
 
 <use figures/and_search_result.png>
 Package pdftex.def Info: figures/and_search_result.png used on input line 45.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
- [12 <./figures/and_search.png> <./figures/and_search_result.png>]
-<figures/and_experiment_files.png, id=1171, 1084.05pt x 1927.2pt>
+ [13 <./figures/and_search.png> <./figures/and_search_result.png>]
+<figures/and_experiment_files.png, id=1182, 1084.05pt x 1927.2pt>
 File: figures/and_experiment_files.png Graphic file (type png)
 
 <use figures/and_experiment_files.png>
@@ -2010,7 +2021,7 @@ Package pdftex.def Info: figures/and_experiment_files.png used on input line 58
 .
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
 
-<figures/and_search_select_visible_annotations.png, id=1173, 1084.05pt x 1927.2
+<figures/and_search_select_visible_annotations.png, id=1184, 1084.05pt x 1927.2
 pt>
 File: figures/and_search_select_visible_annotations.png Graphic file (type png)
 
@@ -2018,58 +2029,62 @@ File: figures/and_search_select_visible_annotations.png Graphic file (type png)
 Package pdftex.def Info: figures/and_search_select_visible_annotations.png used
  on input line 73.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
- [13 <./figures/and_experiment_files.png>]
-<figures/and_selected_files.png, id=1181, 1084.05pt x 1927.2pt>
+ [14 <./figures/and_experiment_files.png> <./figures/and_search_select_visible_
+annotations.png>]
+<figures/and_selected_files.png, id=1191, 1084.05pt x 1927.2pt>
 File: figures/and_selected_files.png Graphic file (type png)
 
 <use figures/and_selected_files.png>
 Package pdftex.def Info: figures/and_selected_files.png used on input line 89.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
- [14 <./figures/and_search_select_visible_annotations.png> <./figures/and_selec
-ted_files.png>]
-<figures/and_convert_view.png, id=1189, 1084.05pt x 1927.2pt>
+
+<figures/and_convert_view.png, id=1193, 1084.05pt x 1927.2pt>
 File: figures/and_convert_view.png Graphic file (type png)
 
 <use figures/and_convert_view.png>
 Package pdftex.def Info: figures/and_convert_view.png used on input line 102.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
-) (./interaction_design/ios_id.tex
-<figures/ios_search1.PNG, id=1190, 642.4pt x 1140.26pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15 <./figures/and_selected_files.png>]) (./interaction_design/ios_id.tex
+<figures/ios_search1.PNG, id=1200, 642.4pt x 1140.26pt>
 File: figures/ios_search1.PNG Graphic file (type png)
 
 <use figures/ios_search1.PNG>
 Package pdftex.def Info: figures/ios_search1.PNG used on input line 14.
 (pdftex.def)             Requested size: 137.99568pt x 244.94234pt.
 
-<figures/ios_search2.PNG, id=1191, 642.4pt x 1140.26pt>
+<figures/ios_search2.PNG, id=1201, 642.4pt x 1140.26pt>
 File: figures/ios_search2.PNG Graphic file (type png)
 
 <use figures/ios_search2.PNG>
 Package pdftex.def Info: figures/ios_search2.PNG used on input line 14.
 (pdftex.def)             Requested size: 137.99568pt x 244.94234pt.
- [15 <./figures/and_convert_view.png>]
-<figures/ios_result3.PNG, id=1198, 642.4pt x 1140.26pt>
+ [16 <./figures/and_convert_view.png>]
+<figures/ios_result3.PNG, id=1208, 642.4pt x 1140.26pt>
 File: figures/ios_result3.PNG Graphic file (type png)
 
 <use figures/ios_result3.PNG>
 Package pdftex.def Info: figures/ios_result3.PNG used on input line 28.
 (pdftex.def)             Requested size: 103.49185pt x 183.69804pt.
- [16 <./figures/ios_search1.PNG> <./figures/ios_search2.PNG>] <figures/ios_proc
-ess_files.jpg, id=1207, 642.4pt x 1140.26pt>
+ [17 <./figures/ios_search1.PNG> <./figures/ios_search2.PNG>] <figures/ios_proc
+ess_files.jpg, id=1217, 642.4pt x 1140.26pt>
 File: figures/ios_process_files.jpg Graphic file (type jpg)
 
 <use figures/ios_process_files.jpg>
 Package pdftex.def Info: figures/ios_process_files.jpg used on input line 40.
 (pdftex.def)             Requested size: 137.99568pt x 244.94234pt.
 
-<figures/ios_files2.PNG, id=1208, 642.4pt x 1140.26pt>
+<figures/ios_files2.PNG, id=1218, 642.4pt x 1140.26pt>
 File: figures/ios_files2.PNG Graphic file (type png)
 
 <use figures/ios_files2.PNG>
 Package pdftex.def Info: figures/ios_files2.PNG used on input line 40.
 (pdftex.def)             Requested size: 137.99568pt x 244.94234pt.
- [17 <./figures/ios_result3.PNG>]
-<figures/ios_empty_make_process.jpg, id=1215, 642.4pt x 1140.26pt>
+ [18 <./figures/ios_result3.PNG>]
+<figures/ios_empty_make_process.jpg, id=1226, 642.4pt x 1140.26pt>
 File: figures/ios_empty_make_process.jpg Graphic file (type jpg)
 
 <use figures/ios_empty_make_process.jpg>
@@ -2077,14 +2092,14 @@ Package pdftex.def Info: figures/ios_empty_make_process.jpg used on input line
 71.
 (pdftex.def)             Requested size: 103.49185pt x 183.69804pt.
 
-<figures/ios_one_process.jpg, id=1216, 642.4pt x 1140.26pt>
+<figures/ios_one_process.jpg, id=1227, 642.4pt x 1140.26pt>
 File: figures/ios_one_process.jpg Graphic file (type jpg)
 
 <use figures/ios_one_process.jpg>
 Package pdftex.def Info: figures/ios_one_process.jpg used on input line 71.
 (pdftex.def)             Requested size: 103.49185pt x 183.69804pt.
 
-<figures/ios_many_process.jpg, id=1217, 642.4pt x 1140.26pt>
+<figures/ios_many_process.jpg, id=1228, 642.4pt x 1140.26pt>
 File: figures/ios_many_process.jpg Graphic file (type jpg)
 
 <use figures/ios_many_process.jpg>
@@ -2095,40 +2110,40 @@ Overfull \hbox (1.50316pt too wide) in paragraph at lines 71--72
  [][] 
  []
 
-[18 <./figures/ios_process_files.jpg> <./figures/ios_files2.PNG>]
-<figures/ios_processes1.PNG, id=1226, 642.4pt x 1140.26pt>
+[19 <./figures/ios_process_files.jpg> <./figures/ios_files2.PNG>]
+<figures/ios_processes1.PNG, id=1236, 642.4pt x 1140.26pt>
 File: figures/ios_processes1.PNG Graphic file (type png)
 
 <use figures/ios_processes1.PNG>
 Package pdftex.def Info: figures/ios_processes1.PNG used on input line 81.
 (pdftex.def)             Requested size: 103.49185pt x 183.69804pt.
 
-<figures/ios_alert1.PNG, id=1228, 642.4pt x 1140.26pt>
+<figures/ios_alert1.PNG, id=1238, 642.4pt x 1140.26pt>
 File: figures/ios_alert1.PNG Graphic file (type png)
 
 <use figures/ios_alert1.PNG>
 Package pdftex.def Info: figures/ios_alert1.PNG used on input line 90.
 (pdftex.def)             Requested size: 103.49185pt x 183.69804pt.
- [19 <./figures/ios_empty_make_process.jpg> <./figures/ios_one_process.jpg> <./
-figures/ios_many_process.jpg> <./figures/ios_processes1.PNG>])) [20 <./figures/
+ [20 <./figures/ios_empty_make_process.jpg> <./figures/ios_one_process.jpg> <./
+figures/ios_many_process.jpg> <./figures/ios_processes1.PNG>])) [21 <./figures/
 ios_alert1.PNG>] (./system_design/system_design.tex (./system_design/des_system
 design.tex
-<figures/des_DesktopBriefSystemUML.png, id=1243, 1229.59375pt x 1008.76875pt>
+<figures/des_DesktopBriefSystemUML.png, id=1254, 1229.59375pt x 1008.76875pt>
 File: figures/des_DesktopBriefSystemUML.png Graphic file (type png)
 
 <use figures/des_DesktopBriefSystemUML.png>
 Package pdftex.def Info: figures/des_DesktopBriefSystemUML.png used on input li
 ne 10.
 (pdftex.def)             Requested size: 344.99686pt x 283.03824pt.
- [21 <./figures/des_DesktopBriefSystemUML.png (PNG copy)>] [22]
-<figures/adm_comm_view.png, id=1258, 624.3325pt x 505.89pt>
+ [22 <./figures/des_DesktopBriefSystemUML.png (PNG copy)>] [23]
+<figures/adm_comm_view.png, id=1268, 624.3325pt x 505.89pt>
 File: figures/adm_comm_view.png Graphic file (type png)
 
 <use figures/adm_comm_view.png>
 Package pdftex.def Info: figures/adm_comm_view.png used on input line 72.
 (pdftex.def)             Requested size: 345.00345pt x 279.55263pt.
- [23] [24 <./figures/adm_comm_view.png>]
-<figures/des_download-sequence.jpeg, id=1278, 1669.23625pt x 1490.56876pt>
+ [24] [25 <./figures/adm_comm_view.png>]
+<figures/des_download-sequence.jpeg, id=1288, 1669.23625pt x 1490.56876pt>
 File: figures/des_download-sequence.jpeg Graphic file (type jpg)
 
 <use figures/des_download-sequence.jpeg>
@@ -2136,57 +2151,66 @@ Package pdftex.def Info: figures/des_download-sequence.jpeg used on input line
 113.
 (pdftex.def)             Requested size: 344.9974pt x 308.07043pt.
 
-<figures/des_login-sequence.jpeg, id=1279, 1365.1pt x 1211.52625pt>
+<figures/des_login-sequence.jpeg, id=1289, 1365.1pt x 1211.52625pt>
 File: figures/des_login-sequence.jpeg Graphic file (type jpg)
 
 <use figures/des_login-sequence.jpeg>
 Package pdftex.def Info: figures/des_login-sequence.jpeg used on input line 119
 .
 (pdftex.def)             Requested size: 344.98186pt x 306.17139pt.
- [25 <./figures/des_download-sequence.jpeg>]) (./system_design/web_systemdesign
+ [26 <./figures/des_download-sequence.jpeg>]) (./system_design/web_systemdesign
 .tex
-<figures/web_system_backboneWebapp.png, id=1286, 626.34pt x 557.08125pt>
+<figures/web_system_backboneWebapp.png, id=1296, 626.34pt x 557.08125pt>
 File: figures/web_system_backboneWebapp.png Graphic file (type png)
 
 <use figures/web_system_backboneWebapp.png>
 Package pdftex.def Info: figures/web_system_backboneWebapp.png used on input li
 ne 6.
-(pdftex.def)             Requested size: 345.0137pt x 306.86316pt.
+(pdftex.def)             Requested size: 276.01096pt x 245.49052pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/web_system_overview.png, id=1291, 1284.8pt x 593.21625pt>
+
+Underfull \hbox (badness 2809) in paragraph at lines 13--14
+[]\T1/lmr/m/it/8 (+20) In the web app, there is a col-lec-tion called
+ []
+
+[27 <./figures/des_login-sequence.jpeg>]
+<figures/web_system_overview.png, id=1306, 1284.8pt x 593.21625pt>
 File: figures/web_system_overview.png Graphic file (type png)
 
 <use figures/web_system_overview.png>
-Package pdftex.def Info: figures/web_system_overview.png used on input line 16.
+Package pdftex.def Info: figures/web_system_overview.png used on input line 20.
 
 (pdftex.def)             Requested size: 344.99901pt x 159.29251pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26 <./figures/des_login-sequence.jpeg>] [27 <./figures/web_system_backboneWeba
-pp.png>]
-<figures/web_system_sequenceDiagram.png, id=1309, 845.1575pt x 494.84875pt>
+[28 <./figures/web_system_backboneWebapp.png>]
+<figures/web_system_sequenceDiagram.png, id=1320, 845.1575pt x 494.84875pt>
 File: figures/web_system_sequenceDiagram.png Graphic file (type png)
 
 <use figures/web_system_sequenceDiagram.png>
 Package pdftex.def Info: figures/web_system_sequenceDiagram.png used on input l
-ine 32.
+ine 50.
 (pdftex.def)             Requested size: 345.00798pt x 202.00586pt.
- [28 <./figures/web_system_overview.png> <./figures/web_system_sequenceDiagram.
-png>])
-(./system_design/adm_web_systemdesign.tex [29]) (./system_design/and_system.tex
-[30] <figures/and_system_overview.png, id=1332, 440.39531pt x 425.33907pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./system_design/adm_web_systemdesign.tex [29 <./figures/web_system_overview.
+png>] [30 <./figures/web_system_sequenceDiagram.png>])
+(./system_design/and_system.tex [31]
+<figures/and_system_overview.png, id=1344, 440.39531pt x 425.33907pt>
 File: figures/and_system_overview.png Graphic file (type png)
 
 <use figures/and_system_overview.png>
 Package pdftex.def Info: figures/and_system_overview.png used on input line 9.
 (pdftex.def)             Requested size: 345.0122pt x 333.21692pt.
- [31 <./figures/and_system_overview.png>]
-[32]
+ [32 <./figures/and_system_overview.png>]
+[33]
 Underfull \hbox (badness 2608) in paragraph at lines 56--56
 []|\T1/lmr/m/n/10 (+20) SearchSettingsFragment han-dles set-tings for
  []
@@ -2200,8 +2224,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [33] [34] [35] [36] (./system_design/ios_systemdesign.tex
-<figures/ios_UML2.png, id=1366, 901.3675pt x 809.0225pt>
+) [34] [35] [36] [37] (./system_design/ios_systemdesign.tex
+<figures/ios_UML2.png, id=1378, 901.3675pt x 809.0225pt>
 File: figures/ios_UML2.png Graphic file (type png)
 
 <use figures/ios_UML2.png>
@@ -2209,56 +2233,56 @@ Package pdftex.def Info: figures/ios_UML2.png used on input line 6.
 (pdftex.def)             Requested size: 206.99382pt x 185.78734pt.
 
 
-LaTeX Warning: Reference `fig:ios_selectedFiles2' on page 37 undefined on input
+LaTeX Warning: Reference `fig:ios_selectedFiles2' on page 38 undefined on input
  line 70.
 
-[37
+[38
 
- <./figures/ios_UML2.png (PNG copy)>] [38])
-(./system_design/BL_systemdesign.tex [39])
+ <./figures/ios_UML2.png (PNG copy)>] [39])
+(./system_design/BL_systemdesign.tex [40])
 (./system_design/SERV_systemdesign.tex
 
-LaTeX Warning: Reference `con_UML' on page 40 undefined on input line 9.
+LaTeX Warning: Reference `con_UML' on page 41 undefined on input line 9.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
-[40] [41] (./system_design/SERV_systemServer_ProcessingTable.tex)
+[41] [42] (./system_design/SERV_systemServer_ProcessingTable.tex)
 (./system_design/SERV_systemServer_ProcessingTable.tex)
 (./system_design/SERV_systemServer_ProcessingTable.tex
 Underfull \vbox (badness 10000) detected at line 85
  []
 
-[42]) [43] [44] [45] [46]) (./system_design/BL_systemdesign_up.tex [47]
+[43]) [44] [45] [46] [47]) (./system_design/BL_systemdesign_up.tex [48]
 
-LaTeX Warning: Reference `chap:servercmd' on page 48 undefined on input line 9.
+LaTeX Warning: Reference `chap:servercmd' on page 49 undefined on input line 9.
 
 
-<figures/exp_flow.jpg, id=1465, 883.3pt x 426.59375pt>
+<figures/exp_flow.jpg, id=1478, 883.3pt x 426.59375pt>
 File: figures/exp_flow.jpg Graphic file (type jpg)
 
 <use figures/exp_flow.jpg>
 Package pdftex.def Info: figures/exp_flow.jpg used on input line 14.
 (pdftex.def)             Requested size: 344.99779pt x 166.61824pt.
 
-<figures/exp_filestructure.jpg, id=1467, 710.655pt x 371.3875pt>
+<figures/exp_filestructure.jpg, id=1480, 710.655pt x 371.3875pt>
 File: figures/exp_filestructure.jpg Graphic file (type jpg)
 
 <use figures/exp_filestructure.jpg>
 Package pdftex.def Info: figures/exp_filestructure.jpg used on input line 22.
 (pdftex.def)             Requested size: 345.00342pt x 180.29839pt.
-) [48 <./figures/exp_flow.jpg>]
+) [49 <./figures/exp_flow.jpg>]
 (./system_design/DL_systemdesign.tex
-<figures/dat_database_schema_v2.png, id=1476, 794.97pt x 614.295pt>
+<figures/dat_database_schema_v2.png, id=1489, 794.97pt x 614.295pt>
 File: figures/dat_database_schema_v2.png Graphic file (type png)
 
 <use figures/dat_database_schema_v2.png>
 Package pdftex.def Info: figures/dat_database_schema_v2.png used on input line 
 10.
 (pdftex.def)             Requested size: 345.00856pt x 266.59752pt.
- [49 <./figures/exp_filestructure.jpg>] [50 <./figures/dat_database_schema_v2.p
+ [50 <./figures/exp_filestructure.jpg>] [51 <./figures/dat_database_schema_v2.p
 ng>]
 Overfull \hbox (99.6811pt too wide) in paragraph at lines 22--24
 []\T1/lmtt/m/n/8 Path \T1/lmr/m/n/8 (-20) is the path to the cor-re-spond-ing f
@@ -2271,58 +2295,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
  []
 
-[51] [52])) [53] (./implementation/implementation.tex
+[52] [53])) [54] (./implementation/implementation.tex
 (./implementation/des_implementation.tex)
-(./implementation/web_implementation.tex [54]
+(./implementation/web_implementation.tex [55] [56]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 26.
- [55])
-(./implementation/and_implementation.tex [56]
-<figures/and_login_sequence.jpg, id=1555, 699.36281pt x 420.06938pt>
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 31.
+)
+(./implementation/and_implementation.tex [57]
+<figures/and_login_sequence.jpg, id=1568, 699.36281pt x 420.06938pt>
 File: figures/and_login_sequence.jpg Graphic file (type jpg)
 
 <use figures/and_login_sequence.jpg>
 Package pdftex.def Info: figures/and_login_sequence.jpg used on input line 30.
 (pdftex.def)             Requested size: 279.74016pt x 168.02477pt.
-
-<figures/and_search_sequence.jpg, id=1558, 771.63281pt x 391.4625pt>
+ [58 <./figures/and_login_sequence.jpg>]
+<figures/and_search_sequence.jpg, id=1579, 771.63281pt x 391.4625pt>
 File: figures/and_search_sequence.jpg Graphic file (type jpg)
 
 <use figures/and_search_sequence.jpg>
 Package pdftex.def Info: figures/and_search_sequence.jpg used on input line 63.
 
 (pdftex.def)             Requested size: 385.81546pt x 195.73076pt.
- [57 <./figures/and_login_sequence.jpg>]
-<figures/and_genome_sequence.jpg, id=1566, 763.35187pt x 420.06938pt>
+
+<figures/and_genome_sequence.jpg, id=1581, 763.35187pt x 420.06938pt>
 File: figures/and_genome_sequence.jpg Graphic file (type jpg)
 
 <use figures/and_genome_sequence.jpg>
 Package pdftex.def Info: figures/and_genome_sequence.jpg used on input line 87.
 
 (pdftex.def)             Requested size: 381.675pt x 210.03418pt.
- [58 <./figures/and_search_sequence.jpg> <./figures/and_genome_sequence.jpg>]
-<figures/and_convert_sequence.jpg, id=1573, 713.66624pt x 385.44pt>
+ [59 <./figures/and_search_sequence.jpg> <./figures/and_genome_sequence.jpg>]
+<figures/and_convert_sequence.jpg, id=1588, 713.66624pt x 385.44pt>
 File: figures/and_convert_sequence.jpg Graphic file (type jpg)
 
 <use figures/and_convert_sequence.jpg>
 Package pdftex.def Info: figures/and_convert_sequence.jpg used on input line 11
 2.
 (pdftex.def)             Requested size: 356.83224pt x 192.71953pt.
- [59 <./figures/and_convert_sequence.jpg>] <figures/and_process_sequence.jpg, i
-d=1580, 763.35187pt x 420.06938pt>
+ [60 <./figures/and_convert_sequence.jpg>] <figures/and_process_sequence.jpg, i
+d=1596, 763.35187pt x 420.06938pt>
 File: figures/and_process_sequence.jpg Graphic file (type jpg)
 
 <use figures/and_process_sequence.jpg>
 Package pdftex.def Info: figures/and_process_sequence.jpg used on input line 13
 7.
 (pdftex.def)             Requested size: 381.675pt x 210.03418pt.
- [60 <./figures/and_process_sequence.jpg>]
+ [61 <./figures/and_process_sequence.jpg>]
 
-LaTeX Warning: Reference `sec:and_classdescription' on page 61 undefined on inp
+LaTeX Warning: Reference `sec:and_classdescription' on page 62 undefined on inp
 ut line 147.
 
 
-LaTeX Warning: Reference `sec:and_classdescription' on page 61 undefined on inp
+LaTeX Warning: Reference `sec:and_classdescription' on page 62 undefined on inp
 ut line 149.
 
 ) (./implementation/ios_implementation.tex)
@@ -2331,13 +2355,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--6
 
  []
 
-[61] <figures/com_authorization.png, id=1591, 624.3325pt x 347.2975pt>
+[62] <figures/com_authorization.png, id=1607, 624.3325pt x 347.2975pt>
 File: figures/com_authorization.png Graphic file (type png)
 
 <use figures/com_authorization.png>
 Package pdftex.def Info: figures/com_authorization.png used on input line 9.
 (pdftex.def)             Requested size: 345.00345pt x 191.9151pt.
- [62 <./figures/com_authorization.png>]
+ [63 <./figures/com_authorization.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 21--24
 
  []
@@ -2357,24 +2381,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--36
 
  []
 
-) [63] (./implementation/con_implementation.tex
+) [64] (./implementation/con_implementation.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--21
 
  []
 
-[64]) (./implementation/exp_implementation.tex)
+[65]) (./implementation/exp_implementation.tex)
 (./implementation/dat_implementation.tex
-<figures/dat_overview_schema.png, id=1618, 626.34pt x 521.95pt>
+<figures/dat_overview_schema.png, id=1633, 626.34pt x 521.95pt>
 File: figures/dat_overview_schema.png Graphic file (type png)
 
 <use figures/dat_overview_schema.png>
 Package pdftex.def Info: figures/dat_overview_schema.png used on input line 5.
 (pdftex.def)             Requested size: 231.14961pt x 192.62468pt.
- [65 <./figures/dat_overview_schema.png>]
-[66]) (./limitations/limitations.tex)) [67] (./bibliography/bibliography.tex
+ [66 <./figures/dat_overview_schema.png>]
+[67]) (./limitations/limitations.tex)) [68] (./bibliography/bibliography.tex
 (./bibliography/dat_target_group_bib.tex) (./bibliography/des_bib.tex)
 (./bibliography/exp_bib.tex) (./bibliography/web_bib.tex)
-(./bibliography/dat_bib.tex)) (./glossary.tex) (./main.nls [68
+(./bibliography/dat_bib.tex)) (./glossary.tex) (./main.nls [69
 
 ]
 Underfull \hbox (badness 10000) detected at line 13
@@ -2391,59 +2415,59 @@ Underfull \hbox (badness 10000) detected at line 19
 []\T1/lmr/bx/n/8 Raw[]
  []
 
-) (./appendices/appendices.tex [69] (./usermanual/user_manual.tex
+) (./appendices/appendices.tex [70] (./usermanual/user_manual.tex
 (./usermanual/des_manual.tex
-<figures/des_login_picture.png, id=1690, 203.25937pt x 211.54031pt>
+<figures/des_login_picture.png, id=1706, 203.25937pt x 211.54031pt>
 File: figures/des_login_picture.png Graphic file (type png)
 
 <use figures/des_login_picture.png>
 Package pdftex.def Info: figures/des_login_picture.png used on input line 11.
 (pdftex.def)             Requested size: 138.00363pt x 143.626pt.
 
-<figures/des_tabs.png, id=1692, 675.52374pt x 105.39375pt>
+<figures/des_tabs.png, id=1708, 675.52374pt x 105.39375pt>
 File: figures/des_tabs.png Graphic file (type png)
 
 <use figures/des_tabs.png>
 Package pdftex.def Info: figures/des_tabs.png used on input line 17.
 (pdftex.def)             Requested size: 345.00732pt x 53.82729pt.
 
-<figures/des_search_tab.png, id=1696, 1228.59pt x 319.1925pt>
+<figures/des_search_tab.png, id=1712, 1228.59pt x 319.1925pt>
 File: figures/des_search_tab.png Graphic file (type png)
 
 <use figures/des_search_tab.png>
 Package pdftex.def Info: figures/des_search_tab.png used on input line 27.
 (pdftex.def)             Requested size: 344.99643pt x 89.63142pt.
- [70 <./figures/des_login_picture.png> <./figures/des_tabs.png>]
-<figures/des_search_res.png, id=1707, 1228.59pt x 816.04875pt>
+ [71 <./figures/des_login_picture.png> <./figures/des_tabs.png>]
+<figures/des_search_res.png, id=1722, 1228.59pt x 816.04875pt>
 File: figures/des_search_res.png Graphic file (type png)
 
 <use figures/des_search_res.png>
 Package pdftex.def Info: figures/des_search_res.png used on input line 36.
 (pdftex.def)             Requested size: 344.99643pt x 229.15204pt.
- [71 <./figures/des_search_tab.png>] [72 <./figures/des_search_res.png>]
-<figures/des_upload_tab.png, id=1724, 1228.59pt x 250.9375pt>
+ [72 <./figures/des_search_tab.png>] [73 <./figures/des_search_res.png>]
+<figures/des_upload_tab.png, id=1739, 1228.59pt x 250.9375pt>
 File: figures/des_upload_tab.png Graphic file (type png)
 
 <use figures/des_upload_tab.png>
 Package pdftex.def Info: figures/des_upload_tab.png used on input line 46.
 (pdftex.def)             Requested size: 344.99643pt x 70.46495pt.
 
-<figures/des_upload_existing.png, id=1727, 1230.5975pt x 488.82625pt>
+<figures/des_upload_existing.png, id=1742, 1230.5975pt x 488.82625pt>
 File: figures/des_upload_existing.png Graphic file (type png)
 
 <use figures/des_upload_existing.png>
 Package pdftex.def Info: figures/des_upload_existing.png used on input line 55.
 
 (pdftex.def)             Requested size: 344.99683pt x 137.04196pt.
- [73 <./figures/des_upload_tab.png> <./figures/des_upload_existing.png>]
-<figures/des_upload_new.png, id=1741, 1232.605pt x 529.98pt>
+ [74 <./figures/des_upload_tab.png> <./figures/des_upload_existing.png>]
+<figures/des_upload_new.png, id=1756, 1232.605pt x 529.98pt>
 File: figures/des_upload_new.png Graphic file (type png)
 
 <use figures/des_upload_new.png>
 Package pdftex.def Info: figures/des_upload_new.png used on input line 65.
 (pdftex.def)             Requested size: 344.99539pt x 148.33676pt.
 
-<figures/des_upload_select.png, id=1743, 353.98917pt x 240.44972pt>
+<figures/des_upload_select.png, id=1758, 353.98917pt x 240.44972pt>
 File: figures/des_upload_select.png Graphic file (type png)
 
 <use figures/des_upload_select.png>
@@ -2453,32 +2477,32 @@ Package pdftex.def Info: figures/des_upload_select.png used on input line 75.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[74 <./figures/des_upload_new.png>]
-<figures/des_process_tab.png, id=1758, 1233.60875pt x 822.07124pt>
+[75 <./figures/des_upload_new.png>]
+<figures/des_process_tab.png, id=1773, 1233.60875pt x 822.07124pt>
 File: figures/des_process_tab.png Graphic file (type png)
 
 <use figures/des_process_tab.png>
 Package pdftex.def Info: figures/des_process_tab.png used on input line 90.
 (pdftex.def)             Requested size: 344.99399pt x 229.9024pt.
 
-<figures/des_parameter_info.png, id=1759, 541.02126pt x 305.14pt>
+<figures/des_parameter_info.png, id=1774, 541.02126pt x 305.14pt>
 File: figures/des_parameter_info.png Graphic file (type png)
 
 <use figures/des_parameter_info.png>
 Package pdftex.def Info: figures/des_parameter_info.png used on input line 96.
 (pdftex.def)             Requested size: 207.00186pt x 116.75058pt.
 
-<figures/des_ratio_calc_popup.png, id=1760, 480.79625pt x 325.215pt>
+<figures/des_ratio_calc_popup.png, id=1775, 480.79625pt x 325.215pt>
 File: figures/des_ratio_calc_popup.png Graphic file (type png)
 
 <use figures/des_ratio_calc_popup.png>
 Package pdftex.def Info: figures/des_ratio_calc_popup.png used on input line 10
 2.
 (pdftex.def)             Requested size: 207.00246pt x 140.01836pt.
- [75 <./figures/des_upload_select.png (PNG copy)>] [76 <./figures/des_process_t
+ [76 <./figures/des_upload_select.png (PNG copy)>] [77 <./figures/des_process_t
 ab.png> <./figures/des_parameter_info.png> <./figures/des_ratio_calc_popup.png>
 ]
-<figures/des_workspace_select.png, id=1776, 1228.59pt x 819.06pt>
+<figures/des_workspace_select.png, id=1791, 1228.59pt x 819.06pt>
 File: figures/des_workspace_select.png Graphic file (type png)
 
 <use figures/des_workspace_select.png>
@@ -2486,23 +2510,23 @@ Package pdftex.def Info: figures/des_workspace_select.png used on input line 12
 0.
 (pdftex.def)             Requested size: 344.99643pt x 229.99762pt.
 
-<figures/des_download.png, id=1777, 1233.60875pt x 446.66875pt>
+<figures/des_download.png, id=1792, 1233.60875pt x 446.66875pt>
 File: figures/des_download.png Graphic file (type png)
 
 <use figures/des_download.png>
 Package pdftex.def Info: figures/des_download.png used on input line 125.
 (pdftex.def)             Requested size: 344.99399pt x 124.91644pt.
- [77
+ [78
 
-] [78 <./figures/des_workspace_select.png> <./figures/des_download.png>]
-<figures/annotationsView.png, id=1794, 1231.60126pt x 288.07625pt>
+] [79 <./figures/des_workspace_select.png> <./figures/des_download.png>]
+<figures/annotationsView.png, id=1809, 1231.60126pt x 288.07625pt>
 File: figures/annotationsView.png Graphic file (type png)
 
 <use figures/annotationsView.png>
 Package pdftex.def Info: figures/annotationsView.png used on input line 135.
 (pdftex.def)             Requested size: 344.99634pt x 80.69595pt.
 
-<figures/adm_addAnnotationPop.png, id=1796, 599.23875pt x 600.2425pt>
+<figures/adm_addAnnotationPop.png, id=1811, 599.23875pt x 600.2425pt>
 File: figures/adm_addAnnotationPop.png Graphic file (type png)
 
 <use figures/adm_addAnnotationPop.png>
@@ -2510,17 +2534,17 @@ Package pdftex.def Info: figures/adm_addAnnotationPop.png used on input line 14
 3.
 (pdftex.def)             Requested size: 207.00275pt x 207.34949pt.
 
-<figures/adm_removeAnnotation.png, id=1798, 819.06pt x 337.71028pt>
+<figures/adm_removeAnnotation.png, id=1813, 819.06pt x 337.71028pt>
 File: figures/adm_removeAnnotation.png Graphic file (type png)
 
 <use figures/adm_removeAnnotation.png>
 Package pdftex.def Info: figures/adm_removeAnnotation.png used on input line 15
 3.
 (pdftex.def)             Requested size: 345.00269pt x 142.24959pt.
- [79
+ [80
 
  <./figures/annotationsView.png> <./figures/adm_addAnnotationPop.png>]
-<figures/genomeReleaseViewExtraInfo.png, id=1808, 1232.605pt x 816.04875pt>
+<figures/genomeReleaseViewExtraInfo.png, id=1823, 1232.605pt x 816.04875pt>
 File: figures/genomeReleaseViewExtraInfo.png Graphic file (type png)
 
 <use figures/genomeReleaseViewExtraInfo.png>
@@ -2531,138 +2555,123 @@ ine 162.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [80 <./figures/adm_removeAnnotation.png (PNG copy)>]
+) [81 <./figures/adm_removeAnnotation.png (PNG copy)>]
 (./usermanual/web_manual.tex
 File: figures/web/manual/web_login.png Graphic file (type png)
  <use figures/web/manual/web_login.png>
-Package pdftex.def Info: figures/web/manual/web_login.png used on input line 9.
+Package pdftex.def Info: figures/web/manual/web_login.png used on input line 8.
 
-(pdftex.def)             Requested size: 345.00487pt x 180.55536pt.
+(pdftex.def)             Requested size: 258.7443pt x 135.41162pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/web_search_welcome.png, id=1816, 670.505pt x 220.1871pt>
+<figures/web_search_welcome.png, id=1832, 670.505pt x 220.1871pt>
 File: figures/web_search_welcome.png Graphic file (type png)
 
 <use figures/web_search_welcome.png>
-Package pdftex.def Info: figures/web_search_welcome.png used on input line 17.
+Package pdftex.def Info: figures/web_search_welcome.png used on input line 16.
 (pdftex.def)             Requested size: 344.99165pt x 113.29178pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[81 <./figures/genomeReleaseViewExtraInfo.png>]
-<figures/web_search_searchTab.png, id=1826, 670.505pt x 316.09682pt>
-File: figures/web_search_searchTab.png Graphic file (type png)
-
-<use figures/web_search_searchTab.png>
-Package pdftex.def Info: figures/web_search_searchTab.png used on input line 40
-.
-(pdftex.def)             Requested size: 344.99165pt x 162.63974pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[82 <./figures/web_search_welcome.png>]
-<figures/web_search_queryBuilder.png, id=1837, 670.505pt x 268.81738pt>
+[82 <./figures/genomeReleaseViewExtraInfo.png>] [83 <./figures/web_search_welco
+me.png>]
+<figures/web_search_queryBuilder.png, id=1855, 670.505pt x 268.81738pt>
 File: figures/web_search_queryBuilder.png Graphic file (type png)
 
 <use figures/web_search_queryBuilder.png>
 Package pdftex.def Info: figures/web_search_queryBuilder.png used on input line
- 56.
+ 49.
 (pdftex.def)             Requested size: 344.99165pt x 138.31328pt.
 
-<figures/web_search_searchResult.png, id=1840, 549.38583pt x 339.06113pt>
+<figures/web_search_searchTab.png, id=1856, 670.505pt x 316.09682pt>
+File: figures/web_search_searchTab.png Graphic file (type png)
+
+<use figures/web_search_searchTab.png>
+Package pdftex.def Info: figures/web_search_searchTab.png used on input line 58
+.
+(pdftex.def)             Requested size: 344.99165pt x 162.63974pt.
+
+<figures/web_search_searchResult.png, id=1859, 549.38583pt x 339.06113pt>
 File: figures/web_search_searchResult.png Graphic file (type png)
 
 <use figures/web_search_searchResult.png>
 Package pdftex.def Info: figures/web_search_searchResult.png used on input line
  67.
 (pdftex.def)             Requested size: 344.99997pt x 212.92154pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[83 <./figures/web_search_searchTab.png> <./figures/web_search_queryBuilder.png
->] [84 <./figures/web_search_searchResult.png (PNG copy)>]
-<figures/web_process_modalView.png, id=1856, 972.63374pt x 1051.93pt>
+ [84 <./figures/web_search_queryBuilder.png> <./figures/web_search_searchTab.pn
+g>] [85 <./figures/web_search_searchResult.png (PNG copy)>]
+<figures/web_process_modalView.png, id=1874, 972.63374pt x 1051.93pt>
 File: figures/web_process_modalView.png Graphic file (type png)
 
 <use figures/web_process_modalView.png>
-Package pdftex.def Info: figures/web_process_modalView.png used on input line 8
-1.
+Package pdftex.def Info: figures/web_process_modalView.png used on input line 7
+8.
 (pdftex.def)             Requested size: 344.99799pt x 373.12477pt.
 
-<figures/web_manual_process_step1.png, id=1857, 675.18916pt x 265.44028pt>
+<figures/web_manual_process_step1.png, id=1875, 675.18916pt x 265.44028pt>
 File: figures/web_manual_process_step1.png Graphic file (type png)
 
 <use figures/web_manual_process_step1.png>
 Package pdftex.def Info: figures/web_manual_process_step1.png used on input lin
-e 88.
+e 87.
 (pdftex.def)             Requested size: 344.99098pt x 135.62791pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[85 <./figures/web_process_modalView.png>]
-<figures/web_manual_process_step2.png, id=1863, 675.18916pt x 265.44028pt>
+[86 <./figures/web_process_modalView.png>]
+<figures/web_manual_process_step2.png, id=1881, 675.18916pt x 265.44028pt>
 File: figures/web_manual_process_step2.png Graphic file (type png)
 
 <use figures/web_manual_process_step2.png>
 Package pdftex.def Info: figures/web_manual_process_step2.png used on input lin
-e 95.
+e 94.
 (pdftex.def)             Requested size: 344.99098pt x 135.62791pt.
 
-<figures/web_manual_process_step3.png, id=1864, 675.18916pt x 265.44028pt>
+<figures/web_manual_process_step3.png, id=1882, 675.18916pt x 265.44028pt>
 File: figures/web_manual_process_step3.png Graphic file (type png)
 
 <use figures/web_manual_process_step3.png>
 Package pdftex.def Info: figures/web_manual_process_step3.png used on input lin
-e 100.
+e 99.
 (pdftex.def)             Requested size: 344.99098pt x 135.62791pt.
 
-<figures/web_manual_process_step4.png, id=1865, 527.9725pt x 161.4255pt>
+<figures/web_manual_process_step4.png, id=1883, 527.9725pt x 161.4255pt>
 File: figures/web_manual_process_step4.png Graphic file (type png)
 
 <use figures/web_manual_process_step4.png>
 Package pdftex.def Info: figures/web_manual_process_step4.png used on input lin
-e 106.
+e 105.
 (pdftex.def)             Requested size: 344.99875pt x 105.482pt.
 
-<figures/web_manual_process_step5.png, id=1866, 731.39917pt x 297.18504pt>
+<figures/web_manual_process_step5.png, id=1884, 731.39917pt x 297.18504pt>
 File: figures/web_manual_process_step5.png Graphic file (type png)
 
 <use figures/web_manual_process_step5.png>
 Package pdftex.def Info: figures/web_manual_process_step5.png used on input lin
-e 111.
+e 112.
 (pdftex.def)             Requested size: 345.0076pt x 140.18486pt.
 
-<figures/web_manual_process_step6.png, id=1867, 740.7675pt x 382.96346pt>
+<figures/web_manual_process_step6.png, id=1885, 740.7675pt x 382.96346pt>
 File: figures/web_manual_process_step6.png Graphic file (type png)
 
 <use figures/web_manual_process_step6.png>
 Package pdftex.def Info: figures/web_manual_process_step6.png used on input lin
-e 116.
+e 118.
 (pdftex.def)             Requested size: 345.00719pt x 178.36249pt.
 
-<figures/web_manual_process_step7.png, id=1868, 740.7675pt x 382.96346pt>
+<figures/web_manual_process_step7.png, id=1886, 740.7675pt x 382.96346pt>
 File: figures/web_manual_process_step7.png Graphic file (type png)
 
 <use figures/web_manual_process_step7.png>
 Package pdftex.def Info: figures/web_manual_process_step7.png used on input lin
-e 121.
+e 123.
 (pdftex.def)             Requested size: 345.00719pt x 178.36249pt.
 
-<figures/web_process_modalValues.png, id=1870, 935.495pt x 1053.9375pt>
-File: figures/web_process_modalValues.png Graphic file (type png)
-
-<use figures/web_process_modalValues.png>
-Package pdftex.def Info: figures/web_process_modalValues.png used on input line
- 131.
-(pdftex.def)             Requested size: 345.00005pt x 388.68031pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 92--134
+Underfull \hbox (badness 10000) in paragraph at lines 91--128
 
  []
 
@@ -2681,144 +2690,189 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+<figures/web_process_modalValues.png, id=1888, 935.495pt x 1053.9375pt>
+File: figures/web_process_modalValues.png Graphic file (type png)
+
+<use figures/web_process_modalValues.png>
+Package pdftex.def Info: figures/web_process_modalValues.png used on input line
+ 134.
+(pdftex.def)             Requested size: 345.00005pt x 388.68031pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[86 <./figures/web_manual_process_step1.png> <./figures/web_manual_process_step
-2.png>] [87 <./figures/web_manual_process_step3.png> <./figures/web_manual_proc
-ess_step4.png> <./figures/web_manual_process_step5.png>] [88 <./figures/web_man
-ual_process_step6.png> <./figures/web_manual_process_step7.png>] [89 <./figures
+[87 <./figures/web_manual_process_step1.png> <./figures/web_manual_process_step
+2.png>] [88 <./figures/web_manual_process_step3.png> <./figures/web_manual_proc
+ess_step4.png> <./figures/web_manual_process_step5.png>] [89 <./figures/web_man
+ual_process_step6.png> <./figures/web_manual_process_step7.png>] [90 <./figures
 /web_process_modalValues.png>]
-<figures/web_process_success.png, id=1903, 601.24625pt x 86.3225pt>
+<figures/web_process_success.png, id=1922, 601.24625pt x 86.3225pt>
 File: figures/web_process_success.png Graphic file (type png)
 
 <use figures/web_process_success.png>
-Package pdftex.def Info: figures/web_process_success.png used on input line 138
+Package pdftex.def Info: figures/web_process_success.png used on input line 141
 .
 (pdftex.def)             Requested size: 276.00781pt x 39.62715pt.
 
-<figures/web_process_notSuccess.png, id=1905, 442.65375pt x 126.4725pt>
+<figures/web_process_notSuccess.png, id=1924, 442.65375pt x 126.4725pt>
 File: figures/web_process_notSuccess.png Graphic file (type png)
 
 <use figures/web_process_notSuccess.png>
 Package pdftex.def Info: figures/web_process_notSuccess.png used on input line 
-145.
+148.
 (pdftex.def)             Requested size: 276.01624pt x 78.86177pt.
- [90
+ [91
 
  <./figures/web_process_success.png> <./figures/web_process_notSuccess.png>]
-<figures/web/manual/web_remove.png, id=1915, 610.28pt x 305.14pt>
+<figures/web_convert_searchExp.png, id=1933, 670.505pt x 382.28804pt>
+File: figures/web_convert_searchExp.png Graphic file (type png)
+
+<use figures/web_convert_searchExp.png>
+Package pdftex.def Info: figures/web_convert_searchExp.png used on input line 1
+62.
+(pdftex.def)             Requested size: 344.99165pt x 196.69678pt.
+
+<figures/web_convert_convertView.png, id=1937, 542.025pt x 303.26382pt>
+File: figures/web_convert_convertView.png Graphic file (type png)
+
+<use figures/web_convert_convertView.png>
+Package pdftex.def Info: figures/web_convert_convertView.png used on input line
+ 177.
+(pdftex.def)             Requested size: 345.00911pt x 193.03313pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/web/manual/web_remove.png, id=1938, 610.28pt x 305.14pt>
 File: figures/web/manual/web_remove.png Graphic file (type png)
 
 <use figures/web/manual/web_remove.png>
 Package pdftex.def Info: figures/web/manual/web_remove.png used on input line 1
-53.
+88.
 (pdftex.def)             Requested size: 276.01096pt x 138.00546pt.
 
-<figures/web_processStatus_withData.png, id=1917, 444.66125pt x 569.12625pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[92 <./figures/web_convert_searchExp.png>]
+<figures/web_processStatus_withData.png, id=1948, 444.66125pt x 569.12625pt>
 File: figures/web_processStatus_withData.png Graphic file (type png)
 
 <use figures/web_processStatus_withData.png>
 Package pdftex.def Info: figures/web_processStatus_withData.png used on input l
-ine 162.
+ine 198.
 (pdftex.def)             Requested size: 172.5012pt x 220.78598pt.
 
-<figures/web_upload_uploadView.png, id=1919, 670.505pt x 219.51169pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[93 <./figures/web_convert_convertView.png> <./figures/web/manual/web_remove.pn
+g>] <figures/web_upload_uploadView.png, id=1958, 670.505pt x 219.51169pt>
 File: figures/web_upload_uploadView.png Graphic file (type png)
 
 <use figures/web_upload_uploadView.png>
-Package pdftex.def Info: figures/web_upload_uploadView.png used on input line 1
-73.
+Package pdftex.def Info: figures/web_upload_uploadView.png used on input line 2
+10.
 (pdftex.def)             Requested size: 344.99165pt x 112.94426pt.
- [91 <./figures/web/manual/web_remove.png> <./figures/web_processStatus_withDat
-a.png>]
-<figures/web_upload_newExperiment.png, id=1930, 670.505pt x 367.42879pt>
+
+<figures/web_upload_newExperiment.png, id=1960, 670.505pt x 367.42879pt>
 File: figures/web_upload_newExperiment.png Graphic file (type png)
 
 <use figures/web_upload_newExperiment.png>
 Package pdftex.def Info: figures/web_upload_newExperiment.png used on input lin
-e 182.
+e 219.
 (pdftex.def)             Requested size: 344.99165pt x 189.05132pt.
- [92 <./figures/web_upload_uploadView.png> <./figures/web_upload_newExperiment.
-png>]
-<figures/web_upload_fileUpload.png, id=1941, 670.505pt x 555.1957pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[94 <./figures/web_processStatus_withData.png> <./figures/web_upload_uploadView
+.png>] <figures/web_upload_fileUpload.png, id=1971, 670.505pt x 555.1957pt>
 File: figures/web_upload_fileUpload.png Graphic file (type png)
 
 <use figures/web_upload_fileUpload.png>
 Package pdftex.def Info: figures/web_upload_fileUpload.png used on input line 2
-04.
+36.
 (pdftex.def)             Requested size: 344.99165pt x 285.66212pt.
- [93 <./figures/web_upload_fileUpload.png>]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[95 <./figures/web_upload_newExperiment.png>]
 File: figures/web_SysadminAnnotationView.jpg Graphic file (type jpg)
- <use figures/web_SysadminAnnotationView.jpg>
+
+<use figures/web_SysadminAnnotationView.jpg>
 Package pdftex.def Info: figures/web_SysadminAnnotationView.jpg used on input l
-ine 222.
+ine 251.
 (pdftex.def)             Requested size: 344.99965pt x 206.03575pt.
 
-<figures/web_SysadminEditView.jpg, id=1951, 572.1375pt x 422.81328pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/web_SysadminEditView.jpg, id=1981, 572.1375pt x 422.81328pt>
 File: figures/web_SysadminEditView.jpg Graphic file (type jpg)
 
 <use figures/web_SysadminEditView.jpg>
-Package pdftex.def Info: figures/web_SysadminEditView.jpg used on input line 23
-1.
+Package pdftex.def Info: figures/web_SysadminEditView.jpg used on input line 25
+9.
 (pdftex.def)             Requested size: 345.00497pt x 254.96088pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[94]
-<figures/web_SysadminCreateAnnotationConfirm.jpg, id=1960, 603.25375pt x 592.21
+[96 <./figures/web_upload_fileUpload.png>]
+<figures/web_SysadminCreateAnnotationConfirm.jpg, id=1993, 603.25375pt x 592.21
 25pt>
 File: figures/web_SysadminCreateAnnotationConfirm.jpg Graphic file (type jpg)
  <use figures/web_SysadminCreateAnnotationConfirm.jpg>
 Package pdftex.def Info: figures/web_SysadminCreateAnnotationConfirm.jpg used o
-n input line 260.
+n input line 286.
 (pdftex.def)             Requested size: 241.49973pt x 237.07959pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-<figures/web_SysadminCreateAnnotation.jpg, id=1963, 594.88916pt x 439.02336pt>
+<figures/web_SysadminCreateAnnotation.jpg, id=1996, 594.88916pt x 439.02336pt>
 File: figures/web_SysadminCreateAnnotation.jpg Graphic file (type jpg)
 
 <use figures/web_SysadminCreateAnnotation.jpg>
 Package pdftex.def Info: figures/web_SysadminCreateAnnotation.jpg used on input
- line 272.
+ line 298.
 (pdftex.def)             Requested size: 344.99965pt x 254.60693pt.
 
-<figures/web_SysadminGenomeReleaseView.jpg, id=1965, 594.88916pt x 328.92981pt>
+<figures/web_SysadminGenomeReleaseView.jpg, id=1998, 594.88916pt x 328.92981pt>
 File: figures/web_SysadminGenomeReleaseView.jpg Graphic file (type jpg)
 <use figures/web_SysadminGenomeReleaseView.jpg>
 Package pdftex.def Info: figures/web_SysadminGenomeReleaseView.jpg used on inpu
-t line 280.
+t line 306.
 (pdftex.def)             Requested size: 344.99965pt x 190.75934pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-<figures/web_SysadminUploadGenomeReleaseModal.jpg, id=1967, 603.25375pt x 434.6
+<figures/web_SysadminUploadGenomeReleaseModal.jpg, id=2000, 603.25375pt x 434.6
 2375pt>
 File: figures/web_SysadminUploadGenomeReleaseModal.jpg Graphic file (type jpg)
  <use figures/web_SysadminUploadGenomeReleaseModal.jpg>
 Package pdftex.def Info: figures/web_SysadminUploadGenomeReleaseModal.jpg used 
-on input line 289.
+on input line 315.
 (pdftex.def)             Requested size: 241.49973pt x 173.99231pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[95 <./figures/web_SysadminEditView.jpg>]) [96 <./figures/web_SysadminCreateAnn
-otationConfirm.jpg>] [97 <./figures/web_SysadminCreateAnnotation.jpg> <./figure
-s/web_SysadminGenomeReleaseView.jpg>] [98 <./figures/web_SysadminUploadGenomeRe
-leaseModal.jpg>] (./usermanual/and_manual.tex
+[97]) [98 <./figures/web_SysadminEditView.jpg>] [99 <./figures/web_SysadminCrea
+teAnnotationConfirm.jpg> <./figures/web_SysadminCreateAnnotation.jpg>] [100 <./
+figures/web_SysadminGenomeReleaseView.jpg> <./figures/web_SysadminUploadGenomeR
+eleaseModal.jpg>] (./usermanual/and_manual.tex
 File: figures/and_login.png Graphic file (type png)
  <use figures/and_login.png>
 Package pdftex.def Info: figures/and_login.png used on input line 14.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
 
-<figures/and_server_settings_select.png, id=2000, 1084.05pt x 1927.2pt>
+<figures/and_server_settings_select.png, id=2036, 1084.05pt x 1927.2pt>
 File: figures/and_server_settings_select.png Graphic file (type png)
 
 <use figures/and_server_settings_select.png>
@@ -2826,7 +2880,7 @@ Package pdftex.def Info: figures/and_server_settings_select.png used on input l
 ine 51.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
 
-<figures/and_server_settings_add.png, id=2001, 1084.05pt x 1927.2pt>
+<figures/and_server_settings_add.png, id=2037, 1084.05pt x 1927.2pt>
 File: figures/and_server_settings_add.png Graphic file (type png)
 
 <use figures/and_server_settings_add.png>
@@ -2834,7 +2888,7 @@ Package pdftex.def Info: figures/and_server_settings_add.png used on input line
  51.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
 
-<figures/and_server_settings_edit.png, id=2002, 1084.05pt x 1927.2pt>
+<figures/and_server_settings_edit.png, id=2038, 1084.05pt x 1927.2pt>
 File: figures/and_server_settings_edit.png Graphic file (type png)
 
 <use figures/and_server_settings_edit.png>
@@ -2849,7 +2903,7 @@ Overfull \hbox (1.50316pt too wide) in paragraph at lines 51--52
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[99
+[101
 
 ]
 File: figures/and_search.png Graphic file (type png)
@@ -2860,9 +2914,9 @@ Package pdftex.def Info: figures/and_search.png used on input line 78.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[100 <./figures/and_server_settings_select.png> <./figures/and_server_settings_
+[102 <./figures/and_server_settings_select.png> <./figures/and_server_settings_
 add.png> <./figures/and_server_settings_edit.png>]
-<figures/and_search_advanced.png, id=2024, 1084.05pt x 1927.2pt>
+<figures/and_search_advanced.png, id=2061, 1084.05pt x 1927.2pt>
 File: figures/and_search_advanced.png Graphic file (type png)
 
 <use figures/and_search_advanced.png>
@@ -2873,12 +2927,12 @@ Package pdftex.def Info: figures/and_search_advanced.png used on input line 97.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[101]
+[103]
 File: figures/and_search_result.png Graphic file (type png)
  <use figures/and_search_result.png>
 Package pdftex.def Info: figures/and_search_result.png used on input line 115.
 (pdftex.def)             Requested size: 103.4986pt x 183.99751pt.
- [102 <./figures/and_search_advanced.png>]
+ [104 <./figures/and_search_advanced.png>]
 File: figures/and_search_select_visible_annotations.png Graphic file (type png)
 
  <use figures/and_search_select_visible_annotations.png>
@@ -2892,7 +2946,7 @@ Package pdftex.def Info: figures/and_experiment_files.png used on input line 14
 2.
 (pdftex.def)             Requested size: 137.9871pt x 245.31041pt.
 
-<figures/and_experiment_file_info.png, id=2044, 1084.05pt x 1927.2pt>
+<figures/and_experiment_file_info.png, id=2080, 1084.05pt x 1927.2pt>
 File: figures/and_experiment_file_info.png Graphic file (type png)
 
 <use figures/and_experiment_file_info.png>
@@ -2903,14 +2957,14 @@ e 142.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[103]
+[105]
 File: figures/and_selected_files.png Graphic file (type png)
  <use figures/and_selected_files.png>
 Package pdftex.def Info: figures/and_selected_files.png used on input line 171.
 
 (pdftex.def)             Requested size: 137.9871pt x 245.31041pt.
 
-<figures/and_selected_files_file_info.png, id=2052, 1084.05pt x 1927.2pt>
+<figures/and_selected_files_file_info.png, id=2088, 1084.05pt x 1927.2pt>
 File: figures/and_selected_files_file_info.png Graphic file (type png)
 
 <use figures/and_selected_files_file_info.png>
@@ -2921,7 +2975,7 @@ Package pdftex.def Info: figures/and_selected_files_file_info.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[104 <./figures/and_experiment_file_info.png>]
+[106 <./figures/and_experiment_file_info.png>]
 File: figures/and_convert_view.png Graphic file (type png)
 
 <use figures/and_convert_view.png>
@@ -2931,8 +2985,8 @@ Package pdftex.def Info: figures/and_convert_view.png used on input line 197.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[105 <./figures/and_selected_files_file_info.png>]
-<figures/and_process_status.png, id=2074, 1084.05pt x 1927.2pt>
+[107 <./figures/and_selected_files_file_info.png>]
+<figures/and_process_status.png, id=2111, 1084.05pt x 1927.2pt>
 File: figures/and_process_status.png Graphic file (type png)
 
 <use figures/and_process_status.png>
@@ -2943,22 +2997,22 @@ Package pdftex.def Info: figures/and_process_status.png used on input line 217.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[106]) (./usermanual/ios_manual.tex
-<figures/ios_login1.PNG, id=2087, 481.8pt x 855.195pt>
+[108]) (./usermanual/ios_manual.tex
+<figures/ios_login1.PNG, id=2125, 481.8pt x 855.195pt>
 File: figures/ios_login1.PNG Graphic file (type png)
 
 <use figures/ios_login1.PNG>
 Package pdftex.def Info: figures/ios_login1.PNG used on input line 18.
 (pdftex.def)             Requested size: 103.49675pt x 183.70676pt.
 
-<figures/ios_login2.PNG, id=2088, 481.8pt x 855.195pt>
+<figures/ios_login2.PNG, id=2126, 481.8pt x 855.195pt>
 File: figures/ios_login2.PNG Graphic file (type png)
 
 <use figures/ios_login2.PNG>
 Package pdftex.def Info: figures/ios_login2.PNG used on input line 18.
 (pdftex.def)             Requested size: 103.49675pt x 183.70676pt.
 
-<figures/ios_login3.PNG, id=2089, 481.8pt x 855.195pt>
+<figures/ios_login3.PNG, id=2127, 481.8pt x 855.195pt>
 File: figures/ios_login3.PNG Graphic file (type png)
 
 <use figures/ios_login3.PNG>
@@ -2969,8 +3023,8 @@ Overfull \hbox (1.50316pt too wide) in paragraph at lines 18--19
  [][] 
  []
 
-[107 <./figures/and_process_status.png>]
-<figures/ios_settings.PNG, id=2101, 642.4pt x 1140.26pt>
+[109 <./figures/and_process_status.png>]
+<figures/ios_settings.PNG, id=2138, 642.4pt x 1140.26pt>
 File: figures/ios_settings.PNG Graphic file (type png)
 
 <use figures/ios_settings.PNG>
@@ -2986,7 +3040,7 @@ File: figures/ios_search2.PNG Graphic file (type png)
 Package pdftex.def Info: figures/ios_search2.PNG used on input line 49.
 (pdftex.def)             Requested size: 103.49185pt x 183.69804pt.
 
-<figures/ios_search4.PNG, id=2104, 642.4pt x 1140.26pt>
+<figures/ios_search4.PNG, id=2141, 642.4pt x 1140.26pt>
 File: figures/ios_search4.PNG Graphic file (type png)
 
 <use figures/ios_search4.PNG>
@@ -2997,20 +3051,20 @@ Overfull \hbox (1.50316pt too wide) in paragraph at lines 49--50
  [][] 
  []
 
-[108 <./figures/ios_login1.PNG> <./figures/ios_login2.PNG> <./figures/ios_login
+[110 <./figures/ios_login1.PNG> <./figures/ios_login2.PNG> <./figures/ios_login
 3.PNG> <./figures/ios_settings.PNG>]
 File: figures/ios_process_files.jpg Graphic file (type jpg)
  <use figures/ios_process_files.jpg>
 Package pdftex.def Info: figures/ios_process_files.jpg used on input line 82.
 (pdftex.def)             Requested size: 137.99568pt x 244.94234pt.
 
-<figures/ios_files_added.jpg, id=2128, 642.4pt x 1140.26pt>
+<figures/ios_files_added.jpg, id=2164, 642.4pt x 1140.26pt>
 File: figures/ios_files_added.jpg Graphic file (type jpg)
 
 <use figures/ios_files_added.jpg>
 Package pdftex.def Info: figures/ios_files_added.jpg used on input line 82.
 (pdftex.def)             Requested size: 137.99568pt x 244.94234pt.
- [109 <./figures/ios_search4.PNG>]
+ [111 <./figures/ios_search4.PNG>]
 File: figures/ios_empty_make_process.jpg Graphic file (type jpg)
 
 <use figures/ios_empty_make_process.jpg>
@@ -3031,15 +3085,15 @@ Overfull \hbox (1.50316pt too wide) in paragraph at lines 89--90
  [][] 
  []
 
-[110 <./figures/ios_files_added.jpg>]
-<figures/ios_result1.PNG, id=2152, 642.4pt x 1140.26pt>
+[112 <./figures/ios_files_added.jpg>]
+<figures/ios_result1.PNG, id=2188, 642.4pt x 1140.26pt>
 File: figures/ios_result1.PNG Graphic file (type png)
 
 <use figures/ios_result1.PNG>
 Package pdftex.def Info: figures/ios_result1.PNG used on input line 105.
 (pdftex.def)             Requested size: 103.49185pt x 183.69804pt.
 
-<figures/ios_result2.PNG, id=2153, 642.4pt x 1140.26pt>
+<figures/ios_result2.PNG, id=2189, 642.4pt x 1140.26pt>
 File: figures/ios_result2.PNG Graphic file (type png)
 
 <use figures/ios_result2.PNG>
@@ -3058,10 +3112,10 @@ File: figures/ios_processes1.PNG Graphic file (type png)
 <use figures/ios_processes1.PNG>
 Package pdftex.def Info: figures/ios_processes1.PNG used on input line 119.
 (pdftex.def)             Requested size: 103.49185pt x 183.69804pt.
- [111
+ [113
 
  <./figures/ios_result1.PNG> <./figures/ios_result2.PNG>] <figures/ios_files4.P
-NG, id=2166, 642.4pt x 1140.26pt>
+NG, id=2202, 642.4pt x 1140.26pt>
 File: figures/ios_files4.PNG Graphic file (type png)
 
 <use figures/ios_files4.PNG>
@@ -3071,9 +3125,9 @@ File: figures/ios_files2.PNG Graphic file (type png)
  <use figures/ios_files2.PNG>
 Package pdftex.def Info: figures/ios_files2.PNG used on input line 133.
 (pdftex.def)             Requested size: 137.99568pt x 244.94234pt.
- [112]))
+ [114]))
 (./deployment/deployment.tex (./deployment/exp_server_configuration.tex
-[113 <./figures/ios_files4.PNG>]
+[115 <./figures/ios_files4.PNG>]
 LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 31.
 
  (/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
@@ -3091,14 +3145,14 @@ Overfull \hbox (42.72359pt too wide) in paragraph at lines 45--48
 t is lo-cated at \T1/lmtt/m/n/8 scripts/provision/config/settings.cfg
  []
 
-<figures/Vagrant-illustration.png, id=2178, 513.92pt x 327.2225pt>
+<figures/Vagrant-illustration.png, id=2216, 513.92pt x 327.2225pt>
 File: figures/Vagrant-illustration.png Graphic file (type png)
 
 <use figures/Vagrant-illustration.png>
 Package pdftex.def Info: figures/Vagrant-illustration.png used on input line 72
 .
 (pdftex.def)             Requested size: 345.00684pt x 219.67232pt.
- [114] [115 <./figures/Vagrant-illustration.png>] [116] [117] [118]
+ [116] [117 <./figures/Vagrant-illustration.png>] [118] [119] [120]
 Overfull \hbox (16.49602pt too wide) in paragraph at lines 568--577
 \T1/lmr/m/n/8 (-20) tion. These set-tings are mod-i-fied by edit-ing the \T1/lm
 tt/m/n/8 scripts/provision/install_genomizer_server.sh
@@ -3113,7 +3167,7 @@ install_genomizer_server.sh
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <8> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 587.
-[119]
+[121]
 Overfull \hbox (71.92166pt too wide) in paragraph at lines 601--604
 []\T1/lmr/m/n/8 (-20) To change the ver-sion of the \T1/lmtt/m/n/8 genomizer-we
 b \T1/lmr/m/n/8 (-20) client, edit the \T1/lmtt/m/n/8 scripts/provision/ instal
@@ -3130,14 +3184,14 @@ h the same identifier (name{mycode}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.616 \hyperdef{}{mycode}{\label{mycode}}
-                                          [120pdfTeX warning (ext4): destinatio
+                                          [122pdfTeX warning (ext4): destinatio
 n with the same identifier (name{mycode}) has been already used, duplicate igno
 red
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.687     \NormalTok{vb.cpus = }\DecValTok{8}
-                                             ] [121pdfTeX warning (ext4): desti
+                                             ] [123pdfTeX warning (ext4): desti
 nation with the same identifier (name{memory}) has been already used, duplicate
  ignored
 
@@ -3150,7 +3204,7 @@ Overfull \hbox (1.5265pt too wide) in paragraph at lines 777--780
 ing, ex-cept for one de-tail: \T1/lmtt/m/n/8 genomizer-server
  []
 
-[122]
+[124]
 Overfull \hbox (75.56511pt too wide) in paragraph at lines 833--838
 \T1/lmr/m/n/8 (-20) son \T1/lmtt/m/n/8 settings.cfg \T1/lmr/m/n/8 (-20) is over
 -writ-ten, you can get a fresh copy from \T1/lmtt/m/n/8 /vagrant/scripts/provis
@@ -3172,21 +3226,21 @@ g the script \T1/lmtt/m/n/8 scripts/ environment/setup_host_environment.sh\T1/l
 mr/m/n/8 (-20) ,
  []
 
-[123] <figures/routing1.png, id=2267, 261.97874pt x 85.31876pt>
+[125] <figures/routing1.png, id=2302, 261.97874pt x 85.31876pt>
 File: figures/routing1.png Graphic file (type png)
 
 <use figures/routing1.png>
 Package pdftex.def Info: figures/routing1.png used on input line 907.
 (pdftex.def)             Requested size: 207.00891pt x 67.41667pt.
- [124 <./figures/routing1.png>])
-(./deployment/dat_deploy.tex [125] [126]) (./deployment/con_deploy.tex)
+ [126 <./figures/routing1.png>])
+(./deployment/dat_deploy.tex [127] [128]) (./deployment/con_deploy.tex)
 (./deployment/com_serverinstallation.tex
 Overfull \hbox (19.85951pt too wide) in paragraph at lines 7--10
 \T1/lmr/m/n/8 (-20) can be down-loaded in two ways. Ei-ther man-u-ally from htt
 p://www.github.com/genomizer/genomizer-
  []
 
-[127])) [128] (./appendices/userstories.tex
+[129])) [130] (./appendices/userstories.tex
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -3214,7 +3268,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[129] [130] [131]
+[131] [132] [133]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -3266,16 +3320,16 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [132
+) [134
 
-] [133] [134] [135]
+] [135] [136] [137]
 Overfull \hbox (68.35286pt too wide) in paragraph at lines 13--13
 []\T1/lmr/bx/n/20.74 Android ap-pli-ca-tion: \T1/lmr/bx/it/20.74 UML\T1/lmr/bx/
 n/20.74 -diagrams 
  []
 
 (./appendices/and_appendix.tex
-<figures/and_UML_model_sprint2.jpg, id=2389, 1188.44pt x 1045.9075pt>
+<figures/and_UML_model_sprint2.jpg, id=2425, 1188.44pt x 1045.9075pt>
 File: figures/and_UML_model_sprint2.jpg Graphic file (type jpg)
 
 <use figures/and_UML_model_sprint2.jpg>
@@ -3283,7 +3337,7 @@ Package pdftex.def Info: figures/and_UML_model_sprint2.jpg used on input line 7
 .
 (pdftex.def)             Requested size: 345.00146pt x 303.62459pt.
 
-<figures/and_UML_android_sprint2.jpg, id=2390, 1411.2725pt x 891.33pt>
+<figures/and_UML_android_sprint2.jpg, id=2426, 1411.2725pt x 891.33pt>
 File: figures/and_UML_android_sprint2.jpg Graphic file (type jpg)
 
 <use figures/and_UML_android_sprint2.jpg>
@@ -3294,9 +3348,9 @@ Package pdftex.def Info: figures/and_UML_android_sprint2.jpg used on input line
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[136
+[138
 
- <./figures/and_UML_model_sprint2.jpg>]) [137 <./figures/and_UML_android_sprint
+ <./figures/and_UML_model_sprint2.jpg>]) [139 <./figures/and_UML_android_sprint
 2.jpg>]
 Overfull \hbox (18.56563pt too wide) in paragraph at lines 19--19
 []\T1/lmr/bx/n/20.74 iOS ap-pli-ca-tion: \T1/lmr/bx/it/20.74 UML\T1/lmr/bx/n/20
@@ -3304,21 +3358,21 @@ Overfull \hbox (18.56563pt too wide) in paragraph at lines 19--19
  []
 
 (./appendices/ios_appendix.tex
-<figures/ios_sequence_login.png, id=2401, 1217.54875pt x 762.85pt>
+<figures/ios_sequence_login.png, id=2438, 1217.54875pt x 762.85pt>
 File: figures/ios_sequence_login.png Graphic file (type png)
 
 <use figures/ios_sequence_login.png>
 Package pdftex.def Info: figures/ios_sequence_login.png used on input line 7.
 (pdftex.def)             Requested size: 344.99855pt x 216.15738pt.
 
-<figures/ios_search_sequence_diagram.png, id=2402, 1016.79875pt x 789.95125pt>
+<figures/ios_search_sequence_diagram.png, id=2439, 1016.79875pt x 789.95125pt>
 File: figures/ios_search_sequence_diagram.png Graphic file (type png)
 
 <use figures/ios_search_sequence_diagram.png>
 Package pdftex.def Info: figures/ios_search_sequence_diagram.png used on input 
 line 13.
 (pdftex.def)             Requested size: 344.99332pt x 268.02539pt.
- [138 <./figures/ios_sequence_login.png (PNG copy)>]) [139 <./figures/ios_searc
+ [140 <./figures/ios_sequence_login.png (PNG copy)>]) [141 <./figures/ios_searc
 h_sequence_diagram.png (PNG copy)>]
 Overfull \hbox (64.70259pt too wide) in paragraph at lines 24--24
 []\T1/lmr/bx/n/20.74 Desktop ap-pli-ca-tion: \T1/lmr/bx/it/20.74 UML\T1/lmr/bx/
@@ -3326,55 +3380,55 @@ n/20.74 -diagrams
  []
 
 (./appendices/des_umls.tex
-<figures/UMLdesktop.jpg, id=2415, 2483.2775pt x 2215.27625pt>
+<figures/UMLdesktop.jpg, id=2450, 2483.2775pt x 2215.27625pt>
 File: figures/UMLdesktop.jpg Graphic file (type jpg)
 
 <use figures/UMLdesktop.jpg>
 Package pdftex.def Info: figures/UMLdesktop.jpg used on input line 3.
 (pdftex.def)             Requested size: 344.96617pt x 307.7366pt.
- [140 <./figures/UMLdesktop.jpg>]
-<figures/des_UML.jpeg, id=2421, 2799.45876pt x 2799.45876pt>
+ [142 <./figures/UMLdesktop.jpg>]
+<figures/des_UML.jpeg, id=2456, 2799.45876pt x 2799.45876pt>
 File: figures/des_UML.jpeg Graphic file (type jpg)
 
 <use figures/des_UML.jpeg>
 Package pdftex.def Info: figures/des_UML.jpeg used on input line 9.
 (pdftex.def)             Requested size: 344.9764pt x 344.9764pt.
- [141 <./figures/des_UML.jpeg>]
-<figures/SyadminUML.png, id=2427, 999.735pt x 606.265pt>
+ [143 <./figures/des_UML.jpeg>]
+<figures/SyadminUML.png, id=2462, 999.735pt x 606.265pt>
 File: figures/SyadminUML.png Graphic file (type png)
 
 <use figures/SyadminUML.png>
 Package pdftex.def Info: figures/SyadminUML.png used on input line 16.
 (pdftex.def)             Requested size: 345.00047pt x 209.21715pt.
- [142 <./figures/SyadminUML.png (PNG copy)>]
+ [144 <./figures/SyadminUML.png (PNG copy)>]
 File: figures/des_download-sequence.jpeg Graphic file (type jpg)
 
 <use figures/des_download-sequence.jpeg>
 Package pdftex.def Info: figures/des_download-sequence.jpeg used on input line 
 23.
 (pdftex.def)             Requested size: 344.9974pt x 308.07043pt.
- [143]
+ [145]
 File: figures/des_login-sequence.jpeg Graphic file (type jpg)
 
 <use figures/des_login-sequence.jpeg>
 Package pdftex.def Info: figures/des_login-sequence.jpeg used on input line 29.
 
 (pdftex.def)             Requested size: 344.98186pt x 306.17139pt.
- [144]) (./appendices/dat_umls.tex
-<figures/dat_dbac_v2.png, id=2444, 858.20625pt x 496.85625pt>
+ [146]) (./appendices/dat_umls.tex
+<figures/dat_dbac_v2.png, id=2479, 858.20625pt x 496.85625pt>
 File: figures/dat_dbac_v2.png Graphic file (type png)
 
 <use figures/dat_dbac_v2.png>
 Package pdftex.def Info: figures/dat_dbac_v2.png used on input line 2.
 (pdftex.def)             Requested size: 293.25293pt x 169.778pt.
 
-<figures/dat_containers_v2.png, id=2445, 888.31876pt x 687.56876pt>
+<figures/dat_containers_v2.png, id=2480, 888.31876pt x 687.56876pt>
 File: figures/dat_containers_v2.png Graphic file (type png)
 
 <use figures/dat_containers_v2.png>
 Package pdftex.def Info: figures/dat_containers_v2.png used on input line 8.
 (pdftex.def)             Requested size: 344.99257pt x 267.02815pt.
-) [145 <./figures/dat_dbac_v2.png (PNG copy)> <./figures/dat_containers_v2.png 
+) [147 <./figures/dat_dbac_v2.png (PNG copy)> <./figures/dat_containers_v2.png 
 (PNG copy)>] (./appendices/com_api.tex
 Overfull \hbox (12.0pt too wide) in paragraph at lines 52--52
 []\T1/lmtt/m/n/8 An experiment containing annotations and files. \TS1/lmtt/m/n/
@@ -3382,13 +3436,13 @@ Overfull \hbox (12.0pt too wide) in paragraph at lines 52--52
 f the[] 
  []
 
-[146] [147] [148] [149] [150]
+[148] [149] [150] [151] [152]
 Overfull \hbox (12.0pt too wide) in paragraph at lines 352--352
 []\T1/lmtt/m/n/8 Searching using annotations. The annotations is included last 
 in the request header.[] 
  []
 
-[151]
+[153]
 Overfull \hbox (177.75pt too wide) in paragraph at lines 442--442
 []                         \T1/lmtt/m/n/8 "url": "http://scratchy.cs.umu.se:800
 0/download.php?path\u003d/var/www/data/Exp1/raw/file1.fastq",[] 
@@ -3406,8 +3460,8 @@ Overfull \hbox (177.75pt too wide) in paragraph at lines 442--442
 0/download.php?path\u003d/var/www/data/Exp1/raw/file1.fastq",[] 
  []
 
-[152] [153] [154] [155] [156] [157] [158] [159]) [160]
-(./appendices/exp_backup.tex [161] [162]) [163] (./appendices/knownproblems.tex
+[154] [155] [156] [157] [158] [159] [160] [161]) [162]
+(./appendices/exp_backup.tex [163] [164]) [165] (./appendices/knownproblems.tex
 (./limitations/web_limitations.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--5
 
@@ -3448,7 +3502,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--30
 
  []
 
-[164]
+[166]
 Underfull \hbox (badness 10000) in paragraph at lines 31--34
 
  []
@@ -3468,7 +3522,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--7
 
  []
 
-(./limitations/ios_limitations.tex) (./limitations/com_limitations.tex [165]
+(./limitations/ios_limitations.tex) (./limitations/com_limitations.tex [167]
 Underfull \hbox (badness 10000) in paragraph at lines 5--8
 
  []
@@ -3493,15 +3547,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--1
 
  []
 
-[166]) (./limitations/con_limitations.tex))))
+[168]) (./limitations/con_limitations.tex))))
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 90.
- [167]
+ [169]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 90.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 90.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 90.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 57151277BB8B1C6CFF8A16DA2B69DF41;13078.
+(rerunfilecheck)             Checksum: BFB1E84C142309D5EA69C2B82D829B8B;13078.
 
 
 LaTeX Warning: There were undefined references.
@@ -3512,10 +3566,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 90.
  ) 
 Here is how much of TeX's memory you used:
- 31732 strings out of 493485
- 576275 string characters out of 3143526
- 742067 words of memory out of 3000000
- 32975 multiletter control sequences out of 15000+200000
+ 31762 strings out of 493485
+ 577097 string characters out of 3143526
+ 742329 words of memory out of 3000000
+ 32991 multiletter control sequences out of 15000+200000
  119978 words of font info for 204 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,17n,56p,2177b,1006s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -3535,10 +3589,10 @@ b></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></us
 r/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmtti10.pfb>
-Output written on main.pdf (186 pages, 9148771 bytes).
+Output written on main.pdf (188 pages, 9255480 bytes).
 PDF statistics:
- 2824 PDF objects out of 2984 (max. 8388607)
- 2421 compressed objects within 25 object streams
- 811 named destinations out of 1000 (max. 500000)
- 20524 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 2861 PDF objects out of 2984 (max. 8388607)
+ 2450 compressed objects within 25 object streams
+ 822 named destinations out of 1000 (max. 500000)
+ 20545 words of extra memory for PDF output out of 20736 (max. 10000000)
 

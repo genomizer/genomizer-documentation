@@ -34,252 +34,254 @@
 \contentsline {subsubsection}{\numberline {5.3.0.2}Colors}{10}{subsubsection.5.3.0.2}
 \contentsline {subsubsection}{\numberline {5.3.0.3}Icons}{10}{subsubsection.5.3.0.3}
 \contentsline {subsubsection}{\numberline {5.3.0.4}Batching}{10}{subsubsection.5.3.0.4}
-\contentsline {subsubsection}{\numberline {5.3.0.5}System administration}{10}{subsubsection.5.3.0.5}
+\contentsline {subsubsection}{\numberline {5.3.0.5}Processing}{10}{subsubsection.5.3.0.5}
+\contentsline {subsubsection}{\numberline {5.3.0.6}System administration}{10}{subsubsection.5.3.0.6}
 \contentsline {section}{\numberline {5.4}Android}{11}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Login View}{11}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Search View}{11}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Search Results View}{12}{subsection.5.4.3}
+\contentsline {subsection}{\numberline {5.4.1}Login View}{12}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Search View}{12}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Search Results View}{13}{subsection.5.4.3}
 \contentsline {subsection}{\numberline {5.4.4}Experiment View}{13}{subsection.5.4.4}
-\contentsline {subsection}{\numberline {5.4.5}Search Settings View}{13}{subsection.5.4.5}
-\contentsline {subsection}{\numberline {5.4.6}Selected Files View}{14}{subsection.5.4.6}
-\contentsline {subsection}{\numberline {5.4.7}Convert View}{14}{subsection.5.4.7}
-\contentsline {section}{\numberline {5.5}iOS}{15}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Navigation bar}{15}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Login Screen}{15}{subsection.5.5.2}
-\contentsline {subsection}{\numberline {5.5.3}Search View}{15}{subsection.5.5.3}
-\contentsline {subsection}{\numberline {5.5.4}Search Result View}{16}{subsection.5.5.4}
-\contentsline {subsubsection}{\numberline {5.5.4.1}Create processes}{18}{subsubsection.5.5.4.1}
-\contentsline {subsubsection}{\numberline {5.5.4.2}Processes}{19}{subsubsection.5.5.4.2}
-\contentsline {subsubsection}{\numberline {5.5.4.3}Alerts}{20}{subsubsection.5.5.4.3}
-\contentsline {chapter}{\numberline {6}System design}{21}{chapter.6}
-\contentsline {section}{\numberline {6.1}Desktop application}{21}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}View}{21}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Model}{22}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Requests}{22}{subsection.6.1.3}
-\contentsline {subsection}{\numberline {6.1.4}Response}{22}{subsection.6.1.4}
-\contentsline {subsection}{\numberline {6.1.5}Controller}{23}{subsection.6.1.5}
-\contentsline {subsection}{\numberline {6.1.6}Utilites}{23}{subsection.6.1.6}
-\contentsline {subsection}{\numberline {6.1.7}System Administration}{23}{subsection.6.1.7}
-\contentsline {subsection}{\numberline {6.1.8}Flow of the system}{25}{subsection.6.1.8}
-\contentsline {section}{\numberline {6.2}Web application}{26}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}How our web application works}{26}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}System overview}{27}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Search}{28}{subsection.6.2.3}
-\contentsline {subsection}{\numberline {6.2.4}Process}{29}{subsection.6.2.4}
-\contentsline {subsection}{\numberline {6.2.5}Upload}{29}{subsection.6.2.5}
-\contentsline {subsection}{\numberline {6.2.6}System administration - Web}{29}{subsection.6.2.6}
-\contentsline {section}{\numberline {6.3}Android application}{30}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}System overview}{31}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Package overview}{31}{subsection.6.3.2}
-\contentsline {subsection}{\numberline {6.3.3}Class description}{33}{subsection.6.3.3}
-\contentsline {section}{\numberline {6.4}iOS application}{37}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}Overall system design}{37}{subsection.6.4.1}
-\contentsline {section}{\numberline {6.5}Server}{39}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}Communication}{39}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}Data Conversion}{40}{subsection.6.5.2}
-\contentsline {subsubsection}{\numberline {6.5.2.1}Executor}{40}{subsubsection.6.5.2.1}
-\contentsline {subsubsection}{\numberline {6.5.2.2}RawToProfileConverter}{41}{subsubsection.6.5.2.2}
-\contentsline {subsubsection}{\numberline {6.5.2.3}Description of Procedure}{41}{subsubsection.6.5.2.3}
-\contentsline {paragraph}{\numberline {6.5.2.3.1}BowTie}{43}{paragraph.6.5.2.3.1}
-\contentsline {paragraph}{\numberline {6.5.2.3.2}Used scripts}{43}{paragraph.6.5.2.3.2}
-\contentsline {subsubsection}{\numberline {6.5.2.4}Smoothing and stepping}{44}{subsubsection.6.5.2.4}
-\contentsline {paragraph}{\numberline {6.5.2.4.1}SmoothingAndStep}{44}{paragraph.6.5.2.4.1}
-\contentsline {paragraph}{\numberline {6.5.2.4.2}Tuple}{44}{paragraph.6.5.2.4.2}
-\contentsline {subsubsection}{\numberline {6.5.2.5}ParameterValidator}{44}{subsubsection.6.5.2.5}
-\contentsline {paragraph}{\numberline {6.5.2.5.1}validateSmoothing}{46}{paragraph.6.5.2.5.1}
-\contentsline {paragraph}{\numberline {6.5.2.5.2}validateStep}{46}{paragraph.6.5.2.5.2}
-\contentsline {paragraph}{\numberline {6.5.2.5.3}validateRatioCalculation}{46}{paragraph.6.5.2.5.3}
-\contentsline {subsubsection}{\numberline {6.5.2.6}RawToProfileChecker}{46}{subsubsection.6.5.2.6}
-\contentsline {subsubsection}{\numberline {6.5.2.7}SmoothingParameterChecker}{47}{subsubsection.6.5.2.7}
-\contentsline {subsubsection}{\numberline {6.5.2.8}StartUpCleaner}{47}{subsubsection.6.5.2.8}
-\contentsline {subsubsection}{\numberline {6.5.2.9}ProcessHandler}{47}{subsubsection.6.5.2.9}
-\contentsline {subsubsection}{\numberline {6.5.2.10}Logic \& interface}{47}{subsubsection.6.5.2.10}
-\contentsline {subsection}{\numberline {6.5.3}File-transfer}{48}{subsection.6.5.3}
-\contentsline {subsection}{\numberline {6.5.4}Data Storage}{49}{subsection.6.5.4}
-\contentsline {subsection}{\numberline {6.5.5}Database Design}{51}{subsection.6.5.5}
-\contentsline {subsection}{\numberline {6.5.6}The Data Storage Subsystem}{51}{subsection.6.5.6}
-\contentsline {subsection}{\numberline {6.5.7}Interaction}{52}{subsection.6.5.7}
-\contentsline {subsubsection}{\numberline {6.5.7.1}Adding an experiment}{52}{subsubsection.6.5.7.1}
-\contentsline {subsubsection}{\numberline {6.5.7.2}Annotation Handling}{52}{subsubsection.6.5.7.2}
-\contentsline {subsubsection}{\numberline {6.5.7.3}File Handling}{53}{subsubsection.6.5.7.3}
-\contentsline {chapter}{\numberline {7}Implementation}{54}{chapter.7}
-\contentsline {section}{\numberline {7.1}Desktop application}{54}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Testing}{54}{subsection.7.1.1}
-\contentsline {section}{\numberline {7.2}Web application}{54}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Frameworks}{54}{subsection.7.2.1}
-\contentsline {subsubsection}{\numberline {7.2.1.1}Backbone}{54}{subsubsection.7.2.1.1}
-\contentsline {subsubsection}{\numberline {7.2.1.2}Bootstrap}{55}{subsubsection.7.2.1.2}
-\contentsline {subsubsection}{\numberline {7.2.1.3}RequireJS}{55}{subsubsection.7.2.1.3}
-\contentsline {subsubsection}{\numberline {7.2.1.4}JQuery}{55}{subsubsection.7.2.1.4}
-\contentsline {subsection}{\numberline {7.2.2}Technologies used}{55}{subsection.7.2.2}
-\contentsline {subsubsection}{\numberline {7.2.2.1}AJAX}{55}{subsubsection.7.2.2.1}
-\contentsline {subsubsection}{\numberline {7.2.2.2}\texttt {JSON}}{56}{subsubsection.7.2.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Testing frameworks}{56}{subsection.7.2.3}
-\contentsline {subsubsection}{\numberline {7.2.3.1}Chai \& Mocha}{56}{subsubsection.7.2.3.1}
-\contentsline {subsubsection}{\numberline {7.2.3.2}Sinon}{56}{subsubsection.7.2.3.2}
-\contentsline {subsection}{\numberline {7.2.4}Web app tests}{56}{subsection.7.2.4}
-\contentsline {section}{\numberline {7.3}Android application}{56}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Login request}{56}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Search request}{57}{subsection.7.3.2}
-\contentsline {subsection}{\numberline {7.3.3}Request for Genome releases from the server}{58}{subsection.7.3.3}
-\contentsline {subsection}{\numberline {7.3.4}Request for conversion of RAW files to profile-data}{59}{subsection.7.3.4}
-\contentsline {subsection}{\numberline {7.3.5}Request for status on conversions on the server}{60}{subsection.7.3.5}
-\contentsline {subsection}{\numberline {7.3.6}Testing}{61}{subsection.7.3.6}
-\contentsline {section}{\numberline {7.4}iOS application}{61}{section.7.4}
-\contentsline {subsection}{\numberline {7.4.1}Testing}{61}{subsection.7.4.1}
-\contentsline {section}{\numberline {7.5}Server}{61}{section.7.5}
-\contentsline {subsection}{\numberline {7.5.1}Communication}{61}{subsection.7.5.1}
-\contentsline {subsubsection}{\numberline {7.5.1.1}Doorman}{62}{subsubsection.7.5.1.1}
-\contentsline {subsubsection}{\numberline {7.5.1.2}Authorization}{62}{subsubsection.7.5.1.2}
-\contentsline {subsubsection}{\numberline {7.5.1.3}Removing inactive tokens}{62}{subsubsection.7.5.1.3}
-\contentsline {subsubsection}{\numberline {7.5.1.4}Command object}{63}{subsubsection.7.5.1.4}
-\contentsline {paragraph}{\numberline {7.5.1.4.1}Execute}{63}{paragraph.7.5.1.4.1}
-\contentsline {paragraph}{\numberline {7.5.1.4.2}Validation}{63}{paragraph.7.5.1.4.2}
-\contentsline {subsubsection}{\numberline {7.5.1.5}Heavy work thread}{63}{subsubsection.7.5.1.5}
-\contentsline {subsubsection}{\numberline {7.5.1.6}Response object}{63}{subsubsection.7.5.1.6}
-\contentsline {subsubsection}{\numberline {7.5.1.7}Testing}{63}{subsubsection.7.5.1.7}
-\contentsline {subsection}{\numberline {7.5.2}Conversion}{64}{subsection.7.5.2}
-\contentsline {subsubsection}{\numberline {7.5.2.1}Methods}{64}{subsubsection.7.5.2.1}
-\contentsline {subsection}{\numberline {7.5.3}File-transfer}{65}{subsection.7.5.3}
-\contentsline {subsection}{\numberline {7.5.4}Data Storage}{65}{subsection.7.5.4}
-\contentsline {subsubsection}{\numberline {7.5.4.1}DatabaseAccessor}{66}{subsubsection.7.5.4.1}
-\contentsline {subsubsection}{\numberline {7.5.4.2}Containers}{66}{subsubsection.7.5.4.2}
-\contentsline {subsubsection}{\numberline {7.5.4.3}Methods}{66}{subsubsection.7.5.4.3}
-\contentsline {subsubsection}{\numberline {7.5.4.4}Helpers}{66}{subsubsection.7.5.4.4}
-\contentsline {subsubsection}{\numberline {7.5.4.5}Testing}{67}{subsubsection.7.5.4.5}
-\contentsline {section}{\numberline {7.6}Limitations}{67}{section.7.6}
-\contentsline {chapter}{Bibliography}{68}{section*.62}
-\contentsline {chapter}{Nomenclature}{68}{section*.62}
-\contentsline {chapter}{\numberline {A}User manual}{70}{appendix.A}
-\contentsline {section}{\numberline {A.1}Desktop application}{70}{section.A.1}
-\contentsline {subsection}{\numberline {A.1.1}Login and startup}{70}{subsection.A.1.1}
-\contentsline {subsection}{\numberline {A.1.2}Search}{71}{subsection.A.1.2}
-\contentsline {subsubsection}{\numberline {A.1.2.1}Search results}{71}{subsubsection.A.1.2.1}
-\contentsline {subsection}{\numberline {A.1.3}Upload}{72}{subsection.A.1.3}
-\contentsline {subsubsection}{\numberline {A.1.3.1}Existing experiment}{73}{subsubsection.A.1.3.1}
-\contentsline {subsubsection}{\numberline {A.1.3.2}New experiment}{74}{subsubsection.A.1.3.2}
-\contentsline {subsubsection}{\numberline {A.1.3.3}Batch upload experiments}{74}{subsubsection.A.1.3.3}
-\contentsline {subsection}{\numberline {A.1.4}Process}{75}{subsection.A.1.4}
-\contentsline {subsection}{\numberline {A.1.5}Workspace}{77}{subsection.A.1.5}
-\contentsline {subsubsection}{\numberline {A.1.5.1}Delete from database}{77}{subsubsection.A.1.5.1}
-\contentsline {subsubsection}{\numberline {A.1.5.2}Upload to}{77}{subsubsection.A.1.5.2}
-\contentsline {subsubsection}{\numberline {A.1.5.3}Process}{77}{subsubsection.A.1.5.3}
-\contentsline {subsubsection}{\numberline {A.1.5.4}Download}{77}{subsubsection.A.1.5.4}
-\contentsline {subsection}{\numberline {A.1.6}Administration}{79}{subsection.A.1.6}
-\contentsline {section}{\numberline {A.2}Web application}{81}{section.A.2}
-\contentsline {subsection}{\numberline {A.2.1}Using the interface}{81}{subsection.A.2.1}
-\contentsline {subsubsection}{\numberline {A.2.1.1}Start view}{81}{subsubsection.A.2.1.1}
-\contentsline {subsubsection}{\numberline {A.2.1.2}Search view}{82}{subsubsection.A.2.1.2}
-\contentsline {subsubsection}{\numberline {A.2.1.3}The processing modal}{85}{subsubsection.A.2.1.3}
-\contentsline {subsubsection}{\numberline {A.2.1.4}The remove modal}{91}{subsubsection.A.2.1.4}
-\contentsline {subsubsection}{\numberline {A.2.1.5}The process status dropdown}{91}{subsubsection.A.2.1.5}
-\contentsline {subsubsection}{\numberline {A.2.1.6}The upload view}{92}{subsubsection.A.2.1.6}
-\contentsline {subsubsection}{\numberline {A.2.1.7}System administration view}{94}{subsubsection.A.2.1.7}
-\contentsline {subsection}{\numberline {A.2.2}Setting up the application}{96}{subsection.A.2.2}
-\contentsline {section}{\numberline {A.3}Android application}{99}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Start the Application and Login}{99}{subsection.A.3.1}
-\contentsline {subsection}{\numberline {A.3.2}Settings}{99}{subsection.A.3.2}
-\contentsline {subsection}{\numberline {A.3.3}Searching for files}{100}{subsection.A.3.3}
-\contentsline {subsection}{\numberline {A.3.4}Pubmed Search}{101}{subsection.A.3.4}
-\contentsline {subsection}{\numberline {A.3.5}Search Results}{102}{subsection.A.3.5}
-\contentsline {subsection}{\numberline {A.3.6}Search Settings View}{103}{subsection.A.3.6}
-\contentsline {subsection}{\numberline {A.3.7}Experiment File View}{103}{subsection.A.3.7}
-\contentsline {subsection}{\numberline {A.3.8}Selected Files}{104}{subsection.A.3.8}
-\contentsline {subsection}{\numberline {A.3.9}Converting Files}{105}{subsection.A.3.9}
-\contentsline {subsection}{\numberline {A.3.10}Process View}{106}{subsection.A.3.10}
-\contentsline {section}{\numberline {A.4}iOS application}{107}{section.A.4}
-\contentsline {subsection}{\numberline {A.4.1}How to run the app in Xcode}{107}{subsection.A.4.1}
-\contentsline {subsection}{\numberline {A.4.2}How to login}{107}{subsection.A.4.2}
-\contentsline {subsection}{\numberline {A.4.3}How to logout}{108}{subsection.A.4.3}
-\contentsline {subsection}{\numberline {A.4.4}How to search for experiments}{108}{subsection.A.4.4}
-\contentsline {subsection}{\numberline {A.4.5}How to use advanced search}{109}{subsection.A.4.5}
-\contentsline {subsection}{\numberline {A.4.6}How to process files}{109}{subsection.A.4.6}
-\contentsline {subsection}{\numberline {A.4.7}How to set which annotation to be visible on Search Results}{111}{subsection.A.4.7}
-\contentsline {subsection}{\numberline {A.4.8}How to view process status on the server}{111}{subsection.A.4.8}
-\contentsline {subsection}{\numberline {A.4.9}How to view information about a file}{112}{subsection.A.4.9}
-\contentsline {chapter}{\numberline {B}Deployment and maintenance}{113}{appendix.B}
-\contentsline {section}{\numberline {B.1}Configure server}{113}{section.B.1}
-\contentsline {section}{\numberline {B.2}A brief introduction to vagrant}{113}{section.B.2}
-\contentsline {subsection}{\numberline {B.2.1}Basic usage}{113}{subsection.B.2.1}
-\contentsline {subsection}{\numberline {B.2.2}Modifying the configuration}{114}{subsection.B.2.2}
-\contentsline {subsection}{\numberline {B.2.3}Entering the vagrant virtual machine}{114}{subsection.B.2.3}
-\contentsline {section}{\numberline {B.3}Systems overview of production}{114}{section.B.3}
-\contentsline {subsection}{\numberline {B.3.1}Using the toolchain}{114}{subsection.B.3.1}
-\contentsline {subsubsection}{\numberline {B.3.1.1}Using gnu screen}{115}{subsubsection.B.3.1.1}
-\contentsline {subsection}{\numberline {B.3.2}Configured environments}{116}{subsection.B.3.2}
-\contentsline {subsubsection}{\numberline {B.3.2.1}Production}{116}{subsubsection.B.3.2.1}
-\contentsline {subsubsection}{\numberline {B.3.2.2}Development-1}{116}{subsubsection.B.3.2.2}
-\contentsline {subsubsection}{\numberline {B.3.2.3}Development-2}{117}{subsubsection.B.3.2.3}
-\contentsline {subsubsection}{\numberline {B.3.2.4}Development-3}{117}{subsubsection.B.3.2.4}
-\contentsline {subsubsection}{\numberline {B.3.2.5}Client-development}{118}{subsubsection.B.3.2.5}
-\contentsline {subsubsection}{\numberline {B.3.2.6}Web-development}{118}{subsubsection.B.3.2.6}
-\contentsline {subsection}{\numberline {B.3.3}The important scripts}{119}{subsection.B.3.3}
-\contentsline {subsection}{\numberline {B.3.4}Creating a new environment}{119}{subsection.B.3.4}
-\contentsline {subsubsection}{\numberline {B.3.4.1}Considerations}{119}{subsubsection.B.3.4.1}
-\contentsline {subsubsection}{\numberline {B.3.4.2}Checking out the correct files}{119}{subsubsection.B.3.4.2}
-\contentsline {subsubsection}{\numberline {B.3.4.3}Setting up the files}{120}{subsubsection.B.3.4.3}
-\contentsline {paragraph}{\numberline {B.3.4.3.1}Editing the Vagrantfile}{120}{paragraph.B.3.4.3.1}
-\contentsline {paragraph}{\numberline {B.3.4.3.2}Editing the settings.cfg}{121}{paragraph.B.3.4.3.2}
-\contentsline {paragraph}{\numberline {B.3.4.3.3}Editing the httpd.conf}{121}{paragraph.B.3.4.3.3}
-\contentsline {paragraph}{\numberline {B.3.4.3.4}Modifying the build.pp}{121}{paragraph.B.3.4.3.4}
-\contentsline {paragraph}{\numberline {B.3.4.3.5}Creating the \texttt {tmp} and \texttt {data} folders}{121}{paragraph.B.3.4.3.5}
-\contentsline {subsubsection}{\numberline {B.3.4.4}Running the new environment}{122}{subsubsection.B.3.4.4}
-\contentsline {subsection}{\numberline {B.3.5}Modifying an existing environment}{122}{subsection.B.3.5}
-\contentsline {paragraph}{\numberline {B.3.5.0.1}Checkout new branches}{122}{paragraph.B.3.5.0.1}
-\contentsline {subsection}{\numberline {B.3.6}Rebuilding an environment}{123}{subsection.B.3.6}
-\contentsline {subsection}{\numberline {B.3.7}Deleting an environment}{123}{subsection.B.3.7}
-\contentsline {subsection}{\numberline {B.3.8}Configuring the host system}{123}{subsection.B.3.8}
-\contentsline {subsubsection}{\numberline {B.3.8.1}External folders and their permissions.}{123}{subsubsection.B.3.8.1}
-\contentsline {subsubsection}{\numberline {B.3.8.2}Configuring the firewall}{124}{subsubsection.B.3.8.2}
-\contentsline {subsubsection}{\numberline {B.3.8.3}Prerequisite software}{124}{subsubsection.B.3.8.3}
-\contentsline {paragraph}{\numberline {B.3.8.3.1}Virtualbox}{124}{paragraph.B.3.8.3.1}
-\contentsline {paragraph}{\numberline {B.3.8.3.2}Vagrant}{125}{paragraph.B.3.8.3.2}
-\contentsline {section}{\numberline {B.4}Administer the database}{125}{section.B.4}
-\contentsline {subsection}{\numberline {B.4.1}Set up postgresql account}{125}{subsection.B.4.1}
-\contentsline {subsection}{\numberline {B.4.2}Upload SQL Script to server}{126}{subsection.B.4.2}
-\contentsline {subsection}{\numberline {B.4.3}Create the \textit {Genomizer}\ Tables}{126}{subsection.B.4.3}
-\contentsline {section}{\numberline {B.5}Set up processing}{127}{section.B.5}
-\contentsline {section}{\numberline {B.6}Install the server}{127}{section.B.6}
-\contentsline {subsection}{\numberline {B.6.1}Downloading the source code}{127}{subsection.B.6.1}
-\contentsline {subsection}{\numberline {B.6.2}Creating a runnable JAR file}{127}{subsection.B.6.2}
-\contentsline {subsection}{\numberline {B.6.3}Starting the server}{127}{subsection.B.6.3}
-\contentsline {chapter}{\numberline {C}User Stories}{129}{appendix.C}
-\contentsline {section}{\numberline {C.1}Implemented user stories}{129}{section.C.1}
-\contentsline {section}{\numberline {C.2}Product backlog}{132}{section.C.2}
-\contentsline {chapter}{\numberline {D}Android application: \textit {UML}-diagrams}{136}{appendix.D}
-\contentsline {chapter}{\numberline {E}iOS application: \textit {UML}-diagrams}{138}{appendix.E}
-\contentsline {chapter}{\numberline {F}Desktop application: \textit {UML}-diagrams}{140}{appendix.F}
-\contentsline {chapter}{\numberline {G}Data Storage: \textit {UML}-diagrams}{145}{appendix.G}
-\contentsline {chapter}{\numberline {H}Server API}{146}{appendix.H}
-\contentsline {chapter}{\numberline {I}\textit {Backup}}{161}{appendix.I}
-\contentsline {section}{\numberline {I.1}Introduction}{161}{section.I.1}
-\contentsline {section}{\numberline {I.2}File backup}{161}{section.I.2}
-\contentsline {section}{\numberline {I.3}Database backup}{162}{section.I.3}
-\contentsline {section}{\numberline {I.4}Chrontab}{163}{section.I.4}
-\contentsline {chapter}{\numberline {J}Known problems}{164}{appendix.J}
-\contentsline {section}{\numberline {J.1}Web application}{164}{section.J.1}
-\contentsline {subsection}{\numberline {J.1.1}Moving backwards in the browser does not hide modal windows}{164}{subsection.J.1.1}
-\contentsline {subsection}{\numberline {J.1.2}Error handling when uploading experiments}{164}{subsection.J.1.2}
-\contentsline {subsection}{\numberline {J.1.3}Old authorization token causes page redirect}{164}{subsection.J.1.3}
-\contentsline {subsection}{\numberline {J.1.4}Code duplication in SearchResults and Experiments}{164}{subsection.J.1.4}
-\contentsline {subsection}{\numberline {J.1.5}No warning when closing tab during upload.}{164}{subsection.J.1.5}
-\contentsline {subsection}{\numberline {J.1.6}Uploading genome release - does not update list automatically}{164}{subsection.J.1.6}
-\contentsline {subsection}{\numberline {J.1.7}The annotation list can't be sorted}{165}{subsection.J.1.7}
-\contentsline {subsection}{\numberline {J.1.8}Sidebar on adminpage dosen't stay vertical}{165}{subsection.J.1.8}
-\contentsline {subsection}{\numberline {J.1.9}Missing error check on annotation values}{165}{subsection.J.1.9}
-\contentsline {subsection}{\numberline {J.1.10}No warning when closing tab during uploading genome releases}{165}{subsection.J.1.10}
-\contentsline {section}{\numberline {J.2}\textit {iOS} application}{165}{section.J.2}
-\contentsline {subsection}{\numberline {J.2.1}Unspecified behaviour on loss of internet connection}{165}{subsection.J.2.1}
-\contentsline {subsection}{\numberline {J.2.2}Lack of security}{165}{subsection.J.2.2}
-\contentsline {subsection}{\numberline {J.2.3}No administrative features}{165}{subsection.J.2.3}
-\contentsline {section}{\numberline {J.3}Server}{166}{section.J.3}
-\contentsline {subsection}{\numberline {J.3.1}Communication and control}{166}{subsection.J.3.1}
-\contentsline {subsubsection}{\numberline {J.3.1.1}Don't use the same username as someone else}{166}{subsubsection.J.3.1.1}
-\contentsline {subsubsection}{\numberline {J.3.1.2}Communication in plain text}{166}{subsubsection.J.3.1.2}
-\contentsline {subsubsection}{\numberline {J.3.1.3}Only one process at a time}{166}{subsubsection.J.3.1.3}
-\contentsline {subsubsection}{\numberline {J.3.1.4}No way to stop a running process}{166}{subsubsection.J.3.1.4}
-\contentsline {subsubsection}{\numberline {J.3.1.5}No way to see if a process is stuck}{166}{subsubsection.J.3.1.5}
-\contentsline {subsection}{\numberline {J.3.2}Upload and download}{167}{subsection.J.3.2}
-\contentsline {subsubsection}{\numberline {J.3.2.1}Upload script}{167}{subsubsection.J.3.2.1}
-\contentsline {subsubsection}{\numberline {J.3.2.2}Download script}{167}{subsubsection.J.3.2.2}
-\contentsline {subsection}{\numberline {J.3.3}Process limitations}{167}{subsection.J.3.3}
+\contentsline {subsection}{\numberline {5.4.5}Search Settings View}{14}{subsection.5.4.5}
+\contentsline {subsection}{\numberline {5.4.6}Selected Files View}{15}{subsection.5.4.6}
+\contentsline {subsection}{\numberline {5.4.7}Convert View}{15}{subsection.5.4.7}
+\contentsline {section}{\numberline {5.5}iOS}{16}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Navigation bar}{16}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Login Screen}{16}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.5.3}Search View}{16}{subsection.5.5.3}
+\contentsline {subsection}{\numberline {5.5.4}Search Result View}{17}{subsection.5.5.4}
+\contentsline {subsubsection}{\numberline {5.5.4.1}Create processes}{19}{subsubsection.5.5.4.1}
+\contentsline {subsubsection}{\numberline {5.5.4.2}Processes}{20}{subsubsection.5.5.4.2}
+\contentsline {subsubsection}{\numberline {5.5.4.3}Alerts}{21}{subsubsection.5.5.4.3}
+\contentsline {chapter}{\numberline {6}System design}{22}{chapter.6}
+\contentsline {section}{\numberline {6.1}Desktop application}{22}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}View}{22}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Model}{23}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Requests}{23}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Response}{23}{subsection.6.1.4}
+\contentsline {subsection}{\numberline {6.1.5}Controller}{24}{subsection.6.1.5}
+\contentsline {subsection}{\numberline {6.1.6}Utilites}{24}{subsection.6.1.6}
+\contentsline {subsection}{\numberline {6.1.7}System Administration}{24}{subsection.6.1.7}
+\contentsline {subsection}{\numberline {6.1.8}Flow of the system}{26}{subsection.6.1.8}
+\contentsline {section}{\numberline {6.2}Web application}{27}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}How the web application works}{27}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}System overview}{28}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Search}{29}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}Upload}{29}{subsection.6.2.4}
+\contentsline {subsection}{\numberline {6.2.5}Process}{30}{subsection.6.2.5}
+\contentsline {subsection}{\numberline {6.2.6}System administration - Web}{30}{subsection.6.2.6}
+\contentsline {section}{\numberline {6.3}Android application}{32}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}System overview}{32}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Package overview}{33}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Class description}{34}{subsection.6.3.3}
+\contentsline {section}{\numberline {6.4}iOS application}{38}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Overall system design}{38}{subsection.6.4.1}
+\contentsline {section}{\numberline {6.5}Server}{40}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Communication}{40}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Data Conversion}{41}{subsection.6.5.2}
+\contentsline {subsubsection}{\numberline {6.5.2.1}Executor}{41}{subsubsection.6.5.2.1}
+\contentsline {subsubsection}{\numberline {6.5.2.2}RawToProfileConverter}{42}{subsubsection.6.5.2.2}
+\contentsline {subsubsection}{\numberline {6.5.2.3}Description of Procedure}{42}{subsubsection.6.5.2.3}
+\contentsline {paragraph}{\numberline {6.5.2.3.1}BowTie}{44}{paragraph.6.5.2.3.1}
+\contentsline {paragraph}{\numberline {6.5.2.3.2}Used scripts}{44}{paragraph.6.5.2.3.2}
+\contentsline {subsubsection}{\numberline {6.5.2.4}Smoothing and stepping}{45}{subsubsection.6.5.2.4}
+\contentsline {paragraph}{\numberline {6.5.2.4.1}SmoothingAndStep}{45}{paragraph.6.5.2.4.1}
+\contentsline {paragraph}{\numberline {6.5.2.4.2}Tuple}{45}{paragraph.6.5.2.4.2}
+\contentsline {subsubsection}{\numberline {6.5.2.5}ParameterValidator}{45}{subsubsection.6.5.2.5}
+\contentsline {paragraph}{\numberline {6.5.2.5.1}validateSmoothing}{47}{paragraph.6.5.2.5.1}
+\contentsline {paragraph}{\numberline {6.5.2.5.2}validateStep}{47}{paragraph.6.5.2.5.2}
+\contentsline {paragraph}{\numberline {6.5.2.5.3}validateRatioCalculation}{47}{paragraph.6.5.2.5.3}
+\contentsline {subsubsection}{\numberline {6.5.2.6}RawToProfileChecker}{47}{subsubsection.6.5.2.6}
+\contentsline {subsubsection}{\numberline {6.5.2.7}SmoothingParameterChecker}{48}{subsubsection.6.5.2.7}
+\contentsline {subsubsection}{\numberline {6.5.2.8}StartUpCleaner}{48}{subsubsection.6.5.2.8}
+\contentsline {subsubsection}{\numberline {6.5.2.9}ProcessHandler}{48}{subsubsection.6.5.2.9}
+\contentsline {subsubsection}{\numberline {6.5.2.10}Logic \& interface}{48}{subsubsection.6.5.2.10}
+\contentsline {subsection}{\numberline {6.5.3}File-transfer}{49}{subsection.6.5.3}
+\contentsline {subsection}{\numberline {6.5.4}Data Storage}{50}{subsection.6.5.4}
+\contentsline {subsection}{\numberline {6.5.5}Database Design}{52}{subsection.6.5.5}
+\contentsline {subsection}{\numberline {6.5.6}The Data Storage Subsystem}{52}{subsection.6.5.6}
+\contentsline {subsection}{\numberline {6.5.7}Interaction}{53}{subsection.6.5.7}
+\contentsline {subsubsection}{\numberline {6.5.7.1}Adding an experiment}{53}{subsubsection.6.5.7.1}
+\contentsline {subsubsection}{\numberline {6.5.7.2}Annotation Handling}{53}{subsubsection.6.5.7.2}
+\contentsline {subsubsection}{\numberline {6.5.7.3}File Handling}{54}{subsubsection.6.5.7.3}
+\contentsline {chapter}{\numberline {7}Implementation}{55}{chapter.7}
+\contentsline {section}{\numberline {7.1}Desktop application}{55}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Testing}{55}{subsection.7.1.1}
+\contentsline {section}{\numberline {7.2}Web application}{55}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Frameworks}{55}{subsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.1.1}Backbone}{55}{subsubsection.7.2.1.1}
+\contentsline {subsubsection}{\numberline {7.2.1.2}Bootstrap}{56}{subsubsection.7.2.1.2}
+\contentsline {subsubsection}{\numberline {7.2.1.3}RequireJS}{56}{subsubsection.7.2.1.3}
+\contentsline {subsubsection}{\numberline {7.2.1.4}JQuery}{56}{subsubsection.7.2.1.4}
+\contentsline {subsection}{\numberline {7.2.2}Technologies used}{56}{subsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.2.1}AJAX}{56}{subsubsection.7.2.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2.2}\texttt {JSON}}{57}{subsubsection.7.2.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Testing frameworks}{57}{subsection.7.2.3}
+\contentsline {subsubsection}{\numberline {7.2.3.1}Chai \& Mocha}{57}{subsubsection.7.2.3.1}
+\contentsline {subsubsection}{\numberline {7.2.3.2}Sinon}{57}{subsubsection.7.2.3.2}
+\contentsline {subsection}{\numberline {7.2.4}Web app tests}{57}{subsection.7.2.4}
+\contentsline {section}{\numberline {7.3}Android application}{57}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Login request}{58}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Search request}{58}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Request for Genome releases from the server}{59}{subsection.7.3.3}
+\contentsline {subsection}{\numberline {7.3.4}Request for conversion of RAW files to profile-data}{60}{subsection.7.3.4}
+\contentsline {subsection}{\numberline {7.3.5}Request for status on conversions on the server}{61}{subsection.7.3.5}
+\contentsline {subsection}{\numberline {7.3.6}Testing}{62}{subsection.7.3.6}
+\contentsline {section}{\numberline {7.4}iOS application}{62}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}Testing}{62}{subsection.7.4.1}
+\contentsline {section}{\numberline {7.5}Server}{62}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Communication}{62}{subsection.7.5.1}
+\contentsline {subsubsection}{\numberline {7.5.1.1}Doorman}{63}{subsubsection.7.5.1.1}
+\contentsline {subsubsection}{\numberline {7.5.1.2}Authorization}{63}{subsubsection.7.5.1.2}
+\contentsline {subsubsection}{\numberline {7.5.1.3}Removing inactive tokens}{63}{subsubsection.7.5.1.3}
+\contentsline {subsubsection}{\numberline {7.5.1.4}Command object}{64}{subsubsection.7.5.1.4}
+\contentsline {paragraph}{\numberline {7.5.1.4.1}Execute}{64}{paragraph.7.5.1.4.1}
+\contentsline {paragraph}{\numberline {7.5.1.4.2}Validation}{64}{paragraph.7.5.1.4.2}
+\contentsline {subsubsection}{\numberline {7.5.1.5}Heavy work thread}{64}{subsubsection.7.5.1.5}
+\contentsline {subsubsection}{\numberline {7.5.1.6}Response object}{64}{subsubsection.7.5.1.6}
+\contentsline {subsubsection}{\numberline {7.5.1.7}Testing}{64}{subsubsection.7.5.1.7}
+\contentsline {subsection}{\numberline {7.5.2}Conversion}{65}{subsection.7.5.2}
+\contentsline {subsubsection}{\numberline {7.5.2.1}Methods}{65}{subsubsection.7.5.2.1}
+\contentsline {subsection}{\numberline {7.5.3}File-transfer}{66}{subsection.7.5.3}
+\contentsline {subsection}{\numberline {7.5.4}Data Storage}{66}{subsection.7.5.4}
+\contentsline {subsubsection}{\numberline {7.5.4.1}DatabaseAccessor}{67}{subsubsection.7.5.4.1}
+\contentsline {subsubsection}{\numberline {7.5.4.2}Containers}{67}{subsubsection.7.5.4.2}
+\contentsline {subsubsection}{\numberline {7.5.4.3}Methods}{67}{subsubsection.7.5.4.3}
+\contentsline {subsubsection}{\numberline {7.5.4.4}Helpers}{67}{subsubsection.7.5.4.4}
+\contentsline {subsubsection}{\numberline {7.5.4.5}Testing}{68}{subsubsection.7.5.4.5}
+\contentsline {section}{\numberline {7.6}Limitations}{68}{section.7.6}
+\contentsline {chapter}{Bibliography}{69}{section*.63}
+\contentsline {chapter}{Nomenclature}{69}{section*.63}
+\contentsline {chapter}{\numberline {A}User manual}{71}{appendix.A}
+\contentsline {section}{\numberline {A.1}Desktop application}{71}{section.A.1}
+\contentsline {subsection}{\numberline {A.1.1}Login and startup}{71}{subsection.A.1.1}
+\contentsline {subsection}{\numberline {A.1.2}Search}{72}{subsection.A.1.2}
+\contentsline {subsubsection}{\numberline {A.1.2.1}Search results}{72}{subsubsection.A.1.2.1}
+\contentsline {subsection}{\numberline {A.1.3}Upload}{73}{subsection.A.1.3}
+\contentsline {subsubsection}{\numberline {A.1.3.1}Existing experiment}{74}{subsubsection.A.1.3.1}
+\contentsline {subsubsection}{\numberline {A.1.3.2}New experiment}{75}{subsubsection.A.1.3.2}
+\contentsline {subsubsection}{\numberline {A.1.3.3}Batch upload experiments}{75}{subsubsection.A.1.3.3}
+\contentsline {subsection}{\numberline {A.1.4}Process}{76}{subsection.A.1.4}
+\contentsline {subsection}{\numberline {A.1.5}Workspace}{78}{subsection.A.1.5}
+\contentsline {subsubsection}{\numberline {A.1.5.1}Delete from database}{78}{subsubsection.A.1.5.1}
+\contentsline {subsubsection}{\numberline {A.1.5.2}Upload to}{78}{subsubsection.A.1.5.2}
+\contentsline {subsubsection}{\numberline {A.1.5.3}Process}{78}{subsubsection.A.1.5.3}
+\contentsline {subsubsection}{\numberline {A.1.5.4}Download}{78}{subsubsection.A.1.5.4}
+\contentsline {subsection}{\numberline {A.1.6}Administration}{80}{subsection.A.1.6}
+\contentsline {section}{\numberline {A.2}Web application}{82}{section.A.2}
+\contentsline {subsection}{\numberline {A.2.1}Using the interface}{82}{subsection.A.2.1}
+\contentsline {subsubsection}{\numberline {A.2.1.1}Start view}{82}{subsubsection.A.2.1.1}
+\contentsline {subsubsection}{\numberline {A.2.1.2}Search view}{83}{subsubsection.A.2.1.2}
+\contentsline {subsubsection}{\numberline {A.2.1.3}The processing modal}{86}{subsubsection.A.2.1.3}
+\contentsline {subsubsection}{\numberline {A.2.1.4}The convert view}{92}{subsubsection.A.2.1.4}
+\contentsline {subsubsection}{\numberline {A.2.1.5}The remove pop-up window}{92}{subsubsection.A.2.1.5}
+\contentsline {subsubsection}{\numberline {A.2.1.6}The process status dropdown}{93}{subsubsection.A.2.1.6}
+\contentsline {subsubsection}{\numberline {A.2.1.7}The upload view}{94}{subsubsection.A.2.1.7}
+\contentsline {subsubsection}{\numberline {A.2.1.8}System administration view}{96}{subsubsection.A.2.1.8}
+\contentsline {subsection}{\numberline {A.2.2}Setting up the application}{98}{subsection.A.2.2}
+\contentsline {section}{\numberline {A.3}Android application}{101}{section.A.3}
+\contentsline {subsection}{\numberline {A.3.1}Start the Application and Login}{101}{subsection.A.3.1}
+\contentsline {subsection}{\numberline {A.3.2}Settings}{101}{subsection.A.3.2}
+\contentsline {subsection}{\numberline {A.3.3}Searching for files}{102}{subsection.A.3.3}
+\contentsline {subsection}{\numberline {A.3.4}Pubmed Search}{103}{subsection.A.3.4}
+\contentsline {subsection}{\numberline {A.3.5}Search Results}{104}{subsection.A.3.5}
+\contentsline {subsection}{\numberline {A.3.6}Search Settings View}{105}{subsection.A.3.6}
+\contentsline {subsection}{\numberline {A.3.7}Experiment File View}{105}{subsection.A.3.7}
+\contentsline {subsection}{\numberline {A.3.8}Selected Files}{106}{subsection.A.3.8}
+\contentsline {subsection}{\numberline {A.3.9}Converting Files}{107}{subsection.A.3.9}
+\contentsline {subsection}{\numberline {A.3.10}Process View}{108}{subsection.A.3.10}
+\contentsline {section}{\numberline {A.4}iOS application}{109}{section.A.4}
+\contentsline {subsection}{\numberline {A.4.1}How to run the app in Xcode}{109}{subsection.A.4.1}
+\contentsline {subsection}{\numberline {A.4.2}How to login}{109}{subsection.A.4.2}
+\contentsline {subsection}{\numberline {A.4.3}How to logout}{110}{subsection.A.4.3}
+\contentsline {subsection}{\numberline {A.4.4}How to search for experiments}{110}{subsection.A.4.4}
+\contentsline {subsection}{\numberline {A.4.5}How to use advanced search}{111}{subsection.A.4.5}
+\contentsline {subsection}{\numberline {A.4.6}How to process files}{111}{subsection.A.4.6}
+\contentsline {subsection}{\numberline {A.4.7}How to set which annotation to be visible on Search Results}{113}{subsection.A.4.7}
+\contentsline {subsection}{\numberline {A.4.8}How to view process status on the server}{113}{subsection.A.4.8}
+\contentsline {subsection}{\numberline {A.4.9}How to view information about a file}{114}{subsection.A.4.9}
+\contentsline {chapter}{\numberline {B}Deployment and maintenance}{115}{appendix.B}
+\contentsline {section}{\numberline {B.1}Configure server}{115}{section.B.1}
+\contentsline {section}{\numberline {B.2}A brief introduction to vagrant}{115}{section.B.2}
+\contentsline {subsection}{\numberline {B.2.1}Basic usage}{115}{subsection.B.2.1}
+\contentsline {subsection}{\numberline {B.2.2}Modifying the configuration}{116}{subsection.B.2.2}
+\contentsline {subsection}{\numberline {B.2.3}Entering the vagrant virtual machine}{116}{subsection.B.2.3}
+\contentsline {section}{\numberline {B.3}Systems overview of production}{116}{section.B.3}
+\contentsline {subsection}{\numberline {B.3.1}Using the toolchain}{116}{subsection.B.3.1}
+\contentsline {subsubsection}{\numberline {B.3.1.1}Using gnu screen}{117}{subsubsection.B.3.1.1}
+\contentsline {subsection}{\numberline {B.3.2}Configured environments}{118}{subsection.B.3.2}
+\contentsline {subsubsection}{\numberline {B.3.2.1}Production}{118}{subsubsection.B.3.2.1}
+\contentsline {subsubsection}{\numberline {B.3.2.2}Development-1}{118}{subsubsection.B.3.2.2}
+\contentsline {subsubsection}{\numberline {B.3.2.3}Development-2}{119}{subsubsection.B.3.2.3}
+\contentsline {subsubsection}{\numberline {B.3.2.4}Development-3}{119}{subsubsection.B.3.2.4}
+\contentsline {subsubsection}{\numberline {B.3.2.5}Client-development}{120}{subsubsection.B.3.2.5}
+\contentsline {subsubsection}{\numberline {B.3.2.6}Web-development}{120}{subsubsection.B.3.2.6}
+\contentsline {subsection}{\numberline {B.3.3}The important scripts}{121}{subsection.B.3.3}
+\contentsline {subsection}{\numberline {B.3.4}Creating a new environment}{121}{subsection.B.3.4}
+\contentsline {subsubsection}{\numberline {B.3.4.1}Considerations}{121}{subsubsection.B.3.4.1}
+\contentsline {subsubsection}{\numberline {B.3.4.2}Checking out the correct files}{121}{subsubsection.B.3.4.2}
+\contentsline {subsubsection}{\numberline {B.3.4.3}Setting up the files}{122}{subsubsection.B.3.4.3}
+\contentsline {paragraph}{\numberline {B.3.4.3.1}Editing the Vagrantfile}{122}{paragraph.B.3.4.3.1}
+\contentsline {paragraph}{\numberline {B.3.4.3.2}Editing the settings.cfg}{123}{paragraph.B.3.4.3.2}
+\contentsline {paragraph}{\numberline {B.3.4.3.3}Editing the httpd.conf}{123}{paragraph.B.3.4.3.3}
+\contentsline {paragraph}{\numberline {B.3.4.3.4}Modifying the build.pp}{123}{paragraph.B.3.4.3.4}
+\contentsline {paragraph}{\numberline {B.3.4.3.5}Creating the \texttt {tmp} and \texttt {data} folders}{123}{paragraph.B.3.4.3.5}
+\contentsline {subsubsection}{\numberline {B.3.4.4}Running the new environment}{124}{subsubsection.B.3.4.4}
+\contentsline {subsection}{\numberline {B.3.5}Modifying an existing environment}{124}{subsection.B.3.5}
+\contentsline {paragraph}{\numberline {B.3.5.0.1}Checkout new branches}{124}{paragraph.B.3.5.0.1}
+\contentsline {subsection}{\numberline {B.3.6}Rebuilding an environment}{125}{subsection.B.3.6}
+\contentsline {subsection}{\numberline {B.3.7}Deleting an environment}{125}{subsection.B.3.7}
+\contentsline {subsection}{\numberline {B.3.8}Configuring the host system}{125}{subsection.B.3.8}
+\contentsline {subsubsection}{\numberline {B.3.8.1}External folders and their permissions.}{125}{subsubsection.B.3.8.1}
+\contentsline {subsubsection}{\numberline {B.3.8.2}Configuring the firewall}{126}{subsubsection.B.3.8.2}
+\contentsline {subsubsection}{\numberline {B.3.8.3}Prerequisite software}{126}{subsubsection.B.3.8.3}
+\contentsline {paragraph}{\numberline {B.3.8.3.1}Virtualbox}{126}{paragraph.B.3.8.3.1}
+\contentsline {paragraph}{\numberline {B.3.8.3.2}Vagrant}{127}{paragraph.B.3.8.3.2}
+\contentsline {section}{\numberline {B.4}Administer the database}{127}{section.B.4}
+\contentsline {subsection}{\numberline {B.4.1}Set up postgresql account}{127}{subsection.B.4.1}
+\contentsline {subsection}{\numberline {B.4.2}Upload SQL Script to server}{128}{subsection.B.4.2}
+\contentsline {subsection}{\numberline {B.4.3}Create the \textit {Genomizer}\ Tables}{128}{subsection.B.4.3}
+\contentsline {section}{\numberline {B.5}Set up processing}{129}{section.B.5}
+\contentsline {section}{\numberline {B.6}Install the server}{129}{section.B.6}
+\contentsline {subsection}{\numberline {B.6.1}Downloading the source code}{129}{subsection.B.6.1}
+\contentsline {subsection}{\numberline {B.6.2}Creating a runnable JAR file}{129}{subsection.B.6.2}
+\contentsline {subsection}{\numberline {B.6.3}Starting the server}{129}{subsection.B.6.3}
+\contentsline {chapter}{\numberline {C}User Stories}{131}{appendix.C}
+\contentsline {section}{\numberline {C.1}Implemented user stories}{131}{section.C.1}
+\contentsline {section}{\numberline {C.2}Product backlog}{134}{section.C.2}
+\contentsline {chapter}{\numberline {D}Android application: \textit {UML}-diagrams}{138}{appendix.D}
+\contentsline {chapter}{\numberline {E}iOS application: \textit {UML}-diagrams}{140}{appendix.E}
+\contentsline {chapter}{\numberline {F}Desktop application: \textit {UML}-diagrams}{142}{appendix.F}
+\contentsline {chapter}{\numberline {G}Data Storage: \textit {UML}-diagrams}{147}{appendix.G}
+\contentsline {chapter}{\numberline {H}Server API}{148}{appendix.H}
+\contentsline {chapter}{\numberline {I}\textit {Backup}}{163}{appendix.I}
+\contentsline {section}{\numberline {I.1}Introduction}{163}{section.I.1}
+\contentsline {section}{\numberline {I.2}File backup}{163}{section.I.2}
+\contentsline {section}{\numberline {I.3}Database backup}{164}{section.I.3}
+\contentsline {section}{\numberline {I.4}Chrontab}{165}{section.I.4}
+\contentsline {chapter}{\numberline {J}Known problems}{166}{appendix.J}
+\contentsline {section}{\numberline {J.1}Web application}{166}{section.J.1}
+\contentsline {subsection}{\numberline {J.1.1}Moving backwards in the browser does not hide modal windows}{166}{subsection.J.1.1}
+\contentsline {subsection}{\numberline {J.1.2}Error handling when uploading experiments}{166}{subsection.J.1.2}
+\contentsline {subsection}{\numberline {J.1.3}Old authorization token causes page redirect}{166}{subsection.J.1.3}
+\contentsline {subsection}{\numberline {J.1.4}Code duplication in SearchResults and Experiments}{166}{subsection.J.1.4}
+\contentsline {subsection}{\numberline {J.1.5}No warning when closing tab during upload.}{166}{subsection.J.1.5}
+\contentsline {subsection}{\numberline {J.1.6}Uploading genome release - does not update list automatically}{166}{subsection.J.1.6}
+\contentsline {subsection}{\numberline {J.1.7}The annotation list can't be sorted}{167}{subsection.J.1.7}
+\contentsline {subsection}{\numberline {J.1.8}Sidebar on adminpage dosen't stay vertical}{167}{subsection.J.1.8}
+\contentsline {subsection}{\numberline {J.1.9}Missing error check on annotation values}{167}{subsection.J.1.9}
+\contentsline {subsection}{\numberline {J.1.10}No warning when closing tab during uploading genome releases}{167}{subsection.J.1.10}
+\contentsline {section}{\numberline {J.2}\textit {iOS} application}{167}{section.J.2}
+\contentsline {subsection}{\numberline {J.2.1}Unspecified behaviour on loss of internet connection}{167}{subsection.J.2.1}
+\contentsline {subsection}{\numberline {J.2.2}Lack of security}{167}{subsection.J.2.2}
+\contentsline {subsection}{\numberline {J.2.3}No administrative features}{167}{subsection.J.2.3}
+\contentsline {section}{\numberline {J.3}Server}{168}{section.J.3}
+\contentsline {subsection}{\numberline {J.3.1}Communication and control}{168}{subsection.J.3.1}
+\contentsline {subsubsection}{\numberline {J.3.1.1}Don't use the same username as someone else}{168}{subsubsection.J.3.1.1}
+\contentsline {subsubsection}{\numberline {J.3.1.2}Communication in plain text}{168}{subsubsection.J.3.1.2}
+\contentsline {subsubsection}{\numberline {J.3.1.3}Only one process at a time}{168}{subsubsection.J.3.1.3}
+\contentsline {subsubsection}{\numberline {J.3.1.4}No way to stop a running process}{168}{subsubsection.J.3.1.4}
+\contentsline {subsubsection}{\numberline {J.3.1.5}No way to see if a process is stuck}{168}{subsubsection.J.3.1.5}
+\contentsline {subsection}{\numberline {J.3.2}Upload and download}{169}{subsection.J.3.2}
+\contentsline {subsubsection}{\numberline {J.3.2.1}Upload script}{169}{subsubsection.J.3.2.1}
+\contentsline {subsubsection}{\numberline {J.3.2.2}Download script}{169}{subsubsection.J.3.2.2}
+\contentsline {subsection}{\numberline {J.3.3}Process limitations}{169}{subsection.J.3.3}
