@@ -1,68 +1,159 @@
 \section{Introduction}
-To backup the genomizer-server rsync and crontab are required. The backup can either be an external storage device (e.g hard drive or USB-storage) on the genomizer-server or a remote backup-server. When using a remote backup-server ssh and a key-pair between the genomizer-server and backup-server is needed. Because rsync synchronizes the genomizer-server and the backup all deleted files on the genomizer-server will be deleted on the backup. To backup from any removal mistakes tar is needed on the backup-server. All backup scripts are located at \emph{resources/backup/} in the genomizer-server project folder.
+To backup the genomizer-server \texttt{rsync} and \texttt{crontab} are
+required. The backup can either be stored on an external storage
+device (e.g hard drive or USB-storage) connected to the
+genomizer-server or a remote backup-server.
+
+Using a remote server requires setting up \texttt{ssh} keys for the
+genomizer-server to remote backup communication. This can be achieved
+using \texttt{ssh-copy-id} or equivalent.
+
+Keep in mind that \texttt{rsync} synchronizes the chosen directory
+trees on the genomizer-server and the backup-server. This means that
+all deleted files on the genomizer-server will be deleted on the
+backup-server.
+
+In addition to the \texttt{rsync} setup, we include a script intended
+for use on the backup-server, which packs the synchronized directory
+tree into a compressed archive. If added to the backup-servers \texttt{crontab},
+this script will automate the process, and also clean up old archives.
+
+All backup scripts are located at \texttt{resources/backup/} in the
+genomizer-server project folder.
+
+
 
 \section{File backup}
-Two scripts are available to perform a backup of the genomizer-server. These are named \emph{local\_file\_backup.sh} and \emph{remote\_file\_backup.sh}.
-\emph{local\_file\_backup.sh} will backup to a local path on the server, preferable to an external storage device. \emph{remote\_file\_backup.sh} will backup to a remote backup-server. Both scripts need to be edited to work properly. The following variables must be set:
-\begin{itemize}
-\item READPATH: Path to folder that you want to backup
-\item SAVEPATH: Path to folder where you want to store your backup
-\end{itemize}
-The script \emph{remote\_file\_backup.sh} also requires the following variables to be set:
-\begin{itemize}
-\item PORT: ssh port on the backup server
-\item USER: User on the backup-server
-\item IP: IP address to the backup-server
-\end{itemize}
-To be able to automate the backup with crontab a ssh key-pair needs to be generated between the genomizer-server and backup-server. 
 
-A script named \emph{backup\_tar.sh} is available to save a compressed tar-file of the genomizer data. This can be used on the backup-server to save a copy of the genomizer data and thus establish some protection against any removal mistakes. The following variables need to be edited in the script:
+Two scripts are available to perform the directory synchronization
+part of the backup of the genomizer-server. These are named
+\texttt{local\_file\_backup.sh} and \texttt{remote\_file\_backup.sh},
+and correspond to the local or remote storage options mentioned in the
+previous section.
+
+\texttt{local\_file\_backup.sh} will backup to a local path on the
+genomizer-server. Suggested use is to mount an external storage device
+somewhere on the filesystem, and to backup to that.
+
+Conversely, \texttt{remote\_file\_backup.sh} will backup to a remote
+backup-server. This is where the \texttt{ssh} keys are required.
+
+Both scripts need to be edited to work properly. The following
+variables must be set:
+
 \begin{itemize}
-\item WORKDIR: Path to the parent folder of the genomizer data folder
-\item READFOLDER: Name of the genomizer data folder
-\item SAVEPATH: Path to folder where you want to store the copy
-\item DAYS: Number of days to save the copy. The script will remove any copies older than DAYS days.
+\item READPATH: Path to the directory tree that you wish to backup
+\item SAVEPATH: Path to the synchronize to
+\end{itemize}
+
+The script \texttt{remote\_file\_backup.sh} also requires the following variables to be set:
+\begin{itemize}
+\item PORT: The \texttt{ssh} port on the backup-server
+\item USER: The user identity to use when connecting to the backup-server
+\item IP: IP-address to the backup-server
+\end{itemize}
+
+%To be able to automate the backup with \texttt{crontab} a ssh key-pair needs to
+%be generated between the genomizer-server and backup-server.
+
+\subsection{Archiving}
+
+The archiving script, \texttt{backup\_tar.sh}, compresses a given
+directory tree into a \texttt{gzip}'d tarball. This script should be
+invoked at the backup site. This is easily automated by adding the
+script to an appropriate \texttt{crontab} at the backup site, and
+setting the script to remove old archives at regular intervals.
+
+The following variables need to be edited in the script:
+\begin{itemize}
+\item WORKDIR: Path to the parent folder of the directory to which the
+  genomizer-server is backed up.\footnote{That is, if the data is
+    backed up to \texttt{EXAMPLE/PATH/genomizer/data}, then the
+    ``WORKDIR'' should be \texttt{EXAMPLE/PATH/genomizer} }
+\item READFOLDER: Name of the directory in ``WORKDIR'' to which the
+  genomizer-server is backed up.
+\item SAVEPATH: Path to the directory in which to store archives 
+\item DAYS: Specifies how many days old archives should be stored
+  before the script deletes them
 \end{itemize}
 
 \section{Database backup}
-To backup the database a script named \emph{db\_backup.sh} is available. The following variables need to be edited:
+
+To backup the database a script called \texttt{db\_backup.sh} is
+available. The following variables in the script need to be edited:
+
 \begin{itemize}
 \item DBNAME: Name of the database
 \item DBPORT: Port of the databse
-\item DBUSER: Username of the database
-\item FILENAME: Name of the created backup file
-\item SAVEPATH: Path to folder where you want to store the backup file
+\item DBUSER: Username for the database
+\item FILENAME: Name to give to the created backup file
+\item SAVEPATH: Path to the directory in which to store the backup file
 \end{itemize}
-The variable \emph{SAVEPATH} should be the same as the variable \emph{READPATH} in the file backup scripts. Otherwise the database file will not be copied to the backup-server.
 
-To allow the script to access the database a file named 
-\begin{verbatim}
-.pgpass
-\end{verbatim}
-needs to be created in the home folder of the user, for example: \\
-\emph{/home/username/.pgpass}. \\
-This file must contain the following information of the database:
+The variable \texttt{SAVEPATH} should be the same as the variable
+\texttt{READPATH} in the file backup scripts. Otherwise the database
+file will not be copied to the backup site.
+
+To allow the script to access the database a file called \texttt{.pgpass}
+needs to be created in the home directory of the user calling the script.
+This file must contain the following information:
+
 \begin{verbatim}
 localhost:PORT:DATABASE:USERNAME:PASSWORD
 \end{verbatim}
 
 \section{Crontab}
-Crontab is used to automate the backup by scheduling the scripts. Adding or removing scripts in crontab can be made by writing the following in the terminal.
+
+\texttt{Crontab} is the suggested method for automating the invocation
+of the backup scripts. Adding system-wide tasks to \texttt{crontab} is
+easily achieved using the following command:
+
 \begin{verbatim}
-sudo crontab -e
+crontab -e
 \end{verbatim}
-Here is an example how to add a scheduled script:
+
+This will open the crontab for the current user, where tasks may then
+be defined. Running a background task such as a backup should preferably
+be in the root \texttt{crontab} (using \texttt{sudo crontab -e})
+or in the \texttt{crontab} of some other ``non-user'' user.
+
+Make sure that the scripts added to \texttt{crontab} are kept in a
+secure location, and aren't editable by users without proper access
+rights. This is necessary to keep malicious users from adding
+arbitrary code to the \texttt{crontab} schedule.
+ 
+Here is a short example of how to add a scheduled script:
 \begin{verbatim}
 0 0 * * * /path/to/script.sh
 \end{verbatim}
-Crontab will run the script every midnight all year around.
+The above line tells \texttt{Crontab} to run the script at midnight
+every day. For more information on \texttt{crontab} syntax and
+behavior, see the \texttt{crontab} manual.
 
 \section{Restoring}
-Restoring the files using a local backup is made by just copying all the backup files to the genomizer data folder. When using a remote backup-server the easiest way is to use rsync from the backup-server to the genomizer-server.
 
-Restoring the database is made by inserting the database backup file into the database. The following command will insert the database file:
+Restoring a backup is much like backing up in reverse. Simply invoke
+\texttt{rsync} from the backup site, with the backup directory as
+source and the genomizer-server's data directory as target.
+
+To restore from an archive, extract the archive contents to a suitable
+location, and then invoke \texttt{rsync} with that directory as source
+and the genomizer-server's data directory as target.
+
+%Restoring the files using a local backup is made by just copying all
+%the backup files to the genomizer data folder. When using a remote
+%backup-server the easiest way is to use \texttt{rsync} from the backup-server
+%to the genomizer-server.
+
+Restoring the database is achieved by piping the database dump to
+the live database: 
 \begin{verbatim}
 psql dbname < FILENAME.sql
 \end{verbatim}
-where dbname is the name of the database and FILENAME is the name of the database file.
+
+Equivalently, one could log in to the database and call the dump as a
+normal \texttt{sql} script.
+
+Note that in either case, this operation requires the user to have
+permission to open and overwrite the database.
 

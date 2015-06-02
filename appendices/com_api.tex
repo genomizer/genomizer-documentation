@@ -1,842 +1,1063 @@
 \label{chap:com_api}
 
+The server relies on REST to handle communication between the server and the clients. There are a set of valid requests that can be made, this section encompasses all of them. They are divided into respective categories, those being Connection, Experiment, File, File conversion, Search, User, Admin, Processing, Annotation handling, Genome release handling, GEO and File upload/download.
+
+All requests are briefly explained and example requests and responds are given.
+
 \section*{Connection}
-Login/Logout to and from the server. When a user has been verified a token (user-id) is supplied in the response. The token is generated from the current date and the users password. It is then hashed and given an expiration date. The token should be supplied in the Authorization header for each request in order to identify the user.
+Requests used to login/logout to and from the server.
 
-\begin{minipage}{\textwidth}
-\subsection*{\textbackslash login}
+\subsection*{POST /login}
+
+Logs in as a user.
+
+\subsubsection*{Request:}
+
 \begin{verbatim}
-Login to the server [POST]
-+ Request (application/json)
-
-        {
-         "username": "uname", 
-         "password": "pw"
-        }
-
-+ Response 200 (application/json)
-    
-            {
-             "token": "user-id"
-            }
-
-Logout from the server [DELETE]
-+ Request
-
-    + Header
-    
-            authorization: user-id
-        
-+ Response 200
+POST /login HTTP/1.1
+Content-Type: application/json
+{
+ "username": "uname", 
+ "password": "pw"
+}
 \end{verbatim}
-\end{minipage}
+
+\subsubsection*{Response:}
+
+\begin{verbatim}
+200 (OK)
+Content-Type: application/json
+{
+ "token": "token",
+ "role": "role"
+}
+\end{verbatim}
+
+\subsection*{DELETE /login}
+
+Logs out as a user.
+
+\subsubsection*{Request:}
+
+\begin{verbatim}
+DELETE /login HTTP/1.1
+authorization: token
+\end{verbatim}
+\subsubsection*{Response:}
+
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
 
 \section*{Experiment}
+Requests used to add, retrieve, update and delete experiments.
+
+\subsection*{POST /experiment}
+
+Creates a new experiment.
+
+\subsubsection*{Request:}
 \begin{verbatim}
-An experiment containing annotations and files. `experiment-id` in the header of the 
-request is the unique id (name) of the experiment.
+POST /experiment HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+    "name": "experimentId",
+    "annotations": 
+                 [
+                 {
+                  "name": "pubmedId",
+                  "value": "abc123"
+                 }, 
+                 {
+                  "name": "type",
+                  "value": "raw"
+                 },
+                 {
+                  "name": "specie",
+                  "value": "human"
+                 },
+                 {
+                  "name": "genome release",
+                  "value": "v.123"
+                 },
+                 {
+                  "name": "cell line",
+                  "value": "yes"
+                 },
+                 {
+                  "name": "development stage",
+                  "value": "larva"
+                 },
+                 {
+                  "name": "sex",
+                  "value": "male"
+                 },
+                 {
+                  "name": "tissue",
+                  "value": "eye"
+                 }
+                 ]
 
-+ Parameters
-    + name ... Name and id of the experiment
-    + created by ... Which user created the experiment
-    + annotations 
-        + pubmedId
-        + type
-        + specie
-        + genoRelease
-        + cellLine
-        + devStage
-        + sex
-        + tissue
-        + ...
-\end{verbatim}            
-
-\subsection*{\textbackslash experiment} 
-\begin{verbatim}
-### Add an Experiment [POST]
-+ Request (application/json)
-
-    + Headers
-    
-                Authorization: token
-                
-    + Body 
-    
-            {
-                "name": "experimentId",
-                "createdBy": "user",
-                "annotations": 
-                             [
-                             {
-                              "name": "pubmedId",
-                              "value": "abc123"
-                             }, 
-                             {
-                              "name": "type",
-                              "value": "raw"
-                             },
-                             {
-                              "name": "specie",
-                              "value": "human"
-                             },
-                             {
-                              "name": "genome release",
-                              "value": "v.123"
-                             },
-                             {
-                              "name": "cell line",
-                              "value": "yes"
-                             },
-                             {
-                              "name": "development stage",
-                              "value": "larva"
-                             },
-                             {
-                              "name": "sex",
-                              "value": "male"
-                             },
-                             {
-                              "name": "tissue",
-                              "value": "eye"
-                             }
-                             ]
-                
-            }
-        
-+ Response 201
+}
 \end{verbatim}
 
-\subsection*{\textbackslash experiment\textbackslash <experiment-id>}
+\subsubsection*{Response:}
 \begin{verbatim}
-### Retrieve an Experiment [GET]
-+ Request 
+200 (OK)
+\end{verbatim}	
 
-    + Headers
-    
-                Authorization: token
-                
-+ Response 200 (application/json)
+\subsection*{GET /experiment/<experiment-id>}
 
-    + Headers
-    
-                Authorization: token
-       
-    + Body 
-    
-            {
-                "name": "experimentId",
-                "createdBy": "user",
-                "files": [
-                        { 
-                         "fileId": "id",
-                         "experimentID": "id",
-                         "fileName": "name",
-                         "type": "raw",
-                         "metaData": "metameta",
-                         "author": "name",
-                         "uploader": "user1",
-                         "isPrivate": "bool",
-                         "grVersion": "releaseNr",
-                        },
-                        { 
-                         "fileId": "id",
-                         "experimentID": "id",
-                         "fileName": "name",
-                         "type": "raw",
-                         "metaData": "metameta",
-                         "author": "name",
-                         "uploader": "user1",
-                         "isPrivate": "bool",
-                         "grVersion": "releaseNr"
-                        }
-                         ],
-                "annotations": 
-                            [
-                             {
-                              "name": "pubmedId",
-                              "value": "abc123"
-                             }, 
-                             {
-                              "name": "type",
-                              "value": "raw"
-                             },
-                             {
-                              "name": "specie",
-                              "value": "human"
-                             },
-                             {
-                              "name": "genome release",
-                              "value": "v.123"
-                             },
-                             {
-                              "name": "cell line",
-                              "value": "yes"
-                             },
-                             {
-                              "name": "development stage",
-                              "value": "larva"
-                             },
-                             {
-                              "name": "sex",
-                              "value": "male"
-                             },
-                             {
-                              "name": "tissue",
-                              "value": "eye"
-                             }
-                            ]
-                
-            }
+Retrieves a specific experiment.
 
-### Update an Experiment [PUT]
-+ Request (application/json)
-
-    + Headers
-    
-                Authorization: token
-    + Body 
-    
-            {
-                "name": "experimentId",
-                "createdBy": "user",
-                "annotations": 
-                             [
-                             {
-                              "name": "pubmedId",
-                              "value": "abc123"
-                             }, 
-                             {
-                              "name": "type",
-                              "value": "raw"
-                             },
-                             {
-                              "name": "specie",
-                              "value": "human"
-                             },
-                             {
-                              "name": "genome release",
-                              "value": "v.123"
-                             },
-                             {
-                              "name": "cell line",
-                              "value": "yes"
-                             },
-                             {
-                              "name": "development stage",
-                              "value": "larva"
-                             },
-                             {
-                              "name": "sex",
-                              "value": "male"
-                             },
-                             {
-                              "name": "tissue",
-                              "value": "eye"
-                             }
-                             ]
-                }
-            
-        
-+ Response 201
-
-### Remove an Experiment [DELETE]
-+ Request 
-
-    + Header
-    
-            Authorization: token
-        
-+ Response 200
+\subsubsection*{Request:}
+\begin{verbatim}
+GET /experiment/<experiment-id> HTTP/1.1
+Authorization: token
 \end{verbatim}
 
-\section*{Files}
+\subsubsection*{Response:}
 \begin{verbatim}
-Add/remove files in experiment. `file-id` specifies the unique id of 
-the file in the header. 
-
-+ Parameters
-    + `fileName` ... Name of the file
-    + `experimentID` ... Name of the experiment associated with the file
-    + `size` ... File size
-    + `type` ... Type of data (raw/profile/region)
-    + (`URL` ... An URL to the file, added when the file has been uploaded)
-\end{verbatim}
-
-\subsection*{\textbackslash file}
-\begin{verbatim}
-### Add file to experiment [POST]
-+ Request (application/json)
-
-    + Header
-    
-            Authorization: token
-    
-    + Body
-    
+200 (OK)
+Content-Type: application/json
+Authorization: token
+{
+    "name": "experimentId",
+    "files": [
             { 
-             "experimentID": "id",
-             "fileName": "name",
-             "type": "raw",
-             "metaData": "metameta",
-             "author": "name",
-             "uploader": "user1",
-             "isPrivate": "bool",
-             "grVersion": "releaseNr"
-            }
-
-+ Response 200
-
-        {
-         "URLupload": "url"
-        }
-
-\end{verbatim}
-\subsection*{\textbackslash file\textbackslash <file-id>}
-\begin{verbatim}
-### Get file from experiment [GET]
-+ Request 
-
-    + Headers
-    
-                Authorization: token
-                
-+ Response 200 (application/json)
-
-        { 
-         "experimentID": "id",
-         "fileName": "name",
-         "type": "raw",
-         "metaData": "metameta",
-         "author": "name",
-         "uploader": "user1",
-         "isPrivate": "bool",
-         "grVersion": "releaseNr"
-        }
-
-### Update file in experiment [PUT]
-+ Request (application/json)
-
-    + Header
-    
-            Authorization: token
-    
-    + Body
-        
+             "id": "id",
+             "path": "path",
+             "url": "url",
+             "type": "type",
+             "filename": "filename",
+             "date": "date",
+             "metaData": "metaData",
+             "author": "author",
+             "uploader": "uploader",
+             "expId": "expId",
+             "grVersion": "realseNr",
+             "fileSize": "fileSize"
+            },
             { 
-             "experimentID": "id",
-             "fileName": "name",
-             "type": "raw",
-             "metaData": "metameta",
-             "author": "name",
-             "uploader": "user1",
-             "isPrivate": "bool",
-             "grVersion": "releaseNr"
+             "id": "id",
+             "path": "path",
+             "url": "url",
+             "type": "type",
+             "filename": "filename",
+             "date": "date",
+             "metaData": "metaData",
+             "author": "author",
+             "uploader": "uploader",
+             "expId": "expId",
+             "grVersion": "realseNr",
+             "fileSize": "fileSize"
             }
-            
-+ Response 201
+             ],
+    "annotations": 
+                 [
+                 {
+                  "name": "pubmedId",
+                  "value": "abc123"
+                 }, 
+                 {
+                  "name": "type",
+                  "value": "raw"
+                 },
+                 {
+                  "name": "specie",
+                  "value": "human"
+                 },
+                 {
+                  "name": "genome release",
+                  "value": "v.123"
+                 },
+                 {
+                  "name": "cell line",
+                  "value": "yes"
+                 },
+                 {
+                  "name": "development stage",
+                  "value": "larva"
+                 },
+                 {
+                  "name": "sex",
+                  "value": "male"
+                 },
+                 {
+                  "name": "tissue",
+                  "value": "eye"
+                 }
+                 ]
 
-### Delete file from experiment [DELETE]
-+ Request
-
-    + Header
-    
-            Authorization: token
-        
-+ Response 200
+}
 \end{verbatim}
+
+\subsection*{PUT /experiment/<experiment-id>}
+
+Edits an exisiting experiment.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+PUT /experiment/<experiment-id> HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+    "name": "experimentId",
+    "annotations": 
+                 [
+                 {
+                  "name": "pubmedId",
+                  "value": "abc123"
+                 }, 
+                 {
+                  "name": "type",
+                  "value": "raw"
+                 },
+                 {
+                  "name": "specie",
+                  "value": "human"
+                 },
+                 {
+                  "name": "genome release",
+                  "value": "v.123"
+                 },
+                 {
+                  "name": "cell line",
+                  "value": "yes"
+                 },
+                 {
+                  "name": "development stage",
+                  "value": "larva"
+                 },
+                 {
+                  "name": "sex",
+                  "value": "male"
+                 },
+                 {
+                  "name": "tissue",
+                  "value": "eye"
+                 }
+                 ]
+    }
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\subsection*{DELETE /experiment/<experiment-id>}
+
+Deletes an existing experiment.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+DELETE /experiment/<experiment-id> HTTP/1.1
+Authorization: token
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\section*{File}
+
+Requests ued to add, retrieve (file information), update and delete files.
+
+\subsection*{POST /file}
+
+Adds a file to an experiment.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+POST /file HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{ 
+ "experimentID": "id",
+ "fileName": "name",
+ "type": "raw",
+ "metaData": "metameta",
+ "author": "name",
+ "grVersion": "releaseNr"
+ "checkSumMD5": "checksum"
+}
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\subsection*{GET /file/<file-id>}
+
+Retrieves file information about a specific file.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+GET /file/<file-id> HTTP/1.1
+Authorization: token
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+Content-Type: application/json
+{ 
+ "id": "id",
+ "path": "path",
+ "url": "url",
+ "type": "type",
+ "filename": "filename",
+ "date": "date",
+ "metaData": "metaData",
+ "author": "author",
+ "uploader": "uploader",
+ "expId": "expId",
+ "grVersion": "realseNr",
+ "fileSize": "fileSize",
+ "checkSumMD5": "checkSumMD5"
+}
+\end{verbatim}
+
+\subsection*{PUT /file/<file-id>}
+
+Edits file information for a specific file.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+PUT /file/<file-id> HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{ 
+ "experimentID": "id",
+ "filename": "name",
+ "type": "raw",
+ "metaData": "metameta",
+ "author": "name",
+ "grVersion": "releaseNr"
+ "checkSumMD5": "checksum"
+}
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\subsection*{DELETE /file/<file-id>}
+
+Deletes a specific file.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+DELETE /file/<file-id> HTTP/1.1
+Authorization: token
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\section*{File conversion}
+
+Requests used to handle file conversion.
+
+\subsection*{PUT /convertfile}
+
+Converts a file to a given format.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+PUT /convertfile HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{ 
+ "fileid": "id", 
+ "toformat": "format"
+}
+\end{verbatim}
+
+\subsubsection*{Response:} 
+\begin{verbatim}
+200 (OK)
+Content-Type: application/json
+    {
+     "id": "id",
+     "path": "path",
+     "url": "url",
+     "type": "type",
+     "filename": "filename",
+     "date": "date",
+     "metaData": "metaData",
+     "author": "author",
+     "uploader": "uploader",
+     "expId": "expId",
+     "grVersion": "realseNr",
+     "fileSize": "fileSize",
+     "checkSumMD5": "checkSumMD5"
+    }
+\end{verbatim}
+
 \section*{Search}
+
+Requests used to handle user information (by the user).
+
+\subsection*{PUT /user}
+
+Edits the user information.
+
+\subsubsection*{Request:}
 \begin{verbatim}
-Searching using annotations. The annotations is included last in the request header. 
-The results from the search is contained in the JSON document in the response. 
-Results are an array of **files** linked to their respective **experiments**.
+PUT /user HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+ "oldPassword": "oldPw"
+ "newPassword": "newPw",
+ "name": "John Johnson",
+ "email": "john@mail.com"
+}
 \end{verbatim}
 
-\subsection*{\textbackslash search\textbackslash ?annotations=<pubmedStyleQuery>}
+
+\subsubsection*{Response:}
 \begin{verbatim}
-### Search for experiments [GET]
-+ Request
+200 (OK)
+\end{verbatim}
 
-    + Headers
-    
-                Authorization: token
-                
-+ Response 200 (application/json)
+\section*{Search}
 
- 
-        [
-           {
-            "name": "experimentId",
-            "created by": "user",
-            "files": [
-                        { 
-                         "id": 25,
-                         "path": "/var/www/data/Exp1/raw/file1.fastq",
-                         "url": "http://scratchy.cs.umu.se:8000/download.php?path\u003d/var/www/data/Exp1/raw/file1.fastq",
-                         "type": "Raw",
-                         "filename": "file1.fastq",
-                         "date": "May 8, 2014",
-                         "author": "Ume? Uni",
-                         "uploader": "user1",
-                         "expId": "Exp1"
-                        },
-                        { 
-                         "id": 26,
-                         "path": "/var/www/data/Exp1/raw/file1.fastq",
-                         "url": "http://scratchy.cs.umu.se:8000/download.php?path\u003d/var/www/data/Exp1/raw/file1.fastq",
-                         "type": "Raw",
-                         "filename": "file1.fastq",
-                         "date": "May 8, 2014",
-                         "author": "Ume? Uni",
-                         "uploader": "user1",
-                         "expId": "Exp1"
-                        },
-                        { 
-                         "id": 27,
-                         "path": "/var/www/data/Exp1/raw/file1.fastq",
-                         "url": "http://scratchy.cs.umu.se:8000/download.php?path\u003d/var/www/data/Exp1/raw/file1.fastq",
-                         "type": "Raw",
-                         "filename": "file1.fastq",
-                         "date": "May 8, 2014",
-                         "author": "Ume? Uni",
-                         "uploader": "user1",
-                         "expId": "Exp1"
-                        }
-                     ],
-            "annotations": 
-                         [
-                         {
-                          "name": "pubmedId",
-                          "value": "abc123"
-                         }, 
-                         {
-                          "name": "type",
-                          "value": "outdoor"
-                         },
-                         {
-                          "name": "specie",
-                          "value": "human"
-                         },
-                         {
-                          "name": "genome release",
-                          "value": "v.123"
-                         },
-                         {
-                          "name": "cell line",
-                          "value": "yes"
-                         },
-                         {
-                          "name": "development stage",
-                          "value": "larva"
-                         },
-                         {
-                          "name": "sex",
-                          "value": "male"
-                         },
-                         {
-                          "name": "tissue",
-                          "value": "eye"
-                         }
-                         ]
-            }
-        ]
+Requests used to handle searching for experiments.
+
+\subsection*{GET /search/?annotations=<pubmedStyleQuery>}
+
+Searches for an experiment using a pubmed query.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+GET /search/?annotations=<pubmedStyleQuery> HTTP/1.1
+Authorization: token
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+Content-Type: application/json
+[
+   {
+        "name": "experimentId",
+        "files": [
+                { 
+                 "id": "id",
+                 "path": "path",
+                 "url": "url",
+                 "type": "type",
+                 "filename": "filename",
+                 "date": "date",
+                 "metaData": "metaData",
+                 "author": "author",
+                 "uploader": "uploader",
+                 "expId": "expId",
+                 "grVersion": "realseNr",
+                 "fileSize": "fileSize"
+                },
+                { 
+                 "id": "id",
+                 "path": "path",
+                 "url": "url",
+                 "type": "type",
+                 "filename": "filename",
+                 "date": "date",
+                 "metaData": "metaData",
+                 "author": "author",
+                 "uploader": "uploader",
+                 "expId": "expId",
+                 "grVersion": "realseNr",
+                 "fileSize": "fileSize"
+                }
+                 ],
+        "annotations": 
+                     [
+                     {
+                      "name": "pubmedId",
+                      "value": "abc123"
+                     }, 
+                     {
+                      "name": "type",
+                      "value": "raw"
+                     },
+                     {
+                      "name": "specie",
+                      "value": "human"
+                     },
+                     {
+                      "name": "genome release",
+                      "value": "v.123"
+                     },
+                     {
+                      "name": "cell line",
+                      "value": "yes"
+                     },
+                     {
+                      "name": "development stage",
+                      "value": "larva"
+                     },
+                     {
+                      "name": "sex",
+                      "value": "male"
+                     },
+                     {
+                      "name": "tissue",
+                      "value": "eye"
+                     }
+                     ]
+
+    }
+]
 \end{verbatim}
 
 \section*{Processing}
+
+Requests used to process experiment data.
+
+\subsection*{GET /process}
+
+Gets the statuses of all processes.
+
+\subsubsection*{Request:}
 \begin{verbatim}
-API for executing commands such as file conversions.
+GET /process HTTP/1.1
+Authorization: token
 \end{verbatim}
 
-\subsection*{\textbackslash process}
+\subsubsection*{Response:}
 \begin{verbatim}
-### Get status of all processes [GET]
-+ Request
+200 (OK)
+Content-Type: application/json
+[
+  {
+    "experimentName": "Exp1",
+    "PID": "123",
+    "status": "Finished",
+    "outputFiles": [
+      "file1",
+      "file2"
+    ],
+    "author": "yuri",
+    "timeAdded": 1400245668744,
+    "timeStarted": 1400245668756,
+    "timeFinished": 1400245669756
+  },
+  {
+    "experimentName": "Exp2",
+    "PID": "124",
+    "status": "Finished",
+    "outputFiles": [
+      "file1",
+      "file2"
+    ],
+    "author": "janne",
+    "timeAdded": 1400245668746,
+    "timeStarted": 1400245669756,
+    "timeFinished": 1400245670756
+  },
+  {
+    "experimentName": "Exp43",
+    "PID": "125",
+    "status": "Crashed",
+    "outputFiles": [
+      "file1",
+      "file2"
+    ],
+    "author": "philge",
+    "timeAdded": 1400245668748,
+    "timeStarted": 1400245670756,
+    "timeFinished": 1400245671757
+  },
+  {
+    "experimentName": "Exp234",
+    "PID": "126",
+    "status": "Started",
+    "outputFiles": [
+      "file1",
+      "file2"
+    ],
+    "author": "per",
+    "timeAdded": 1400245668753,
+    "timeStarted": 1400245671757,
+    "timeFinished": 0
+  },
+  {
+    "experimentName": "Exp6",
+    "PID": "127",
+    "status": "Waiting",
+    "outputFiles": [],
+    "author": "yuri",
+    "timeAdded": 1400245668755,
+    "timeStarted": 0,
+    "timeFinished": 0
+  }
+]
+\end{verbatim}
 
-    + Header
-    
-            Authorization: token
-            
-+ Response 200 (application/json)
+\subsection*{DELETE /process}
 
-        [
-          {
-            "experimentName": "Exp1",
-            "status": "Finished",
-            "outputFiles": [
-              "file1",
-              "file2"
+Cancels a running process.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+DELETE /process HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+ "PID": "PID"
+}
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\subsection*{PUT /process/rawtoprofile}
+
+Starts a raw to profile processing.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+PUT /process/rawtoprofile HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+"expid": "expID",
+"parameters": 
+            [
+             "Bowtie parameters",
+             "",
+             "y",
+             "",
+             "10 1 5 0 0",
+             "y 10",
+             "single 4 0",
+             "150 1 7 0 0"
             ],
-            "author": "yuri",
-            "timeAdded": 1400245668744,
-            "timeStarted": 1400245668756,
-            "timeFinished": 1400245669756
-          },
-          {
-            "experimentName": "Exp2",
-            "status": "Finished",
-            "outputFiles": [
-              "file1",
-              "file2"
-            ],
-            "author": "janne",
-            "timeAdded": 1400245668746,
-            "timeStarted": 1400245669756,
-            "timeFinished": 1400245670756
-          },
-          {
-            "experimentName": "Exp43",
-            "status": "Crashed",
-            "outputFiles": [
-              "file1",
-              "file2"
-            ],
-            "author": "philge",
-            "timeAdded": 1400245668748,
-            "timeStarted": 1400245670756,
-            "timeFinished": 1400245671757
-          },
-          {
-            "experimentName": "Exp234",
-            "status": "Started",
-            "outputFiles": [
-              "file1",
-              "file2"
-            ],
-            "author": "per",
-            "timeAdded": 1400245668753,
-            "timeStarted": 1400245671757,
-            "timeFinished": 0
-          },
-          {
-            "experimentName": "Exp6",
-            "status": "Waiting",
-            "outputFiles": [],
-            "author": "yuri",
-            "timeAdded": 1400245668755,
-            "timeStarted": 0,
-            "timeFinished": 0
-          }
-        ]
-\end{verbatim}    
-\subsection*{\textbackslash process\textbackslash rawtoprofile}
-\begin{verbatim}
-Parameters
-
-[1] Bowtie parameters
-
-[2] Empty string
-
-[3] y/"" - If you want the file in GFF format
-
-[4] y/"" - If you want the file in SGR format
-
-[5] Smoothing parameters 1
-
-[6] y/"" X - If you want stepping parameters and with stepsize X
-
-[7] Ratio calculation parameters
-
-[8] Smoothing parameters 2
-
-### Convert a file from raw to profile [PUT]
-
-+ Request 
-
-    + Header
-    
-            Authorization: token
-            
-    + Body
-            
-            {
-             "expid": "Exp1",
-             "parameters": [
-                                "-a -m 1 --best -p 10 -v 2 -q -S", 
-                                "",
-                                "y",
-                                "n",
-                                "10 1 5 0 0",
-                                "y 10",
-                                "single 4 0",
-                                "150 1 7 0 0"
-                            ],
-             "metadata": "astringofmetadata",
-             "genomeVersion": "hg38",
-             "author": "yuri"
-            }
-            
-+ Response 200
+"metadata": "metaData",
+"genomeVersion": "hg38"
+}
 \end{verbatim}
 
-\section*{Annotation handling}'
+\subsubsection*{Response:}
 \begin{verbatim}
-Used to add, modify and delete annotations.
+200 (OK)
 \end{verbatim}
-\subsection*{\textbackslash annotation}
+
+\subsection*{PUT /process/processCommands}
+
+Lists files and processes to run on them.
+
+\subsubsection*{Request:}
 \begin{verbatim}
-### Get information about annotations [GET]
-
-+ Request
-
-    + Header
-    
-            Authorization: token
-
-+ Response 200 (application/json)
-
-        [
-         {
-          "name": "pubmedId",
-          "values": ["freetext"],
-          "forced": true
-         }, 
-         {
-          "name": "type",
-          "values": ["freetext"],
-          "forced": true
-         },
-         {
-          "name": "specie",
-          "values": ["fly", "human", "rat"],
-          "forced": true
-         },
-         {
-          "name": "genome release",
-          "values": ["freetext"],
-          "forced": true
-         },
-         {
-          "name": "cell line",
-          "values": ["yes", "no"],
-          "forced": true
-         },
-         {
-          "name": "development stage",
-          "values": ["larva", "larvae"],
-          "forced": true
-         },
-         {
-          "name": "sex",
-          "values": ["male", "female", "unknown"],
-          "forced": true
-         },
-         {
-          "name": "tissue",
-          "values": ["eye", "leg"],
-          "forced": false
-         }
-        ]
+PUT /process/processCommands HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+    "expId": ...,
+    "processCommands": [
+        {
+            "type": "bowtie",
+            "files": [
+                {
+                    "infile": ...,
+                    "outfile": ...,
+                    "params": ...,
+                    "genomeVersion": ...,
+                    "keepSam": true/false
+                },
+                ...
+            ]   
+        },
+        {
+            "type": "ratio",
+            ...
+            (not supported)
+        },
+        ...
+    ]
+}
 \end{verbatim}
-\subsection*{\textbackslash annotation\textbackslash field}
+
+\subsubsection*{Response:}
 \begin{verbatim}
-### Add annotation field [POST]
-+ Request (appliaction/json)
-
-    + Header
-    
-            Authorization: token
-            
-    + Body
-    
-            { 
-             "name": "species", 
-             "type": [
-                      "fly",
-                      "rat",
-                      "human"
-                     ],
-             "default": "human", 
-             "forced": false
-            }
-        
-+ Response 201 
-
-### Rename annotation field [PUT]
-+ Request (application/json)
-
-    + Header
-    
-            Authorization: token
-            
-    + Body
-    
-            {
-             "name": "species",
-             "newName": "mouse"
-            }
-            
-+ Response 200
-
-## /annotation/field/<field-name>
-### Remove annotation field [DELETE]
-+ Request
-
-    + Header 
-        
-            Authorization: token
-
-+ Response 200
+200 (OK)
 \end{verbatim}
-\subsection*{\textbackslash annotation\textbackslash value}
+
+\section*{Annotation handling}
+
+Requests used to handle annotations.
+
+\subsection*{GET /annotation}
+
+Gets all existing annotations.
+
+\subsubsection*{Request:}
 \begin{verbatim}
-### Add annotation value [POST]
-+ Request (application/json)
-
-    + Header
-    
-            Authorization: token
-            
-    + Body
-    
-            {
-             "name": "species",
-             "value": "mouse"
-            }
-
-+ Response 201
-
-### Rename annotation value [PUT]
-+ Request (application/json)
-
-    + Header
-    
-            Authorization: token
-            
-    + Body
-    
-            {
-             "name": "species",
-             "oldValue": "mouse",
-             "newValue": "rat"
-            }
-
-+ Response 201
+GET /annotation HTTP/1.1
+Authorization: token
 \end{verbatim}
-\subsection*{\textbackslash annotation\textbackslash value\textbackslash <field-name> \textbackslash <value-name>}
+
+\subsubsection*{Response:}
 \begin{verbatim}
-### Remove annotation value [DELETE]
-+ Request
+200 (OK)
+Content-Type: application/json
+[
+ {
+  "name": "pubmedId",
+  "values": ["freetext"],
+  "forced": true
+ }, 
+ {
+  "name": "type",
+  "values": ["freetext"],
+  "forced": true
+ },
+ {
+  "name": "specie",
+  "values": ["fly", "human", "rat"],
+  "forced": true
+ },
+ {
+  "name": "genome release",
+  "values": ["freetext"],
+  "forced": true
+ },
+ {
+  "name": "cell line",
+  "values": ["yes", "no"],
+  "forced": true
+ },
+ {
+  "name": "development stage",
+  "values": ["larva", "larvae"],
+  "forced": true
+ },
+ {
+  "name": "sex",
+  "values": ["male", "female", "unknown"],
+  "forced": true
+ },
+ {
+  "name": "tissue",
+  "values": ["eye", "leg"],
+  "forced": false
+ }
+]
+\end{verbatim}
 
-    + Header 
-        
-            Authorization: token
+\subsection*{POST /annotation/field}
 
-+ Response 200
+Adds an annotation field.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+POST /annotation/field HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{ 
+ "name": "species",
+ "type": [
+          "fly",
+          "rat",  
+          "human" 
+         ],
+ "default": "human", 
+ "forced": false
+}
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\subsection*{PUT /annotation/field}
+
+Renames an annotation field.
+
+\subsubsection{Request:}
+\begin{verbatim}
+PUT /annotation/field HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+ "oldName": "species",
+ "newName": "mouse"
+}
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\subsection*{DELETE /annotation/field/<field-name>}
+
+Deletes an annotation field.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+DELETE /annotation/field/<field-name> HTTP/1.1
+Authorization: token
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\subsection*{POST /annotation/value}
+
+Adds an annotation value.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+POST /annotation/value HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+ "name": "species", 
+ "value": "mouse"
+}
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\subsection*{PUT /annotation/value}
+
+Renames an annotation value.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+PUT /annotation/value HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+ "name": "species",
+ "oldValue": "mouse",
+ "newValue": "rat"
+}
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\subsection*{DELETE /annotation/value/<field-name>/<value-name>}
+
+\subsubsection*{Request:}
+\begin{verbatim}
+DELETE /annotation/value/<field-name>/<value-name> HTTP/1.1
+Authorization: token
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
 \end{verbatim}
 
 \section*{Genome release handling}
+
+Requests used to add, get, and delete genome releases.
+
+\subsection*{GET /genomeRelease}
+
+Retrieves all genome releases.
+
+\subsubsection*{Request:}
 \begin{verbatim}
-Used to get, add and delete genome releases.
+GET /genomeRelease HTTP/1.1
+Authorization: token
 \end{verbatim}
-\subsection*{\textbackslash genomeRelease}
+
+\subsubsection*{Response:}
 \begin{verbatim}
-### Get all genome releases, no matter species[GET]
+200 (OK)
+Content-Type: application/json
+[
+ {
+  "genomeVersion": "hy17",
+  "species": "fly",
+  "folderPath": "pathToVersion",
+  "files": ["filename1", "filename2", "filename3"]
+ }, 
+ {
+  "genomeVersion": "u12b",
+  "species": "human",
+  "folderPath": "pathToVersion",
+  "files": ["filename1", "filename2"]
+ },
+ {
+  "genomeVersion": "wk1m",
+  "species": "human",
+  "folderPath": "pathToVersion",
+  "files": ["filename1", "filename2"]
+ },
+ {
+  "genomeVersion": "fg2b",
+  "species": "rat",
+  "folderPath": "pathToVersion",
+  "files": ["filename1", "filename2"]
+ },
+ {
+  "genomeVersion": "abc1",
+  "species": "rat",
+  "folderPath": "pathToVersion",
+  "files": ["filename1", "filename2"]
+ }
+]
+\end{verbatim}
 
-+ Request
+\subsection*{POST /genomeRelease}
 
-    + Header
-    
-            Authorization: token
+Adds a genome release.
 
-+ Response 200 (application/json)
-
+\subsubsection*{Request:}
+\begin{verbatim}
+POST /genomeRelease HTTP/1.1
+Content-Type: application/json
+Authorization: token
+{
+ "genomeVersion": "hx16",
+ "specie": "human", 
+ "files":
         [
-         {
-          "genomeVersion": "hy17",
-          "specie": "fly",
-          "path": "pathToFile",
-          "fileName": "nameOfFile"
-         }, 
-         {
-          "genomeVersion": "u12b",
-          "specie": "human",
-          "path": "pathToFile2",
-          "fileName": "nameOfFile"
-         },
-         {
-          "genomeVersion": "wk1m",
-          "specie": "human",
-          "path": "pathToFile3",
-          "fileName": "nameOfFile"
-         },
-         {
-          "genomeVersion": "fg2b",
-          "specie": "rat",
-          "path": "pathToFile4",
-          "fileName": "nameOfFile"
-         },
-         {
-          "genomeVersion": "abc1",
-          "specie": "rat",
-          "path": "pathToFile5",
-          "fileName": "nameOfFile"
-         }
-        ]
-
-### Add genome release [POST]
-+ Request (appliaction/json)
-
-    + Header
-    
-            Authorization: token
-            
-    + Body
-    
-            { 
-             "fileName": "nameOfFile", 
-             "specie": "human",
-             "genomeVersion": "hx16" 
-            }
-        
-+ Response 201
-
-        {
-         "URLupload": "url"
-        }
+         "nameOfFile1",
+         "nameOfFile2",
+         "nameOfFile3"
+        ],
+ "checkSumMD5": 
+              [
+               "checkSum1",
+               "checkSum2",
+               "checkSum3"
+              ]
+}
 \end{verbatim}
-\subsection*{\textbackslash genomeRelease\textbackslash <species>}
+
+\subsubsection*{Response:}
 \begin{verbatim}
-### Get all genome releases for specific species[GET]
-
-+ Request
-
-    + Header
-    
-            Authorization: token
-
-+ Response 200 (application/json)
-
-        [
-         {
-          "genomeVersion": "hy17",
-          "specie": "fly",
-          "path": "pathToFile",
-          "fileName": "nameOfFile"
-         }, 
-         {
-          "genomeVersion": "u12b",
-          "specie": "fly",
-          "path": "pathToFile2",
-          "fileName": "nameOfFile"
-         },
-         {
-          "genomeVersion": "wk1m",
-          "specie": "fly",
-          "path": "pathToFile3",
-          "fileName": "nameOfFile"
-         }
-        ]
-
-
+200 (OK)
+Content-Type: application/json
+[
+ {
+  "URLupload": "url1"
+ },
+ {
+  "URLupload": "url2"
+ },
+ {
+  "URLupload": "url3"
+ }
+]
 \end{verbatim}
-\subsection*{\textbackslash genomeRelease\textbackslash <species>\textbackslash <genomeVersion>}
+
+\subsection*{GET /genomeRelease/<species>}
+
+Retrieves the genome releases for a specific species.
+
+\subsubsection*{Request:}
 \begin{verbatim}
-### Delete genome release [DELETE]
-+ Request 
-    
- + Header
-    
-            Authorization: token
+GET /genomeRelease/<species> HTTP/1.1
+Authorization: token
+\end{verbatim}
 
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+Content-Type: application/json
+ [
+  {
+   "genomeVersion": "fg2b",
+   "species": "rat",
+   "folderPath": "pathToVersion",
+   "files": ["filename1", "filename2"]
+  },
+  {
+   "genomeVersion": "abc1",
+   "species": "rat",
+   "folderPath": "pathToVersion",
+   "files": ["filename1", "filename2"]
+  }
+ ]
+\end{verbatim}
 
-+ Response 200
+\subsection*{DELETE /genomeRelease/<species>/<genomeVersion>}
+
+Deletes a genome release.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+DELETE /genomeRelease/<species>/<genomeVersion> HTTP/1.1
+Authorization: token
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+\end{verbatim}
+
+\section*{File upload/download}
+
+Requests used to upload and download files.
+
+\subsection*{POST /upload?path=<path-on-server>}
+
+Uploads a file to the server.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+POST /upload?path=/path/on/server/foo.bar HTTP/1.1
+Authorization: token
+Content-Type: multipart/form-data; boundary=---------------------------9051914041544843365972754266
+Content-Length: 12345
+---------------------------9051914041544843365972754266
+Content-Disposition: form-data; name="file1"; filename="foo.txt"
+Content-Type: text/plain
+
+Contents of foo.txt.
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+201 (Created)
+\end{verbatim}
+
+\subsection*{GET /download?path=<path-on-server>}
+
+Downloads a file from the server.
+
+\subsubsection*{Request:}
+\begin{verbatim}
+GET /download?path=/path/on/server/foo.bar HTTP/1.1
+Authorization: token
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+Content-Description: File Transfer
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename=foo.bar
+Expires: 0
+Cache-Control: must-revalidate
+Pragma: public
+Header: foo
+[contents of foo.bar]
 \end{verbatim}
