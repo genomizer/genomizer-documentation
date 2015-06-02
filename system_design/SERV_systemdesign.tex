@@ -6,7 +6,7 @@ The \appName\ service needs to be able to convert, process and visualize data. T
 %\label{con_UML}
 %\end{figure}
 	
-As can be seen in \refer{con_UML} the RawToProfileConverter extends the Executor class. When a call comes to the ProcessHandler it then starts the correct conversion which right now only can be a raw to profile conversion.
+As can be seen in \refer{con_UML} the RawToProfileConverter, Smooth and Step extends the Executor class. The different processing commands can only start the corresponding processing method on these Executors. 
 
 
 \subsubsection{Executor}
@@ -44,13 +44,14 @@ Receives a \term{stack} with folder names as strings and removes the folders fil
 
 \subsubsection{RawToProfileConverter}
 The purpose of the \term{RawToProfileConverter} class is that it will be used by
-\term{ProcessHandler} and do all the different steps needed to make a \term{raw
-file}. These steps are done by using the program \term{BowTie} and by running
-two different scripts which are executed with methods that is extended from
-\term{Executor} class. When ratio calculation is supposed to be done, there are 2 more steps that will be done.
-
-\subsubsection{Description of Procedure}
-A description of the steps the procedure method does to create profile data from raw data, all steps are run in order and the user can choose at which step to stop the procedure and get a file from the last executed step.
+\term{RawToProfProcessCommand} and do all the different steps needed to make a \term{profile
+file}. These steps are done by using different scripts which are executed with methods that is extended from
+\term{Executor} class. 
+\subsubsection{Smoothing}
+The term{Smoothing} class is used on a \term{profile file} to smooth down the tips, making the data result less jagged.
+\subsubsection{Step}
+The term{Step} class is used on a \term{profile file} to lower the file's resolution.
+\subsubsection{Description of different scripts and processing steps}
 
 \begin{enumerate}
 \item \term{BowTie}: Creates unsorted \term{.sam} files. Puts the files in a
@@ -114,7 +115,8 @@ Does ratio calculation on the processed files, for each position in the IP sampl
 The scripts that was provided was inefficient and in order to reduce ram usage and getting faster Raw-To-Profile conversion we rewrote the smoothing and step scripts into a built-in solution in the java server.
 
 \paragraph{SmoothingAndStep}
-Smoothing means that we either calculate the trimmed mean value or median value for a position and its surrounding positions. The number of positions we should smooth on is called the Window Size. For example: if we have a window size of 10 we will calculate the smoothed value on position X by calculating on the interval (X-4, X+5). We also need to have a "minimum positions to smooth" number, which tells us that if we have fewer rows to calculate on than the "minimum positions to smooth" we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any stepping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
+Smoothing means that we either calculate the trimmed mean value or median value for a position and its surrounding positions. The number of positions we should smooth on is called the Window Size. For example: if we have a window size of 10 we will calculate the smoothed value on position X by calculating on the interval (X-4, X+5). We also need to have a "minimum positions to smooth" number, which tells us that if we have fewer rows to calculate on than the "minimum positions to smooth" we shouldn't smooth at all. There's also one parameter called stepSize, if the stepSize is one the program will not do any ste\term{BowTie}, \term{Picard} and by running
+pping but if it's larger than 1 stepping will be done. Stepping is handled in this program by simply checking every time we are going to write to the new file if the current row's position is divisible with the stepSize, if it is we write to the file, otherwise the row is discarded.
 
 The class SmoothingAndStep have one public method and many private ones. The public one called smoothing starts by validating the inparameters and setting up file readers/writers. It then reads as many rows from the file as the window size into an array. It then checks which values that have been read that should be smoothed, after this is done the initiation of the program is complete. From then on the program removes the first row from the array and add one new row to the array and then smooth the middle one in the array. This continues until the end of chromosome or end of file both of which are handled in a similar way. When the program approaches end of chromosome it smoothes as many values as it can until there's less values to smooth than "minimum positions to smooth". It then empties the array and refills it in the same way as it did in the beginning of the file.
 

@@ -105,3 +105,6 @@ If the user has an experiment that was conducted in zero gravity and the databas
 
 \subsection{Processing}
 Users can request that a \term{raw} file set be processed to \term{profile} files. This procedure is carried out by the server to avoid heavy workload and the requirements of certain programs on the clients side. The processing carried out between \term{raw} data and \term{profile} data involves a number of different steps. The user can choose which steps are carried out and the various parameters used.
+
+\subsection{Profile data conversion}
+The server can be requested to convert between different formats of profile data. The conversions currently handled by \appName\ are \term{gff}, \term{sgr}, \term{wig} and \term{bed}. These formats are specified by the Genome Bioinformatics Group at UC Santa Cruz\cite{des_4}. Since different formats carry different amount of information or meta data, conversions from each file format to every other is not possible.
