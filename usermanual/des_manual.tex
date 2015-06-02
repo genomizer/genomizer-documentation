@@ -21,7 +21,7 @@ The application is built with tabs, as illustrated below in \refer{fig:des_tabs-
 \FloatBarrier
 
 \subsection{Search}
-The first tab you see after logging in is the Search tab, illustrated in \refer{fig:des_search-query}. The Search tab uses the same query building technique as the “Pubmed Advanced Search Builder”\cite{des_3}. It has one text field where you either can type in the query yourself or you can use the query builder to build the query. \\
+The first tab you see after logging in is the \textit{Search tab}, illustrated in \refer{fig:des_search-query}. The Search tab uses the same query building technique as the \textit{Pubmed Advanced Search Builder}\cite{des_3}. It has one text field where you either can type in the query yourself or you can use the query builder to build the query. \\
 
 To switch between manually editing the query and using the query builder there are two radio buttons to the left of the text field. Each row in the query builder has at most five components. These are a logical expression, an annotation name field, a free text field or a drop down menu to insert search words, a minus button and a plus button. The plus button is only available in the last row and it adda another row to the query. The minus button is used to remove a row and it exists on every row except if there is only one row in the query. The logical expressions combines the annotations, so they are available in every row but the first. \\
 
@@ -56,11 +56,11 @@ If you need to upload files to the database it can be done through the upload ta
 \end{figure}
 \subsubsection{Existing experiment}
 \label{sec:des_exists}
-In order to edit files or upload files to an existing experiment you need to search for the experiment in the search tab and then press the \emph{Edit experiment} button. When this is done the experiment information get retrieved from the server and presented to you. \\
+In order to edit files or upload files to an existing experiment you need to search for the experiment in the search tab and then press the \textit{Edit experiment}-button. When this is done the experiment information get retrieved from the server and presented to you. \\
 
-To edit the experiment, change the annotation values and press the \emph{Save changes} button. To add files to the wanted experiment you can press the "Browse files"-button to add files to the experiment. Then a file browser window pops up, it is illustrated in figure \ref{fig:des_upload}. Here you can select the files you want to add to the experiment. The files will be added to the upload tab and there will be some new choices available for you. Each file  will be associated with one file row, this is also shown in \ref{fig:des_upload-exists}. \\
+To edit the experiment, change the annotation values and press the \textit{Save changes}-button. To add files to the experiment you can press the button labeled \textit{Browse files}. A file browser window will appear, it is illustrated in figure \ref{fig:des_upload}. Here you can select the files you want to add to the experiment. The files will be added to the upload tab and there will be some new choices available for you. Each file  will be associated with one file row, this is also shown in \ref{fig:des_upload-exists}. \\
 
-The new choices are whether the new files are either raw, region or profile files. And if it is region or profile there is another choice for which genome release. There is also the possiblity to delete the file row, by clicking the "X"-button, in case this file is not suppose to be added to the experiment. After all is decided and the files are correct you simply click the "Upload files"-button. Then the progress bar starts to progress and if all goes well it will reach 100\% and the files is added to the existing experiment.
+The new choices are whether the new files are either raw, region or profile files. And if it is region or profile there is another choice for which genome release. There is also the possiblity to delete the file row, by clicking the \textit{X}-button, in case this file is not suppose to be added to the experiment. When all fields have been filled and the files are correct, you simply click the button labeled \textit{Upload files}. The progress bar will start to progress and if all goes well it will reach 100\% and the files will be added to the existing experiment.
 
 \begin{figure}[h!]
 	\addImage{des_upload_existing.png}
@@ -70,9 +70,11 @@ The new choices are whether the new files are either raw, region or profile file
 \newpage
 \subsubsection{New experiment}
 \label{sec:des_create}
-The first thing you need to do when creating a new experiment is pressing the "Create new experiment"-button in the upload tab. After pressing this button all the different annotations get retrieved from the server. If the annotation is of the type that should be filled with text there is an textfield to be filled out, and if it's a multiple choice annotation there is a dropdown menu of the different choices. The annotations who have bold text are forced and needs to be filled out in order to create the experiment. There are also three buttons added to the view. This is illustrated in \ref{fig:des_upload-new}. In order to add files to this experiment you need to press the "Browse files"-button where a filebrowser appears and choose which files are to be added. When the files are added they each get displayed in a file row. The file row consists of the file name and a progress bar. \\
+The first thing you need to do when creating a new experiment (\ref{fig:des_upload-new}) is pressing the button labeled \textit{Create new experiment} in the upload tab. After pressing this button all the different annotations get retrieved from the server. If the annotation is of freetext type there is a textfield to be filled out. If it is a multiple choice annotation there is a drop-down list of the different choices. The annotations who have bold text are forced and needs to be filled out in order to create the experiment. 
 
- Apart from the add experiments there are also three buttons and a checkbox. The checkbox will be explained in section \ref{sec:des_batch} below. The other three buttons are used in the same manner as in section \ref{sec:des_exists} above. When all the annotations that are needed is filled in and the associated files are added you press the "Create with all files"-button to create the experiment. The "Create experiment with selected files"-button is discussed in section \ref{sec:des_batch} below. \\
+In order to add files to this experiment you need to press the \textit{Browse files}-button. A filebrowser will appear and you can choose which files to add. You can also drag and drop files from a folder on your machine onto the upload tab of the client. When the files are added they each get displayed in a file row. The file row consists of the file name and a progress bar. \\
+
+Apart from the add experiments there are also three buttons and a checkbox. The checkbox will be explained in section \ref{sec:des_batch} below. The other three buttons are used in the same manner as in section \ref{sec:des_exists} above. When all the annotations that are needed is filled in and the associated files are added you press the button labeled \textit{Create with all files} to create the experiment.
 
 \begin{figure}[h]
 	\addImage{des_upload_new.png}
@@ -81,10 +83,19 @@ The first thing you need to do when creating a new experiment is pressing the "C
 \end{figure}
 \subsubsection{Batch upload experiments}
 \label{sec:des_batch}
-In order to batch upload experiment the workflow of this application is suggested as follows:
-You start of as when uploading one experiment, as explained in \ref{sec:des_create}. But instead of choosing the wanted files for that experiment you choose all the files that are supposed to be uploaded to the experiments. You then starts to fill in the annotaions for the first experiment and selects the files that is going to be used in the experiment by checking the select field. After the files are selected you need to press the "Create experiment with selected files"-button. This creates the first experiment and starts to upload the selected files to it. \\
+The Genomizer desktop client has support for batch uploading of experiments. The following steps describes how to batch upload experiments:
+\being{enumrate}
+	\item Create a new experiment by pressing the button labeled \textit{Create new experiment}.
+	\item Press the button labeled \textit{Browse files} and select all the files to be included in the batch upload.
+	\item Fill in the experiment ID and annotations of the first experiment
+	\item Select one or more files to upload to the first experiment by ticking the check-boxes next to the files.
+	\item Select filetype and genome release if needed.
+	\item Press the button labeled \textit{Create with selected fiels} and wait for the file(s) to be uploaded. When the upload is complete, the file row will disappear.
+	\item When the files have been uploaded, repeat steps 3-6 with the desired changes to annotations and experiment ID's.
+	
+\end{enumrate}
 
-After the experiment is created, you can change the annotations needed for the second experiment and then select the files for that experiment. You can then click the "Create experiment with selected files"-button again and change the annotations to match the third experiment and the select the files for it and start the upload. Every file that is uploaded is removed from the list of files. 
+Using this method let's the user make small changes to annotations while creating multiple experiments.
 
 \begin{figure}[h]
 	\addScaledImage{0.5}{des_upload_select.png}
@@ -130,13 +141,15 @@ The following describes how to process one or more files:
 \FloatBarrier
 
 \subsection{Workspace} \label{sec:des_workspace}
-The workspace Tab seen in \refer{fig:des_workspace-view} is a tab where you can temporarily store experiments and their files, and choose different options for action. Results from various searches can be stored here, and the contents of the workspace is saved as long as the program is running. Files and/or experiments are chosen by clicking them, multiple files by using either Shift-click, Ctrl-click or simply holding down the mouse button and dragging the cursor over multiple files. By choosing an experiment, all of the containing files are selected. Items can be deleted from the Workspace by pressing \emph{Remove from workspace}.
+The workspace Tab seen in \refer{fig:des_workspace-view} is a tab where you can temporarily store experiments and their files, and choose different options for action. Results from various searches can be stored here, and the contents of the workspace is saved as long as the program is running. Files and/or experiments are chosen by clicking them, multiple files by using either Shift-click, Ctrl-click or simply holding down the mouse button and dragging the cursor over multiple files. By choosing an experiment, all of the containing files are selected.
+\subsubsection{Delete from workspace}
+Items can be deleted from the Workspace by pressing \textit{Remove from workspace}.
 \subsubsection{Delete from database}
-To delete the selected data from the database the \emph{Delete from database} button should be used instead. When pressing the delete button a small popup window with a progress bar will be displayed. By closing this window the deletion of data can be aborted.
+To delete the selected data from the database the \textit{Delete from database} button should be used instead. When pressing the delete button a small popup window with a progress bar will be displayed. By closing this window the deletion of data can be aborted.
 \subsubsection{Upload to}
-If you want to upload files to an experiment you have in the workspace, you can simply click the \emph{Upload to} button to switch to the upload tab and upload to the experiment they have selected. If multiple experiments have been selected, only the first one will be uploaded to.
+If you want to upload files to an experiment you have in the workspace, you can simply click the \textit{Upload to} button to switch to the upload tab and upload to the experiment they have selected. If multiple experiments have been selected, only the first one will be uploaded to.
 \subsubsection{Process}
-If you want to add files to the process tab there is a \emph{Process} button which transfers the selected files to the process tab file list.
+If you want to add files to the process tab there is a \textit{Process} button which transfers the selected experiment to the process tab.
 \subsubsection{Download}
 You can make the choice to download files to their local computer. If you press the \emph{Download} button seen in \refer{fig:des_workspace-view}, you get to choose a directory where you want to save the files. When a directory has been chosen, the files get downloaded and all current and completed download can be seen in the tab \emph{downloads}, see \refer{fig:des_download-view}.
 \begin{figure}[htb]
@@ -162,7 +175,7 @@ The system administration tools for the desktop client is available under the Ad
 	\label{fig:annotationsView}
 \end{figure}
 
-In the annotations tab, when you select the "Add" button in the sidepanel a new popup window appears. It is possible to write the name of the new annotation and name of new values in this popup, as well as check a "forced annotation" box. The "forced" value determines if the annotation will have to be present in all future file uploads. See \refer{fig:adm_addAnnotationPopup}
+In the annotations tab, when you press the button labeled \texit{Add} in the sidepanel a new popup window appears. It is possible to write the name of the new annotation and the new values in this popup, as well as check a "forced annotation"-box. The "forced" value determines if the annotation will have to be present in all future file uploads. See \refer{fig:adm_addAnnotationPopup}
 
 \begin{figure}[htb]
 	\addScaledImage{0.6}{adm_addAnnotationPop.png}
@@ -184,8 +197,8 @@ To remove an annotation, you select an annotation from the table in the center o
 
 The genome files tab shown in \refer{fig:adm_desktopGenomeTab} contains a table with information about which genome release versions are stored on the server. If you click on one of the entries, a smaller frame is displayed at the bottom of the table showing which files are included in the selected genome release. To the right of the genome release tab are the tools for adding new genome releases. You can name the new genome release in the text field and you are then able to upload the files associated with that genome release. \\
 
- When the desired files are selected, progress bars representing the upload of those files appear at the bottom of the "Add Genome Release" frame. When you press "Upload", the upload of the selected files will commence and you can follow the upload progress from the progress bars. After the upload is finished, you will be notified of its success or failure with a message dialog.
-Genome releases can also be removed by selecting the release version from the table and pressing the "Remove genome release" button which appears at the bottom of the table when a release version is selected. This will remove the genome release and all associated files.
+When the desired files are selected, progress bars representing the upload of those files appear at the bottom of the \textit{Add Genome Release}-frame. When you press the button labeled \textit{Upload}, the upload of the selected files will start and you can follow the upload progress from the progress bars. After the upload is finished, you will be notified of its success or failure with a message dialog.
+Genome releases can also be removed by selecting the release version from the table and pressing the \textit{Remove genome release}-button which appears at the bottom of the table when a release version is selected. This will remove the genome release and all associated files.
 
 \begin{figure}[h!]
 \addImage{genomeReleaseViewExtraInfo.png}
@@ -193,7 +206,7 @@ Genome releases can also be removed by selecting the release version from the ta
 \label{fig:adm_desktopGenomeTab}
 \end{figure}
 
-If you want to add a new species to add or remove genome releases for, this can be done in the top right corner of the genome release tab. You simply writes the name of the new species and presses the "add" button and the species will be added to the "Species" annotation.
+If you want to add a new species to add or remove genome releases for, this can be done in the top right corner of the genome release tab. You simply writes the name of the new species and presses the \textit{add}-button and the species will be added to the "Species" annotation.
 
 
 \subsubsection{Users}
@@ -210,13 +223,13 @@ The Users tab shown in \refer{fig:des_users} contains four different panels, one
 
 \subsection{Convert}
 
-The Convert tab shown in \refer{fig:des_convert} contains buttons to convert and remove selected files, and buttons to choose what to convert into. The panel 'Convert from' shows the files sent into the convert tab, and the panel 'Converted files' shows the finished files that have been converted. \\
+The Convert tab shown in \refer{fig:des_convert} contains buttons to convert and remove selected files, and buttons to choose what to convert into. The panel \textit{Convert from} shows the files sent into the convert tab, and the panel \textit{Converted files} shows the finished files that have been converted. \\
 
-To convert files, begin with selecting the wished files to convert in the \refer{fig:des_workspace-view} and press the convert button. You will be directed to the convert tab with the files, check all the files you want to convert (only possible to convert one filetype at a time) and press the 'Convert selected files' button. If the files managed to convert successfully they will appear in the 'Converted files panel' to the right. \\
+To convert files, begin with selecting the wished files to convert in the \refer{fig:des_workspace-view} and press the convert button. You will be directed to the convert tab with the files, check all the files you want to convert (only possible to convert one filetype at a time) and press the \textit{Convert selected files}-button. If the files managed to convert successfully they will appear in the \textit{Converted files}-panel  to the right. \\
 
-Notice that you need to choose which filetype you want to convert into in the 'Convert to' panel if the selected files can be converted into many different filetypes. The convert from panel is only in the panel for show, to show which filetypes you have selected. \\
+Notice that you need to choose which filetype you want to convert into in the \textit{Convert to}-panel if the selected files can be converted into many different filetypes. The convert from panel is only in the panel for show, to show which filetypes you have selected. \\
 
-Remove files from the list by press the 'Remove selected files' button, and clear the list with finished conversions by clicking on the 'Clear converted files' button.
+Remove files from the list by pressing the \textit{Remove selected files}-button, and clear the list with finished conversions by clicking on the \textit{Clear converted files}- button.
 
 
  \begin{figure}[h!]
