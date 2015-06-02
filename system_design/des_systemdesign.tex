@@ -8,7 +8,7 @@ overview can also be seen in \refer{fig:des_overviewUML}.
 
 \begin{figure}[hbt!]
 \addImage{des_DesktopBriefSystemUML.png}
-\caption{Overview of desktop client design. (Excluding SysAdmin related parts.)}
+\caption{\footnotesize Overview of desktop client design. (Excluding SysAdmin related parts.)}
 \label{fig:des_overviewUML}
 \end{figure}
 
@@ -16,38 +16,38 @@ overview can also be seen in \refer{fig:des_overviewUML}.
 \subsection{View}
 The view of the \appName\ Desktop client is constructed with tabs. There are 5 different tabs. These are Search, Process, Upload, Workspace and Administration. In the \textit{gui} package of \refer{fig:des_overviewUML} these are shown.
 
-Each tab in the view is represented by its own java class. The QuerySearchTab class which represents the search tab can display both a search view and a results view. It uses the QueryBuilderRow class to construct the rows in the query builder which is used to construct search queries. The QueryBuilderRow class represents a row in the query builder and each row is dynamic and can change accordingly to user interaction. The search results are also implemented in the QuerySearchTab and the results are displayed with the TreeTable class which is further described in the utilities section below.
+Each tab in the view is represented by its own \textit{Java} class. The \texttt{QuerySearchTab} class which represents the search tab can display both a search view and a results view. It uses the \texttt{QueryBuilderRow} class to construct the rows in the query builder which is used to construct search queries. The \texttt{QueryBuilderRow} class represents a row in the query builder and each row is dynamic and can change accordingly to user interaction. The search results are also implemented in the \texttt{QuerySearchTab} and the results are displayed with the \texttt{TreeTable} class which is further described in the utilities section below.
 
-The UploadTab Class represents the upload view of the GUI. It has functionality to both upload a file to an existing experiment (which is separately handled in the UploadExistingExpPanel) and to create and upload a new experiment.
+The \texttt{UploadTab} class represents the upload view of the \textit{GUI}. It has functionality to both upload a file to an existing experiment (which is separately handled in the UploadExistingExpPanel) and to create and upload a new experiment.
 
-The ProcessTab class represents the process view in the GUI. It contains a list where files to be processed can be stored and a large number of processing parameters which can be changed by the user. There process tab also contains a console for displaying direct feedback on processes and an area which contains the status of all current processes which are being handled on the server. The later can be updated manually with a refresh button.
+The \texttt{ProcessTab} class represents the process view in the \textit{GUI}. It contains a list where files to be processed can be stored and a large number of processing parameters which can be changed by the user. There process tab also contains a console for displaying direct feedback on processes and an area which contains the status of all current processes which are being handled on the server. The later can be updated manually with a refresh button.
 
-The major part of the WorkspaceTab class consists of a TreeTable which holds all the experiments and the corresponding data which the user has added to the workspace. Then there is also five buttons implemented which allows the user handle the data in the TreeTable. These buttons are Remove from workspace, Delete from database, Upload to, Download and Process. The TreeTable view can be changed to a view which displays all current and completed downloads. This is made using a tabbed pane containing the TreeTable view and the Downloads view.
+The major part of the \texttt{WorkspaceTab} class consists of a \texttt{TreeTable} which holds all the experiments and the corresponding data which the user has added to the workspace. Then there is also five buttons implemented which allows the user handle the data in the \texttt{TreeTable}. These buttons are \texttt{Remove from workspace}, \texttt{Delete from database}, \texttt{Upload to}, \texttt{Download} and \texttt{Process}. The \texttt{TreeTable} view can be changed to a view which displays all current and completed downloads. This is made using a tabbed pane containing the \texttt{TreeTable} view and the downloads view.
 
 \subsection{Model}
-The model part of the system contains methods for doing most of the logic in the system. For example there are methods for sending login requests and for downloading files. There are separate classes for downloading and uploading files as well as a class for regular communication with the server called Connection. New connections are created with the ConnectionFactory class. The model also acts a storage for importing information such as the user token and list of ongoing downloads and uploads. This is shown in the \textit{model} and \textit{communication} packages of \refer{fig:des_overviewUML}.
+The model part of the system contains methods for doing most of the logic in the system. For example there are methods for sending login requests and for downloading files. There are separate classes for downloading and uploading files as well as a class for regular communication with the server called \texttt{Connection}. New connections are created with the \texttt{ConnectionFactory} class. The model also acts a storage for importing information such as the user token and list of ongoing downloads and uploads. This is shown in the \textit{model} and \textit{communication} packages of \refer{fig:des_overviewUML}.
 
 \subsection{Requests}
-The Request package contains the Request class, the RequestFactory and all the classes that extends the Request class. Request is the super class and can make a JSON package that all the other Request classes can use. All requests must have a name, type and an URL, but can consist of more information. For example LoginRequest also has username and password. RequestFactory is a class that can create all objects from all types of requests. It is a way to easily create all requests from the same place.
+The \texttt{Request} package contains the \texttt{Request} class, the \texttt{RequestFactory} and all the classes that extends the \texttt{Request} class. \texttt{Request} is the super class and can make a \json\ package that all the other \texttt{Request} classes can use. All requests must have a name, type and an \textit{URL}, but can consist of more information. For example \texttt{LoginRequest} also has username and password. \texttt{RequestFactory} is a class that can create all objects from all types of requests. It is a way to easily create all requests from the same place.
 
 
 \subsection{Response}
-This package consists of all types of responses that the server can send to the client-program. There is a class named Response that all the other response classes extends from. For example there is a response class for the login request called LoginResponse. All types of responses have different properties. There is also a class ResponseParser that can parse the responses so that the important information can be taken out of a JSON-package. This information can then be used to tell the client program what should happen next in the user interface.
+This package consists of all types of responses that the server can send to the client-program. There is a class named \texttt{Response} that all the other response classes extends from. For example there is a response class for the login request called \texttt{LoginResponse}. All types of responses have different properties. There is also a class \texttt{ResponseParser} that can parse the responses so that the important information can be taken out of a \json -package. This information can then be used to tell the client program what should happen next in the user interface.
 
 
 \subsection{Controller}
-The controller part of the system consists of ActionListeners for the different buttons and functionalities in the view. For example there are Listeners for searching, downloading and processing. The Controller class has access to both the view and the model and acts as a middle hand between those two parts of the system. Usually a Listener in the controller reacts upon user input and then modifies the model and gives information about the change to the view. Many of the actionlisteners have been divided into tab-specific classes.
+The controller part of the system consists of \texttt{ActionListeners} for the different buttons and functionalities in the view. For example there are \texttt{Listeners} for searching, downloading and processing. The \texttt{Controller} class has access to both the view and the model and acts as a middle hand between those two parts of the system. Usually a \texttt{Listener} in the controller reacts upon user input and then modifies the model and gives information about the change to the view. Many of the action listeners have been divided into tab-specific classes.
 
 
 \subsection{Utilites}
 
-There are several classes which represents different data in the system. There are classes for experiment data, file data and annotation data. For example when a search response is received from the server it is parsed into experiment data and the experiment data contains file data and annotation data. There is also a class representing Process feedback data. As we can see in \refer{fig:des_overviewUML},  a lot of the other packages will use some of the data or funktionality within the \textit{util} package.
+There are several classes which represents different data in the system. There are classes for experiment data, file data and annotation data. For example when a search response is received from the server it is parsed into experiment data and the experiment data contains file data and annotation data. There is also a class representing process feedback data. As we can see in \refer{fig:des_overviewUML},  a lot of the other packages will use some of the data or functionality within the \textit{util} package.
 
-The TreeTable class represents the table which displays experiment data, annotation data and file data in the Search and Workspace tabs. It is specially constructed to handle the data classes and it allows vertical sorting.
+The \texttt{TreeTable} class represents the table which displays experiment data, annotation data and file data in the \texttt{Search} and \texttt{Workspace} tabs. It is specially constructed to handle the data classes and it allows vertical sorting.
 
 \subsection{System Administration}
 %Till Sysadmin!
-The system administration is developed separately from the rest of the GUI, and therefore has a slightly different way of communicating.
+The system administration is developed separately from the rest of the \textit{GUI}, and therefore has a slightly different way of communicating.
 
 \textbf{Communication with the Server}
 
@@ -57,53 +57,54 @@ All communication between the server and the system administration tab follows a
 \begin{enumerate}
 
   \item An event is triggered by the user clicking something.
-  \item The listener for the active tab receives the event and sorts out which type it is, and calls the appropriate method in the \textit{SysadminController} class.
-  \item The \textit{SysadminController} has the connection to the \textit{Model}, and calls the associated method there.
-  \item The \textit{Model} creates the corresponding request for the server, and then creates a new connection.
-  \item The \textit{Connection} receives the request from the \textit{Model} and sends the request to the server.
+  \item The listener for the active tab receives the event and sorts out which type it is, and calls the appropriate method in the \texttt{SysadminController} class.
+  \item The \texttt{SysadminController} has the connection to the \texttt{Model}, and calls the associated method there.
+  \item The \texttt{Model} creates the corresponding request for the server, and then creates a new connection.
+  \item The \texttt{Connection} receives the request from the \texttt{Model} and sends the request to the server.
 
 
 \end{enumerate}
 
-If the event triggers a request for data, the \textit{Model} will use a parser to parse the data before sending it back to the GUI to present it to the user.
+If the event triggers a request for data, the \textit{Model} will use a parser to parse the data before sending it back to the \textit{GUI} to present it to the user.
 
 
 \begin{figure}[hbt!]
 \addImage{adm_comm_view.png}
-\caption{Communication Overview}
+\caption{\footnotesize Communication Overview}
 \label{fig:adm_com_view}
 \end{figure}
 
 \textbf{A communication example}
 
-As a more detailed example of Figure \ref{fig:adm_com_view}. Assume that the user clicks the 'Genome Files' tab in the 'ADMINISTRATION' tab. This will trigger an event (1) to be handled by the \textit{SysadminTabChangeListener} (2) who will receive the event and execute the desired behavior of the tab, which is to directly show the available genome releases. This is done by sending a request to get available genome releases to the server and then parse the response. 
+As a more detailed example of Figure \ref{fig:adm_com_view}. Assume that the user clicks the 'Genome Files' tab in the 'ADMINISTRATION' tab. This will trigger an event (1) to be handled by the \texttt{SysadminTabChangeListener} (2) who will receive the event and execute the desired behavior of the tab, which is to directly show the available genome releases. This is done by sending a request to get available genome releases to the server and then parse the response. 
 
-In order to contact the server the \textit{SysadminTabChangeListener} (2) calls the \textit{SysadminController} (3) who uses a reference to the class \textit{GenomeReleaseTableModel} (4) to call the method \textit{getGenomeReleases()}. \textit{getGenomeReleases()} will create a \textit{GetGenomeRequest} using the \textit{RequestFactory}. The request is then sent to the server through the \textit{Connection} class (5). The response from the server is passed to the \textit{ResponsParser} that parses the JSON respons into wanted \textit{GenomeReleaseData[]} object. The genome release array is return all the way back to \textit{SysadminController} (3) which updates \textit{GenomeReleaseTableModel} with the new \textit{GenomeReleaseData[]} and at last lets the GUI know that the data has changed through a new event (1). This will trigger the GUI to repaint and show the available data.
+In order to contact the server the \texttt{SysadminTabChangeListener} (2) calls the \texttt{SysadminController} (3) who uses a reference to the class \texttt{GenomeReleaseTableModel} (4) to call the method \texttt{getGenomeReleases()}. \texttt{getGenomeReleases()} will create a \texttt{GetGenomeRequest} using the \texttt{RequestFactory}. The request is then sent to the server through the \texttt{Connection} class (5). The response from the server is passed to the \texttt{ResponsParser} that parses the JSON respons into wanted \texttt{GenomeReleaseData[]} object. The genome release array is return all the way back to \texttt{SysadminController} (3) which updates \texttt{GenomeReleaseTableModel} with the new \texttt{GenomeReleaseData[]} and at last lets the \textit{GUI} know that the data has changed through a new event (1). This will trigger the \textit{GUI} to repaint and show the available data.
 
 \textbf{Building the Administration Tabs}
 
 
 All tabs under the Administration tab are built in a similar fashion and then added to a
-JTabbedPane in the \textit{SysadminTab} class. Each tab has it’s own package containing 
+\texttt{JTabbedPane} in the \texttt{SysadminTab} class. Each tab has it’s own package containing 
 all classes associated to the particular tab. All tabs are also built step by step by 
 using smaller methods creating panels and components. Each tab has at least one main 
 listener that is added to all components that require listeners. Once an event is triggered 
 in a tab the corresponding listener simply use a switch case based on button/tab names 
-to decide which action to take. The main listeners have an instance of the \textit{SysadminController }
+to decide which action to take. The main listeners have an instance of the \texttt{SysadminController }
 to be able to further handle requests from the user and send them forward to the \textit{Model} if neccessary.
+
 
 \textbf{Important classes}
 The system administration part of the desktop application depends on quite a few classes and is based loosely on the model-view-controller design pattern. Here follows a list of the most important classes and a short desciption of their function and responsibilities.
 \begin{itemize}
-\item SysadminController - Handles the communication between the SysadminTab and the GenomizerModel. The SysadminController creates all ActionListeners for the buttons in the different views. Some minor commands are handled within the sysadmin package, but user commands requiring input or output from the server are recieved from the different components of the SysadminTab and sent to the GenomizerModel which converts them to Request objects and sends them on to the server.
-\item SysadminTab - Builds all of the different views that are displayed within the system administration tab. When creating the views it also adds the ActionListeners to the buttons and fields. It also holds a reference to all of the view components it has created so that information can be sent to and from the controller when needed.
-\item The listener classes - These are added to all of the components of the view that the user can interact with. When an action is performed, the listener performs the action that is assigned to the command string associated with the action. All of the command strings are stored in the SysStrings class for easy access.
+\item \texttt{SysadminController} - Handles the communication between the \texttt{SysadminTab} and the \texttt{GenomizerModel}. The \texttt{SysadminController} creates all \texttt{ActionListeners} for the buttons in the different views. Some minor commands are handled within the \texttt{sysadmin} package, but user commands requiring input or output from the server are recieved from the different components of the \texttt{SysadminTab} and sent to the \texttt{GenomizerModel} which converts them to \texttt{Request} objects and sends them on to the server.
+\item \texttt{SysadminTab} - Builds all of the different views that are displayed within the system administration tab. When creating the views it also adds the \texttt{ActionListeners} to the buttons and fields. It also holds a reference to all of the view components it has created so that information can be sent to and from the controller when needed.
+\item The listener classes - These are added to all of the components of the view that the user can interact with. When an action is performed, the listener performs the action that is assigned to the command string associated with the action. All of the command strings are stored in the \texttt{SysStrings} class for easy access.
 \end{itemize}
 
 
 \textbf{Button and Tab names}
 
-To simplify the naming of buttons and tabs a class called SysStrings is used. All buttons or tabs are named here and then this class is used when setting the actual names. This is to avoid inconsistencies as well as making names easy to change.
+To simplify the naming of buttons and tabs a class called \texttt{SysStrings} is used. All buttons or tabs are named here and then this class is used when setting the actual names. This is to avoid inconsistencies as well as making names easy to change.
 
 \subsection{Flow of the system}
 
@@ -111,13 +112,13 @@ The sequence diagram in \refer{fig:des_download-sequence} describes the flow of 
 
 \begin{figure}[htb!]
 	\addImage{des_download-sequence.jpeg}
-	\caption{UML sequence diagram of downloading a file}
+	\caption{\footnotesize UML sequence diagram of downloading a file}
 	\label{fig:des_download-sequence}
 \end{figure}
 
 \begin{figure}[htb!]
 	\addImage{des_login-sequence.jpeg}
-	\caption{UML sequence diagram of login}
+	\caption{\footnotesize UML sequence diagram of login}
 	\label{fig:des_login-sequence}
 \end{figure}
 \FloatBarrier

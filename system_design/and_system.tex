@@ -1,23 +1,23 @@
-The following sections describe the system design of the Android application. All functionality of the system components are described in this section. Worth noting is that the figures referred to in this section can be found further down in the document.
+The following sections describe the system design of the \textit{Android} application. All functionality of the system components are described in this section. Worth noting is that the figures referred to in this section can be found further down in the document.
 
 \subsection{System overview}
-	The Android application is divided into seven \emph{packages}. These packages are \verb!default!, \verb!com!, \verb!login!, \verb!model!, \verb!process!, \verb!processStatus! and \verb!search!.
+	The \textit{Android} application is divided into seven \emph{packages}. These packages are \verb!default!, \verb!com!, \verb!login!, \verb!model!, \verb!process!, \verb!processStatus! and \verb!search!.
 	All packages (except for \verb!com! and \verb!model!) contains one or several fragments. A \verb!Fragment! is an object that helps to modularize the code and brings more sophisticated user interfaces.
 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\textwidth]{and_system_overview.png}
-		\caption{\label{fig:and_system_overview}A generalization of how the Android application works.}
+		\caption{\label{fig:and_system_overview} \footnotesize A generalization of how the Android application works.}
 	\end{figure}
 
-	The user will interact with an activity that holds a fragment. The fragment (which contains some logic) will tell the class \verb!ComHandler! what action that should be performed. The \verb!ComHandler! will construct a message by using \verb!MsgFactory!. The message is then passed on to \verb!Communicator! which sends the message to the server with REST. The \verb!Communicator! returns the response to the \verb!ComHandler! that parses it by using the class \verb!MsgDeconstructor! and then returns it to the fragment. Hopefully, \refer{fig:and_system_overview} will bring some clarity.
+	The user will interact with an activity that holds a fragment. The fragment (which contains some logic) will tell the class \verb!ComHandler! what action that should be performed. The \verb!ComHandler! will construct a message by using \verb!MsgFactory!. The message is then passed on to \verb!Communicator! which sends the message to the server with \textit{REST}. The \verb!Communicator! returns the response to the \verb!ComHandler! that parses it by using the class \verb!MsgDeconstructor! and then returns it to the fragment. Hopefully, \refer{fig:and_system_overview} will bring some clarity.
 	
 \subsection{Package overview}
 	The \verb!default! package contains the \verb!MainActivity!. This class is the base of every screen in the application after logging in. The top level navigation is handled from here.
 
-	The \verb!com! package is responsible for communication with the server. It also contains classes and methods for construction and deconstruction of JSON.
+	The \verb!com! package is responsible for communication with the server. It also contains classes and methods for construction and deconstruction of \json .
 
-	The \verb!login! package contains the GUI and controller for the login screen. It also enables the user to select, add, edit and delete server URLs.
+	The \verb!login! package contains the \textit{GUI} and controller for the login screen. It also enables the user to select, add, edit and delete server URLs.
 	
 	The \verb!model! package holds information about experiments, annotations, files etc. found on the server.
 	
@@ -25,7 +25,7 @@ The following sections describe the system design of the Android application. Al
 
 	The \verb!processStatus! package shows the running, failed and succeeded processes on the server.
 	
-	The \verb!search! package handles searches by either selecting annotations, or by manually typing in PubMed style. It also handles the search results by displaying the found experiments in a list.
+	The \verb!search! package handles searches by either selecting annotations, or by manually typing in \textit{PubMed} style. It also handles the search results by displaying the found experiments in a list.
 	
-\pagebreak
+
 

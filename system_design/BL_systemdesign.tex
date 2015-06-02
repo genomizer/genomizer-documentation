@@ -5,13 +5,13 @@ The server is based around a \texttt{RESTful} protocol where all communication i
 To uniquely identify different logins a token is generated when a user logs in, the client now should identify itself with this token in all other requests for them to be executed. Otherwise, the server will not recognize who the client
 is and therefore can't know what server commands the client has permissions to execute. 
 
-Most commands are executed immediately when ther server recieves it, and the result is sent back as soon as the command is finished. There are however an exception to this, the processcommand, which is put in the back of a queue instead of being executed. The server continuously takes work from this queue and executes them as fast as it can, but due to the huge computing power requirement it cannot do them all at the same time. 
+Most commands are executed immediately when ther server recieves it, and the result is sent back as soon as the command is finished. There are however an exception to this, the process command, which is put in the back of a queue instead of being executed. The server continuously takes work from this queue and executes them as fast as it can, but due to the huge computing power requirement it cannot do them all at the same time. 
 
 For a visual reference of the flow between the different parts of the system, see \fullref{fig:com_systemoverview}.
 
 \paragraph*{Server Commands}
 
-The following 11 items are the main categories of commands that can be sent: 
+The following eleven items are the main categories of commands that can be sent: 
 
 \begin{itemize}
 	\item \textit{Connection}

@@ -6,8 +6,6 @@ The download and upload will work for all platforms although this will not be im
 
 If the client wishes to upload a file to the server they first send a request to the server-system which authenticates the client and stores the annotations for the file. The download and upload path is validated by the script to ensure that no invalid paths are sent to the scripts.
 
-Two PHP-scripts are used for uploading and downloading files via Apache. If the user wants to upload a file, the PHP-script will try to store the file in a location on the server provided by the client. A script for downloading files from the GEO database and saving them on the server is currently being  implemented, although not yet fully tested nor implemented by the clients. See \refer{chap:servercmd} for examples when using the PHP-scripts.
-
 In \refer{fig:exp_flow} below it is shown how the systems handles the different types of messages the client-systems can send. The big square represents the Apache server with different parts of the Apache server within. The iOS and Android clients can only send some requests to the server-system. Meanwhile, the desktop client can send requests to the server-system and upload and download to/from the web server. The web client sends all its messages to the Apache server and if it is a request to do some sort of computation it will be redirected to the server-system and if it is a download, upload or web-page message it will be sent to the web server.
 
 \begin{figure}[hbt]

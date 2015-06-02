@@ -36,7 +36,7 @@ The web server is a \textit{Apache} system in the current implementation.
 	\draw[both] (genomizer) -- (db);
 
 \end{tikzpicture}
-\caption{Overview of the system architecture}
+\caption{\footnotesize  Overview of the system architecture}
 \label{fig:archOverview}
 \end{figure}
 
@@ -45,7 +45,7 @@ The connection to the server from any client goes through the web server which a
 All of the clients use the \term{RESTful} protocol where the message body consists of a \json\ object.
 These messages are requests that gets passed through the web server to the \appName\ server. The \appName\ server communicates with the database to perform the request. Then it generates a response following the \term{RESTful} protocol. The \term{RESTful} protocol is used to promise that the server will be state-less. State-less meaning that a request from a client can not lock the server for other clients requests. 
 
-The different requests that can be sent to the server are defined in the Appendix \fullref{chap:com_api} that goes into deeper detail about the API.
+The different requests that can be sent to the server are defined in \fullref{chap:com_api} that goes into deeper detail about the API.
 
 The architecture of the system can be seen in Figure \ref{fig:archOverview} where the clients are the colors blue, yellow, and red. Web server is green and the \appName\ server and its database are colored orange.
 
@@ -80,7 +80,7 @@ All the clients that are part of the \appName\ service are implemented using the
 	\draw[to] (view) -| (human) node[midway, anchor=center, below] {\footnotesize\texttt{Show GUI}};
 	\draw[to] (model) -- (view) node[midway, anchor=cneter, below] {\footnotesize\texttt{Represent}};
 \end{tikzpicture}
-\caption{Basic MVC pattern.}
+\caption{\footnotesize  Basic MVC pattern.}
 \label{fig:MVCimage}
 \end{figure}
 
@@ -102,7 +102,7 @@ The processing component of the server has the purpose of interpreting the \term
 
 \refer{fig:com_systemoverview} shows a simple flow diagram which describes how the client and server
  communicates. The particular example shows the data flow when the client process a file.
- In the figure the front-end is the data transfer and communication node while data storage makes up the database node and processing the final process node.
+ In the figure the front-end is the communication node while data storage makes up the database node and processing the final process node.
 
 \begin{figure}[h!]
 \centering	
@@ -129,7 +129,7 @@ The processing component of the server has the purpose of interpreting the \term
 	\draw[to] (comm.south west) -- (db) node[midway, anchor=center, left] {\tiny{Database call}};
 	\draw[to] (db) -- (comm) node[midway, anchor=center, right] {\tiny{Data}};
 \end{tikzpicture}
-\caption{The flow of a request through the server.}
+\caption{\footnotesize The flow of a request through the server.}
 \label{fig:com_systemoverview}
 \end{figure}
 
@@ -147,7 +147,7 @@ request it is and routes it to the communication part of the server.
 
 When the request is routed to communication a specific command is
 created. The command is an object which consists of information from
-the \term{RESTful}-header and \json/ body sent from the
+the \term{RESTful}-header and \json\ body sent from the
 client. The command is then parsed and sent to different parts of the
 server, usually the database first, which returns information from a
 \term{SQL query}. Depending on the requests this information can later
@@ -155,9 +155,9 @@ be used, for example, to process a file or be sent back to the clients
 directly.
 
 The clients are always going to receive a response code after each
-request, but in some cases the respond also contains a \json/
-body with information which can be shown to the user. This is the case
-for requests like $getAnnotations$. The response can also contain
+request, but in some cases the respond also contains a \json\ body
+ with information which can be shown to the user. This is the case
+for requests like \texttt{getAnnotations}. The response can also contain
 error messages, describing what went wrong when executing the command.
 
 After a client receives the response the connection with the server is

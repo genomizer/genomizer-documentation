@@ -4,7 +4,7 @@ The following sections describes the system design of the iOS application. The o
 The  system is designed using the model-view-controller principle. Each view is controlled by its own controller class which reacts to user input and triggers changes in the model and updates the view accordingly.
 \begin{figure}[ht]
 \addScaledImage{0.6}{ios_UML2.png}
-\caption{UML diagram.}
+\caption{\footnotesize UML diagram.}
 \label{fig:ios_UML}
 \end{figure}
 \FloatBarrier
@@ -16,62 +16,62 @@ The  system is designed using the model-view-controller principle. Each view is 
 \hline
 \textbf{Class} & \textbf{Description} 
 \\ \hline
-\term{Annotation} &
+\class{Annotation} &
 Contains information about an annotation and can format the annotation name to an aesthetically more pleasing representation.
 \\ \hline
 
-\term{DataFileViewController} &
-Controls the File view presented in \refer{fig:ios_files1}. It contains a reference to an experiment and lists all its files in a table.
+\class{DataFileViewController} &
+Controls the File view. It contains a reference to an experiment and lists all its files in a table.
 \\ \hline
 
-\term{Experiment} &
+\class{Experiment} &
 A class that contains information related to an experiment, as well as its files.
 \\ \hline
 
-\term{ExperimentDescriber} &
+\class{ExperimentDescriber} &
 Generates a description of an experiment using annotations chosen by the user.
 \\ \hline
 
-\term{ExperimentFile} &
+\class{ExperimentFile} &
 Contains information about a file from an experiment.
 \\ \hline
 
-\term{ExperimentParser} &
+\class{ExperimentParser} &
 Parses experiment information from a NSDictionary to an Experiment object.
 \\ \hline
 
-\term{FileContainer} &
+\class{FileContainer} &
 Contains files and sorts them by file type.
 \\ \hline
-%\term{HTTP} &
+%\class{HTTP} &
 %Handles the server connection.
 %\\ \hline
-\term{JSONBuilder} &
-Creates different JSON requests.
+\class{JSONBuilder} &
+Creates different \json\ requests.
 \\ \hline
 
-\term{PubMedBuilder} &
+\class{PubMedBuilder} &
 Creates a pubmed search query.
 \\ \hline
 
-\term{SearchResultController} &
+\class{SearchResultController} &
 A controller class for the Search Results view presented in  \refer{fig:ios_searchResult}. It configures the table which holds the information about the experiments a search resulted in. An ExperimentDescriber is used to generate a description of the experiments.
 \\ \hline
 
-\term{SearchViewController} &
-A controller class for the Search view, see \refer{fig:ios_search}. It checks which annotation-fields are used and tells the JSONBuilder to generate a corresponding search query when the user presses the search button. The class also contains a advanced search to allow the user to manually enter search queries. 
+\class{SearchViewController} &
+A controller class for the Search view, see \refer{fig:ios_search}. It checks which annotation-fields are used and tells the \json Builder to generate a corresponding search query when the user presses the search button. The class also contains a advanced search to allow the user to manually enter search queries. 
 \\ \hline
 
-%\term{SelectedFilesController} &
+%\class{SelectedFilesController} &
 %A controller class for the The selected files view shown in \refer{fig:ios_selectedFiles2}. %The selected files controller contains information about files saved by the user.
 %\\ \hline
 
-\term{ServerConnection} &
-Handles sending JSON objects to the HTTP class and receives and handles JSON objects from the server.
+\class{ServerConnection} &
+Handles sending \json\ objects to the HTTP class and receives and handles \json\ objects from the server.
 \\ \hline
 \end{tabularx}
 
-\caption{Description of some classes of the system.}
+\caption{\footnotesize Description of some classes of the system.}
 \label{table:ios_class_table}
 \end{table}
 \FloatBarrier

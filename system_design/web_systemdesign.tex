@@ -4,10 +4,11 @@ This section describes the overall design of our system, first with a system ove
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\textwidth]{web_system_backboneWebapp.png}
-\caption{\label{fig:web_system_backboneWebapp}A general build of a backbone web app.}
+\caption{\footnotesize A general build of a backbone web app.}
+\label{fig:web_system_backboneWebapp}
 \end{figure}
 
-\refer{fig:web_system_backboneWebapp} shows how the web application works in general. There is a user that interacts with a browser. A browser renders the DOM (Document Object Model, a convention for representing and interacting with objects in HTML) of the web application. How it does this is up to the browser. Different browsers might display it differently. The web app is based on the MVC pattern, but with the controller merged into the view and with a component called \textit{Collection} being introduced. A collection is simply a ordered set of models. Models and collections will talk to the server to update themselves. Out of the components that go into this figure, we are in charge of (and only capable of) changing a few of these; \class{View}, \class{Template}, \class{Collection} and \class{Model}. See \textit{Backbone} in section \ref{sec:web_frame} more information. 
+\refer{fig:web_system_backboneWebapp} shows how the web application works in general. There is a user that interacts with a browser. A browser renders the \textit{DOM} (Document Object Model, a convention for representing and interacting with objects in \textit{HTML}) of the web application. How it does this is up to the browser. Different browsers might display it differently. The web app is based on the \textit{MVC} pattern, but with the controller merged into the view and with a component called \textit{Collection} being introduced. A collection is simply a ordered set of models. Models and collections will talk to the server to update themselves. Out of the components that go into this figure, we are in charge of (and only capable of) changing a few of these; \class{View}, \class{Template}, \class{Collection} and \class{Model}. See \textit{Backbone} in section \ref{sec:web_frame} more information. 
 \pagebreak
 \begin{example}
 In the web app, there is a collection called \class{Experiments} which contains a set of \class{Experiment} models. Each of these models contains info about a specific experiment (for example, the name of the experiment and which files and annotations are incluced in it). The collection will retrieve experiments from the server and update itself with a simple call to its \class{fetch()} method. After this, the collection is synced with the server data.
@@ -18,7 +19,8 @@ In the web app, there is a collection called \class{Experiments} which contains 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{web_system_overview.png}
-\caption{\label{fig:web_system_overview}Overview of the relations between the different Javascript prototypes in the system.}
+\caption{\footnotesize Overview of the relations between the different Javascript prototypes in the system.}
+\label{fig:web_system_overview}
 \end{figure}
 
 The web app is divided into the parts \class{Misc}, \class{Views}, \class{Collections} and \class{Models}. In \refer{fig:web_system_overview}, an overview of the system is shown. The views are the parts in green, the collections the parts in yellow and the models the parts in red. 
@@ -27,7 +29,7 @@ The web app is divided into the parts \class{Misc}, \class{Views}, \class{Collec
 In \refer{fig:web_system_overview}, the collection \class{Files} contains a set of \class{File} models. The model \class{Experiment} contains a \class{Files} collection. An \class{Experiment} model may be used by the collections \class{SearchResult} and \class{Experiments}.
 \end{example}
 
-The parts in grey represent the \textit{router} which belongs in the \class{Misc} category. It is responsible for rerouting links. This is done mainly when the user wants to go to another webpage by clicking a link. The router is “clever”, however, and does not need to load a whole web page whenever a rerouting is triggered - instead it only loads the necessary parts of the new web page.
+The parts in grey represent the \textit{router} which belongs in the \class{Misc} category. It is responsible for rerouting links. This is done mainly when the user wants to go to another webpage by clicking a link. The router is ''clever'', however, and does not need to load a whole web page whenever a rerouting is triggered - instead it only loads the necessary parts of the new web page.
 
 \begin{example}
 When a user clicks the \textit{search} tab, the router navigates to \url{/search}. But instead of loading the whole \url{/search} on top of the page we are currently on, the router will keep the old navigation bar, open the search tab alone and put the search tab below the already existing navigation bar.
@@ -51,13 +53,13 @@ When searching for experiments, they and their contained files will be displayed
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{web_system_sequenceDiagram.png}
-\caption{\label{fig:web_system_sequenceDiagram}a sequence diagram showing what happens when a user enters a valid search query and results are fetched.}
+\caption{\label{fig:web_system_sequenceDiagram} \footnotesize a sequence diagram showing what happens when a user enters a valid search query and results are fetched.}
 \end{figure}
 
-In \refer{fig:web_system_sequenceDiagram} is a simple sequence diagram for the search tab. If a user enters a query in the search field and then presses the search button, the \class{Search} view will update the \class{SearchResults} collection to have a new query. Once \class{SearchResults} has a new query, it will try to fetch search results corresponding to the query from the server. If successful, new experiment models for every experiment retrieved will be created and set in the \class{SearchResults} collection. \class{SearchResults} then triggers a “change event” that \class{SearchResultsView} listens to. When that event occurs, \class{SearchResultsView} knows that \class{SearchResults} has been changed, and rerenders itself.
+In \refer{fig:web_system_sequenceDiagram} is a simple sequence diagram for the search tab. If a user enters a query in the search field and then presses the search button, the \class{Search} view will update the \class{SearchResults} collection to have a new query. Once \class{SearchResults} has a new query, it will try to fetch search results corresponding to the query from the server. If successful, new experiment models for every experiment retrieved will be created and set in the \class{SearchResults} collection. \class{SearchResults} then triggers a ''change event'' that \class{SearchResultsView} listens to. When that event occurs, \class{SearchResultsView} knows that \class{SearchResults} has been changed, and rerenders itself.
 
 \subsection{Upload}
-The upload tab has three views, that together make up the “Upload Views” as we have denoted them in \refer{fig:web_system_overview}. Unlike search (see section \ref{sec:web_frame}) that uses experiment and file models to retrieve information about experiments and files, upload uses the same models to create new experiments and files. To do this, it needs to be aware of what annotations are available, so it uses an annotation type collection to retrieve the current annotations offered when a user wants to create a new experiment.
+The upload tab has three views, that together make up the ''Upload Views'' as we have denoted them in \refer{fig:web_system_overview}. Unlike search (see section \ref{sec:web_frame}) that uses experiment and file models to retrieve information about experiments and files, upload uses the same models to create new experiments and files. To do this, it needs to be aware of what annotations are available, so it uses an annotation type collection to retrieve the current annotations offered when a user wants to create a new experiment.
 
 \subsection{Process} 
 Process consists of two views that are reached either through the process
@@ -81,7 +83,7 @@ same sort must be created below.
 
 \subsection{Convert}
 
-The convert tab is one single view that is accessible via the search view. When the user searches an experiment, selects files from the experiment and clicks the “Convert” button, the file names and the file IDs are passed along as parameters in the URL. The convert view is then loaded and can fetch the file names and the file IDs from the URL. The file names are used to display to the user which files are selected, and the file IDs are used when sending process requests to the server. The user must also pick a new file format for the selected files, which is also sent to the server as a string. This way, the server knows which files are to be converted and to what format.
+The convert tab is one single view that is accessible via the search view. When the user searches an experiment, selects files from the experiment and clicks the ''Convert'' button, the file names and the file IDs are passed along as parameters in the URL. The convert view is then loaded and can fetch the file names and the file IDs from the URL. The file names are used to display to the user which files are selected, and the file IDs are used when sending process requests to the server. The user must also pick a new file format for the selected files, which is also sent to the server as a string. This way, the server knows which files are to be converted and to what format.
 
 
 

@@ -10,7 +10,7 @@ This chapter will present an overview of the services that the \appName\ system 
 	server/.style={rectangle, draw, fill=red!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
 	user/.style={rectangle, draw, fill=blue!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
 	back/.style={rectangle, draw, fill=orange!50, minimum height=2cm, minimum width=6cm, font=\ttfamily\footnotesize},
-	human/.style={rectangle, draw, fill=white, minimum height = 1cm, minimum width = 1cm}, 
+	human/.style={rectangle, draw=white, fill=white, minimum height = 1cm, minimum width = 1cm}, 
 	interface/.style={rectangle, draw, fill=light-gray, minimum height = 1cm, minimum width = 1cm}, 
 	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},	
 	to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
@@ -40,7 +40,7 @@ This chapter will present an overview of the services that the \appName\ system 
 	
 
 	\end{tikzpicture}
-	\caption{Communication diagram of the product}
+	\caption{\footnotesize Communication diagram of the product}
 	\label{fig:con_serviceDescription}
 \end{figure}
 
@@ -54,13 +54,13 @@ This chapter will present an overview of the services that the \appName\ system 
 \end{comment}
 	
 In order to give the users flexibility when using the service there are clients for many different platforms (Windows, Linux, OSX, Web, Mobile devices). 
-When a user chooses a given task, for example start \term{raw} to \term{profile} processing. The task i sent via Internet to the server as shown in \ref{fig:con_serviceDescription}. The server then handles the request and return a response back to the user.
+When a user chooses a given task, for example start \term{raw} to \term{profile} processing. The task i sent via Internet to the server as shown in \refer{fig:con_serviceDescription}. The server then handles the request and return a response back to the user.
 
 \section{User Input}
-The user input in the \appName system may be done with four different clients: a desktop client, a web client, an \textit{Android} client and a \textit{iOS} client. The last two clients are collected under mobile application since they offer the same functionality.
+The user input in the \appName\ system may be done with four different clients: a desktop client, a web client, an \textit{Android} client and a \textit{iOS} client. The last two clients are collected under mobile application since they offer the same functionality.
 
 \section{Desktop}
-The desktop client is the main client for the \appName\ system. It offers all implemented functionality. 
+The desktop client is the main client for the \appName\ system. It offers the following implemented functionality. 
 \begin{itemize}
 \item Login and logout.
 \item Searching for experiments and different files.
@@ -83,7 +83,8 @@ The web client runs, without any installation, in a web browser and mimics most 
 Due to the limited storage available on mobile devices it is not appropriate to enable uploading and downloading of files, however the mobile applications enable the searching of files in the database and the scheduling of processing procedures for the conversion of \term{raw} to \term{profile} data.
 
 \section{Server}
-The purpose server is to take care of the organizations of files and experiments as seen in the top part of Figure \ref{fig:con_serviceDescription} as the part \textit{Data storage}. The server also serves as a processing tool of the files added to the \textit{Data storage}. 
+The purpose server is to take care of the organizations of files and experiments as seen in the top part of
+\refer{fig:con_serviceDescription} as the part \textit{Data storage}. The server also serves as a processing tool of the files added to the \textit{Data storage}. 
 
 \subsection{Data storage}
 The main purpose of the \appName\ system is to centralize all data. To enable this a user can annotate and upload data to the server using both desktop and web based clients. Uploaded files are organized in \term{Experiments} which are the representation of actual experiments in a laboratory. An experiment acts as the logical container for files that are related to each other - it can hold many files of different types (\term{raw}, \term{profile} and \term{region}). These files can either be uploaded directly by the user or generated from processing by the server.
