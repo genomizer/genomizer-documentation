@@ -6,8 +6,9 @@
 *.lyx
 *.sh
 *.fdb_latexmk
-<<<<<<< HEAD
 *.syntex.*
-=======
 *~
->>>>>>> a40b1da11054260c5e796d55d206ef19a6eb79b3
+
+*.ilg
+*.nls
+*.nlo
