@@ -8,3 +8,6 @@
 *.fdb_latexmk
 *.synctex.*
 *~
+*.ilg
+*.nls
+.nfs*
