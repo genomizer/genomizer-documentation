@@ -1,0 +1,6 @@
+Main focus of the web client is put on the framework Backbone. It is hard for beginners to learn, so put much effort into trying to understand it and how the web client is built using it. Without a decent understanding of Backbone, you will struggle a lot.
+
+Use the web browser console for checking Javascript errors and debugging. This view is usually opened in the web browser by hitting ctrl+shift+i, and it also contains a ''Network'' tab where you can see what HTTP requests and responses are being sent between the web client and the server. One thing that was very problematic was that the web client cached fetched data from the server, so disabling the browser cache was required. Disabling the cache is also done in this view.
+
+Focus much on testing! Learn Mocha, Chai and Sinon which, among other things, can be used to create fake HTTP responses from the server. A lot more unit testing should be done to the web client, and this should be decoupled completely from the server. Unit testing will be really hard in the beginning, but it will give you extremely much more confidence that the behaviour of the web client is correct.
+
