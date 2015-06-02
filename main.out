@@ -1,0 +1,186 @@
+\BOOKMARK [0][-]{section*.2}{Preface}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
+\BOOKMARK [0][-]{chapter.2}{Target group and needs}{}% 3
+\BOOKMARK [1][-]{section.2.1}{Target group}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{Client needs}{chapter.2}% 5
+\BOOKMARK [2][-]{subsection.2.2.1}{Upload \046 Download}{section.2.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.2}{Database}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.3}{Processing}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.4}{Format Conversion}{section.2.2}% 9
+\BOOKMARK [0][-]{chapter.3}{Service description}{}% 10
+\BOOKMARK [1][-]{section.3.1}{Usage}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{User Input}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.3}{Desktop}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.4}{Web}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.5}{Mobile application}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.6}{Server}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.6.1}{Data storage}{section.3.6}% 17
+\BOOKMARK [2][-]{subsection.3.6.2}{Processing}{section.3.6}% 18
+\BOOKMARK [-1][-]{part.1}{I Development}{}% 19
+\BOOKMARK [0][-]{chapter.4}{Architectual design}{part.1}% 20
+\BOOKMARK [1][-]{section.4.1}{System overview}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.1.1}{Genomizer clients}{section.4.1}% 22
+\BOOKMARK [2][-]{subsection.4.1.2}{Genomizer server}{section.4.1}% 23
+\BOOKMARK [0][-]{chapter.5}{Interaction design}{part.1}% 24
+\BOOKMARK [1][-]{section.5.1}{General view}{chapter.5}% 25
+\BOOKMARK [1][-]{section.5.2}{Desktop client}{chapter.5}% 26
+\BOOKMARK [2][-]{subsection.5.2.1}{Windows/OS X/Linux application}{section.5.2}% 27
+\BOOKMARK [1][-]{section.5.3}{Web application}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.4}{Android}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.4.1}{Login View}{section.5.4}% 30
+\BOOKMARK [2][-]{subsection.5.4.2}{Search View}{section.5.4}% 31
+\BOOKMARK [2][-]{subsection.5.4.3}{Search Results View}{section.5.4}% 32
+\BOOKMARK [2][-]{subsection.5.4.4}{Experiment View}{section.5.4}% 33
+\BOOKMARK [2][-]{subsection.5.4.5}{Search Settings View}{section.5.4}% 34
+\BOOKMARK [2][-]{subsection.5.4.6}{Selected Files View}{section.5.4}% 35
+\BOOKMARK [2][-]{subsection.5.4.7}{Convert View}{section.5.4}% 36
+\BOOKMARK [1][-]{section.5.5}{iOS}{chapter.5}% 37
+\BOOKMARK [2][-]{subsection.5.5.1}{Navigation bar}{section.5.5}% 38
+\BOOKMARK [2][-]{subsection.5.5.2}{Login Screen}{section.5.5}% 39
+\BOOKMARK [2][-]{subsection.5.5.3}{Search View}{section.5.5}% 40
+\BOOKMARK [2][-]{subsection.5.5.4}{Search Result View}{section.5.5}% 41
+\BOOKMARK [0][-]{chapter.6}{System design}{part.1}% 42
+\BOOKMARK [1][-]{section.6.1}{Desktop application}{chapter.6}% 43
+\BOOKMARK [2][-]{subsection.6.1.1}{View}{section.6.1}% 44
+\BOOKMARK [2][-]{subsection.6.1.2}{Model}{section.6.1}% 45
+\BOOKMARK [2][-]{subsection.6.1.3}{Requests}{section.6.1}% 46
+\BOOKMARK [2][-]{subsection.6.1.4}{Response}{section.6.1}% 47
+\BOOKMARK [2][-]{subsection.6.1.5}{Controller}{section.6.1}% 48
+\BOOKMARK [2][-]{subsection.6.1.6}{Utilites}{section.6.1}% 49
+\BOOKMARK [2][-]{subsection.6.1.7}{System Administration}{section.6.1}% 50
+\BOOKMARK [2][-]{subsection.6.1.8}{Flow of the system}{section.6.1}% 51
+\BOOKMARK [1][-]{section.6.2}{Web application}{chapter.6}% 52
+\BOOKMARK [2][-]{subsection.6.2.1}{How our web application works}{section.6.2}% 53
+\BOOKMARK [2][-]{subsection.6.2.2}{System overview}{section.6.2}% 54
+\BOOKMARK [2][-]{subsection.6.2.3}{Search}{section.6.2}% 55
+\BOOKMARK [2][-]{subsection.6.2.4}{Process}{section.6.2}% 56
+\BOOKMARK [2][-]{subsection.6.2.5}{Upload}{section.6.2}% 57
+\BOOKMARK [2][-]{subsection.6.2.6}{System administration - Web}{section.6.2}% 58
+\BOOKMARK [1][-]{section.6.3}{Android application}{chapter.6}% 59
+\BOOKMARK [2][-]{subsection.6.3.1}{System overview}{section.6.3}% 60
+\BOOKMARK [2][-]{subsection.6.3.2}{Package overview}{section.6.3}% 61
+\BOOKMARK [2][-]{subsection.6.3.3}{Class description}{section.6.3}% 62
+\BOOKMARK [1][-]{section.6.4}{iOS application}{chapter.6}% 63
+\BOOKMARK [2][-]{subsection.6.4.1}{Overall system design}{section.6.4}% 64
+\BOOKMARK [1][-]{section.6.5}{Server}{chapter.6}% 65
+\BOOKMARK [2][-]{subsection.6.5.1}{Communication}{section.6.5}% 66
+\BOOKMARK [2][-]{subsection.6.5.2}{Data Conversion}{section.6.5}% 67
+\BOOKMARK [2][-]{subsection.6.5.3}{File-transfer}{section.6.5}% 68
+\BOOKMARK [2][-]{subsection.6.5.4}{Data Storage}{section.6.5}% 69
+\BOOKMARK [2][-]{subsection.6.5.5}{Database Design}{section.6.5}% 70
+\BOOKMARK [2][-]{subsection.6.5.6}{The Data Storage Subsystem}{section.6.5}% 71
+\BOOKMARK [2][-]{subsection.6.5.7}{Interaction}{section.6.5}% 72
+\BOOKMARK [0][-]{chapter.7}{Implementation}{part.1}% 73
+\BOOKMARK [1][-]{section.7.1}{Desktop application}{chapter.7}% 74
+\BOOKMARK [2][-]{subsection.7.1.1}{Testing}{section.7.1}% 75
+\BOOKMARK [1][-]{section.7.2}{Web application}{chapter.7}% 76
+\BOOKMARK [2][-]{subsection.7.2.1}{Frameworks}{section.7.2}% 77
+\BOOKMARK [2][-]{subsection.7.2.2}{Technologies used}{section.7.2}% 78
+\BOOKMARK [2][-]{subsection.7.2.3}{Testing frameworks}{section.7.2}% 79
+\BOOKMARK [2][-]{subsection.7.2.4}{Web app tests}{section.7.2}% 80
+\BOOKMARK [1][-]{section.7.3}{Android application}{chapter.7}% 81
+\BOOKMARK [2][-]{subsection.7.3.1}{Login request}{section.7.3}% 82
+\BOOKMARK [2][-]{subsection.7.3.2}{Search request}{section.7.3}% 83
+\BOOKMARK [2][-]{subsection.7.3.3}{Request for Genome releases from the server}{section.7.3}% 84
+\BOOKMARK [2][-]{subsection.7.3.4}{Request for conversion of RAW files to profile-data}{section.7.3}% 85
+\BOOKMARK [2][-]{subsection.7.3.5}{Request for status on conversions on the server}{section.7.3}% 86
+\BOOKMARK [2][-]{subsection.7.3.6}{Testing}{section.7.3}% 87
+\BOOKMARK [1][-]{section.7.4}{iOS application}{chapter.7}% 88
+\BOOKMARK [2][-]{subsection.7.4.1}{Testing}{section.7.4}% 89
+\BOOKMARK [1][-]{section.7.5}{Server}{chapter.7}% 90
+\BOOKMARK [2][-]{subsection.7.5.1}{Communication}{section.7.5}% 91
+\BOOKMARK [2][-]{subsection.7.5.2}{Conversion}{section.7.5}% 92
+\BOOKMARK [2][-]{subsection.7.5.3}{File-transfer}{section.7.5}% 93
+\BOOKMARK [2][-]{subsection.7.5.4}{Data Storage}{section.7.5}% 94
+\BOOKMARK [1][-]{section.7.6}{Limitations}{chapter.7}% 95
+\BOOKMARK [0][-]{section*.62}{Bibliography}{part.1}% 96
+\BOOKMARK [0][-]{section*.62}{Nomenclature}{part.1}% 97
+\BOOKMARK [0][-]{appendix.A}{User manual}{part.1}% 98
+\BOOKMARK [1][-]{section.A.1}{Desktop application}{appendix.A}% 99
+\BOOKMARK [2][-]{subsection.A.1.1}{Login and startup}{section.A.1}% 100
+\BOOKMARK [2][-]{subsection.A.1.2}{Search}{section.A.1}% 101
+\BOOKMARK [2][-]{subsection.A.1.3}{Upload}{section.A.1}% 102
+\BOOKMARK [2][-]{subsection.A.1.4}{Process}{section.A.1}% 103
+\BOOKMARK [2][-]{subsection.A.1.5}{Workspace}{section.A.1}% 104
+\BOOKMARK [2][-]{subsection.A.1.6}{Administration}{section.A.1}% 105
+\BOOKMARK [1][-]{section.A.2}{Web application}{appendix.A}% 106
+\BOOKMARK [2][-]{subsection.A.2.1}{Using the interface}{section.A.2}% 107
+\BOOKMARK [2][-]{subsection.A.2.2}{Setting up the application}{section.A.2}% 108
+\BOOKMARK [1][-]{section.A.3}{Android application}{appendix.A}% 109
+\BOOKMARK [2][-]{subsection.A.3.1}{Start the Application and Login}{section.A.3}% 110
+\BOOKMARK [2][-]{subsection.A.3.2}{Settings}{section.A.3}% 111
+\BOOKMARK [2][-]{subsection.A.3.3}{Searching for files}{section.A.3}% 112
+\BOOKMARK [2][-]{subsection.A.3.4}{Pubmed Search}{section.A.3}% 113
+\BOOKMARK [2][-]{subsection.A.3.5}{Search Results}{section.A.3}% 114
+\BOOKMARK [2][-]{subsection.A.3.6}{Search Settings View}{section.A.3}% 115
+\BOOKMARK [2][-]{subsection.A.3.7}{Experiment File View}{section.A.3}% 116
+\BOOKMARK [2][-]{subsection.A.3.8}{Selected Files}{section.A.3}% 117
+\BOOKMARK [2][-]{subsection.A.3.9}{Converting Files}{section.A.3}% 118
+\BOOKMARK [2][-]{subsection.A.3.10}{Process View}{section.A.3}% 119
+\BOOKMARK [1][-]{section.A.4}{iOS application}{appendix.A}% 120
+\BOOKMARK [2][-]{subsection.A.4.1}{How to run the app in Xcode}{section.A.4}% 121
+\BOOKMARK [2][-]{subsection.A.4.2}{How to login}{section.A.4}% 122
+\BOOKMARK [2][-]{subsection.A.4.3}{How to logout}{section.A.4}% 123
+\BOOKMARK [2][-]{subsection.A.4.4}{How to search for experiments}{section.A.4}% 124
+\BOOKMARK [2][-]{subsection.A.4.5}{How to use advanced search}{section.A.4}% 125
+\BOOKMARK [2][-]{subsection.A.4.6}{How to process files}{section.A.4}% 126
+\BOOKMARK [2][-]{subsection.A.4.7}{How to set which annotation to be visible on Search Results}{section.A.4}% 127
+\BOOKMARK [2][-]{subsection.A.4.8}{How to view process status on the server}{section.A.4}% 128
+\BOOKMARK [2][-]{subsection.A.4.9}{How to view information about a file}{section.A.4}% 129
+\BOOKMARK [0][-]{appendix.B}{Deployment and maintenance}{part.1}% 130
+\BOOKMARK [1][-]{section.B.1}{Configure server}{appendix.B}% 131
+\BOOKMARK [1][-]{section.B.2}{A brief introduction to vagrant}{appendix.B}% 132
+\BOOKMARK [2][-]{subsection.B.2.1}{Basic usage}{section.B.2}% 133
+\BOOKMARK [2][-]{subsection.B.2.2}{Modifying the configuration}{section.B.2}% 134
+\BOOKMARK [2][-]{subsection.B.2.3}{Entering the vagrant virtual machine}{section.B.2}% 135
+\BOOKMARK [1][-]{section.B.3}{Systems overview of production}{appendix.B}% 136
+\BOOKMARK [2][-]{subsection.B.3.1}{Using the toolchain}{section.B.3}% 137
+\BOOKMARK [2][-]{subsection.B.3.2}{Configured environments}{section.B.3}% 138
+\BOOKMARK [2][-]{subsection.B.3.3}{The important scripts}{section.B.3}% 139
+\BOOKMARK [2][-]{subsection.B.3.4}{Creating a new environment}{section.B.3}% 140
+\BOOKMARK [2][-]{subsection.B.3.5}{Modifying an existing environment}{section.B.3}% 141
+\BOOKMARK [2][-]{subsection.B.3.6}{Rebuilding an environment}{section.B.3}% 142
+\BOOKMARK [2][-]{subsection.B.3.7}{Deleting an environment}{section.B.3}% 143
+\BOOKMARK [2][-]{subsection.B.3.8}{Configuring the host system}{section.B.3}% 144
+\BOOKMARK [1][-]{section.B.4}{Administer the database}{appendix.B}% 145
+\BOOKMARK [2][-]{subsection.B.4.1}{Set up postgresql account}{section.B.4}% 146
+\BOOKMARK [2][-]{subsection.B.4.2}{Upload SQL Script to server}{section.B.4}% 147
+\BOOKMARK [2][-]{subsection.B.4.3}{Create the Genomizer Tables}{section.B.4}% 148
+\BOOKMARK [1][-]{section.B.5}{Set up processing}{appendix.B}% 149
+\BOOKMARK [1][-]{section.B.6}{Install the server}{appendix.B}% 150
+\BOOKMARK [2][-]{subsection.B.6.1}{Downloading the source code}{section.B.6}% 151
+\BOOKMARK [2][-]{subsection.B.6.2}{Creating a runnable JAR file}{section.B.6}% 152
+\BOOKMARK [2][-]{subsection.B.6.3}{Starting the server}{section.B.6}% 153
+\BOOKMARK [0][-]{appendix.C}{User Stories}{part.1}% 154
+\BOOKMARK [1][-]{section.C.1}{Implemented user stories}{appendix.C}% 155
+\BOOKMARK [1][-]{section.C.2}{Product backlog}{appendix.C}% 156
+\BOOKMARK [0][-]{appendix.D}{Android application: UML-diagrams}{part.1}% 157
+\BOOKMARK [0][-]{appendix.E}{iOS application: UML-diagrams}{part.1}% 158
+\BOOKMARK [0][-]{appendix.F}{Desktop application: UML-diagrams}{part.1}% 159
+\BOOKMARK [0][-]{appendix.G}{Data Storage: UML-diagrams}{part.1}% 160
+\BOOKMARK [0][-]{appendix.H}{Server API}{part.1}% 161
+\BOOKMARK [0][-]{appendix.I}{Backup}{part.1}% 162
+\BOOKMARK [1][-]{section.I.1}{Introduction}{appendix.I}% 163
+\BOOKMARK [1][-]{section.I.2}{File backup}{appendix.I}% 164
+\BOOKMARK [1][-]{section.I.3}{Database backup}{appendix.I}% 165
+\BOOKMARK [1][-]{section.I.4}{Chrontab}{appendix.I}% 166
+\BOOKMARK [0][-]{appendix.J}{Known problems}{part.1}% 167
+\BOOKMARK [1][-]{section.J.1}{Web application}{appendix.J}% 168
+\BOOKMARK [2][-]{subsection.J.1.1}{Moving backwards in the browser does not hide modal windows}{section.J.1}% 169
+\BOOKMARK [2][-]{subsection.J.1.2}{Error handling when uploading experiments}{section.J.1}% 170
+\BOOKMARK [2][-]{subsection.J.1.3}{Old authorization token causes page redirect}{section.J.1}% 171
+\BOOKMARK [2][-]{subsection.J.1.4}{Code duplication in SearchResults and Experiments}{section.J.1}% 172
+\BOOKMARK [2][-]{subsection.J.1.5}{No warning when closing tab during upload.}{section.J.1}% 173
+\BOOKMARK [2][-]{subsection.J.1.6}{Uploading genome release - does not update list automatically}{section.J.1}% 174
+\BOOKMARK [2][-]{subsection.J.1.7}{The annotation list can't be sorted}{section.J.1}% 175
+\BOOKMARK [2][-]{subsection.J.1.8}{Sidebar on adminpage dosen't stay vertical}{section.J.1}% 176
+\BOOKMARK [2][-]{subsection.J.1.9}{Missing error check on annotation values}{section.J.1}% 177
+\BOOKMARK [2][-]{subsection.J.1.10}{No warning when closing tab during uploading genome releases}{section.J.1}% 178
+\BOOKMARK [1][-]{section.J.2}{iOS application}{appendix.J}% 179
+\BOOKMARK [2][-]{subsection.J.2.1}{Unspecified behaviour on loss of internet connection}{section.J.2}% 180
+\BOOKMARK [2][-]{subsection.J.2.2}{Lack of security}{section.J.2}% 181
+\BOOKMARK [2][-]{subsection.J.2.3}{No administrative features}{section.J.2}% 182
+\BOOKMARK [1][-]{section.J.3}{Server}{appendix.J}% 183
+\BOOKMARK [2][-]{subsection.J.3.1}{Communication and control}{section.J.3}% 184
+\BOOKMARK [2][-]{subsection.J.3.2}{Upload and download}{section.J.3}% 185
+\BOOKMARK [2][-]{subsection.J.3.3}{Process limitations}{section.J.3}% 186
