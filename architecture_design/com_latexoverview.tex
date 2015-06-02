@@ -1,5 +1,6 @@
 \label{chap:com_latexoverview}
 \section{System overview}
+\label{sec:sys_overview}
 %Things that people perceive as hard to change;[6] since designing the architecture takes place at the beginning of a software system's lifecycle, the architect should focus on decisions that “have to” be right the first time, since reversing such decisions may be impossible or prohibitively expensive.
 The \appName\ is a server-client architecture. It consists of four different clients: a web client, a desktop client and a two kinds of mobile clients. The mobile clients are implemented in \textit{Android} and \textit{iOS}. The server side consists of three components, a web server that acts as a proxy, a \textit{Java} server that connects to the final component a \textit{postgresql} database.
 
@@ -52,15 +53,40 @@ The architecture of the system can be seen in Figure \ref{fig:archOverview} wher
 
 All the clients that are part of the \appName\ service are implemented using the architectural design pattern MVC (\texttt{Model View Controller}). This pattern is based around keeping the logic and data separate from its representation and user interface. The basic idea is shown in figure \refer{fig:MVCimage}.
 
-\begin{figure}[htb]
-\addImage{MVCstuffarch.png}
+\begin{figure}[h!]
+\centering	
+\begin{tikzpicture}[ 
+	font=\sffamily,
+	every matrix/.style={ampersand replacement=\&,column sep=1.5cm,row sep=1.0cm},
+	db/.style={cylinder, shape border rotate=90, draw, fill=orange!40, minimum height=2cm, minimum width=1.5cm},
+	server/.style={rectangle, draw, fill=orange!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	human/.style={rectangle, draw=white, fill=white, minimum height = 1cm, minimum width = 1cm}, 
+	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	every node/.style={align=center}]  
+\matrix{
+	\node[server] (comm) {Communication}; \& 
+	\node[server] (controller) {Controller}; \& 
+	\\
+	\& \& 	\node[human] (human) {\LARGE\Gentsroom\Ladiesroom}; \\	
+	\node[server] (model) {Model}; \&
+	\node[server] (view) {View}; \& \\
+	};
+	
+	\draw (comm) -- (model);
+	\draw[to] (controller) -- (model) node[midway, sloped, anchor=center, above] {\footnotesize\texttt{Update data}};
+	\draw[to] (controller) -- (view) node[midway, xshift=0.2cm, yshift=-1.2cm, anchor=center, rotate=90, right] {\footnotesize\texttt{Listen to action}};
+	\draw[to] (human) -- (view) node[midway, sloped, anchor=center, above] {\footnotesize\texttt{Interact}};
+	\draw[to] (view) -| (human) node[midway, anchor=center, below] {\footnotesize\texttt{Show GUI}};
+	\draw[to] (model) -- (view) node[midway, anchor=cneter, below] {\footnotesize\texttt{Represent}};
+\end{tikzpicture}
 \caption{Basic MVC pattern.}
 \label{fig:MVCimage}
 \end{figure}
 
  The view will contain lists of experiments and annotations, data regarding process status, and other information. It will also present the user with windows and buttons that present and allow data to be manipulated. When a user interacts with the graphical interface the action will be handled by the controller using listeners. This in turn modifies the model; representing the data and information, as well as the operations available on it. 
  
- For this project a communication part is also necessary; often as a part of the model. As mentioned in \refer{chap:com_latexoverview}, the communication is performed via a \term{RESTful} protocol using \json\ requests and responses. \json\ is used because it is easy to parse and is directly compatible with the standard frameworks used in the web client.
+ For this project a communication part is also necessary; often as a part of the model. As mentioned in the overview section above, the communication is performed via a \term{RESTful} protocol using \json\ requests and responses. \json\ is used because it is easy to parse and is directly compatible with the standard frameworks used in the web client.
  
  The advantage of this approach lies in the separation of the interface- and logic-code; allowing one to be more easily replaced or modified. In our case the communication data and interface can be kept the same, while the client representation of it can be changed freely.
  
@@ -68,21 +94,52 @@ All the clients that are part of the \appName\ service are implemented using the
 \subsection{Genomizer server}
 The server is devided up in three main components, the front end, the data storage and the processing.
 
-The front end consist of a handler for the \term{API} requests mentioned above. The handler interpret incomming request and passes them through to either processing or data storage depending request type.
+The front end consist of a handler for the \term{API} requests mentioned above. The handler interpret incoming request and passes them through to either processing or data storage depending request type.
 
-Data storage makes up the back-end of the server. Its purpose is to communicate with file system and the database to return the correct information that was requested by the front-end.
+Data storage makes up the back-end of the server. Its purpose is to communicate with the file system and the database to return the correct information that was requested by the front-end.
 
-The processing does the processing of files and convertation between file types. Processing is a heavy workload on the server and has to be scheduled for both time of day and  parallel processing.
+The processing component of the server has the purpose of interpreting the \term{raw} files and convert them to \term{profile} data. This conversion is very heavy on the hardware of the server, thus the processing needs to be scheduled to times when user activity is low.
 
 \refer{fig:com_systemoverview} shows a simple flow diagram which describes how the client and server
  communicates. The particular example shows the data flow when the client process a file.
  In the figure the front-end is the data transfer and communication node while data storage makes up the database node and processing the final process node.
 
+\begin{figure}[h!]
+\centering	
+\begin{tikzpicture}[ 
+	font=\sffamily,
+	every matrix/.style={ampersand replacement=\&,column sep=1.5cm,row sep=1.0cm},
+	db/.style={cylinder, shape border rotate=90, draw, fill=white, minimum height=1.5cm, minimum width=1.5cm, font=\ttfamily\footnotesize},
+	server/.style={rectangle, draw, fill=orange!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	human/.style={rectangle, draw, fill=white, minimum height = 1cm, minimum width = 1cm}, 
+	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	every node/.style={align=center}]  
+\matrix{
+	\node[human] (client) {Client}; \&
+	\node[human] (server) {Proxy}; \&
+	\node[human] (comm) {Server\\(Communication)}; \&
+	\node[human] (procc) {Server\\(Process)}; \\
+	\&\& \node[db] (db) {Server\\(Database)}; \\
+	};
+	\draw[to] (client) -- (server) node[midway, anchor=center, above] {\tiny{HTTP Request}};
+	\draw[to] (server) -- (comm) node[midway, anchor=center, above] {\tiny{Routed request}};
+	\draw[to] (comm) -- (procc.north west) node[sloped, midway, anchor=center, above] {\tiny{Start process}};	
+	\draw[to] (procc.south west) -- (comm) node[sloped, midway, anchor=center, below] {\tiny{Send info}};		
+	\draw[to] (comm.south west) -- (db) node[midway, anchor=center, left] {\tiny{Database call}};
+	\draw[to] (db) -- (comm) node[midway, anchor=center, right] {\tiny{Data}};
+\end{tikzpicture}
+\caption{The flow of a request through the server.}
+\label{fig:com_systemoverview}
+\end{figure}
+
+\begin{comment}
 \begin{figure}[htb]
 \addImage{com_systemoverview.jpg}
 \caption{A simple flow diagram for the system}
 \label{fig:com_systemoverview}
 \end{figure}
+\end{comment}
 
 Every request the client does creates a non persistent connection to
 the server. When the server receives a request it checks which kind of

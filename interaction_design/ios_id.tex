@@ -1,7 +1,7 @@
 Focus has been on making a nice looking application with an intuitive workflow and to follow the iOS design principles. Some of the design decisions are motivated in the text below.
 
-\subsection{Navigation bar}
-A navigation bar is used to make access to different main functionalities available at all times. Big and clear icons are used to show the user which view they all represent. It is also possible to simply swipe between the different views to increase the speed of which the advanced user can use the system.
+\subsection{Tab bar}
+A tab bar is used to make access to different main functionalities available at all times. Big and clear icons are used to show the user which view they all represent. It is also possible to simply swipe between the different views to increase the speed of which the advanced user can use the system. The tab bar is designed to always be located at the bottom of the screen after the user has logged in. It can be seen in most pictures of the iOS-application, a good example is at the bottom of \refer{fig:ios_search2}a.
 
 \subsection{Login Screen}
 The login screen has two responsibilities; to make a nice first impression and to make it easy for the user to login. The design is kept simple and clean to avoid distractions.
@@ -61,7 +61,7 @@ The files view (see \refer{fig:ios_files2}a), which is shown when the user selec
 
 
 \subsubsection{Create processes}
-The view to create a process is focused on the user's current workflow. The user wants to use the selected files from the files view as input and then select a specific process on those files, which creates output-files to be used as input-files in another process. This creates a sequence of processes which the server will execute one process at a time. Moreover each input-file for a process will be executed parallel with eachother. The input-files and the output-files are separated by the process which will be executed on the input-files. To make it easy to understand what will be executed on each step of the sequence the separator between input-files and output-files is the name of the process and an arrow from the input-files to output-files. The color of a output-file will have the same color as its corresponding input-file to track a file's conversion-process, from start to finish, see \refer{fig:ios_creating_process}a-c. 
+The view to create a process is focused on the user's current workflow. The user wants to use the selected files from the files view as input and then select a specific process on those files, which creates output-files to be used as input-files in another process. This creates a sequence of processes which the server will execute one process at a time. Moreover each input-file for a process will be executed parallel with eachother. The input-files and the output-files are separated by the process which will be executed on the input-files. To make it easy to understand what will be executed on each step of the sequence the separator between input-files and output-files is the name of the process and an arrow from the input-files to output-files. The color of an output-file will have the same color as its corresponding input-file to track a file's conversion-process, from start to finish, see \refer{fig:ios_creating_process}a-c. 
 
 
 
@@ -85,7 +85,7 @@ As visible in \refer{fig:ios_processingStatus}, we chose to build the processing
 \FloatBarrier
 
 \subsubsection{Alerts}
-Alerts are simple banners animating down from the top to give the user a headsup of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen in \refer{fig:ios_alerts}, indicates an error and a white with a green icon, indicates something went as expected. The colors are used to allow the user to just notice which color pops down and give them somewhat of an understanding of what is going on. without having to read the text every time.
+Alerts are simple banners animating down from the top to give the user a heads-up of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen in \refer{fig:ios_alerts}, indicates an error and a white with a green icon, indicates something went as expected. The colors are used to allow the user to just notice which color pops down and give them somewhat of an understanding of what is going on without having to read the text every time.
 \begin{figure}[ht]
 \addScaledImage{0.30}{ios_alert1.PNG}
 \caption{Examples of alert}

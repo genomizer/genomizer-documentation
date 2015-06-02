@@ -1,33 +1,73 @@
-To start the server, java needs to be installed on the computer and a runnable JAR file needs to be created.
-This requires the following things to be installed on the computer: Git, Ant and Java JDK. 
-If these are already installed refer to \ref{sec:com_download} on how to download the source files.
+Installing the server requires these three programs to exist on the server machine.
+\begin{itemize}
+	\item \textit{Java JDK}: To run the server.
+	\item \textit{Git}: To download the server source code.
+	\item \textit{Ant}: To build the server.
+\end{itemize}
 
-\subsection{Downloading the source code}\label{sec:com_download}
+The source code for the server is hosted by \textit{Github} and can be downloaded using \textit{Git} or using the home page and get it as a \textit{.zip}. 
 
-The source code for the Genomizer server is hosted at Github and is completely open source. It can be downloaded in
-two ways. Either manually from http://www.github.com/genomizer/genomizer-server where there is a button to
-download the entire project as a zip file or using Git from command line in the following way:
+Downloads using \textit{Git} is done with the help of \texttt{clone}.
 \begin{verbatim}
 git clone https://github.com/genomizer/genomizer-server.git
 \end{verbatim}
-This will create a directory named genomizer-server in the current directory.
 
-\subsection{Creating a runnable JAR file}\label{sec:com_makejar}
-
-When the source code is downloaded (and unzipped if downloaded manually), use the terminal to navigate into
-the genomizer-server directory.
+After the source code has been downloaded the server needs to be compiled and built into a runnable \texttt{jar}. This is done with the help of \textit{Ant}. The repository has a build script in the directory, and has a command to build a jar.
 \begin{verbatim}
 ant jar
 \end{verbatim}
-A file called server.jar should be created in the same directory.
 
+All that is left before starting the server is editing the settings file in the main directory for the server(same place as the \texttt{jar}). The settings file is named \texttt{settings.cfg}, it is designed as followed.
 
-\subsection{Starting the server}
-Here the actual startup of the server will be explained in a step by step manner.
-In order for this to work, the runnable JAR file must have been created.
-\begin{enumerate}
-\item Choose a computer that should host the server.
-\item Make a runnable JAR file of all the code and place it inside a folder on the computer.
-\item Start the terminal and navigate to the folder containing the runnable JAR file.
-\item In the terminal, type: \emph{java -jar filename.jar}.
-\end{enumerate}
+\begin{verbatim}
+# Database settings.
+
+databaseUser        = genomizer
+databasePassword    = password
+databaseHost        = localhost:5432
+databaseName        = genomizer
+
+# Port number on which the server listens for HTTP connections.
+genomizerPort       = 7000
+
+# Directory on the server where uploaded files are stored.
+
+fileLocation        = /data/
+
+# Max. number of threads in the processing work pool.
+
+nrOfProcessThreads  = 5
+
+# Paths to various programs that we use.
+
+bowtieLocation      = resources/bowtie/bowtie
+picardLocation      = resources/picard-tools/picard.jar
+bowtie2Location     = resources/bowtie2/bowtie2
+pyicosLocation      = resources/pyicoteo/pyicos
+
+# Address and port of the publicly visible WWW server (if any)
+# that is tunnelling requests to the genomizer server.
+# 'wwwTunnelPath' is the path on the WWW server that
+# requests to genomizer server are mapped to (usually '/api').
+
+wwwTunnelHost       = https://130.239.192.110
+wwwTunnelPort       = 4433
+wwwTunnelPath       = /api
+
+# Directory used for storing temporary files during uploading.
+# Should be on the same partition as 'fileLocation'.
+uploadTempDir       = /data/tmp/
+\end{verbatim}
+
+All that is left after the settings is correct is to start the server.
+
+\begin{verbatim}
+java -jar server.jar [-debug|-p <port> | -f <alternativSettings.cfg> | -nri ]
+\end{verbatim}
+As seen the server may be started with optional arguments.
+\begin{itemize}
+	\item \texttt{debug}: Starts the server with a active debug logger. Printing everything to \texttt{stdout}.
+	\item \texttt{p}: Alternativ port.
+	\item \texttt{f}: Alternativ settings file other then \texttt{settings.cfg}
+	\item \texttt{nri}: No remove inactive users. Halts the thread that removes inactive user tokens.
+\end{itemize}
