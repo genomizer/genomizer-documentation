@@ -71,83 +71,46 @@ The view in \refer{fig:web_search_searchTab} is shown when the user has searched
 If no experiments match the search query, the Search Results table will be empty stating “No search results found”.
 
 \pagebreak
-\subsubsection{The processing modal}
+\subsubsection{The processing view}
 %figure X6
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\textwidth]{web_process_modalView.png}
-\caption{\label{fig:web_process_modalView}The processing modal.}
-\end{figure}
+
 \FloatBarrier
 
-If the user wants to process files from an experiment they first have to enter the search-view and search for the experiment in which they wish to process files.
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\textwidth]{web_manual_process_step1.png}
-\caption{\label{fig:web_process_success}Searching for Exp1.}
-\end{figure}
-\FloatBarrier
-Check the box for the experiment and then click the process-button.
-\begin{figure}[h]
+If the user wants to process files from an experiment they first have to enter the search view and search for the experiment in which they wish to process files. Check the box for the experiment and then click the process button (\refer{fig:web_process_step1}).
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{web_manual_process_step2.png}
-\caption{\label{fig:web_process_success}Selected Exp1.}
+\caption{\label{fig:web_process_step1}Selected Exp1.}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{web_manual_process_step3.png}
-\caption{\label{fig:web_process_success}The process view opened with Exp1 selected.}
+\caption{\label{fig:web_process_step2}The process view opened with Exp1 selected.}
 \end{figure}
-When the process view is opened press choose which process step you want to do in the scrollbar and then press the add button.
-\begin{figure}[h]
+When the process view is opened choose which process step you want to do in the dropdown list and then press the add button (\refer{fig:web_process_step2}).
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{web_manual_process_step4.png}
-\caption{\label{fig:web_process_success}Scrollbar which shows the different process steps.}
+\caption{\label{fig:web_process_step3}Scrollbar which shows the different process steps.}
 \end{figure}
-To and a new file to the selected process step press the ''+''
- button.
- \begin{figure}[h]
+To add a new file to the selected process step press the ''+''
+ button (\refer{fig:web_process_step3}).
+ \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{web_manual_process_step5.png}
-\caption{\label{fig:web_process_success}The process view opened with Exp1 selected.}
+\caption{\label{fig:web_process_step4}Process view after a process step has been selected.}
 \end{figure}
-After pressing the add button the view will now show a new set of processing options. The infile scrollbar chooses which file is going to be processed. Outfile sets the name for the new processed file. Genome release sets which genmoe release to use for the process and parameters sets which parameters to be used. If the user wants the .SAM file to be saved the ''Keep .SAM'' box has to be checked.
+After pressing the ''add'' button the view will now show a new set of processing options. The ''Infile'' dropdown list chooses which file is going to be processed. ''Outfile'' is used to set the name for the new processed file. ''Genome release'' sets which genome release to use for the process and ''Parameters'' sets which parameters to be used. If the user wants the \class{.sam} file to be saved the ''Keep .SAM'' box has to be checked (\refer{fig:web_process_step4}).
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\textwidth]{web_manual_process_step6.png}
-\caption{\label{fig:web_process_success}The process view opened with Exp1 selected.}
+\caption{\label{fig:web_process_step5}Process view after adding a file for a process step.}
 \end{figure}
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\textwidth]{web_manual_process_step7.png}
-\caption{\label{fig:web_process_success}The process view opened with Exp1 selected.}
-\end{figure}
-\\\\
-When the user has selected some files that are going to be processed the user will be presented with the view from \refer{fig:web_process_modalView}. The user can here choose which level of processing should be done on the raw files.
+To start processing simply press the ''Process'' button (\refer{fig:web_process_step5}).
 
 %WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAT
-By clicking the radio buttons on the left side that much processing will be done on the \class{raw} files. All the steps above the selected will also be executed since they are needed to reach that level of processing.
-At the top of the modal the experiments currently going through processing are presented.
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\textwidth]{web_process_modalValues.png}
-\caption{\label{fig:web_process_modalValues}The process modal with selected parameters.}
-\end{figure}
-\FloatBarrier
-When the user has decided the parameters as shown in \refer{fig:web_process_modalValues} and wants to start the processing the process button in the bottom right should be pressed. 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{web_process_success.png}
-\caption{\label{fig:web_process_success}Success message.}
-\end{figure}
-\FloatBarrier
-When results are received from the server and they were all successful the processing modal will disappear and a success message indicating that the processing is starting will be displayed to the user like in \refer{fig:web_process_success}.
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{web_process_notSuccess.png}
-\caption{\label{fig:web_process_notSuccess}Fail message.}
-\end{figure}
-If some of the files that was going to be processed did for some reason fail the user will learn this by a warning message that tells the user which experiment did not start processing and which did as shown in \refer{fig:web_process_notSuccess}. The ones which started to process will be removed from the modal and the ones that did not start to process will remain. The user can now choose other parameters or do something else to make it work and try to submit a processing request again.
+
+
 \pagebreak
 
 
