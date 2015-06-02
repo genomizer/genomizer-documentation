@@ -2,32 +2,10 @@ For developers who are going to continue the development of the database compone
 
 Its a good idea to start with extracting the database dependency from the unittest suite. We quickly identified this as a potential issue, but did not think it was worth the effort during the project. In retrospect, this would have resulted in a lot smoother testing routines and would definitely have been worth the time invested.
 
-There is a branch on Github named SRA_feature where we have started implementing a feature for downloading files from the Sequence Read Archive (SRA) database. In its current state it supports downloading remote RAW data files from SRA.
+There is a branch on Github named SRA_feature where we have started implementing a feature for downloading files from the Sequence Read Archive (SRA) database. In its current state it supports downloading remote RAW data files from SRA, however it is not yet fully implemented in or integrated with the rest of the system, and hence is not documented further throughout the remainder of this document.
 
+We decided to try out pair programming (the agile software development technique) in the very first sprint and experienced surpringsingly good results.  We continued with this method throughout the remainder of the project and would recommend it working on projects of this size.
 
+Working with Kanban is recommended, and using an actual physical board is preferable to digital versions (such as Trello) in our opinion. A physical board has a motivating factor and gives a better and quicker overview of what work is done and what work is still waiting for some action to be taken.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-If you want to create some additional steps in the processing, it is very simple because you can use \texttt{CommandComponent} which is an abstract class which is used to construct the different parts of the processing workflow.
-
-There is a lot of unnecessary code in the project that might be worthwhile to look at or remove completely. A lot of it were inherited from the founders and had zero comments so we were unsure if the program used the code parts at all or if it were code that were going to be used in the future.
-
-Another big thing is that the threads are very unsafe. If you want to continue development you should consider rewriting the threading completely. Once in a while some parts of the gui fail to show up because of some race-conditions. One reason for the errors is that a library called \texttt{Nimbus} is used to make the GUI look better, but sometimes we get a IllegalStateException from nimbnus which we have no power over.
-
- There are support for extracting information about the users in the API but the desktop client is not using the information at the moment. There night be a good idea to show the additional information in the GUI and maybe as information about who started a process or created an experiment.
-
-\subsection{Testing}
-The testing of the desktop client is one of the weaker parts of the development. All of the requests that are sent are tested thoroughly but that is about it. To increase the testing you might want to set up a mock-server so you avoid dependency of an actual server. Some of the current tests are very weak since thay depend on a server that were used during development. 
+Establish a definition of done early.
