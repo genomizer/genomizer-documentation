@@ -84,7 +84,7 @@ The web client mimics the behaviour and functionality of the desktop client. Add
 Due to the limited storage available on mobile devices it is not appropriate to enable uploading and downloading of files, however the mobile applications enable the searching of files in the database and the scheduling of processing procedures for the conversion of \term{raw} to \term{profile} data.
 
 \section{Server}
-The servers purpose is to take care of the organizations of files and experiments as seen in the top part of Figure \ref{fig:con_serviceDescription} as the part \textit{Data storage}. The server also serves as a processing tool of the files added to the \textit{Data storage}. 
+The purpose server is to take care of the organizations of files and experiments as seen in the top part of Figure \ref{fig:con_serviceDescription} as the part \textit{Data storage}. The server also serves as a processing tool of the files added to the \textit{Data storage}. 
 
 \subsection{Data storage}
 The main purpose of the \appName\ system is to centralize all data. To enable this a user can annotate and upload data to the server using both desktop and web based clients. Uploaded files are organized in \term{Experiments} which are the representation of actual experiments in a laboratory. An experiment acts as the logical container for files that are related to each other - it can hold many files of different types (\term{raw}, \term{profile} and \term{region}). These files can either be uploaded directly by the user or generated from processing by the server.
@@ -105,3 +105,6 @@ If the user has an experiment that was conducted in zero gravity and the databas
 
 \subsection{Processing}
 Users can request that a \term{raw} file set be processed to \term{profile} files. This procedure is carried out by the server to avoid heavy workload and the requirements of certain programs on the clients side. The processing carried out between \term{raw} data and \term{profile} data involves a number of different steps. The user can choose which steps are carried out and the various parameters used.
+
+\subsection{Profile data conversion}
+The server can be requested to convert between different formats of profile data. The conversions currently handled by \appName\ are \term{gff}, \term{sgr}, \term{wig} and \term{bed}. These formats are specified by the Genome Bioinformatics Group at UC Santa Cruz\cite{des_4}. Since different formats carry different amount of information or meta data, conversions from each file format to every other is not possible.

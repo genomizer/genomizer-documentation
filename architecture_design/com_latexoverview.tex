@@ -60,7 +60,7 @@ All the clients that are part of the \appName\ service are implemented using the
 	every matrix/.style={ampersand replacement=\&,column sep=1.5cm,row sep=1.0cm},
 	db/.style={cylinder, shape border rotate=90, draw, fill=orange!40, minimum height=2cm, minimum width=1.5cm},
 	server/.style={rectangle, draw, fill=orange!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
-	human/.style={rectangle, draw, fill=white, minimum height = 1cm, minimum width = 1cm}, 
+	human/.style={rectangle, draw=white, fill=white, minimum height = 1cm, minimum width = 1cm}, 
 	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
 	to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
 	every node/.style={align=center}]  
@@ -98,17 +98,48 @@ The front end consist of a handler for the \term{API} requests mentioned above. 
 
 Data storage makes up the back-end of the server. Its purpose is to communicate with the file system and the database to return the correct information that was requested by the front-end.
 
-The processing component of the server has the purpose of interpreting the \term{raw} files and convert them to \term{profile} data. This process is a very heavy workload on the server need to be scheduled to promise efficiency. 
+The processing component of the server has the purpose of interpreting the \term{raw} files and convert them to \term{profile} data. This conversion is very heavy on the hardware of the server, thus the processing needs to be scheduled to times when user activity is low.
 
 \refer{fig:com_systemoverview} shows a simple flow diagram which describes how the client and server
  communicates. The particular example shows the data flow when the client process a file.
  In the figure the front-end is the data transfer and communication node while data storage makes up the database node and processing the final process node.
 
+\begin{figure}[h!]
+\centering	
+\begin{tikzpicture}[ 
+	font=\sffamily,
+	every matrix/.style={ampersand replacement=\&,column sep=1.5cm,row sep=1.0cm},
+	db/.style={cylinder, shape border rotate=90, draw, fill=white, minimum height=1.5cm, minimum width=1.5cm, font=\ttfamily\footnotesize},
+	server/.style={rectangle, draw, fill=orange!40, minimum height=1cm, minimum width=2cm, font=\ttfamily\footnotesize},
+	human/.style={rectangle, draw, fill=white, minimum height = 1cm, minimum width = 1cm}, 
+	both/.style={<->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	to/.style={->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize},
+	every node/.style={align=center}]  
+\matrix{
+	\node[human] (client) {Client}; \&
+	\node[human] (server) {Proxy}; \&
+	\node[human] (comm) {Server\\(Communication)}; \&
+	\node[human] (procc) {Server\\(Process)}; \\
+	\&\& \node[db] (db) {Server\\(Database)}; \\
+	};
+	\draw[to] (client) -- (server) node[midway, anchor=center, above] {\tiny{HTTP Request}};
+	\draw[to] (server) -- (comm) node[midway, anchor=center, above] {\tiny{Routed request}};
+	\draw[to] (comm) -- (procc.north west) node[sloped, midway, anchor=center, above] {\tiny{Start process}};	
+	\draw[to] (procc.south west) -- (comm) node[sloped, midway, anchor=center, below] {\tiny{Send info}};		
+	\draw[to] (comm.south west) -- (db) node[midway, anchor=center, left] {\tiny{Database call}};
+	\draw[to] (db) -- (comm) node[midway, anchor=center, right] {\tiny{Data}};
+\end{tikzpicture}
+\caption{The flow of a request through the server.}
+\label{fig:com_systemoverview}
+\end{figure}
+
+\begin{comment}
 \begin{figure}[htb]
 \addImage{com_systemoverview.jpg}
 \caption{A simple flow diagram for the system}
 \label{fig:com_systemoverview}
 \end{figure}
+\end{comment}
 
 Every request the client does creates a non persistent connection to
 the server. When the server receives a request it checks which kind of

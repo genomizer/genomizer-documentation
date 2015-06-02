@@ -1,21 +1,21 @@
 This section describes the overall design of our system, first with a system overview and then with more in depth information about our tabs.
 \subsection{How the web application works}
 %figure x5
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\textwidth]{web_system_backboneWebapp.png}
 \caption{\label{fig:web_system_backboneWebapp}A general build of a backbone web app.}
 \end{figure}
 
-\refer{fig:web_system_backboneWebapp} shows how the web application works in general. There is a user that interacts with a browser. A browser renders the DOM (Document Object Model, a convention for representing and interacting with objects in HTML) of the web application. How it does this is up to the browser. Different browsers might display it differently. The web app is based on the MVC pattern, but with the controller merged into the view and with a component called \textit{Collection} being introduced. A collection is simply a ordered set of models. Models and collections will talk to the server to update themselves. Out of the components that go into this figure, we are in charge of (and only capable of) changing a few of these; \class{View}, \class{Template}, \class{Collection} and \class{Model}. See \textit{Backbone} in section \ref{sec:web_frame} more information.
-
+\refer{fig:web_system_backboneWebapp} shows how the web application works in general. There is a user that interacts with a browser. A browser renders the DOM (Document Object Model, a convention for representing and interacting with objects in HTML) of the web application. How it does this is up to the browser. Different browsers might display it differently. The web app is based on the MVC pattern, but with the controller merged into the view and with a component called \textit{Collection} being introduced. A collection is simply a ordered set of models. Models and collections will talk to the server to update themselves. Out of the components that go into this figure, we are in charge of (and only capable of) changing a few of these; \class{View}, \class{Template}, \class{Collection} and \class{Model}. See \textit{Backbone} in section \ref{sec:web_frame} more information. 
+\pagebreak
 \begin{example}
 In the web app, there is a collection called \class{Experiments} which contains a set of \class{Experiment} models. Each of these models contains info about a specific experiment (for example, the name of the experiment and which files and annotations are incluced in it). The collection will retrieve experiments from the server and update itself with a simple call to its \class{fetch()} method. After this, the collection is synced with the server data.
 \end{example}
 
 \subsection{System overview}
 %figure 2
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{web_system_overview.png}
 \caption{\label{fig:web_system_overview}Overview of the relations between the different Javascript prototypes in the system.}
