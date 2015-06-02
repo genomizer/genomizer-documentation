@@ -6,14 +6,10 @@
 *.lyx
 *.sh
 *.fdb_latexmk
-<<<<<<< HEAD
 *.syntex.*
+*.synctex.*
 *~
-
 *.ilg
 *.nls
 *.nlo
-=======
-*.synctex.*
-*~
->>>>>>> f3c1e1c847730d885048490032b7e303db8dbb9b
+.nfs*
