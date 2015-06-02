@@ -27,7 +27,7 @@ The web app is divided into the parts \class{Misc}, \class{Views}, \class{Collec
 In \refer{fig:web_system_overview}, the collection \class{Files} contains a set of \class{File} models. The model \class{Experiment} contains a \class{Files} collection. An \class{Experiment} model may be used by the collections \class{SearchResult} and \class{Experiments}.
 \end{example}
 
-The parts in grey represent the \textit{router} which belongs in the \class{Misc} category. It is responsible for rerouting links. This is done mainly when the user wants to go to another webpage by clicking a link. The router is ``clever'', however, and does not need to load a whole web page whenever a rerouting is triggered - instead it only loads the necessary parts of the new web page.
+The parts in grey represent the \textit{router} which belongs in the \class{Misc} category. It is responsible for rerouting links. This is done mainly when the user wants to go to another webpage by clicking a link. The router is “clever”, however, and does not need to load a whole web page whenever a rerouting is triggered - instead it only loads the necessary parts of the new web page.
 
 \begin{example}
 When a user clicks the \textit{search} tab, the router navigates to \url{/search}. But instead of loading the whole \url{/search} on top of the page we are currently on, the router will keep the old navigation bar, open the search tab alone and put the search tab below the already existing navigation bar.
@@ -54,10 +54,10 @@ When searching for experiments, they and their contained files will be displayed
 \caption{\label{fig:web_system_sequenceDiagram}a sequence diagram showing what happens when a user enters a valid search query and results are fetched.}
 \end{figure}
 
-In \refer{fig:web_system_sequenceDiagram} is a simple sequence diagram for the search tab. If a user enters a query in the search field and then presses the search button, the \class{Search} view will update the \class{SearchResults} collection to have a new query. Once \class{SearchResults} has a new query, it will try to fetch search results corresponding to the query from the server. If successful, new experiment models for every experiment retrieved will be created and set in the \class{SearchResults} collection. \class{SearchResults} then triggers a ``change event'' that \class{SearchResultsView} listens to. When that event occurs, \class{SearchResultsView} knows that \class{SearchResults} has been changed, and rerenders itself.
+In \refer{fig:web_system_sequenceDiagram} is a simple sequence diagram for the search tab. If a user enters a query in the search field and then presses the search button, the \class{Search} view will update the \class{SearchResults} collection to have a new query. Once \class{SearchResults} has a new query, it will try to fetch search results corresponding to the query from the server. If successful, new experiment models for every experiment retrieved will be created and set in the \class{SearchResults} collection. \class{SearchResults} then triggers a “change event” that \class{SearchResultsView} listens to. When that event occurs, \class{SearchResultsView} knows that \class{SearchResults} has been changed, and rerenders itself.
 
 \subsection{Upload}
-The upload tab has three views, that together make up the ``Upload Views'' as we have denoted them in \refer{fig:web_system_overview}. Unlike search (see section \ref{sec:web_frame}) that uses experiment and file models to retrieve information about experiments and files, upload uses the same models to create new experiments and files. To do this, it needs to be aware of what annotations are available, so it uses an annotation type collection to retrieve the current annotations offered when a user wants to create a new experiment.
+The upload tab has three views, that together make up the “Upload Views” as we have denoted them in \refer{fig:web_system_overview}. Unlike search (see section \ref{sec:web_frame}) that uses experiment and file models to retrieve information about experiments and files, upload uses the same models to create new experiments and files. To do this, it needs to be aware of what annotations are available, so it uses an annotation type collection to retrieve the current annotations offered when a user wants to create a new experiment.
 
 \subsection{Process} 
 Process consists of two views that are reached either through the process
@@ -78,3 +78,10 @@ process step, a line can be added using the + button, which represents one run
 of that process step. Adding more than one line to one step allows simultaneous
 processing, but should any infile depend on an outfile a new process step of the
 same sort must be created below.
+
+\subsection{Convert}
+
+The convert tab is one single view that is accessible via the search view. When the user searches an experiment, selects files from the experiment and clicks the “Convert” button, the file names and the file IDs are passed along as parameters in the URL. The convert view is then loaded and can fetch the file names and the file IDs from the URL. The file names are used to display to the user which files are selected, and the file IDs are used when sending process requests to the server. The user must also pick a new file format for the selected files, which is also sent to the server as a string. This way, the server knows which files are to be converted and to what format.
+
+
+
