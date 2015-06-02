@@ -22,73 +22,73 @@ Each annotation has a corresponding switch button as seen in \refer{fig:ios_sear
 The advanced user can customize the search query sent to the server. This gives the user the possibility make more complex search queries and possibly make use of already accuried PubMed-search skills.
 
 \subsection{Search Result View}
-The main purpose of the search result view is to give an overview of the search results. The challenge with this view was to summarize large amount of information in a small area. The small screen of the iPhone made it impossible to have columns for each annotation. Instead a decision was made to group the files by experiment as seen in \refer{fig:ios_searchResult2}a. The table with the experiments will only expand vertically, both when the number of shown annotations and the number of experiments grows. Thus, the user never has to scroll sideways which would be awkward.
+The main purpose of the search result view is to give an overview of the search results. The challenge with this view was to summarize large amount of information in a small area. The small screen of the iPhone made it impossible to have columns for each annotation. Instead a decision was made to group the files by experiment as seen in \refer{fig:ios_searchResult2}. The table with the experiments will only expand vertically, both when the number of shown annotations and the number of experiments grows. Thus, the user never has to scroll sideways which would be awkward.
 
 \begin{figure}[ht]
-\addTwoImages	{ios_result1.PNG}{a}
-		{ios_result3.PNG}{b}
+\addScaledImage{0.30}{ios_result3.PNG}
 \caption{The search result view.}
 \label{fig:ios_searchResult2}
 \end{figure}
 \FloatBarrier
 
-The user can choose which annotations to display in the result view, more annotations have been added in \refer{fig:ios_searchResult2}b. This gives the user the possibility to only show the annotations which are interesting at the moment. 
+The user can choose which annotations to display in the result view. This gives the user the possibility to only show the annotations which are interesting at the moment. 
 
-The files view (see \refer{fig:ios_files2}a), which is shown when the user selects an experiment, only contains the filename of the files in the specific experiment. The annotations is not shown in this view to avoid information overload and to give the user a good overview of the files. More information can be seen when the circled 'i' to the left of the filename is tapped, an example of this can be seen in \refer{fig:ios_files2}b. 
+The files view (see \refer{fig:ios_files2}a), which is shown when the user selects an experiment, only contains the filename of the files in the specific experiment. The annotations is not shown in this view to avoid information overload and to give the user a good overview of the files. The purpose of the plus-symbol next to each file is to add as many files as the user wish to use when selecting processes. More information can be seen when the circled 'i' to the left of the filename is tapped, an example of this can be seen in \refer{fig:ios_files2}b. 
 
 \begin{figure}[ht]
-\addTwoImages	{ios_files4.PNG}{a}
+\addTwoImages	{ios_process_files.jpg}{a}
 		{ios_files2.PNG}{b}
 \caption{The file view.}
 \label{fig:ios_files2}
 \end{figure}
 \FloatBarrier
 
-The star indicates if the file has been added to the selected files view where the user can choose to convert file into different formats.
+
 % The functionality of the Convert files button can be reached from other views, but was added to this view as well to improve the workflow. Instead of first selecting the files, then going to the Selected files view and initiate the convertion from there, the user can quickly convert files directly from the search results.
 
-\subsubsection{Selected Files}
-The selected files view can be seen in \refer{fig:ios_selectedFiles2}a. The files are grouped into four categories: raw, profile, region and other. This is done by showing each type of files in its own tab located at the top of the screen. The reason for this is to avoid the possibility to select files of different types since the tasks to perform are file type specific. It also gives a better overview of the files when only one type is shown instead of showing all files at the same time. The files are also grouped into respective experiment they belong to. This is done to avoid confusion of what file belong to which experiment with similar filenames etc. Additionally, the top navigation bar menu is following the iOS design guidelines. 
+%\subsubsection{Selected Files}
+%The selected files view can be seen in \refer{fig:ios_selectedFiles2}a. The files are grouped into four categories: raw, profile, region and other. This is done by showing each type of files in its own tab located at the top of the screen. The reason for this is to avoid the possibility to select files of different types since the tasks to perform are file type specific. It also gives a better overview of the files when only one type is shown instead of showing all files at the same time. The files are also grouped into respective experiment they belong to. This is done to avoid confusion of what file belong to which experiment with similar filenames etc. Additionally, the top navigation bar menu is following the iOS design guidelines. 
+%
+%When at least one file is selected with the switch next to it (see \refer{fig:ios_selectedFiles2}b) a button will appear at the bottom of the screen letting the user choose a task to perform with the file by leading to the select task menu, as seen in \refer{fig:ios_convertParameters}a.
+%
+%\begin{figure}[ht]
+%\addTwoImages	{ios_selected1.PNG}{a}
+%		{ios_selected2.PNG}{b}
+%\caption{The selected files view.}
+%\label{fig:ios_selectedFiles2}
+%\end{figure}
+%\FloatBarrier
 
-When at least one file is selected with the switch next to it (see \refer{fig:ios_selectedFiles2}b) a button will appear at the bottom of the screen letting the user choose a task to perform with the file by leading to the select task menu, as seen in \refer{fig:ios_convertParameters}a.
+
+\subsubsection{Create processes}
+The view to create a process is focused on the user's current workflow. The user wants to use the selected files from the files view as input and then select a specific process on those files, which creates output-files to be used as input-files in another process. This creates a sequence of processes which the server will execute one process at a time. Moreover each input-file for a process will be executed parallel with eachother. The input-files and the output-files are separated by the process which will be executed on the input-files. To make it easy to understand what will be executed on each step of the sequence the separator between input-files and output-files is the name of the process and an arrow from the input-files to output-files. The color of a output-file will have the same color as its corresponding input-file to track a file's conversion-process, from start to finish, see \refer{fig:ios_creating_process}a-c. 
+
+
 
 \begin{figure}[ht]
-\addTwoImages	{ios_selected1.PNG}{a}
-		{ios_selected2.PNG}{b}
-\caption{The selected files view.}
-\label{fig:ios_selectedFiles2}
+\addThreeImages {ios_empty_make_process.jpg}{a}
+	{ios_one_process.jpg}{b}
+	{ios_many_process.jpg}{c}
+\caption{Creating a process}
+\label{fig:ios_creating_process}
 \end{figure}
 \FloatBarrier
-
-\subsubsection{Select task and Convert}
-The select task menu can easily be expanded when new functionality is added to the application. The simplest way we could think of to select a task was to simply press it and hence it's implemented that way.
-\begin{figure}[ht]
-\addTwoImages	{ios_convert1.PNG}{a}
-		{ios_convert2.PNG}{b}
-\caption{The convert view.}
-\label{fig:ios_convertParameters}
-\end{figure}
-\FloatBarrier
-
-As seen in \refer{fig:ios_convertParameters}b, the convert view, shows a number of parameters to be filled. Only the first two fields has to be filled before a convert request can be sent and they are pre-filled with standard flags etc. to make it easier to send a processrequest for the user, which we thought was essential on a mobile-device. Furthermore our thought was that a user should be able to skip all non-optional settings, and let the server have the standard parameter values. 
-
 
 \subsubsection{Processes}
 
 As visible in \refer{fig:ios_processingStatus}, we chose to build the processing status view with a simple tableview, to make it dynamic and easy. We also think this gives the user the best possible overview of current processes. The status is color coded to make it as easy as possible for the user to see which processes are in which state.
 \begin{figure}[h]
-\addScaledImage{0.17}{ios_processes1.PNG}
+\addScaledImage{0.30}{ios_processes1.PNG}
 \caption{The process status view.}
 \label{fig:ios_processingStatus}
 \end{figure}
 \FloatBarrier
 
 \subsubsection{Alerts}
-Alerts are simple banners animating down from the top to give the user a headsup of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen in \refer{fig:ios_alerts}b, indicates an error and a white with a green icon, as seen in \refer{fig:ios_alerts}a, indicates something went as expected. The colors are used to allow the user to just notice which color pops down and give them somewhat of an understanding of what is going on. without having to read the text every time.
-\begin{figure}[h!]
-\addTwoImages	{ios_convert3.PNG}{a}
-		{ios_alert1.PNG}{b}
-\caption{Examples of alerts}
+Alerts are simple banners animating down from the top to give the user a headsup of what is going wrong and what is going the way it is expected. The user can tap the banner to dismiss it or if nothing is done it will animate away in 2 seconds. The banners were introduced to not stop the user with prompts which the user has to react with to be able to further use the system. A red banner, as seen in \refer{fig:ios_alerts}, indicates an error and a white with a green icon, indicates something went as expected. The colors are used to allow the user to just notice which color pops down and give them somewhat of an understanding of what is going on. without having to read the text every time.
+\begin{figure}[ht]
+\addScaledImage{0.30}{ios_alert1.PNG}
+\caption{Examples of alert}
 \label{fig:ios_alerts}
 \end{figure}
 \FloatBarrier
