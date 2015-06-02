@@ -93,31 +93,39 @@ After the experiment is created, you can change the annotations needed for the s
 \end{figure}
 \FloatBarrier
 
+
 \subsection{Process}
-In the process tab there is a list of files to the left. These files are chosen from the Workspace tab for process, see \refer{fig:des_workspace-view}. From this list you can mark RAW-files and choose to create profile data by left clicking on the files they will be marked. If you left click once again on the same file it will be unmarked. For each file there exists only one specie, the list shows the user which specie a file has. \\ When a file is marked the \emph{Genome release files} dropdown list will be filled with all genome versions that exists for that specie. If you enter the create profile data tab and presses the Start process button which is visible in the right side of the tab see \refer{fig:des_process-view}, all the files that are marked will now be processed to profile data. This list of files will be empty unless you have chosen to process selected RAW-files from the workspace tab. If that is the case then those selected RAW-files will then be visible in the list of files in the process tab. \\ When you have selected some RAW files you have the option to change the processing parameters that is above the Start process button as illustrated in \refer{fig:des_process-view}. These parameters has pre-set values and allowed intervals. The conversion parameters are \emph{Flags, Genome release files, Window size, Smooth type, Step position, Step size, Print mean} and \emph{Print} zeros. Information about all the different parameters can be found in a popup windows showed in \refer{fig:des_process-view-info}. For you to reach this window you need to press the information button that is on the upper right side in the process tab. To be able to process files some parameters needs to be set in order for the process to start. If the parameters are invalid, empty or wrong  ,the process will not be able to start until it is fixed. Depending on what format you choose to process different parameters will be enabled. For example ratio calculation parameters cant be set unless SGR format is used.
+From the \textit{process view} (see \refer{fig:des_process-view}) the user can process files uploaded to experiments. The view consists of three panels; one panel at the top with a drop-down list with process commands, one panel to the left that lists \textit{command components} (see example in \refer{fig:des_rtp-command-component}), and one to the right where feedback from processing tasks can be seen. The top-panel also has a button for adding commands to the list on the left panel.
 
-If you have selected some RAW-files and then press the "Start process"-button, then if all went well and the server could process the files a message \texttt{"The server has started process on file: <File> from experiment: <Experiment>"} will print in the Console for each file that was converted to profile data. If for some reason the server couldn't create profile data for any RAW-file another message \texttt{"WARNING - The server couldn't start processing on file: <File> from experiment: <Experiment>"} will print in the console that is visible in the middle bottom of the process tab see \refer{fig:des_process-view}. If you want to perform a ratio calculation while processing a file you have the option to press the \emph{Use ratio calculation} button. When pressed a popup window appears and you get the option to fill in several ratio calculation parameters. These parameters consists of eight parameters \emph{Ratio calculation, Input reads cut-off, Chromosomes, Window size , Smooth type, Step position, print mean} and  \emph{print zeros}. If the Console area gets filled with messages you have the option to clear the Console area from text. This is possible when pressing the Clear console button which is positioned bottom/center in the process tab. When you have started a process you can choose to check which priority that process currently have. This is done by pressing the Get process feedback button which is located in the bottom/right corner of the process tab se \refer{fig:des_process-view}.
-
-
-
-
-\begin{figure}[htb]
-	\addImage{des_process_tab.png}
-	\caption{Screenshot of the process tab in the program.}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{des_process_view.png}
+	\caption{The process view of the Genomizer desktop client. The top-panel (red) has a drop-down list and an add-button. The left panel (green) lists process commands to be performed in the processing sequence. The right panel (blue) shows the status of different processing tasks.}
 	\label{fig:des_process-view}
 \end{figure}
 
-\begin{figure}[htb]
-	\addScaledImage{0.6}{des_parameter_info.png}
-	\caption{The parameter information popup window.}
-	\label{fig:des_process-view-info}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{des_rtp_command_component.png}
+	\caption{A command component representing a raw-to-profile-process. The component has rows for input parameters (red), buttons to add and remove input rows (blue), and a button to remove the entire component (green).}
+	\label{fig:des_rtp-command-component}
 \end{figure}
 
-\begin{figure}[htb]
-	\addScaledImage{0.6}{des_ratio_calc_popup.png}
-	\caption{The popup window for ratio calculation parameters.}
-	\label{fig:des_process-view-ratio}
-\end{figure}
+To prepare an experiment for processing the following steps must be performed:
+\begin{itemize}
+	\item Search for the desired experiment and add it to the workspace, as described under the search section.
+	\item Select the experiment from the worksapce view and press the button labeled 	\textit{Process}.
+\end{itemize}
+After performing these steps, the user can process the files of the selected experiment. The user can perform several process steps in a sequence, and also perform each step on several files. A command component in the list on the left panel represents a step in the processing sequence. Each command component has a row for input fields, where the user can select files to apply the command on, specify names of resulting files, and define other parameters. The command component also have buttons for adding and removing extra input-rows, and a button for removing the whole component.
+
+The following describes how to process one or more files:
+\begin{itemize}
+	\item Select a process command from the drop-down list located on the top-panel of the tab.
+	\item Click the plus-button next to the drop-down list to add the command to the command list located below.
+	\item In the command component in the list, fill in the needed parameters. Click the plus-button on the command component to add more files to process, or remove unwanted files by pressing the minus-button.
+	\item To add another command to the sequence, repeat the above steps.
+	\item To remove undesired commands, press the trash can icon in the upper-right corner of the command component. To remove all commands press the button labeled \textit{Clear}.
+	\item When the desired process commands have been added and parameters have been filled in, press the button labeled \textit{Start Processing} to start processing.
+\end{itemize}	
+	The server will now start processing the specified files with the specified commands and parameters, in the same order the commands were added by the user. To get feedback from the processing task, the user can press the button labeled \textit{Get process feedback}. To abort ongoing process tasks, the user can press the button labeled \textit{Abort process}. The feedback panel lists experiments, which can be expanded to show the status of processing tasks, associated with the expanded experiment.
 
 \FloatBarrier
 
