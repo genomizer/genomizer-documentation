@@ -404,7 +404,7 @@ Content-Type: application/json
 
 \section*{Search}
 
-Requests used to handle user information (by the user).
+Requests used to handle user information.
 
 \subsection*{PUT /user}
 
@@ -427,6 +427,26 @@ Authorization: token
 \subsubsection*{Response:}
 \begin{verbatim}
 200 (OK)
+\end{verbatim}
+
+\subsection*{GET /user/<username>}
+
+\subsubsection*{Request:}
+\begin{verbatim}
+GET /user/<username> HTTP/1.1
+Authorization: token
+\end{verbatim}
+
+\subsubsection*{Response:}
+\begin{verbatim}
+200 (OK)
+Content-Type: application/json
+    {
+     "username": "myusername"
+     "privileges": "ADMIN",
+     "name": "John Johnson",
+     "email": "john@mail.com"
+    }
 \end{verbatim}
 
 \section*{Search}
