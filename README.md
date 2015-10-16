@@ -1,5 +1,4 @@
-Genomizer Documentation
-[![Build Status](https://secure.travis-ci.org/genomizer/genomizer-documentation.svg?branch=master)](http://travis-ci.org/genomizer/genomizer-documentation)
+Genomizer Documentation [![Build Status](https://secure.travis-ci.org/genomizer/genomizer-documentation.svg?branch=master)](http://travis-ci.org/genomizer/genomizer-documentation)
 ===================
 
 Technical documentation for the Genomizer system.
