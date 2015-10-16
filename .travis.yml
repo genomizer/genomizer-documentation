@@ -32,4 +32,4 @@ after_success:
   - git add .
   - git commit -m "Deploy to GitHub ($(date))."
   - ssh -T git@github.com
-  - git push --force --quiet git@github.com:genomizer/genomizer-documentation.git master:deploy
+  - git push --force --quiet git@github.com:genomizer/genomizer-deployment-area.git master:documentation
