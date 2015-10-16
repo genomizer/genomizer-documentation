@@ -8,6 +8,7 @@ addons:
       - texlive-latex-extra
       - texlive-fonts-recommended
       - latex-xcolor
+      - pgf
 
 script:
   - make
