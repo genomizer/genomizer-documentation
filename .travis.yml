@@ -14,6 +14,7 @@ addons:
 before_install:
   - git config user.name "Travis CI"
   - git config user.email "builds@travis-ci.org"
+  - mkdir ~/.ssh
   - openssl aes-256-cbc -K $encrypted_e1b54e14d2b1_key -iv $encrypted_e1b54e14d2b1_iv -in deploy/id_rsa.enc -out ~\/.ssh/id_rsa -d
 
 script:
