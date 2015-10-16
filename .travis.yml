@@ -1,7 +1,12 @@
-install:
-  - git clone https://github.com/scottkosty/install-tl-ubuntu.git
-  - sudo apt-get update
-  - sudo install-tl-ubuntu/install-tl-ubuntu
+sudo: required
+dist: trusty
+
+addons:
+  apt:
+    packages:
+      - texlive-latex-recommended
+      - texlive-latex-extra
+      - texlive-fonts-recommended
 
 script:
   - make
