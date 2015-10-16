@@ -9,6 +9,7 @@ addons:
       - texlive-fonts-recommended
       - latex-xcolor
       - pgf
+      - lmodern
 
 script:
   - make
