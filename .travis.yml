@@ -21,9 +21,9 @@ script:
   - test -s main.pdf
 
 after_success:
-  - mkdir deploy/out
-  - mv main.pdf deploy/out/main.pdf
-  - cd deploy/out
+  - mkdir -p /tmp/deploy
+  - mv main.pdf /tmp/deploy/main.pdf
+  - cd /tmp/deploy
   - git init
   - git add .
   - git commit -m "Deploy to GitHub ($(date))."
