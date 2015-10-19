@@ -12,7 +12,7 @@ addons:
       - lmodern
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_e1b54e14d2b1_key -iv $encrypted_e1b54e14d2b1_iv -in deploy/id_rsa.enc -out id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_e1b54e14d2b1_key -iv $encrypted_e1b54e14d2b1_iv -in deploy_key.aes256.enc -out id_rsa -d
   - mv id_rsa ~/.ssh/id_rsa
   - chmod 400 ~/.ssh/id_rsa
 
